@@ -1,5 +1,5 @@
 ---
-title: "Block Relaxation Methods"
+title: "Block Relaxation Methods in Statistics"
 author: "Jan de Leeuw"
 date: '`r paste("First created May 03, 2016. Last update", format(Sys.Date(),"%B %d, %Y"))`'
 output:
