@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Introduction | Block Relaxation Methods</title>
+  <meta name="description" content="null" />
+  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Introduction | Block Relaxation Methods" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="null" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Introduction | Block Relaxation Methods" />
+  
+  <meta name="twitter:description" content="null" />
+  
+
+<meta name="author" content="Jan de Leeuw" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="preface.html"/>
+<link rel="next" href="blockrelaxation.html"/>
+<script src="libs/header-attrs-2.8.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Note</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#introduction:somehistory"><i class="fa fa-check"></i><b>1.1</b> Some History</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#introduction:optimizationmethods"><i class="fa fa-check"></i><b>1.2</b> Optimization Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="blockrelaxation.html"><a href="blockrelaxation.html"><i class="fa fa-check"></i><b>2</b> Block Relaxation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:definition"><i class="fa fa-check"></i><b>2.2</b> Definition</a></li>
+<li class="chapter" data-level="2.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples"><i class="fa fa-check"></i><b>2.3</b> First Examples</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples:twoblockleastsquares"><i class="fa fa-check"></i><b>2.3.1</b> Two-block Least Squares</a></li>
+<li class="chapter" data-level="2.3.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples:multipleblockleastsquares"><i class="fa fa-check"></i><b>2.3.2</b> Multiple-block Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:generalizedblockrelaxation"><i class="fa fa-check"></i><b>2.4</b> Generalized Block Relaxation</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#alternatingleastsquares:examples:mcrals"><i class="fa fa-check"></i><b>2.4.1</b> MCR-ALS</a></li>
+<li class="chapter" data-level="2.4.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#dinkelbach-majorization"><i class="fa fa-check"></i><b>2.4.2</b> Dinkelbach Majorization</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-amgm-inequality"><i class="fa fa-check"></i><b>2.5</b> The AM/GM Inequality</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#gini-mean-difference"><i class="fa fa-check"></i><b>2.5.1</b> Gini Mean Difference</a></li>
+<li class="chapter" data-level="2.5.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-lasso-and-the-bridge"><i class="fa fa-check"></i><b>2.5.2</b> The Lasso and the Bridge</a></li>
+<li class="chapter" data-level="2.5.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#rayleigh-quotient"><i class="fa fa-check"></i><b>2.5.3</b> Rayleigh Quotient</a></li>
+<li class="chapter" data-level="2.5.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-majorization-method-for-mds"><i class="fa fa-check"></i><b>2.5.4</b> The Majorization Method for MDS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="using-convexity.html"><a href="using-convexity.html"><i class="fa fa-check"></i><b>3</b> Using Convexity</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="using-convexity.html"><a href="using-convexity.html#using-convexity-1"><i class="fa fa-check"></i><b>3.1</b> Using Convexity</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="using-convexity.html"><a href="using-convexity.html#tomography"><i class="fa fa-check"></i><b>3.1.1</b> Tomography</a></li>
+<li class="chapter" data-level="3.1.2" data-path="using-convexity.html"><a href="using-convexity.html#majorizing-and-minorizing-the-logarithm"><i class="fa fa-check"></i><b>3.1.2</b> Majorizing and Minorizing the Logarithm</a></li>
+<li class="chapter" data-level="3.1.3" data-path="using-convexity.html"><a href="using-convexity.html#aspects-of-correlation-matrices"><i class="fa fa-check"></i><b>3.1.3</b> Aspects of Correlation Matrices</a></li>
+<li class="chapter" data-level="3.1.4" data-path="using-convexity.html"><a href="using-convexity.html#partially-observed-linear-systems"><i class="fa fa-check"></i><b>3.1.4</b> Partially Observed Linear Systems</a></li>
+<li class="chapter" data-level="3.1.5" data-path="using-convexity.html"><a href="using-convexity.html#gpower"><i class="fa fa-check"></i><b>3.1.5</b> Gpower</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="using-convexity.html"><a href="using-convexity.html#broadening-the-scope"><i class="fa fa-check"></i><b>3.2</b> Broadening the Scope</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="using-convexity.html"><a href="using-convexity.html#differences-of-convex-functions"><i class="fa fa-check"></i><b>3.2.1</b> Differences of Convex Functions</a></li>
+<li class="chapter" data-level="3.2.2" data-path="using-convexity.html"><a href="using-convexity.html#convexifiable-functions"><i class="fa fa-check"></i><b>3.2.2</b> Convexifiable Functions</a></li>
+<li class="chapter" data-level="3.2.3" data-path="using-convexity.html"><a href="using-convexity.html#piecewise-linear-majorization"><i class="fa fa-check"></i><b>3.2.3</b> Piecewise Linear Majorization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html"><i class="fa fa-check"></i><b>4</b> Quadratic Majorization</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#nondiagonal-weights-in-least-squares"><i class="fa fa-check"></i><b>4.1.1</b> Nondiagonal Weights in Least Squares</a></li>
+<li class="chapter" data-level="4.1.2" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gifi-goes-logistic"><i class="fa fa-check"></i><b>4.1.2</b> Gifi Goes Logistic</a></li>
+<li class="chapter" data-level="4.1.3" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#a-matrix-example"><i class="fa fa-check"></i><b>4.1.3</b> A Matrix Example</a></li>
+<li class="chapter" data-level="4.1.4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gauss-newton-majorization"><i class="fa fa-check"></i><b>4.1.4</b> Gauss-Newton Majorization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html"><i class="fa fa-check"></i><b>5</b> Using Higher Derivatives</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#taylor-majorization"><i class="fa fa-check"></i><b>5.1</b> Taylor Majorization</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#second-order"><i class="fa fa-check"></i><b>5.1.1</b> Second Order</a></li>
+<li class="chapter" data-level="5.1.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#higher-order"><i class="fa fa-check"></i><b>5.1.2</b> Higher Order</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#nesterov-majorization"><i class="fa fa-check"></i><b>5.2</b> Nesterov Majorization</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#revisiting-the-reciprocal"><i class="fa fa-check"></i><b>5.2.1</b> Revisiting the Reciprocal</a></li>
+<li class="chapter" data-level="5.2.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#logit"><i class="fa fa-check"></i><b>5.2.2</b> Logit</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sharp-majorization.html"><a href="sharp-majorization.html"><i class="fa fa-check"></i><b>6</b> Sharp Majorization</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#comparing-majorizations"><i class="fa fa-check"></i><b>6.1</b> Comparing Majorizations</a></li>
+<li class="chapter" data-level="6.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-quadratic-majorization"><i class="fa fa-check"></i><b>6.2</b> Sharp Quadratic Majorization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#even-and-odd-functions"><i class="fa fa-check"></i><b>6.2.1</b> Even and Odd Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-piecewise-linear"><i class="fa fa-check"></i><b>6.3</b> Sharp Piecewise Linear</a></li>
+<li class="chapter" data-level="6.4" data-path="sharp-majorization.html"><a href="sharp-majorization.html#examples"><i class="fa fa-check"></i><b>6.4</b> Examples</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-cosine"><i class="fa fa-check"></i><b>6.4.1</b> The cosine</a></li>
+<li class="chapter" data-level="6.4.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-rasch-model"><i class="fa fa-check"></i><b>6.4.2</b> The Rasch Model</a></li>
+<li class="chapter" data-level="6.4.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#probits"><i class="fa fa-check"></i><b>6.4.3</b> Probits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html"><i class="fa fa-check"></i><b>7</b> Local and Localized Majorization</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-in-a-neighborhood"><i class="fa fa-check"></i><b>7.0.1</b> Majorization in a Neighborhood</a></li>
+<li class="chapter" data-level="7.0.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#cartesian-folium"><i class="fa fa-check"></i><b>7.0.2</b> Cartesian Folium</a></li>
+<li class="chapter" data-level="7.0.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#univariate-cubics"><i class="fa fa-check"></i><b>7.0.3</b> Univariate Cubics</a></li>
+<li class="chapter" data-level="7.0.4" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-the-sphere"><i class="fa fa-check"></i><b>7.0.4</b> Majorization on the Sphere</a></li>
+<li class="chapter" data-level="7.0.5" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-a-hyperrectangle"><i class="fa fa-check"></i><b>7.0.5</b> Majorization on a Hyperrectangle</a></li>
+<li class="chapter" data-level="7.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#proximal-point-majorization"><i class="fa fa-check"></i><b>7.1</b> Proximal Point Majorization</a></li>
+<li class="chapter" data-level="7.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#sub-level-majorization"><i class="fa fa-check"></i><b>7.2</b> Sub-level Majorization</a></li>
+<li class="chapter" data-level="7.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#dinkelbach-majorization-1"><i class="fa fa-check"></i><b>7.3</b> Dinkelbach Majorization</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>8</b> Background</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="background.html"><a href="background.html#introduction-2"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="background.html"><a href="background.html#analysis"><i class="fa fa-check"></i><b>8.2</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="background.html"><a href="background.html#differentiability-and-derivatives"><i class="fa fa-check"></i><b>8.2.1</b> Differentiability and Derivatives</a></li>
+<li class="chapter" data-level="8.2.2" data-path="background.html"><a href="background.html#implicit-functions"><i class="fa fa-check"></i><b>8.2.2</b> Implicit Functions</a></li>
+<li class="chapter" data-level="8.2.3" data-path="background.html"><a href="background.html#necessary-and-sufficient-conditions-for-a-minimum"><i class="fa fa-check"></i><b>8.2.3</b> Necessary and Sufficient Conditions for a Minimum</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="background.html"><a href="background.html#point-to-set-maps"><i class="fa fa-check"></i><b>8.3</b> Point-to-set Maps</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="background.html"><a href="background.html#marginal-functions-and-solution-maps"><i class="fa fa-check"></i><b>8.3.1</b> Marginal Functions and Solution Maps</a></li>
+<li class="chapter" data-level="8.3.2" data-path="background.html"><a href="background.html#jensens-inequality"><i class="fa fa-check"></i><b>8.3.2</b> Jensen’s Inequality</a></li>
+<li class="chapter" data-level="8.3.3" data-path="background.html"><a href="background.html#the-am-gm-inequality"><i class="fa fa-check"></i><b>8.3.3</b> The AM-GM Inequality</a></li>
+<li class="chapter" data-level="8.3.4" data-path="background.html"><a href="background.html#youngs-inequality"><i class="fa fa-check"></i><b>8.3.4</b> Young’s Inequality</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="background.html"><a href="background.html#background:fixedpoint"><i class="fa fa-check"></i><b>8.4</b> Fixed Point Problems and Methods</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="background.html"><a href="background.html#subsequential-limits"><i class="fa fa-check"></i><b>8.4.1</b> Subsequential Limits</a></li>
+<li class="chapter" data-level="8.4.2" data-path="background.html"><a href="background.html#differentiable-convex-functions"><i class="fa fa-check"></i><b>8.4.2</b> Differentiable Convex Functions</a></li>
+<li class="chapter" data-level="8.4.3" data-path="background.html"><a href="background.html#algorithms-as-point-to-set-maps"><i class="fa fa-check"></i><b>8.4.3</b> Algorithms as Point-to-set Maps</a></li>
+<li class="chapter" data-level="8.4.4" data-path="background.html"><a href="background.html#convergence-of-function-values"><i class="fa fa-check"></i><b>8.4.4</b> Convergence of Function Values</a></li>
+<li class="chapter" data-level="8.4.5" data-path="background.html"><a href="background.html#convergence-of-solutions"><i class="fa fa-check"></i><b>8.4.5</b> Convergence of Solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="background.html"><a href="background.html#rates-of-convergence"><i class="fa fa-check"></i><b>8.5</b> Rates of Convergence</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="background.html"><a href="background.html#over--and-under-relaxation"><i class="fa fa-check"></i><b>8.5.1</b> Over- and Under-Relaxation</a></li>
+<li class="chapter" data-level="8.5.2" data-path="background.html"><a href="background.html#acceleration-of-convergence-of-fixed-point-methods"><i class="fa fa-check"></i><b>8.5.2</b> Acceleration of Convergence of Fixed Point Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="background.html"><a href="background.html#matrix-algebra"><i class="fa fa-check"></i><b>8.6</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="background.html"><a href="background.html#eigenvalues-and-eigenvectors-of-symmetric-matrices"><i class="fa fa-check"></i><b>8.6.1</b> Eigenvalues and Eigenvectors of Symmetric Matrices</a></li>
+<li class="chapter" data-level="8.6.2" data-path="background.html"><a href="background.html#singular-values-and-singular-vectors"><i class="fa fa-check"></i><b>8.6.2</b> Singular Values and Singular Vectors</a></li>
+<li class="chapter" data-level="8.6.3" data-path="background.html"><a href="background.html#canonical-correlation"><i class="fa fa-check"></i><b>8.6.3</b> Canonical Correlation</a></li>
+<li class="chapter" data-level="8.6.4" data-path="background.html"><a href="background.html#modified-eigenvalue-problems"><i class="fa fa-check"></i><b>8.6.4</b> Modified Eigenvalue Problems</a></li>
+<li class="chapter" data-level="8.6.5" data-path="background.html"><a href="background.html#quadratic-on-a-sphere"><i class="fa fa-check"></i><b>8.6.5</b> Quadratic on a Sphere</a></li>
+<li class="chapter" data-level="8.6.6" data-path="background.html"><a href="background.html#generalized-inverses"><i class="fa fa-check"></i><b>8.6.6</b> Generalized Inverses</a></li>
+<li class="chapter" data-level="8.6.7" data-path="background.html"><a href="background.html#partitioned-matrices"><i class="fa fa-check"></i><b>8.6.7</b> Partitioned Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="background.html"><a href="background.html#matrix-differential-calculus"><i class="fa fa-check"></i><b>8.7</b> Matrix Differential Calculus</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="background.html"><a href="background.html#matrix-derivatives"><i class="fa fa-check"></i><b>8.7.1</b> Matrix Derivatives</a></li>
+<li class="chapter" data-level="8.7.2" data-path="background.html"><a href="background.html#derivatives-of-eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>8.7.2</b> Derivatives of Eigenvalues and Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="background.html"><a href="background.html#graphics-and-code"><i class="fa fa-check"></i><b>8.8</b> Graphics and Code</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="background.html"><a href="background.html#multidimensional-scaling"><i class="fa fa-check"></i><b>8.8.1</b> Multidimensional Scaling</a></li>
+<li class="chapter" data-level="8.8.2" data-path="background.html"><a href="background.html#cobweb-plots"><i class="fa fa-check"></i><b>8.8.2</b> Cobweb Plots</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Block Relaxation Methods</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="introduction:somehistory" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Some History</h2>
+<p>The methods discussed in this book are special cases of what we shall call
+<em>block-relaxation methods</em>, although other names such as <em>decomposition</em> or <em>nonlinear Gauss-Seidel</em> or <em>ping-pong</em> or <em>seesaw</em> methods have also been used. There are many areas of applied mathematics where methods of this type have been discussed. Mostly, of course, in optimization and mathematical programming, but also in control and numerical analysis, and in differential equations.</p>
+<p>In this section we shall give some informal definitions to establish our terminology. We will give some of the historical context, but the main historical and technical details will be discussed in subsequent chapters.</p>
+<p>In a <em>block relaxation method</em> we minimize a real-valued function of several variables by partitioning the variables into blocks. We choose initial values for all blocks, and then minimize over one of the blocks, while keeping all other blocks fixed at their current values. We then replace the values of the active block by the minimizer, and proceed by choosing another block to become active. An iteration ofthe algorithm steps through all blocks in turn, each time keeping the non-active blocks fixed at current values, and each time replacing the active blocks by solving the minimization subproblems. If there are more than two blocks there are different ways to cycle through the blocks. If we use the same sequence of active blocks in each iteration then the block method is called <em>cyclic</em>.</p>
+<p>In the special case in which blocks consist of only one coordinate we speak of the
+_ coordinate relaxation method_ or the
+<em>coordinate descent</em> (or <em>CD</em>) method. If we are maximizing then it is <em>coordinate ascent</em> (or <em>CA</em>). The cyclic versions are <em>CCD</em> and
+<em>CCA</em>.</p>
+<p><em>Alternating Least Squares</em> (or <em>ALS</em>) methods are block relaxation methods in which each minimization subproblem is a linear or nonlinear least squares problem. As far as we know, the term “Alternating Least Squares” was first used in <span class="citation"><a href="#ref-deleeuw_R_68d" role="doc-biblioref">J. De Leeuw</a> (<a href="#ref-deleeuw_R_68d" role="doc-biblioref">1968</a>)</span>.
+There certainly were ALS methods before 1968, but the systematic use of these techniques in psychometrics and multivariate analysis started around that time.
+The inspiration clearly was the pioneering work of <span class="citation"><a href="#ref-kruskal_64a" role="doc-biblioref">Kruskal</a> (<a href="#ref-kruskal_64a" role="doc-biblioref">1964a</a>)</span>, <span class="citation"><a href="#ref-kruskal_64b" role="doc-biblioref">Kruskal</a> (<a href="#ref-kruskal_64b" role="doc-biblioref">1964b</a>)</span> in nonmetric scaling.
+De Leeuw, Young, and Takane started the ALSOS system of techniques and programs around 1973
+(see <span class="citation"><a href="#ref-young_deleeuw_takane_C_80" role="doc-biblioref">F. W. Young, De Leeuw, and Takane</a> (<a href="#ref-young_deleeuw_takane_C_80" role="doc-biblioref">1980</a>)</span>), and De Leeuw, with many others, at Leiden University started the Gifi system around 1975 (see <span class="citation"><a href="#ref-gifi_B_90" role="doc-biblioref">Gifi</a> (<a href="#ref-gifi_B_90" role="doc-biblioref">1990</a>)</span>).</p>
+<p>ALS works well for fitting the usual linear, bilinear, and multilinear forms to data. Thus it covers much of classical multivariate analysis and its extensions to higher dimensional arrays. But pretty early on problems arose in Euclidean multidimensional scaling, which required fitting quadratic forms or, even worse, square roots of quadratic forms to data. Straightforward ALS could not be used, because the standard matrix calculations of least squares and eigen decomposition did not apply. <span class="citation"><a href="#ref-takane_young_deleeuw_A_77" role="doc-biblioref">Takane, Young, and De Leeuw</a> (<a href="#ref-takane_young_deleeuw_A_77" role="doc-biblioref">1977</a>)</span> circumvented the problem by fitting squared distances using cyclic coordinate descent, which only involved unidimensional minimizations.</p>
+<p>Around 1975, however, De Leeuw greatly extended the scope of ALS by using <em>majorization</em>. This was first applied to Euclidean multidimensional scaling by <span class="citation"><a href="#ref-deleeuw_C_77" role="doc-biblioref">J. De Leeuw</a> (<a href="#ref-deleeuw_C_77" role="doc-biblioref">1977</a>)</span>, but it became clear early on that majorization was a general technique for algorithm construction that also covered, for example, the EM algorithm, which was discovered around the same time (<span class="citation"><a href="#ref-dempster_laird_rubin_77" role="doc-biblioref">Dempster, Laird, and Rubin</a> (<a href="#ref-dempster_laird_rubin_77" role="doc-biblioref">1977</a>)</span>). In each iteration of a majorization algorithm we construct a <em>surrogate function</em> (<span class="citation"><a href="#ref-lange_hunter_yang_00" role="doc-biblioref">Lange, Hunter, and Yang</a> (<a href="#ref-lange_hunter_yang_00" role="doc-biblioref">2000</a>)</span>) or <em>majorization</em> (<span class="citation"><a href="#ref-deleeuw_C_94c" role="doc-biblioref">J. De Leeuw</a> (<a href="#ref-deleeuw_C_94c" role="doc-biblioref">1994</a>)</span>, <span class="citation"><a href="#ref-heiser_95" role="doc-biblioref">Heiser</a> (<a href="#ref-heiser_95" role="doc-biblioref">1995</a>)</span>) that lies above the function we are minimizing and touches it in the current iterate. We then minimize this surrogate function to find an update of the current iterate, then construct a new majorization function in that update, and so on. The majorization function, if suitably chosen, can often be minimized using ALS techniques.</p>
+<p><span class="citation"><a href="#ref-deleeuw_C_94c" role="doc-biblioref">J. De Leeuw</a> (<a href="#ref-deleeuw_C_94c" role="doc-biblioref">1994</a>)</span> argues there is another important class of algorithms extending ALS. It is intermediate, since it is a special case of block relaxation and it contains majorization as a special case. In <em>augmentation methods</em> for the minimization of a real valued function we introduce an <em>augmentation</em>, which uses an additional vector of variables, with a surrogate function on the product of both sets, such that the original objective function is the minimum of the surrogate function over the augmenting block of variables. We then apply block relaxation to the augmented function.</p>
+<p>Ortega and Rheinboldt majorization, Kantorovich,
+Toland duality, decomposition, quasi-linearization, Marshall-Olkin-Arnold, NIPALS, Moreau coupling functions</p>
+<p>block relaxation is majorization</p>
+<p>it suffices to study two blocks (in a sense)</p>
+</div>
+<div id="introduction:optimizationmethods" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Optimization Methods</h2>
+<p>Our block relaxation methods look for desirable points, which are usually fixed points of point-to-set maps. They minimize, in a vast majority of the applications, a <em>loss function</em> or <em>badness-of-fit function</em>, which is often derived from some general data analysis principle such as <em>Least Squares</em> or <em>Maximum Likelihood</em>. The desirable points are the local or global minimizers of this loss function.</p>
+<p>Under certain conditions, which are generally satisfied in statistical applications, our block relaxation methods have <em>global convergence</em>, which means that the iterative sequences they generate converge
+to desirable points, no matter where we start them. They are generally <em>stable</em>, which means in this context that each step in the iterative process decreases the loss function value.</p>
+<p>Under stronger, but still quite realistic, conditions our block relaxation methods exhibit linear convergence, i.e. the distance of the iterates to the desirable points decreases at the rate of a geometric progression. In many high-dimensional cases the ratio of the progression is actually close to one, which makes convergence very slow, and in some cases the ratio is equal to one and convergence is <em>sublinear</em>. We will also discuss stable block relaxation algorithms with <em>superlinear</em> convergence, but they are inherently more complicated. In addition we will discuss techniques to accelerate the convergence of block relaxation iterations.</p>
+<p>In the optimization and mathematical programming literature, at least until recently, methods with linear convergence rates were generally deprecated or ignored. It was thought they were too slow to be of any practical relevance. This situation has changed for various reasons, all of them having to do with the way in which we now program and compute. Here “we” specifically means statisticians and data analysts, but the same reasons probably apply in other fields as well.</p>
+<p>In the first place block relaxation methods often involve simple computations in each of their iterations. As a consequence they can tackle problems with a large number of variables, and they are often easily parallelized. In the second place, with the advent of personal computers it is not necessarily a problem any more to let an iterative process run for days in the background. Mainframe computer centers used to frown on such practices. Third, they are now many specific large problems characterized by a great deal of <em>sparseness</em>, which make block and coordinate methods natural alternatives because they can take this sparseness into account. And finally, simple computations in each of the steps make it easy to write ad hoc programs in interpreted special purpose languages such as <code>R</code>. Such programs can take the special structure of the problem they are trying to solve into account, and this makes them more efficient compared to general purpose optimization methods which may have faster convergence rates.</p>
+<p>Statistics optimization
+R optimization</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-deleeuw_R_68d" class="csl-entry">
+De Leeuw, J. 1968. <span>“<span>Nonmetric Discriminant Analysis</span>.”</span> Research Note 06-68. Department of Data Theory, University of Leiden. <a href="http://www.stat.ucla.edu/~deleeuw/janspubs/1968/reports/deleeuw_R_68d.pdf">http://www.stat.ucla.edu/~deleeuw/janspubs/1968/reports/deleeuw_R_68d.pdf</a>.
+</div>
+<div id="ref-deleeuw_C_77" class="csl-entry">
+———. 1977. <span>“Applications of Convex Analysis to Multidimensional Scaling.”</span> In <em>Recent Developments in Statistics</em>, edited by J. R. Barra, F. Brodeau, G. Romier, and B. Van Cutsem, 133–45. Amsterdam, The Netherlands: North Holland Publishing Company. <a href="http://www.stat.ucla.edu/~deleeuw/janspubs/1977/chapters/deleeuw_C_77.pdf">http://www.stat.ucla.edu/~deleeuw/janspubs/1977/chapters/deleeuw_C_77.pdf</a>.
+</div>
+<div id="ref-deleeuw_C_94c" class="csl-entry">
+———. 1994. <span>“<span class="nocase">Block Relaxation Algorithms in Statistics</span>.”</span> In <em>Information Systems and Data Analysis</em>, edited by H. H. Bock, W. Lenski, and M. M. Richter, 308–24. Berlin: Springer Verlag. <a href="http://www.stat.ucla.edu/~deleeuw/janspubs/1994/chapters/deleeuw_C_94c.pdf">http://www.stat.ucla.edu/~deleeuw/janspubs/1994/chapters/deleeuw_C_94c.pdf</a>.
+</div>
+<div id="ref-dempster_laird_rubin_77" class="csl-entry">
+Dempster, A. P., N. M. Laird, and D. B. Rubin. 1977. <span>“<span class="nocase">Maximum Likelihood from Incomplete Data via the EM algorithm (with Discussion)</span>.”</span> <em>Journal of the Royal Statistical Society Series B</em> 39: 1–38.
+</div>
+<div id="ref-gifi_B_90" class="csl-entry">
+Gifi, A. 1990. <em>Nonlinear Multivariate Analysis</em>. New York, N.Y.: Wiley.
+</div>
+<div id="ref-heiser_95" class="csl-entry">
+———. 1995. <span>“<span class="nocase">Convergent Computing by Iterative Majorization: Theory and Applications in Multidimensional Data Analysis</span>.”</span> In <em>Recent Advantages in Descriptive Multivariate Analysis</em>, edited by W. J. Krzanowski, 157–89. Oxford: Clarendon Press.
+</div>
+<div id="ref-kruskal_64a" class="csl-entry">
+Kruskal, J. B. 1964a. <span>“<span class="nocase">Multidimensional Scaling by Optimizing Goodness of Fit to a Nonmetric Hypothesis</span>.”</span> <em>Psychometrika</em> 29: 1–27.
+</div>
+<div id="ref-kruskal_64b" class="csl-entry">
+———. 1964b. <span>“<span class="nocase">Nonmetric Multidimensional Scaling: a Numerical Method</span>.”</span> <em>Psychometrika</em> 29: 115–29.
+</div>
+<div id="ref-lange_hunter_yang_00" class="csl-entry">
+Lange, K., D. R. Hunter, and I. Yang. 2000. <span>“<span>Optimization Transfer Using Surrogate Objective Functions</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> 9: 1–20.
+</div>
+<div id="ref-takane_young_deleeuw_A_77" class="csl-entry">
+Takane, Y., F. W. Young, and J. De Leeuw. 1977. <span>“Nonmetric Individual Differences in Multidimensional Scaling: An Alternating Least Squares Method with Optimal Scaling Features.”</span> <em>Psychometrika</em> 42: 7–67. <a href="http://www.stat.ucla.edu/~deleeuw/janspubs/1977/articles/takane_young_deleeuw_A_77.pdf">http://www.stat.ucla.edu/~deleeuw/janspubs/1977/articles/takane_young_deleeuw_A_77.pdf</a>.
+</div>
+<div id="ref-young_deleeuw_takane_C_80" class="csl-entry">
+Young, F. W., J. De Leeuw, and Y. Takane. 1980. <span>“Quantifying Qualitative Data.”</span> In <em>Similarity and Choice. Papers in Honor of Clyde Coombs</em>, edited by E. D. Lantermann and H. Feger. Bern: Hans Huber. <a href="http://www.stat.ucla.edu/~deleeuw/janspubs/1980/chapters/young_deleeuw_takane_C_80.pdf">http://www.stat.ucla.edu/~deleeuw/janspubs/1980/chapters/young_deleeuw_takane_C_80.pdf</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="preface.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="blockrelaxation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "none"
+},
+"keep_md": true,
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

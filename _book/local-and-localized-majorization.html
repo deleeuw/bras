@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Local and Localized Majorization | Block Relaxation Methods</title>
+  <meta name="description" content="null" />
+  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Local and Localized Majorization | Block Relaxation Methods" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="null" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Local and Localized Majorization | Block Relaxation Methods" />
+  
+  <meta name="twitter:description" content="null" />
+  
+
+<meta name="author" content="Jan de Leeuw" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sharp-majorization.html"/>
+<link rel="next" href="background.html"/>
+<script src="libs/header-attrs-2.8.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Note</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#introduction:somehistory"><i class="fa fa-check"></i><b>1.1</b> Some History</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#introduction:optimizationmethods"><i class="fa fa-check"></i><b>1.2</b> Optimization Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="blockrelaxation.html"><a href="blockrelaxation.html"><i class="fa fa-check"></i><b>2</b> Block Relaxation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:definition"><i class="fa fa-check"></i><b>2.2</b> Definition</a></li>
+<li class="chapter" data-level="2.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples"><i class="fa fa-check"></i><b>2.3</b> First Examples</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples:twoblockleastsquares"><i class="fa fa-check"></i><b>2.3.1</b> Two-block Least Squares</a></li>
+<li class="chapter" data-level="2.3.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples:multipleblockleastsquares"><i class="fa fa-check"></i><b>2.3.2</b> Multiple-block Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:generalizedblockrelaxation"><i class="fa fa-check"></i><b>2.4</b> Generalized Block Relaxation</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#alternatingleastsquares:examples:mcrals"><i class="fa fa-check"></i><b>2.4.1</b> MCR-ALS</a></li>
+<li class="chapter" data-level="2.4.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#dinkelbach-majorization"><i class="fa fa-check"></i><b>2.4.2</b> Dinkelbach Majorization</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-amgm-inequality"><i class="fa fa-check"></i><b>2.5</b> The AM/GM Inequality</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#gini-mean-difference"><i class="fa fa-check"></i><b>2.5.1</b> Gini Mean Difference</a></li>
+<li class="chapter" data-level="2.5.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-lasso-and-the-bridge"><i class="fa fa-check"></i><b>2.5.2</b> The Lasso and the Bridge</a></li>
+<li class="chapter" data-level="2.5.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#rayleigh-quotient"><i class="fa fa-check"></i><b>2.5.3</b> Rayleigh Quotient</a></li>
+<li class="chapter" data-level="2.5.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-majorization-method-for-mds"><i class="fa fa-check"></i><b>2.5.4</b> The Majorization Method for MDS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="using-convexity.html"><a href="using-convexity.html"><i class="fa fa-check"></i><b>3</b> Using Convexity</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="using-convexity.html"><a href="using-convexity.html#using-convexity-1"><i class="fa fa-check"></i><b>3.1</b> Using Convexity</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="using-convexity.html"><a href="using-convexity.html#tomography"><i class="fa fa-check"></i><b>3.1.1</b> Tomography</a></li>
+<li class="chapter" data-level="3.1.2" data-path="using-convexity.html"><a href="using-convexity.html#majorizing-and-minorizing-the-logarithm"><i class="fa fa-check"></i><b>3.1.2</b> Majorizing and Minorizing the Logarithm</a></li>
+<li class="chapter" data-level="3.1.3" data-path="using-convexity.html"><a href="using-convexity.html#aspects-of-correlation-matrices"><i class="fa fa-check"></i><b>3.1.3</b> Aspects of Correlation Matrices</a></li>
+<li class="chapter" data-level="3.1.4" data-path="using-convexity.html"><a href="using-convexity.html#partially-observed-linear-systems"><i class="fa fa-check"></i><b>3.1.4</b> Partially Observed Linear Systems</a></li>
+<li class="chapter" data-level="3.1.5" data-path="using-convexity.html"><a href="using-convexity.html#gpower"><i class="fa fa-check"></i><b>3.1.5</b> Gpower</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="using-convexity.html"><a href="using-convexity.html#broadening-the-scope"><i class="fa fa-check"></i><b>3.2</b> Broadening the Scope</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="using-convexity.html"><a href="using-convexity.html#differences-of-convex-functions"><i class="fa fa-check"></i><b>3.2.1</b> Differences of Convex Functions</a></li>
+<li class="chapter" data-level="3.2.2" data-path="using-convexity.html"><a href="using-convexity.html#convexifiable-functions"><i class="fa fa-check"></i><b>3.2.2</b> Convexifiable Functions</a></li>
+<li class="chapter" data-level="3.2.3" data-path="using-convexity.html"><a href="using-convexity.html#piecewise-linear-majorization"><i class="fa fa-check"></i><b>3.2.3</b> Piecewise Linear Majorization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html"><i class="fa fa-check"></i><b>4</b> Quadratic Majorization</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#nondiagonal-weights-in-least-squares"><i class="fa fa-check"></i><b>4.1.1</b> Nondiagonal Weights in Least Squares</a></li>
+<li class="chapter" data-level="4.1.2" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gifi-goes-logistic"><i class="fa fa-check"></i><b>4.1.2</b> Gifi Goes Logistic</a></li>
+<li class="chapter" data-level="4.1.3" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#a-matrix-example"><i class="fa fa-check"></i><b>4.1.3</b> A Matrix Example</a></li>
+<li class="chapter" data-level="4.1.4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gauss-newton-majorization"><i class="fa fa-check"></i><b>4.1.4</b> Gauss-Newton Majorization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html"><i class="fa fa-check"></i><b>5</b> Using Higher Derivatives</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#taylor-majorization"><i class="fa fa-check"></i><b>5.1</b> Taylor Majorization</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#second-order"><i class="fa fa-check"></i><b>5.1.1</b> Second Order</a></li>
+<li class="chapter" data-level="5.1.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#higher-order"><i class="fa fa-check"></i><b>5.1.2</b> Higher Order</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#nesterov-majorization"><i class="fa fa-check"></i><b>5.2</b> Nesterov Majorization</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#revisiting-the-reciprocal"><i class="fa fa-check"></i><b>5.2.1</b> Revisiting the Reciprocal</a></li>
+<li class="chapter" data-level="5.2.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#logit"><i class="fa fa-check"></i><b>5.2.2</b> Logit</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sharp-majorization.html"><a href="sharp-majorization.html"><i class="fa fa-check"></i><b>6</b> Sharp Majorization</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#comparing-majorizations"><i class="fa fa-check"></i><b>6.1</b> Comparing Majorizations</a></li>
+<li class="chapter" data-level="6.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-quadratic-majorization"><i class="fa fa-check"></i><b>6.2</b> Sharp Quadratic Majorization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#even-and-odd-functions"><i class="fa fa-check"></i><b>6.2.1</b> Even and Odd Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-piecewise-linear"><i class="fa fa-check"></i><b>6.3</b> Sharp Piecewise Linear</a></li>
+<li class="chapter" data-level="6.4" data-path="sharp-majorization.html"><a href="sharp-majorization.html#examples"><i class="fa fa-check"></i><b>6.4</b> Examples</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-cosine"><i class="fa fa-check"></i><b>6.4.1</b> The cosine</a></li>
+<li class="chapter" data-level="6.4.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-rasch-model"><i class="fa fa-check"></i><b>6.4.2</b> The Rasch Model</a></li>
+<li class="chapter" data-level="6.4.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#probits"><i class="fa fa-check"></i><b>6.4.3</b> Probits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html"><i class="fa fa-check"></i><b>7</b> Local and Localized Majorization</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-in-a-neighborhood"><i class="fa fa-check"></i><b>7.0.1</b> Majorization in a Neighborhood</a></li>
+<li class="chapter" data-level="7.0.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#cartesian-folium"><i class="fa fa-check"></i><b>7.0.2</b> Cartesian Folium</a></li>
+<li class="chapter" data-level="7.0.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#univariate-cubics"><i class="fa fa-check"></i><b>7.0.3</b> Univariate Cubics</a></li>
+<li class="chapter" data-level="7.0.4" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-the-sphere"><i class="fa fa-check"></i><b>7.0.4</b> Majorization on the Sphere</a></li>
+<li class="chapter" data-level="7.0.5" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-a-hyperrectangle"><i class="fa fa-check"></i><b>7.0.5</b> Majorization on a Hyperrectangle</a></li>
+<li class="chapter" data-level="7.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#proximal-point-majorization"><i class="fa fa-check"></i><b>7.1</b> Proximal Point Majorization</a></li>
+<li class="chapter" data-level="7.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#sub-level-majorization"><i class="fa fa-check"></i><b>7.2</b> Sub-level Majorization</a></li>
+<li class="chapter" data-level="7.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#dinkelbach-majorization-1"><i class="fa fa-check"></i><b>7.3</b> Dinkelbach Majorization</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>8</b> Background</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="background.html"><a href="background.html#introduction-2"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="background.html"><a href="background.html#analysis"><i class="fa fa-check"></i><b>8.2</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="background.html"><a href="background.html#differentiability-and-derivatives"><i class="fa fa-check"></i><b>8.2.1</b> Differentiability and Derivatives</a></li>
+<li class="chapter" data-level="8.2.2" data-path="background.html"><a href="background.html#implicit-functions"><i class="fa fa-check"></i><b>8.2.2</b> Implicit Functions</a></li>
+<li class="chapter" data-level="8.2.3" data-path="background.html"><a href="background.html#necessary-and-sufficient-conditions-for-a-minimum"><i class="fa fa-check"></i><b>8.2.3</b> Necessary and Sufficient Conditions for a Minimum</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="background.html"><a href="background.html#point-to-set-maps"><i class="fa fa-check"></i><b>8.3</b> Point-to-set Maps</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="background.html"><a href="background.html#marginal-functions-and-solution-maps"><i class="fa fa-check"></i><b>8.3.1</b> Marginal Functions and Solution Maps</a></li>
+<li class="chapter" data-level="8.3.2" data-path="background.html"><a href="background.html#jensens-inequality"><i class="fa fa-check"></i><b>8.3.2</b> Jensen’s Inequality</a></li>
+<li class="chapter" data-level="8.3.3" data-path="background.html"><a href="background.html#the-am-gm-inequality"><i class="fa fa-check"></i><b>8.3.3</b> The AM-GM Inequality</a></li>
+<li class="chapter" data-level="8.3.4" data-path="background.html"><a href="background.html#youngs-inequality"><i class="fa fa-check"></i><b>8.3.4</b> Young’s Inequality</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="background.html"><a href="background.html#background:fixedpoint"><i class="fa fa-check"></i><b>8.4</b> Fixed Point Problems and Methods</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="background.html"><a href="background.html#subsequential-limits"><i class="fa fa-check"></i><b>8.4.1</b> Subsequential Limits</a></li>
+<li class="chapter" data-level="8.4.2" data-path="background.html"><a href="background.html#differentiable-convex-functions"><i class="fa fa-check"></i><b>8.4.2</b> Differentiable Convex Functions</a></li>
+<li class="chapter" data-level="8.4.3" data-path="background.html"><a href="background.html#algorithms-as-point-to-set-maps"><i class="fa fa-check"></i><b>8.4.3</b> Algorithms as Point-to-set Maps</a></li>
+<li class="chapter" data-level="8.4.4" data-path="background.html"><a href="background.html#convergence-of-function-values"><i class="fa fa-check"></i><b>8.4.4</b> Convergence of Function Values</a></li>
+<li class="chapter" data-level="8.4.5" data-path="background.html"><a href="background.html#convergence-of-solutions"><i class="fa fa-check"></i><b>8.4.5</b> Convergence of Solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="background.html"><a href="background.html#rates-of-convergence"><i class="fa fa-check"></i><b>8.5</b> Rates of Convergence</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="background.html"><a href="background.html#over--and-under-relaxation"><i class="fa fa-check"></i><b>8.5.1</b> Over- and Under-Relaxation</a></li>
+<li class="chapter" data-level="8.5.2" data-path="background.html"><a href="background.html#acceleration-of-convergence-of-fixed-point-methods"><i class="fa fa-check"></i><b>8.5.2</b> Acceleration of Convergence of Fixed Point Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="background.html"><a href="background.html#matrix-algebra"><i class="fa fa-check"></i><b>8.6</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="background.html"><a href="background.html#eigenvalues-and-eigenvectors-of-symmetric-matrices"><i class="fa fa-check"></i><b>8.6.1</b> Eigenvalues and Eigenvectors of Symmetric Matrices</a></li>
+<li class="chapter" data-level="8.6.2" data-path="background.html"><a href="background.html#singular-values-and-singular-vectors"><i class="fa fa-check"></i><b>8.6.2</b> Singular Values and Singular Vectors</a></li>
+<li class="chapter" data-level="8.6.3" data-path="background.html"><a href="background.html#canonical-correlation"><i class="fa fa-check"></i><b>8.6.3</b> Canonical Correlation</a></li>
+<li class="chapter" data-level="8.6.4" data-path="background.html"><a href="background.html#modified-eigenvalue-problems"><i class="fa fa-check"></i><b>8.6.4</b> Modified Eigenvalue Problems</a></li>
+<li class="chapter" data-level="8.6.5" data-path="background.html"><a href="background.html#quadratic-on-a-sphere"><i class="fa fa-check"></i><b>8.6.5</b> Quadratic on a Sphere</a></li>
+<li class="chapter" data-level="8.6.6" data-path="background.html"><a href="background.html#generalized-inverses"><i class="fa fa-check"></i><b>8.6.6</b> Generalized Inverses</a></li>
+<li class="chapter" data-level="8.6.7" data-path="background.html"><a href="background.html#partitioned-matrices"><i class="fa fa-check"></i><b>8.6.7</b> Partitioned Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="background.html"><a href="background.html#matrix-differential-calculus"><i class="fa fa-check"></i><b>8.7</b> Matrix Differential Calculus</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="background.html"><a href="background.html#matrix-derivatives"><i class="fa fa-check"></i><b>8.7.1</b> Matrix Derivatives</a></li>
+<li class="chapter" data-level="8.7.2" data-path="background.html"><a href="background.html#derivatives-of-eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>8.7.2</b> Derivatives of Eigenvalues and Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="background.html"><a href="background.html#graphics-and-code"><i class="fa fa-check"></i><b>8.8</b> Graphics and Code</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="background.html"><a href="background.html#multidimensional-scaling"><i class="fa fa-check"></i><b>8.8.1</b> Multidimensional Scaling</a></li>
+<li class="chapter" data-level="8.8.2" data-path="background.html"><a href="background.html#cobweb-plots"><i class="fa fa-check"></i><b>8.8.2</b> Cobweb Plots</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Block Relaxation Methods</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="local-and-localized-majorization" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Local and Localized Majorization</h1>
+<p>##Introduction</p>
+<div id="majorization-in-a-neighborhood" class="section level3" number="7.0.1">
+<h3><span class="header-section-number">7.0.1</span> Majorization in a Neighborhood</h3>
+<p>Consider the cubic <span class="math inline">\(f(x)=2x-x^2+\frac16 x^3\)</span>. It is an increasing function on the real line, with a root at <span class="math inline">\(x=0\)</span>, and a saddle point at <span class="math inline">\(x=2\)</span>.</p>
+<p>We know that cubics do not have quadratic majorizers, but we can try to find a quadratic
+<span class="math display">\[
+g(x,y)=f(y)+f&#39;(y)(x-y)+\frac12 a(x-y)^2
+\]</span>
+such that <span class="math inline">\(g(x,y)\geq f(x)\)</span> for all <span class="math inline">\(x\geq 2\)</span> and such that
+<span class="math display">\[
+y-\frac{f&#39;(y)}{a}\geq 2
+\]</span>
+if <span class="math inline">\(y\geq 2\)</span>.</p>
+<p>The condition <span class="math inline">\(g(x,y)\geq f(x)\)</span> for all <span class="math inline">\(x\geq 2\)</span> is
+<span class="math display">\[
+a\geq f&#39;&#39;(y)+\frac13 f&#39;&#39;&#39;(y)(2-y),
+\]</span>
+which is in our case
+<span class="math display">\[
+a\geq \frac23(y-2).
+\]</span>
+We have
+<span class="math display">\[
+y-\frac{f&#39;(y)}{a}\geq 2
+\]</span>
+for
+<span class="math display">\[
+a\geq\frac12(y-2).
+\]</span></p>
+<hr>
+<hr>
+If <span class="math inline">\(|\mathcal{D}_{ij}f(x)|\leq K\)</span> for all <span class="math inline">\(i,j\)</span> and <span class="math inline">\(x\)</span> then
+<span class="math display">\[
+z&#39;\mathcal{D}^2f(x)z\leq \sum_{i=1}^n\sum_{i=1}^n K|z_i||z_j]=
+K(\sum_{i=1}^n |z_i|)^2\leq n^2Kz&#39;z
+\]</span>
+This can be extended easily to higher order partials
+<span class="math display">\[
+&lt;\mathcal{D}^p(x),z\otimes\cdots\otimes z&gt;\leq K(\sum_{i=1}^n|z_i|)^p\leq
+n^p(z&#39;z)^p
+\]</span>
+<hr>
+<p>Minimize <span class="math inline">\(f:x\rightarrow x^4\)</span> on <span class="math inline">\([-1,+1]\)</span>, where <span class="math inline">\(f&#39;&#39;(x)\leq 12\)</span>, and thus
+if <span class="math inline">\(-1\leq x\leq +1\)</span> and <span class="math inline">\(-1\leq y\leq +1\)</span>
+<span class="math display">\[
+f(x)\leq g(x,y)=y^4+4y^3(x-y)+6(x-y)^2.
+\]</span>
+The majorizer is minimized at <span class="math inline">\(x=y-\frac13 y^3\)</span>. Thus the majorization algorithm is
+<span class="math display">\[
+x^{(k+1)}=x^{(k)}-\frac13 (x^{(k)})^3,
+\]</span>
+which converges monotonically to zero if started with <span class="math inline">\(-1\leq x^{(0)}\leq +1\)</span>.
+Because
+<span class="math display">\[
+\lim_{k\rightarrow\infty}\frac{x^{(k+1)}}{x^{(k)}}=1
+\]</span>
+convergence is sublinear.</p>
+</div>
+<div id="cartesian-folium" class="section level3" number="7.0.2">
+<h3><span class="header-section-number">7.0.2</span> Cartesian Folium</h3>
+<p>If we minimize
+<span class="math display">\[
+f(x,y)=x^3+y^3-3xy
+\]</span>
+on the rectangle defined by <span class="math inline">\(0\leq x\leq K\)</span>
+and <span class="math inline">\(0\leq y\leq K\)</span> then we can apply quadratic majorization
+<span class="math display">\[\begin{align*}
+x^3&amp;\leq x_0^3+3x_0^2(x-x_0)+3K(x-x_0)^2,\\
+y^3&amp;\leq y_0^3+3y_0^2(y-y_0)+3K(y-y_0)^2,
+\end{align*}\]</span>
+and thus the algorithmic map is
+<span class="math display">\[
+\mathcal{A}(x,y)=\frac{1}{2K}\begin{bmatrix}-x^2+2Kx+y\\-y^2+2Ky+x\end{bmatrix}.
+\]</span>
+The linear convergence rate is <span class="math inline">\(1-\frac{1}{2K}\)</span>.</p>
+</div>
+<div id="univariate-cubics" class="section level3" number="7.0.3">
+<h3><span class="header-section-number">7.0.3</span> Univariate Cubics</h3>
+<p>Suppose the problem is to minimize the cubic
+<span class="math display">\[
+f(x)=\alpha+\beta x+\frac12\gamma x^2+\frac16\delta x^3
+\]</span>
+with <span class="math inline">\(\delta\not= 0\)</span>. Since the cubic has no majorizers, we will find a local majorizer on the interval <span class="math inline">\([A,B]\)</span>.</p>
+<p>From <span class="math inline">\(f&#39;&#39;(x)=\gamma+\delta x\)</span>
+we see that
+<span class="math display">\[
+K(A,B)\mathop{=}\limits^{\Delta}\max_{A\leq z\leq B} f&#39;&#39;(z)=\gamma+\begin{cases}\delta B&amp;\text{ if }\delta&gt;0,\\
+\delta A&amp;\text{ if }\delta&lt;0.\end{cases}
+\]</span>
+and thus, if <span class="math inline">\(y\in[A,B]\)</span>,
+<span class="math display">\[
+f(x)\leq f(y)+f&#39;(y)(x-y)+\frac12 K(A,B)(x-y)^2
+\]</span>
+over <span class="math inline">\(A\leq x\leq B\)</span>.</p>
+<p>If <span class="math inline">\(K(A,B)&gt;0\)</span> the majorizing quadratic has a minimum at
+<span class="math display">\[
+x=y-\frac{\beta+\gamma y+\frac12\delta y^2}{K(A,B)}
+\]</span>
+This minimum can, of course, be outside the interval <span class="math inline">\([A,B]\)</span>, in which case the minimum of the quadratic is attained at one of the end-points. The minimum of the quadratic can be in the interval, but the function value at the minimum of the quadratic can be larger than the function value at one of the end-points. In that case, again, the majorization algorithm chooses one of the end-points. If <span class="math inline">\(K(A,B)\leq 0\)</span> the majorizer does not have a minimum
+and thus the minimum on the interval is attained at either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>. Code in <code>R</code> is in the file <code>cubicBound.R</code>.</p>
+<hr>
+<center>
+<a href="../code/cubicBound.R">Insert cubicBound.R Here</a>
+</center>
+<hr>
+<p>If the iterations stay in the interior of the interval they converge to a local minimum at <span class="math inline">\(\hat x\)</span> with rate
+<span class="math display">\[
+\kappa=1-\frac{\gamma+\delta\hat x}{K(A,B)}
+\]</span></p>
+<hr>
+Consider, for example, the cubic <span class="math inline">\(f(x)=\frac13 x^3-\frac12 x^2+cx\)</span>,
+where <span class="math inline">\(0\leq c\leq\frac14\)</span>. The function has a local maximum at <span class="math inline">\(\frac12-\frac12\sqrt{1-4c}\)</span> and a local minimum at <span class="math inline">\(\frac12+\frac12\sqrt{1-4c}\)</span>.
+Both are in the unit interval. The majorization algorithm, using <span class="math inline">\(K(0,1)=1\)</span>,
+has the update rule
+<span class="math display">\[
+x^{(k+1)}=-(x^{(k)})^2+2x^{(k)}-c.
+\]</span>
+If started in the interval <span class="math inline">\((\frac12-\frac12\sqrt{1-4c},\frac12+\frac12\sqrt{1-4c})\)</span> the algorithm converges monotonically to the local minimum at <span class="math inline">\(\frac12+\frac12\sqrt{1-4c}\)</span> with rate <span class="math inline">\(\kappa=1-\sqrt{1-4c}\)</span>, which is close to zero if <span class="math inline">\(c\)</span> is close to zero and close to one if <span class="math inline">\(c\)</span> is close to <span class="math inline">\(\frac14\)</span>.
+Here are two runs, the first one is fast, with <span class="math inline">\(c=.001\)</span>, the second one is slow, with <span class="math inline">\(c=.249\)</span>.
+<hr>
+<pre><code>&gt; cubicBound(c(0,.001,-.5,1/3),0,1)
+Iteration:    1 fold:   -0.08283333 fnew:   -0.13968825 xold:    0.50000000 xnew:    0.74900000
+Iteration:    2 fold:   -0.13968825 fnew:   -0.16376999 xold:    0.74900000 xnew:    0.93599900
+Iteration:    3 fold:   -0.16376999 fnew:   -0.16565882 xold:    0.93599900 xnew:    0.99490387
+Iteration:    4 fold:   -0.16565882 fnew:   -0.16566717 xold:    0.99490387 xnew:    0.99897403
+Iteration:    5 fold:   -0.16566717 fnew:   -0.16566717 xold:    0.99897403 xnew:    0.99899895
+Iteration:    6 fold:   -0.16566717 fnew:   -0.16566717 xold:    0.99899895 xnew:    0.99899900
+$itel
+[1] 6
+
+$f
+[1] -0.1656672
+
+$x
+[1] 0.998999</code></pre>
+<hr>
+<pre><code>&gt; cubicBound(c(0,.249,-.5,1/3),0,1)
+Iteration:    1 fold:    0.04116667 fnew:    0.04116567 xold:    0.50000000 xnew:    0.50100000
+Iteration:    2 fold:    0.04116567 fnew:    0.04116467 xold:    0.50100000 xnew:    0.50199900
+Iteration:    3 fold:    0.04116467 fnew:    0.04116368 xold:    0.50199900 xnew:    0.50299500
+Iteration:    4 fold:    0.04116368 fnew:    0.04116270 xold:    0.50299500 xnew:    0.50398603
+Iteration:    5 fold:    0.04116270 fnew:    0.04116174 xold:    0.50398603 xnew:    0.50497015
+...
+...
+Iteration:   89 fold:    0.04114559 fnew:    0.04114559 xold:    0.53141255 xnew:    0.53142580
+Iteration:   90 fold:    0.04114559 fnew:    0.04114559 xold:    0.53142580 xnew:    0.53143822
+Iteration:   91 fold:    0.04114559 fnew:    0.04114559 xold:    0.53143822 xnew:    0.53144986
+Iteration:   92 fold:    0.04114559 fnew:    0.04114559 xold:    0.53144986 xnew:    0.53146077
+Iteration:   93 fold:    0.04114559 fnew:    0.04114559 xold:    0.53146077 xnew:    0.53147099
+Iteration:   94 fold:    0.04114559 fnew:    0.04114559 xold:    0.53147099 xnew:    0.53148056
+$itel
+[1] 94
+
+$f
+[1] 0.04114559
+
+$x
+[1] 0.5314806</code></pre>
+<hr>
+<p>We can also make cobweb plots for these two runs. They are in the figures below.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cobweb001"></span>
+<img src="graphics/cobweb001.png" alt="Cobweb Plot for c=0.001" width="240" />
+<p class="caption">
+Figure 7.1: Cobweb Plot for c=0.001
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cobweb249"></span>
+<img src="graphics/cobweb249.png" alt="Cobweb Plot for c=0.249" width="240" />
+<p class="caption">
+Figure 7.2: Cobweb Plot for c=0.249
+</p>
+</div>
+</div>
+<div id="majorization-on-the-sphere" class="section level3" number="7.0.4">
+<h3><span class="header-section-number">7.0.4</span> Majorization on the Sphere</h3>
+The problem of minimizing <span class="math inline">\(f\)</span> over a closed
+set <span class="math inline">\(\mathcal{X}\)</span> can be formulated as
+<span class="math display">\[
+\inf_{r\geq 0}\min_{x\in\mathcal{X}\cap\mathcal{S}_r} f(x),
+\]</span>
+where <span class="math inline">\(\mathcal{S}_r\mathop{=}\limits^{\Delta}\{x\mid x&#39;x=r\}\)</span>. The
+set <span class="math inline">\(\mathcal{X}\cap\mathcal{S}_r\)</span> is compact
+so the inner minimum <span class="math inline">\(f_r=\min_{x\in\mathcal{X}\cap\mathcal{S}_r} f(x)\)</span> is attained for continuous <span class="math inline">\(f\)</span>.
+<hr>
+<p>If <span class="math inline">\(f\)</span> is continuously differentiable on the ball <span class="math inline">\(\mathcal{T}_r\mathop{=}\limits^{\Delta}\{x\mid x&#39;x\leq r\}\)</span> then
+<span class="math display">\[
+h_r(y)\mathop{=}\limits^{\Delta}\max_{z\in\mathcal{T}_r}\max_{0\leq\lambda\leq 1} z&#39;\mathcal{D}^2f(y+\lambda z))z
+\]</span>
+is well-defined. If <span class="math inline">\(x,y\in\mathcal{S}_r\)</span>
+then <span class="math inline">\(y+\lambda(x-y)\in\mathcal{T}_r\)</span> for
+all <span class="math inline">\(0\leq\lambda\leq 1\)</span>. So
+<span class="math display">\[
+f(x)\leq f(y)+(x-y)&#39;\mathcal{D}f(y)+h_r(y)(r-x&#39;y),
+\]</span>
+and we have a linear majorization on <span class="math inline">\(\mathcal{S}_r\)</span>.
+The corresponding majorization algorithm is
+<span class="math display">\[
+x^{(k+1)}=\mathcal{P}_r(x^{(k)}-\frac{1}{h_r(x^{(k)})}\mathcal{D}f(x^{(k)})),
+\]</span>
+with <span class="math inline">\(\mathcal{P}_r\)</span> projection on the sphere <span class="math inline">\(\mathcal{S}_r\)</span>.</p>
+<p>S-majorization by a quadratic. The sublevel set for
+<span class="math display">\[
+g(x,y)=f(y)+(x-y)&#39;b+\frac12(x-y)&#39;A(x-y)
+\]</span>
+with <span class="math inline">\(A\)</span> positive definite is the ellipse
+<span class="math display">\[
+\mathcal{L}(y)=\{x\mid (x-z(y))&#39;A(x-z(y))\leq b&#39;A^{-1}b\},
+\]</span>
+with <span class="math inline">\(z\mathop{=}\limits^{\Delta}y-A^{-1}b.\)</span> Thus for S-majorization we need to choosed <span class="math inline">\(A\)</span> and <span class="math inline">\(b\)</span> in such a way that <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{L}(y).\)</span> The problem is simplified, of course, if we choose <span class="math inline">\(b=\mathcal{D}f(y).\)</span></p>
+</div>
+<div id="majorization-on-a-hyperrectangle" class="section level3" number="7.0.5">
+<h3><span class="header-section-number">7.0.5</span> Majorization on a Hyperrectangle</h3>
+<p>Here we discuss the work of <span class="citation"><a href="#ref-monnigmann_11" role="doc-biblioref">Mönnigmann</a> (<a href="#ref-monnigmann_11" role="doc-biblioref">2011</a>)</span> and others.</p>
+</div>
+<div id="proximal-point-majorization" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Proximal Point Majorization</h2>
+<p>We usually write
+<span class="math inline">\(f(x) \leq g(x,y)\)</span>
+for the key property of the majorizing function. One can also write
+<span class="math inline">\(f(x) \leq f(x) + d(x, y)\)</span>
+with
+<span class="math inline">\(d(x, y):=g(x, y)-f(x)\)</span>
+Thus <span class="math inline">\(d(x,y)\)</span> is non-negative, and <span class="math inline">\(d(x,x)=0\)</span>, i.e. <span class="math inline">\(d(x,y)\)</span> is distance-like.</p>
+Bregman
+<hr>
+<p><span class="math display">\[
+f(x)\leq f(x)+\lambda\|x-y\|^2
+\]</span></p>
+<span class="math display">\[
+x^{(k+1)}=\mathop{\mathbf{argmin}}\limits_{x} f(x)+\lambda_k\|x-x^{(k)}\|^2
+\]</span>
+<hr>
+<p>The majorization algorithm updates by the rule
+<span class="math display">\[
+x^{(k+1)}\in\mathop{\mathbf{argmax}}\limits_{x} f(x)+d(x,x^{(k)})
+\]</span>
+This shows majorization algorithms are generalized proximal point
+algorithms (for which there is a lot of theory). In the EM context this is used by Stephane Chretien, Alfred Hero, Paul Tseng and others to study algorithms. In fact, they often study
+<span class="math display">\[
+x^{(k+1)}\in\mathop{\mathbf{argmax}}\limits_{x} f(x)+\lambda_kd(x,x^{(k)})
+\]</span>
+with <span class="math inline">\(\lambda_k\)</span> a sequence of non-negative numbers.</p>
+</div>
+<div id="sub-level-majorization" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Sub-level Majorization</h2>
+<p>Stability of the majorization algorithm is guaranteed by the sandwich inequality, which says that
+<span class="math display">\[
+f(x^{(k+1)})\leq g(x^{(k+1)},x^{(k)})\leq g(x^{(k)},x^{(k)})=f(x^{(k)}).
+\]</span>
+The first inequality in the chain comes from the majorization condition <span class="math inline">\(f(x)\leq g(x,y)\)</span> for all <span class="math inline">\(x,y\in X\)</span>. There is, however, a weaker condition which still implies the same inequality.</p>
+<p>Suppose that we merely require that the majorization function <span class="math inline">\(g\)</span> satisfies
+<span class="math display">\[
+g(x,y)\leq g(y,y)\Rightarrow f(x)\leq g(x,y).
+\]</span>
+Then we still have <span class="math inline">\(g(x^{(k+1)},x^{(k)})\leq g(x^{(k)},x^{(k)})=f(x^{(k)})\)</span>, and as a consequence also <span class="math inline">\(f(x^{(k+1)})\leq g(x^{(k+1)},x^{(k)})\)</span>. The sandwich inequality still applies.</p>
+<p>The weaker localized majorization condition, which we will call <em>sublevel majorization</em> (or simply <em>S-majorization</em>) from now on,
+says that <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> on the <em>sublevel set</em>
+<span class="math display">\[
+\mathcal{L}(y)\mathop{=}\limits^{\Delta}\{x\in X\mid g(x,y)\leq g(y,y)=f(y)\},
+\]</span>
+while for <span class="math inline">\(x\not\in\mathcal{L}(y)\)</span> we can have <span class="math inline">\(f(x)&gt;g(x,y)\)</span>.
+In other words, <span class="math inline">\(g(x,y)-f(x)\)</span> must have a global minimum equal to zero on <span class="math inline">\(\mathcal{L}(y)\)</span> at <span class="math inline">\(y\)</span>.</p>
+<p>S-majorization is easy to visualize for a univariate quadratic majorizer
+<span class="math display">\[
+g(x,y)=f(y)+f&#39;(y)(x-y)+\frac12 a(x-y)^2,
+\]</span>
+which has <span class="math inline">\(g(x,y)\leq f(y)\)</span> if <span class="math inline">\(x\)</span> is in the interval with end-points <span class="math inline">\(y\)</span>
+and <span class="math inline">\(y-\frac{2f&#39;(y)}{a}\)</span>. For quadratic S-majorization of a cubic <span class="math inline">\(f\)</span>, for example, we must have
+<span class="math display">\[
+a\geq f&#39;&#39;(y)+\frac13 f&#39;&#39;&#39;(y)(x-y)
+\]</span>
+at both end-points of the interval <span class="math inline">\(I(y)\)</span>, which means we must have both <span class="math inline">\(a\geq f&#39;&#39;(y)\)</span> and
+<span class="math display">\[
+a^2-af&#39;&#39;(y)+\frac23 f&#39;&#39;&#39;(y)f&#39;(y)\geq 0.\tag{1}
+\]</span>
+If the quadratic <span class="math inline">\(\text{(1)}\)</span> has no real roots, or two equal real roots, then it is always non-negative, and
+we have sub-level majorization of the cubic at <span class="math inline">\(y\)</span> if <span class="math inline">\(a\geq f&#39;&#39;(y)\)</span>.
+Now suppose the quadratic <span class="math inline">\(\text{(1)}\)</span> has two different real roots, say <span class="math inline">\(p(y)&lt;q(y)\)</span>.
+We have <span class="math inline">\(p(y)+q(y)=f&#39;&#39;(y)\)</span>. Thus if <span class="math inline">\(p(y)\)</span> and <span class="math inline">\(q(y)\)</span> are non-negative,
+then <span class="math inline">\(0\leq p(y)\leq q(y)\leq f&#39;&#39;(y)\)</span>, and we have sub-level majorization
+for <span class="math inline">\(a\geq f&#39;&#39;(y)\)</span>. If <span class="math inline">\(p\leq 0\)</span> and <span class="math inline">\(q\geq 0\)</span>
+then <span class="math inline">\(q=f&#39;&#39;(y)-p\geq f&#39;&#39;(y)\)</span> and thus <span class="math inline">\(a\geq q(y)\)</span>. If both <span class="math inline">\(p(y)\leq 0\)</span>
+and <span class="math inline">\(q(y)\leq 0\)</span> then <span class="math inline">\(f&#39;&#39;(y)\leq p(y)&lt;q(y)\leq 0\)</span>, and thus <span class="math inline">\(\overline{a}(y)=0\)</span> and
+sub-level majorization is linear.</p>
+<p>Near a local minimum, where <span class="math inline">\(f&#39;&#39;(y)\geq 0\)</span> and <span class="math inline">\(f&#39;(y)\)</span> is close to zero, the two roots
+of the quadratic are approximately <span class="math inline">\(q=f&#39;&#39;(y)-\frac23 f&#39;(y)\)</span> and <span class="math inline">\(p=\frac23 f&#39;(y)\)</span>.</p>
+<p>note: 030615 Add the example from the paper and the reference</p>
+<p>Quadratic sub-level majorization in the multivariate case. We have
+<span class="math display">\[
+g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;A(x-y)
+\]</span>
+for some <span class="math inline">\(A\)</span> which we assume to be positive definite for now.
+Then <span class="math inline">\(g(x,y)\leq f(y)\)</span> if and only if
+<span class="math display">\[
+(x-z)&#39;A(x-z)\leq (\mathcal{D}f(y))&#39;A^{-1}\mathcal{D}f(y),
+\]</span>
+with <span class="math inline">\(z=y-A^{-1}\mathcal{D}f(y)\)</span>. For given <span class="math inline">\(y\)</span> and <span class="math inline">\(A\)</span>
+this means <span class="math inline">\(x\)</span> must be in an ellipse centered at <span class="math inline">\(z\)</span>, but note that if <span class="math inline">\(A\)</span> changes then shape, radius, and center of the ellipse change.</p>
+<p>If <span class="math inline">\(A=aH\)</span> with <span class="math inline">\(H\)</span> fixed, then we have the more manageable inequality
+<span class="math display">\[
+\frac{1}{a^2}\geq \frac{(x-z)&#39;H(x-z)}{(\mathcal{D}f(y))&#39;H\mathcal{D}f(y)}
+\]</span></p>
+</div>
+<div id="dinkelbach-majorization-1" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Dinkelbach Majorization</h2>
+<p>In S-majorization we make sure the sandwich inequality remains true by requiring that
+<span class="math display">\[
+g(x,y)\leq g(y,y)=f(y)\Rightarrow f(x)\leq g(x,y).
+\]</span>
+An alternative requirement, that also leads to a sandwich inequality, is
+<span class="math display">\[
+g(x,y)\leq g(y,y)=f(y)\Rightarrow f(x)\leq f(y),
+\]</span>
+or, in iteration terms,
+If <span class="math inline">\(g(x^{(k+1)},x^{(k)})\leq g(x^{(k)},x^{(k)})\)</span>
+then <span class="math inline">\(f(x^{(k+1)})\leq f(x^{(k)})\)</span>.</p>
+<hr>
+<p>Suppose <span class="math inline">\(f\)</span> is a real-valued function on <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(g\)</span> is a real-valued function on <span class="math inline">\(\mathcal{X}\otimes\mathcal{X}\)</span>. We say
+that <span class="math inline">\(g\)</span> <em>Dinkelbach majorizes</em> <span class="math inline">\(f\)</span> <em>on</em> <span class="math inline">\(\mathcal{X}\)</span> if
+* if <span class="math inline">\(g(x,y)\leq g(y,y)\)</span> then <span class="math inline">\(f(x)\leq f(y)\)</span> for all <span class="math inline">\(x,y\in\mathcal{X}\)</span>,
+* <span class="math inline">\(g(y,y)=f(y)\)</span> for all <span class="math inline">\(y\in\mathcal{X}\)</span>.</p>
+Dinkelbach Majorization is <em>strict</em> if the first condition can be replaced by
+* if <span class="math inline">\(g(x,y)&lt;g(y,y)\)</span> then <span class="math inline">\(f(x)&lt;f(y)\)</span> for all <span class="math inline">\(x,y\in\mathcal{X}\)</span>.
+<hr>
+The D here stands for Dinkelbach, who proposed a forerunner of D majorization in a classic fractional programming article <span class="citation"><a href="#ref-dinkelbach_67" role="doc-biblioref">Dinkelbach</a> (<a href="#ref-dinkelbach_67" role="doc-biblioref">1967</a>)</span>. In S-majorization we require that <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> on the sublevel set
+<span class="math display">\[
+\mathcal{L}(y)=\{x\in\mathcal{X}\mid g(x,y)\leq g(y,y)\}.
+\]</span>
+In D-majorization we require that <span class="math inline">\(f\)</span> attains its maximum on the sublevel set <span class="math inline">\(\mathcal{L}(y)\)</span> at <span class="math inline">\(y\)</span>.
+<hr>
+<p>Suppose <span class="math inline">\(f\)</span> is a fractional function of the form
+<span class="math display">\[
+f(x)=\frac{a(x)}{b(x)},
+\]</span>
+with <span class="math inline">\(b(x)&gt;0\)</span> for <span class="math inline">\(x\in\mathcal{X}\)</span>. Then
+<span class="math display">\[
+g(x,y)=f(y)+a(x)-f(y)b(x)
+\]</span>
+D-majorizes <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{X}\)</span>.</p>
+Clearly
+<span class="math display">\[
+g(y,y)=f(y)+a(y)-\frac{a(y)}{b(y)}b(y)=f(y).
+\]</span>
+Moreover <span class="math inline">\(g(x,y)\leq g(y,y)\)</span> can be written as
+<span class="math display">\[
+f(y)+a(x)-f(y)b(x)\leq f(y)
+\]</span>
+which implies <span class="math inline">\(f(x)\leq f(y)\)</span>.
+<hr>
+Suppose
+<span class="math display">\[
+g(x,y)=f(y)+f&#39;(y)(x-y)+\frac12 a(x-y)^2,
+\]</span>
+with <span class="math inline">\(a&gt;0\)</span>. Now <span class="math inline">\(g(x,y)\leq f(y)\)</span> if and only if
+<span class="math display">\[
+(x-y)(f&#39;(y)+\frac12a(x-y))\leq 0,
+\]</span>
+Or <span class="math inline">\(x\)</span> must be in the interval between <span class="math inline">\(y\)</span> and <span class="math inline">\(y-\frac{2f&#39;(y)}{a}\)</span>. For a cubic
+<span class="math display">\[
+f(x)=f(y)+f&#39;(y)(x-y)+\frac12 f&#39;&#39;(y)(x-y)^2+\frac16 f&#39;&#39;&#39;(x-y)^3
+\]</span>
+we require that
+<span class="math display">\[
+(x-y)(f&#39;(y)+\frac12 f&#39;&#39;(y)(x-y)+\frac16 f&#39;&#39;&#39;(x-y)^2)\leq 0
+\]</span>
+for all <span class="math inline">\(x\)</span> in the interval between <span class="math inline">\(y\)</span> and <span class="math inline">\(y-\frac{2f&#39;(y)}{a}\)</span>.
+<hr>
+Suppose <span class="math inline">\(f\)</span> is increasing and differentiable. We have <span class="math inline">\(f&#39;(y)\geq 0\)</span> for all <span class="math inline">\(y\)</span>.
+Thus for any
+<span class="math display">\[
+x\in[y-\frac{2f&#39;(y)}{a},y]
+\]</span>
+we have <span class="math inline">\(x\leq y\)</span> and consequently <span class="math inline">\(f(x)\leq f(y)\)</span>. In other words: an increasing function is Dinkelbach majorized by any convex quadratic.
+<hr>
+<p>Consider <span class="math inline">\(f\)</span> with <span class="math inline">\(f(x)=\frac14 x^4\)</span> and let us majorize at <span class="math inline">\(y=1\)</span> by a convex quadratic <span class="math inline">\(g\)</span> which has both <span class="math inline">\(g(1)=f(1)=\frac14\)</span>
+and <span class="math inline">\(g&#39;(1)=f&#39;(1)=1.\)</span> It follows that
+<span class="math display">\[
+g(x)=ax^2+(1-2a)x+(a-\frac34)
+\]</span>
+for some <span class="math inline">\(a\geq 0\)</span>. Note that if we would also require that <span class="math inline">\(g&#39;&#39;(1)\geq h&#39;&#39;(1)\)</span> then we need <span class="math inline">\(a\geq\frac32.\)</span></p>
+<p>If we compute <span class="math inline">\(h=g-f\)</span> we find
+<span class="math display">\[
+h(x)=-\frac14(x-1)^2(x^2+2x+(3-4a)).
+\]</span>
+Majorization at <span class="math inline">\(y\)</span> would mean <span class="math inline">\(h(x)\geq 0\)</span> for all <span class="math inline">\(x\)</span>, which is clearly impossible because <span class="math inline">\(h(x)\)</span> will be negative for <span class="math inline">\(x\)</span> very large and <span class="math inline">\(x\)</span> very small.</p>
+<p>We have <span class="math inline">\(h(x)\geq 0\)</span> if and only if <span class="math inline">\(q(x)\mathop{=}\limits^{\Delta}x^2+2x+(3-4a)\leq 0\)</span>.The quadratic <span class="math inline">\(q\)</span> can only be non-positive if it has two real roots, which happens if <span class="math inline">\(a\geq\frac12\)</span>, and then <span class="math inline">\(q\)</span> is non-positive between its two real roots, which are <span class="math inline">\(-1-\sqrt{4a-2}\)</span> and <span class="math inline">\(-1+\sqrt{4a-2}.\)</span></p>
+The sublevel set <span class="math inline">\(\mathcal{L}(1)=\{x\mid g(x)\leq\frac14\}\)</span> is the interval <span class="math inline">\([\frac{a-1}{a},1]\)</span>. For S-majorization we need <span class="math inline">\(h(x)\geq 0\)</span> for
+all <span class="math inline">\(x\in\mathcal{L}(1)\)</span>, which means that interval <span class="math inline">\([\frac{a-1}{a},1]\)</span> must be a subset of interval <span class="math inline">\([-1-\sqrt{4a-2},-1+\sqrt{4a-2}].\)</span>
+Thus we must have <span class="math inline">\(1\leq -1+\sqrt{4a-2}\)</span> as well as <span class="math inline">\(\frac{a-1}{a}\geq -1-\sqrt{4a-2}.\)</span> The first inequality gives <span class="math inline">\(a\geq\frac32\)</span>,
+the second one <span class="math inline">\(a\geq\frac12\)</span>. Thus we have S-majorization at <span class="math inline">\(y=1\)</span> if and only if <span class="math inline">\(a\geq\frac32\)</span>. Figure 1 shows the S-majorization
+with <span class="math inline">\(a=3/2\)</span>, first globally, and then in closeup with <span class="math inline">\(\mathcal{L}(1)=[\frac13,1]\)</span> on the horizontal axis. Note that the S-majorizer is certainly not a majorizer. Also note that <span class="math inline">\(a=3/2\)</span> actually makes <span class="math inline">\(g&#39;&#39;(1)=f&#39;&#39;(1)\)</span>, which means the quadratic S-majorizer is the quadratic approximation used in Newton’s method.
+<hr>
+<img src="_main_files/figure-html/qtwothree-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 1: S-majorization at y = 1 for a = 1.5.
+</center>
+<hr>
+For D-majorization we need <span class="math inline">\(f(x)\leq f(1)=\frac14\)</span> for all <span class="math inline">\(x\in\mathcal{L}(1)\)</span> which is the case if <span class="math inline">\(\frac{a-1}{a}\geq -1\)</span>, i.e. <span class="math inline">\(g\)</span> D-majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y=1\)</span> if and only if <span class="math inline">\(a\geq\frac12.\)</span> In figure 2 we see that a D-majorizer can actually be a minorizer ! Of course the S-majorization in figure 1 is also a D-majorization.
+<hr>
+<img src="_main_files/figure-html/qhalf-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 2: D-majorization at y = 1 for a = 0.5.
+</center>
+<hr>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-dinkelbach_67" class="csl-entry">
+Dinkelbach, W. 1967. <span>“<span>On Nonlinear Fractional Programming</span>.”</span> <em>Management Science</em> 13: 492–98.
+</div>
+<div id="ref-monnigmann_11" class="csl-entry">
+Mönnigmann, M. 2011. <span>“Fast Calculation of Spectral Bounds for Hessian Matrices on Hyperrectangles.”</span> <em>SIAM Journalof Matrix Analysis and Applications</em> 32: 1351–66.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sharp-majorization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="background.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "none"
+},
+"keep_md": true,
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

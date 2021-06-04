@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Using Higher Derivatives | Block Relaxation Methods</title>
+  <meta name="description" content="null" />
+  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Using Higher Derivatives | Block Relaxation Methods" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="null" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Using Higher Derivatives | Block Relaxation Methods" />
+  
+  <meta name="twitter:description" content="null" />
+  
+
+<meta name="author" content="Jan de Leeuw" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="quadratic-majorization.html"/>
+<link rel="next" href="sharp-majorization.html"/>
+<script src="libs/header-attrs-2.8.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Note</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#introduction:somehistory"><i class="fa fa-check"></i><b>1.1</b> Some History</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#introduction:optimizationmethods"><i class="fa fa-check"></i><b>1.2</b> Optimization Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="blockrelaxation.html"><a href="blockrelaxation.html"><i class="fa fa-check"></i><b>2</b> Block Relaxation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:definition"><i class="fa fa-check"></i><b>2.2</b> Definition</a></li>
+<li class="chapter" data-level="2.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples"><i class="fa fa-check"></i><b>2.3</b> First Examples</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples:twoblockleastsquares"><i class="fa fa-check"></i><b>2.3.1</b> Two-block Least Squares</a></li>
+<li class="chapter" data-level="2.3.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples:multipleblockleastsquares"><i class="fa fa-check"></i><b>2.3.2</b> Multiple-block Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:generalizedblockrelaxation"><i class="fa fa-check"></i><b>2.4</b> Generalized Block Relaxation</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#alternatingleastsquares:examples:mcrals"><i class="fa fa-check"></i><b>2.4.1</b> MCR-ALS</a></li>
+<li class="chapter" data-level="2.4.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#dinkelbach-majorization"><i class="fa fa-check"></i><b>2.4.2</b> Dinkelbach Majorization</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-amgm-inequality"><i class="fa fa-check"></i><b>2.5</b> The AM/GM Inequality</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#gini-mean-difference"><i class="fa fa-check"></i><b>2.5.1</b> Gini Mean Difference</a></li>
+<li class="chapter" data-level="2.5.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-lasso-and-the-bridge"><i class="fa fa-check"></i><b>2.5.2</b> The Lasso and the Bridge</a></li>
+<li class="chapter" data-level="2.5.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#rayleigh-quotient"><i class="fa fa-check"></i><b>2.5.3</b> Rayleigh Quotient</a></li>
+<li class="chapter" data-level="2.5.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-majorization-method-for-mds"><i class="fa fa-check"></i><b>2.5.4</b> The Majorization Method for MDS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="using-convexity.html"><a href="using-convexity.html"><i class="fa fa-check"></i><b>3</b> Using Convexity</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="using-convexity.html"><a href="using-convexity.html#using-convexity-1"><i class="fa fa-check"></i><b>3.1</b> Using Convexity</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="using-convexity.html"><a href="using-convexity.html#tomography"><i class="fa fa-check"></i><b>3.1.1</b> Tomography</a></li>
+<li class="chapter" data-level="3.1.2" data-path="using-convexity.html"><a href="using-convexity.html#majorizing-and-minorizing-the-logarithm"><i class="fa fa-check"></i><b>3.1.2</b> Majorizing and Minorizing the Logarithm</a></li>
+<li class="chapter" data-level="3.1.3" data-path="using-convexity.html"><a href="using-convexity.html#aspects-of-correlation-matrices"><i class="fa fa-check"></i><b>3.1.3</b> Aspects of Correlation Matrices</a></li>
+<li class="chapter" data-level="3.1.4" data-path="using-convexity.html"><a href="using-convexity.html#partially-observed-linear-systems"><i class="fa fa-check"></i><b>3.1.4</b> Partially Observed Linear Systems</a></li>
+<li class="chapter" data-level="3.1.5" data-path="using-convexity.html"><a href="using-convexity.html#gpower"><i class="fa fa-check"></i><b>3.1.5</b> Gpower</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="using-convexity.html"><a href="using-convexity.html#broadening-the-scope"><i class="fa fa-check"></i><b>3.2</b> Broadening the Scope</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="using-convexity.html"><a href="using-convexity.html#differences-of-convex-functions"><i class="fa fa-check"></i><b>3.2.1</b> Differences of Convex Functions</a></li>
+<li class="chapter" data-level="3.2.2" data-path="using-convexity.html"><a href="using-convexity.html#convexifiable-functions"><i class="fa fa-check"></i><b>3.2.2</b> Convexifiable Functions</a></li>
+<li class="chapter" data-level="3.2.3" data-path="using-convexity.html"><a href="using-convexity.html#piecewise-linear-majorization"><i class="fa fa-check"></i><b>3.2.3</b> Piecewise Linear Majorization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html"><i class="fa fa-check"></i><b>4</b> Quadratic Majorization</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#nondiagonal-weights-in-least-squares"><i class="fa fa-check"></i><b>4.1.1</b> Nondiagonal Weights in Least Squares</a></li>
+<li class="chapter" data-level="4.1.2" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gifi-goes-logistic"><i class="fa fa-check"></i><b>4.1.2</b> Gifi Goes Logistic</a></li>
+<li class="chapter" data-level="4.1.3" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#a-matrix-example"><i class="fa fa-check"></i><b>4.1.3</b> A Matrix Example</a></li>
+<li class="chapter" data-level="4.1.4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gauss-newton-majorization"><i class="fa fa-check"></i><b>4.1.4</b> Gauss-Newton Majorization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html"><i class="fa fa-check"></i><b>5</b> Using Higher Derivatives</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#taylor-majorization"><i class="fa fa-check"></i><b>5.1</b> Taylor Majorization</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#second-order"><i class="fa fa-check"></i><b>5.1.1</b> Second Order</a></li>
+<li class="chapter" data-level="5.1.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#higher-order"><i class="fa fa-check"></i><b>5.1.2</b> Higher Order</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#nesterov-majorization"><i class="fa fa-check"></i><b>5.2</b> Nesterov Majorization</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#revisiting-the-reciprocal"><i class="fa fa-check"></i><b>5.2.1</b> Revisiting the Reciprocal</a></li>
+<li class="chapter" data-level="5.2.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#logit"><i class="fa fa-check"></i><b>5.2.2</b> Logit</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sharp-majorization.html"><a href="sharp-majorization.html"><i class="fa fa-check"></i><b>6</b> Sharp Majorization</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#comparing-majorizations"><i class="fa fa-check"></i><b>6.1</b> Comparing Majorizations</a></li>
+<li class="chapter" data-level="6.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-quadratic-majorization"><i class="fa fa-check"></i><b>6.2</b> Sharp Quadratic Majorization</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#even-and-odd-functions"><i class="fa fa-check"></i><b>6.2.1</b> Even and Odd Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-piecewise-linear"><i class="fa fa-check"></i><b>6.3</b> Sharp Piecewise Linear</a></li>
+<li class="chapter" data-level="6.4" data-path="sharp-majorization.html"><a href="sharp-majorization.html#examples"><i class="fa fa-check"></i><b>6.4</b> Examples</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-cosine"><i class="fa fa-check"></i><b>6.4.1</b> The cosine</a></li>
+<li class="chapter" data-level="6.4.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-rasch-model"><i class="fa fa-check"></i><b>6.4.2</b> The Rasch Model</a></li>
+<li class="chapter" data-level="6.4.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#probits"><i class="fa fa-check"></i><b>6.4.3</b> Probits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html"><i class="fa fa-check"></i><b>7</b> Local and Localized Majorization</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-in-a-neighborhood"><i class="fa fa-check"></i><b>7.0.1</b> Majorization in a Neighborhood</a></li>
+<li class="chapter" data-level="7.0.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#cartesian-folium"><i class="fa fa-check"></i><b>7.0.2</b> Cartesian Folium</a></li>
+<li class="chapter" data-level="7.0.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#univariate-cubics"><i class="fa fa-check"></i><b>7.0.3</b> Univariate Cubics</a></li>
+<li class="chapter" data-level="7.0.4" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-the-sphere"><i class="fa fa-check"></i><b>7.0.4</b> Majorization on the Sphere</a></li>
+<li class="chapter" data-level="7.0.5" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-a-hyperrectangle"><i class="fa fa-check"></i><b>7.0.5</b> Majorization on a Hyperrectangle</a></li>
+<li class="chapter" data-level="7.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#proximal-point-majorization"><i class="fa fa-check"></i><b>7.1</b> Proximal Point Majorization</a></li>
+<li class="chapter" data-level="7.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#sub-level-majorization"><i class="fa fa-check"></i><b>7.2</b> Sub-level Majorization</a></li>
+<li class="chapter" data-level="7.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#dinkelbach-majorization-1"><i class="fa fa-check"></i><b>7.3</b> Dinkelbach Majorization</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>8</b> Background</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="background.html"><a href="background.html#introduction-2"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="background.html"><a href="background.html#analysis"><i class="fa fa-check"></i><b>8.2</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="background.html"><a href="background.html#differentiability-and-derivatives"><i class="fa fa-check"></i><b>8.2.1</b> Differentiability and Derivatives</a></li>
+<li class="chapter" data-level="8.2.2" data-path="background.html"><a href="background.html#implicit-functions"><i class="fa fa-check"></i><b>8.2.2</b> Implicit Functions</a></li>
+<li class="chapter" data-level="8.2.3" data-path="background.html"><a href="background.html#necessary-and-sufficient-conditions-for-a-minimum"><i class="fa fa-check"></i><b>8.2.3</b> Necessary and Sufficient Conditions for a Minimum</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="background.html"><a href="background.html#point-to-set-maps"><i class="fa fa-check"></i><b>8.3</b> Point-to-set Maps</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="background.html"><a href="background.html#marginal-functions-and-solution-maps"><i class="fa fa-check"></i><b>8.3.1</b> Marginal Functions and Solution Maps</a></li>
+<li class="chapter" data-level="8.3.2" data-path="background.html"><a href="background.html#jensens-inequality"><i class="fa fa-check"></i><b>8.3.2</b> Jensen’s Inequality</a></li>
+<li class="chapter" data-level="8.3.3" data-path="background.html"><a href="background.html#the-am-gm-inequality"><i class="fa fa-check"></i><b>8.3.3</b> The AM-GM Inequality</a></li>
+<li class="chapter" data-level="8.3.4" data-path="background.html"><a href="background.html#youngs-inequality"><i class="fa fa-check"></i><b>8.3.4</b> Young’s Inequality</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="background.html"><a href="background.html#background:fixedpoint"><i class="fa fa-check"></i><b>8.4</b> Fixed Point Problems and Methods</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="background.html"><a href="background.html#subsequential-limits"><i class="fa fa-check"></i><b>8.4.1</b> Subsequential Limits</a></li>
+<li class="chapter" data-level="8.4.2" data-path="background.html"><a href="background.html#differentiable-convex-functions"><i class="fa fa-check"></i><b>8.4.2</b> Differentiable Convex Functions</a></li>
+<li class="chapter" data-level="8.4.3" data-path="background.html"><a href="background.html#algorithms-as-point-to-set-maps"><i class="fa fa-check"></i><b>8.4.3</b> Algorithms as Point-to-set Maps</a></li>
+<li class="chapter" data-level="8.4.4" data-path="background.html"><a href="background.html#convergence-of-function-values"><i class="fa fa-check"></i><b>8.4.4</b> Convergence of Function Values</a></li>
+<li class="chapter" data-level="8.4.5" data-path="background.html"><a href="background.html#convergence-of-solutions"><i class="fa fa-check"></i><b>8.4.5</b> Convergence of Solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="background.html"><a href="background.html#rates-of-convergence"><i class="fa fa-check"></i><b>8.5</b> Rates of Convergence</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="background.html"><a href="background.html#over--and-under-relaxation"><i class="fa fa-check"></i><b>8.5.1</b> Over- and Under-Relaxation</a></li>
+<li class="chapter" data-level="8.5.2" data-path="background.html"><a href="background.html#acceleration-of-convergence-of-fixed-point-methods"><i class="fa fa-check"></i><b>8.5.2</b> Acceleration of Convergence of Fixed Point Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="background.html"><a href="background.html#matrix-algebra"><i class="fa fa-check"></i><b>8.6</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="background.html"><a href="background.html#eigenvalues-and-eigenvectors-of-symmetric-matrices"><i class="fa fa-check"></i><b>8.6.1</b> Eigenvalues and Eigenvectors of Symmetric Matrices</a></li>
+<li class="chapter" data-level="8.6.2" data-path="background.html"><a href="background.html#singular-values-and-singular-vectors"><i class="fa fa-check"></i><b>8.6.2</b> Singular Values and Singular Vectors</a></li>
+<li class="chapter" data-level="8.6.3" data-path="background.html"><a href="background.html#canonical-correlation"><i class="fa fa-check"></i><b>8.6.3</b> Canonical Correlation</a></li>
+<li class="chapter" data-level="8.6.4" data-path="background.html"><a href="background.html#modified-eigenvalue-problems"><i class="fa fa-check"></i><b>8.6.4</b> Modified Eigenvalue Problems</a></li>
+<li class="chapter" data-level="8.6.5" data-path="background.html"><a href="background.html#quadratic-on-a-sphere"><i class="fa fa-check"></i><b>8.6.5</b> Quadratic on a Sphere</a></li>
+<li class="chapter" data-level="8.6.6" data-path="background.html"><a href="background.html#generalized-inverses"><i class="fa fa-check"></i><b>8.6.6</b> Generalized Inverses</a></li>
+<li class="chapter" data-level="8.6.7" data-path="background.html"><a href="background.html#partitioned-matrices"><i class="fa fa-check"></i><b>8.6.7</b> Partitioned Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="background.html"><a href="background.html#matrix-differential-calculus"><i class="fa fa-check"></i><b>8.7</b> Matrix Differential Calculus</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="background.html"><a href="background.html#matrix-derivatives"><i class="fa fa-check"></i><b>8.7.1</b> Matrix Derivatives</a></li>
+<li class="chapter" data-level="8.7.2" data-path="background.html"><a href="background.html#derivatives-of-eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>8.7.2</b> Derivatives of Eigenvalues and Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="background.html"><a href="background.html#graphics-and-code"><i class="fa fa-check"></i><b>8.8</b> Graphics and Code</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="background.html"><a href="background.html#multidimensional-scaling"><i class="fa fa-check"></i><b>8.8.1</b> Multidimensional Scaling</a></li>
+<li class="chapter" data-level="8.8.2" data-path="background.html"><a href="background.html#cobweb-plots"><i class="fa fa-check"></i><b>8.8.2</b> Cobweb Plots</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Block Relaxation Methods</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="using-higher-derivatives" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Using Higher Derivatives</h1>
+<p>##Introduction</p>
+<p>##Mean Value Majorization</p>
+Suppose <span class="math inline">\(f\)</span> is differentiable in an open set <span class="math inline">\(\mathcal{X}\)</span> containing both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> and the line connecting them. We can use the mean value theorem
+in the inequality form
+<span class="math display">\[
+f(x)\leq f(y)+\sup_{0\leq\lambda\leq 1}
+(x-y)&#39;\mathcal{D}f(y+\lambda(x-y))
+\]</span>
+Define, for fixed <span class="math inline">\(x,y\)</span>
+<span class="math display">\[
+h(\lambda)\mathop{=}\limits^{\Delta}(x-y)&#39;\mathcal{D}f(y+\lambda(x-y))
+\]</span>
+The maximum of <span class="math inline">\(h\)</span> is attained at either <span class="math inline">\(\lambda=0\)</span>, or <span class="math inline">\(\lambda=1\)</span>, or at
+a point in the interior of the unit interval where the derivative with respect to <span class="math inline">\(\lambda\)</span> vanishes. Now
+<span class="math display">\[
+\mathcal{D}h(\lambda)=(x-y)&#39;\mathcal{D}^2f(y+\lambda(x-y))(x-y).
+\]</span>
+Thus for concave <span class="math inline">\(f\)</span> we see that <span class="math inline">\(h\)</span> is decreasing, and we recover our previous result
+<span class="math display">\[
+f(x)\leq f(y)+(x-y)&#39;\mathcal{D}f(y).
+\]</span>
+For convex <span class="math inline">\(f\)</span>, for which <span class="math inline">\(h\)</span> is increasing, we find
+<span class="math display">\[
+f(x)\leq f(y)+(x-y)&#39;\mathcal{D}f(x).
+\]</span>
+<hr>
+For the univariate cubic <span class="math inline">\(f(x)=a+bx+\frac12 cx^2+\frac16 dx^3\)</span> we have
+<span class="math display">\[
+\mathcal{D}f(x)=b+cx+\frac12 dx^2,
+\]</span>
+and thus we must
+compute <span class="math inline">\(\sup_{0\leq\lambda\leq 1}h(\lambda)\)</span>
+where
+<span class="math display">\[
+h(\lambda)\mathop{=}\limits^{\Delta}z(b+c(y+\lambda z)+\frac12d(y+\lambda z)^2),
+\]</span>
+where <span class="math inline">\(z\mathop{=}\limits^{\Delta}x-y\)</span>. If <span class="math inline">\(dz^3 &gt; 0\)</span> the quadratic <span class="math inline">\(h\)</span> is convex, and the maximum is attained at one of the endpoints, i.e.
+<span class="math display">\[
+\sup_{0\leq\lambda\leq 1}h(\lambda)=
+\max\{z(b+cy+\frac12 dy^2),z(b+cx+\frac12 dx^2)\}
+\]</span>
+<span class="math display">\[
+cz+\frac12 dz(x+y)&gt;0
+\]</span>
+<hr>
+<div id="taylor-majorization" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Taylor Majorization</h2>
+<div id="second-order" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Second Order</h3>
+<p>We can take this one step further. Obviously
+<span class="math display">\[
+f(x)\leq f(y)+(x-y)&#39;\nabla f(y)+
+\frac{1}{2}\sup_{0\leq\lambda\leq 1}
+(x-y)&#39;\nabla^2f(y+\lambda(x-y))
+(x-y).
+\]</span>
+The main problem with these approaches based on the mean value theorem is that
+the majorizing function may not be simple. Nevertheless the approach can also be used to arrive at bounds
+which are computationally convenient.</p>
+<hr>
+<p>For a univariate cubic <span class="math inline">\(f(x)=a+bx+\frac12 cx^2+\frac16 dx^3\)</span> we find the majorization</p>
+<p><span class="math display">\[\begin{multline*}
+f(x)\leq f(y)+f&#39;(y)(x-y)+\frac12(x-y)^2\max_{0\leq\lambda\leq 1}\left(c+
+d(x+\lambda(y-x))\right)=\\=f(y)+f&#39;(y)(x-y)+\frac12(x-y)^2
+\begin{cases}
+c+d\max(x,y)&amp;\text{ if }d\geq 0,\\
+c+d\min(x,y)&amp;\text{ if }d\leq 0,\\
+\end{cases}
+\end{multline*}\]</span></p>
+<hr>
+<p>For the exponent</p>
+<p><span class="math display">\[\begin{multline*}
+\exp(x)\leq \exp(y)+\exp(y)(x-y)+\frac12 (x-y)^2\sup_{0\leq\lambda\leq 1}\exp(y+\lambda(x-y))=\\
+=\exp(y)+\exp(y)(x-y)+\frac12 (x-y)^2\exp(\max(x,y))
+\end{multline*}\]</span></p>
+<hr>
+For the folium with <span class="math inline">\(f(x)=x_1^3+x_2^3-3x_1^{\ }x_2^{\ }\)</span> we have
+<span class="math display">\[
+\mathcal{D}^2f(x)=\begin{bmatrix}6x_1&amp;-3\\-3&amp;6x_2\end{bmatrix}.
+\]</span>
+Thus a simple majorizer is given by <em>(incorrect 03/03/15)</em>
+<span class="math display">\[
+g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\max(x_1,x_2)(x-y)&#39;V(x-y),
+\]</span>
+with
+<span class="math display">\[
+V=\begin{bmatrix}6&amp;-3\\-3&amp;6\end{bmatrix}.
+\]</span>
+<hr>
+<p>NB: see probit section for <span class="math inline">\(f&#39;&#39;(x)\)</span> decreasing. 03/03/15</p>
+</div>
+<div id="higher-order" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Higher Order</h3>
+<p>From Taylor’s theorem with Lagrange form of the remainder discussed in <a href="../background/taylor.html">[A:Taylor]</a> it follows that
+<span class="math display">\[
+f(x)\leq g_p(x,y)+\frac{1}{(p+1)!}\sup_{0\leq\lambda\leq 1}&lt;\mathcal{D}^{p+1}f(x+\lambda(y-x)),(x-y)^{p+1}&gt;,
+\]</span>
+where <span class="math inline">\(g_p\)</span> is the <span class="math inline">\(p-\)</span>degree Taylor polynomial at <span class="math inline">\(y\)</span>.</p>
+<p>If all elements of the array in <span class="math inline">\(\frac{1}{(p+1)!}\mathcal{D}^{p+1}f(x+\lambda(y-x))\)</span>
+are less than <span class="math inline">\(\kappa\)</span> in absolute value for all <span class="math inline">\(x,y\)</span> and <span class="math inline">\(\lambda\)</span>, then this implies
+<span class="math display">\[
+f(x)\leq g_p(x,y)+\kappa\left\{\sum_{i=1}^n|x_i-y_i|\right\}^{p+1}
+\]</span></p>
+<p>We can also use the Frobenius norm and Cauchy-Schwartz to obtain
+<span class="math display">\[
+f(x)\leq g_p(x,y)+\kappa(x,y)\|x-y\|^{p+1},
+\]</span>
+where
+<span class="math display">\[
+\kappa(x,y)\mathop{=}\limits^{\Delta}\frac{1}{(p+1)!}\sup_{0\leq\lambda\leq 1}\|\mathcal{D}^{p+1}f(x+\lambda(y-x))\|.
+\]</span>
+Of course it remains to be seen if these formulas actually lead to useful majorization algorithms. For higher <span class="math inline">\(p\)</span> they will undoubtedly have fast convergence, but the optimizations in each iteration involve higher order multivariate polynomials and look pretty daunting.</p>
+</div>
+</div>
+<div id="nesterov-majorization" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Nesterov Majorization</h2>
+<p>Suppose <span class="math inline">\(f\)</span> is a function with third derivatives that are bounded
+in the sense that
+<span class="math display">\[
+\langle\mathcal{D}^3f(x),(x-y)^3\rangle\leq K_3\|x-y\|^3.\tag{1}
+\]</span>
+It is sufficient for this that the Hessian is Lipschitz continuous with Lipschitz constant <span class="math inline">\(K_3\)</span>. Majorization based on <span class="math inline">\((1)\)</span> was first discussed in an important article by <span class="citation"><a href="#ref-nesterov_polyak_06" role="doc-biblioref">Nesterov and Polyak</a> (<a href="#ref-nesterov_polyak_06" role="doc-biblioref">2006</a>)</span></p>
+Under these conditions we have the majorizer
+<span class="math display">\[
+g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+\frac16K_3\|x-y\|^3.
+\]</span>
+The term <span class="math inline">\(\|x-y\|^3\)</span> is convex in <span class="math inline">\(x\)</span>, but the majorizer <span class="math inline">\(g\)</span> itself is generally not convex, although it is convex whenever <span class="math inline">\(f\)</span> is. Majorizer <span class="math inline">\(g\)</span> has continuous first derivatives
+<span class="math display">\[
+\mathcal{D}_1g(x,y)=\mathcal{D}f(y)+\mathcal{D}^2f(y)(x-y)+\frac12K_3\|x-y\|(x-y),
+\]</span>
+and for <span class="math inline">\(x\not= y\)</span> the second derivative is
+<span class="math display">\[
+\mathcal{D}_{11}g(x,y)=\mathcal{D}^2f(y)+\frac12K_3\|x-y\|\left(I+\frac{(x-y)(x-y)&#39;}{(x-y)&#39;(x-y)}\right).
+\]</span>
+It follows that
+<span class="math display">\[
+\mathcal{D}^2f(y)+\frac12K_3\|x-y\|\lesssim\mathcal{D}_{11}g(x,y)\lesssim\mathcal{D}^2f(y)+K_3\|x-y\|,
+\]</span>
+and thus, by the squeeze theorem,
+<span class="math display">\[
+\lim_{x\rightarrow y}\mathcal{D}_{11}g(x,y)=\mathcal{D}^2f(y).
+\]</span>
+<hr>
+The majorization algorithm is, as usual,
+<span class="math display">\[
+x^{(k+1)}=\mathop{\mathbf{argmin}}\limits_{x} g(x,x^{(k)}),
+\]</span>
+and the majorizer is minimized at a point where <span class="math inline">\(\mathcal{D}_1g(x,x^{(k)})=0\)</span>. We write the stationary equation as
+<span class="math display">\[
+\left(\mathcal{D}^2f(y)+\frac12K_3\|x-y\| I\right)(x-y)=-\mathcal{D}f(y).
+\]</span>
+We write this as two equations, using what is effectively a form of decomposition.
+<span class="math display">\[\begin{align*}
+\left(\mathcal{D}^2f(y)+\frac12K_3\delta I\right)(x-y)&amp;=-\mathcal{D}f(y),\tag{2a}\\
+\delta&amp;=\|x-y\|.\tag{2b}
+\end{align*}\]</span>
+Let <span class="math inline">\(\mathcal{D}^2f(y)=K\Lambda K&#39;\)</span> be an eigen decomposition, and
+define <span class="math inline">\(g\mathop{=}\limits^{\Delta}-K&#39;\mathcal{D}f(y)\)</span> and <span class="math inline">\(z=K&#39;(x-y)\)</span>. Then solving
+<span class="math display">\[
+\left(\Lambda+\frac12K_3\delta I\right)z=g
+\]</span>
+for <span class="math inline">\(z\)</span> and using <span class="math inline">\((2b)\)</span> gives the <em>secular equation</em> in <span class="math inline">\(\delta\)</span>
+<span class="math display">\[
+\delta^2=\sum_{i=1}^n\frac{g_i^2}{(\lambda_i+\frac12 K_3\delta)^2}
+\]</span>
+<hr>
+The Cartesian folium is
+<span class="math display">\[
+f(x,y)=x^3+y^3-3xy
+\]</span>
+Thus
+<span class="math display">\[
+f(x+u,y+v)=
+f(x,y)+3au+3bv+3xu^2-3uv+3yv^2+u^3+v^3.
+\]</span>
+with
+<span class="math display">\[\begin{align*}
+a&amp;\mathop{=}\limits^{\Delta}x^2-y,\\
+b&amp;\mathop{=}\limits^{\Delta}y^2-x.
+\end{align*}\]</span>
+If
+<span class="math display">\[
+h(u,v)\mathop{=}\limits^{\Delta}\frac{(u^3+v^3)^\frac23}{u^2+v^2}
+\]</span>
+then
+<span class="math display">\[
+\max_{u,v}h(u,v)=\max_{u^2+v^2=1}(u^3+v^3)^\frac23=\max_\theta\ (\sin^3(\theta)+\cos^3(\theta))^\frac23=1,
+\]</span>
+and thus
+<span class="math display">\[
+u^3+v^3\leq(u^2+v^2)^\frac32.
+\]</span>
+This gives the majorization we are looking for
+<span class="math display">\[
+g(x+u,y+v)=f(x,y)+3au+3bv+3xu^2-3uv+3yv^2+(u^2+v^2)^\frac32
+\]</span>
+The derivatives are
+<span class="math display">\[\begin{align*}
+\mathcal{D}_1g(u,v)&amp;=3a+6xu-3v+3\lambda u,\\
+\mathcal{D}_2g(u,v)&amp;=3b+6yv-3v+3\lambda v.
+\end{align*}\]</span>
+with <span class="math inline">\(\lambda\mathop{=}\limits^{\Delta}\sqrt{u^2+v^2}\)</span>. Thus
+<span class="math display">\[
+\begin{bmatrix}
+2x+\lambda&amp;-1\\
+-1&amp;2y+\lambda
+\end{bmatrix}\begin{bmatrix}u\\v\end{bmatrix}=\begin{bmatrix}-a\\-b\end{bmatrix},
+\]</span>
+or
+<span class="math display">\[
+\begin{bmatrix}u\\v\end{bmatrix}=-\frac{1}{(2x+\lambda)(2y+\lambda)-1}
+\begin{bmatrix}2y+\lambda&amp;1\\1&amp;2x+\lambda\end{bmatrix}\begin{bmatrix}a\\b\end{bmatrix}.
+\]</span>
+Thus we must have
+<span class="math display">\[
+\lambda^2=u^2+v^2=\frac{((2y+\lambda)a+b)^2+((2x+\lambda)b+a)^2}{((2x+\lambda)(2y+\lambda)-1)^2}
+\]</span>
+<hr>
+<p><span class="math display">\[
+f(x)=\frac16\sum_{i=1}^n x_i^3+\frac12 x&#39;Ax
+\]</span>
+<span class="math display">\[
+f(x)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+
+\frac16\sum_{i=1}^n (x_i-y_i)^3.
+\]</span>
+<span class="math display">\[
+h(z)\mathop{=}\limits^{\Delta}\frac{\sum_{i=1}^n z_i^3}{(z&#39;z)^\frac32}
+\]</span>
+<span class="math display">\[
+\max_z h(z)=\max_{z&#39;z=1}\sum_{i=1}^n z_i^3=1.
+\]</span>
+Thus
+<span class="math display">\[
+g(x)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+
+\frac16\{(x-y)&#39;(x-y)\}^\frac32
+\]</span>
+majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>. Now
+<span class="math display">\[
+\mathcal{D}g(x)=\mathcal{D}f(y)+\mathcal{D}^2f(y)(x-y)+\frac12\lambda(x)(x-y)
+\]</span>
+and
+<span class="math display">\[
+\mathcal{D}^2g(x)=\mathcal{D}^2f(y)+\frac12\lambda(x)I+\frac12\frac{1}{\lambda(x)}(x-y)(x-y)&#39;
+\]</span>
+where <span class="math inline">\(\lambda(x)=\sqrt{(x-y)&#39;(x-y)}\)</span>.</p>
+<hr>
+<p>Suppose <span class="math inline">\(f\)</span> is a multivariate quartic with bounds on the third and fourth derivatives. Thus</p>
+<p><span class="math display">\[\begin{multline}
+g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+\\+\frac16K_3\|x-y\|^3+\frac{1}{24}K_4\|x-y\|^4
+\end{multline}\]</span></p>
+<p>We minimize <span class="math inline">\(g\)</span> over <span class="math inline">\(x\)</span>, as usual. Thus we must solve
+<span class="math display">\[
+\left[\mathcal{D}^2f(y)+\frac12K_3\|x-y\|I+\frac16K_4\|x-y\|^2I\right](x-y)=-\mathcal{D}f(y).
+\]</span>
+Expand this to the two equations
+<span class="math display">\[\begin{align*}
+\left[\mathcal{D}^2f(y)+\frac12K_3\delta I+\frac16K_4\delta^2I\right](x-y)&amp;=-\mathcal{D}f(y),\\
+\|x-y\|&amp;=\delta.
+\end{align*}\]</span></p>
+<p>##Examples</p>
+<div id="revisiting-the-reciprocal" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Revisiting the Reciprocal</h3>
+<p>Here we come back to the function <span class="math inline">\(f:x\rightarrow ax-\log x.\)</span></p>
+<p>We start with a new majorization of the logarithm. In other contexts the logarithm, which is concave, has been majorized by a linear function. Since our <span class="math inline">\(f\)</span> uses the negative logarithm, which is convex, that will not work in our case. By Taylor
+<span class="math display">\[
+\log(x) = \log (y) + \frac{1}{y}(x-y)-\frac12\frac{1}{z^2}(x-y)^2,
+\]</span>
+where <span class="math inline">\(z\)</span> is between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Thus if we define
+<span class="math display">\[
+h(x,y)\mathop{=}\limits^{\Delta}\log (y) + \frac{1}{y}(x-y)-\frac12\begin{cases}
+\frac{(x-y)^2}{x^2}&amp;\text{if }x\leq y,\\
+\frac{(x-y)^2}{y^2}&amp;\text{otherwise}.
+\end{cases}
+\]</span>
+then, for all <span class="math inline">\(x&gt;0\)</span> and <span class="math inline">\(y&gt;0\)</span>,
+<span class="math display">\[
+\log(x)\geq h(x,y),
+\]</span>
+and thus, with <span class="math inline">\(g(x,y)=ax-h(x,y)\)</span>, we have <span class="math inline">\(f(x)\leq g(x,y).\)</span>
+with equality if and only if <span class="math inline">\(x=y\)</span>.</p>
+<p>Now <span class="math inline">\(g\)</span>, as a function of <span class="math inline">\(x\)</span>, is differentiable on the positive reals for all <span class="math inline">\(y\)</span>. In fact
+<span class="math display">\[
+\mathcal{D}_1g(x,y)=
+a-\frac{1}{y}+\begin{cases}
+\frac{y}{x^3}(x-y)&amp;\text{if }x\leq y,\\
+\frac{1}{y^2}(x-y)&amp;\text{otherwise}.
+\end{cases}
+\]</span>
+Let us find the solutions of <span class="math inline">\(\mathcal{D}_1g(x,y)=0\)</span>. First check if
+<span class="math display">\[
+a-\frac{1}{y}+\frac{1}{y^2}(x-y)=0
+\]</span>
+has a root <span class="math inline">\(x\geq y\)</span>. The unique root
+is <span class="math inline">\(x=2y-ay^2\)</span>. Thus if <span class="math inline">\(2y-ay^2\geq y\)</span>, i.e.
+if <span class="math inline">\(y\leq\frac{1}{a}\)</span>, this gives
+a solution to <span class="math inline">\(\mathcal{D}_1g(x,y)=0\)</span>. Note that the update in this case is the same
+update as Newton’s update for the reciprocal.</p>
+<p>Matters are a bit more complicated for finding a solution of
+<span class="math display">\[
+a-\frac{1}{y}+\frac{y}{x^3}(x-y)=0.
+\]</span>
+with <span class="math inline">\(x\leq y\)</span>. The equation can be written as the cubic equation in <span class="math inline">\(x\)</span>
+<span class="math display">\[
+(a-\frac{1}{y})x^3+yx-y^2=0.
+\]</span>
+If <span class="math inline">\(y&gt;\frac{1}{a}\)</span> then the cubic has only one real root. Because if there are two, then by Rolle the derivative should vanish somewhere on the interval between them, but the
+derivative is always positive. Since the cubic is negative for <span class="math inline">\(x=0\)</span> and positive for <span class="math inline">\(x=y\)</span>, the unique root is between zero and <span class="math inline">\(y\)</span>, and thus satisfies <span class="math inline">\(\mathcal{D}_1g(x,y)=0\)</span>.</p>
+</div>
+<div id="logit" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Logit</h3>
+<p>The logistic distribution
+<span class="math display">\[
+\Psi(x)=\frac{1}{1+\exp(-x)}
+\]</span>
+increases from zero to one on the real line.
+As we have seen before, the function
+<span class="math display">\[
+f(x)=x-\log\Psi(x)=\log(1+\exp(x))
+\]</span>
+is strictly convex. This follows directly from
+<span class="math display">\[\begin{align*}
+f&#39;(x)&amp;=\Psi(x),\\
+f&#39;&#39;(x)&amp;=\Psi(x)(1-\Psi(x)),
+\end{align*}\]</span>
+because the first derivative is increasing and the second derivative is positive.</p>
+<p><strong>Theorem:</strong>
+The r-th derivative <span class="math inline">\(f^{(r)}(x)\)</span> is
+a polynomial in <span class="math inline">\(\Psi(x)\)</span> of degree <span class="math inline">\(r\)</span>. Consequently for all <span class="math inline">\(r\)</span> there are two finite real numbers <span class="math inline">\(m_{r}&lt;M_{r}\)</span> such that <span class="math inline">\(m_{r}\leq f^{(r)}(x)\leq M_{r}\)</span> for all <span class="math inline">\(x\)</span>.</p>
+<p><strong>Proof:</strong>
+We know that <span class="math inline">\(f&#39;(x)=\Psi(x)\)</span>, and thus the result is true for <span class="math inline">\(r=1\)</span>. Now proceed
+by induction. If <span class="math inline">\(f^{(r)}(x)=P_{r}(\Psi(x))\)</span> for some polynomial <span class="math inline">\(P_{r}\)</span> of degree <span class="math inline">\(r\)</span>, then
+<span class="math display">\[
+f^{(r+1)}(x)=P_{r}&#39;(\Psi(x))\Psi(x)(1-\Psi(x)),
+\]</span>
+which is indeed a polynomial in <span class="math inline">\(\Psi(x)\)</span>
+of degree <span class="math inline">\(r+1\)</span>. In addition
+<span class="math display">\[\begin{align*}
+\sup_{x}f^{(r)}(x)&amp;=\max_{0\leq s\leq 1}P_{r}(s),\\
+\inf_{x}f^{(r)}(x)&amp;=\min_{0\leq s\leq 1}P_{r}(s),
+\end{align*}\]</span>
+and the quantities on the right-hand side are clearly finite.
+<strong>QED</strong></p>
+We illustrate the theorem by computing some higher derivatives
+<span class="math display">\[
+f^{(3)}(x)=\Psi(x)(1-\Psi(x))(1-2\Psi(x)),
+\]</span>
+<span class="math display">\[
+f^{(4)}(x)=\Psi(x)(1-\Psi(x))(1-6\Psi(x)+6\Psi^{2}(x)),
+\]</span>
+<span class="math display">\[
+f^{(5)}(x)=\Psi(x)(1-\Psi(x))(1-2\Psi(x))(1-12\Psi(x)+12\Psi^{2}(x))
+\]</span>
+which implies
+<span class="math display">\[\begin{align*}
+ -\frac{1}{18}\sqrt{3}&amp;\leq f^{(3)}(x)\leq+\frac{1}{18}\sqrt{3},\\
+-\frac18&amp;\leq f^{(4)}(x)\leq\frac{1}{24}
+\end{align*}\]</span>
+The derivatives of orders 2 to 5 are in Figure 1.
+<hr>
+<img src="_main_files/figure-html/logders-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 1: Derivatives of the Log-logistic
+</center>
+<hr>
+And here is some <code>R</code> code for drawing the figure.
+<hr>
+<center>
+<a href="../code/logDers.R">Insert logDers.R Here</a>
+</center>
+<hr>
+<p>We now look more closely at the polynomials <span class="math inline">\(P_{r}\)</span>. From the proof of the we see that for <span class="math inline">\(r&gt;1\)</span> we have <span class="math inline">\(P_{r}(0)=P_{r}(1)=0\)</span>. Because <span class="math inline">\(P_{2}(s)=P_{2}(1-s)\)</span> we see that
+actually <span class="math inline">\(P_{r}(s)=P_{r}(1-s)\)</span> for all even <span class="math inline">\(r\)</span> and <span class="math inline">\(P_{r}(s)=-P_{r}(1-s)\)</span> for all odd <span class="math inline">\(r&gt;1\)</span>. This implies that <span class="math inline">\(P_{r}(\frac12)=0\)</span> for all odd <span class="math inline">\(r&gt;1\)</span>.</p>
+<p>We can go further than this and derive an explicit formula for the polynomials. The difference/differential equation we have to
+solve is <span class="math inline">\(P_{r+1}(x)=x(1-x)P_{r}&#39;(x),\)</span> where <span class="math inline">\(P_1(x)=1-x\)</span>. Its general solution is
+<span class="math display">\[
+P_r(x)=\sum_{j=1}^r(-1)^{j-1}(j-1)!S(j,r)x^j
+\]</span>
+where the <span class="math inline">\(S(j,r)\)</span> are the Stirling numbers of the second kind (the number of ways of partitioning <span class="math inline">\(r\)</span> elements into <span class="math inline">\(j\)</span> non-empty subsets).</p>
+The code in <code>logitPom.R</code> computes the polynomials <span class="math inline">\(P_r\)</span>. With <code>logitPomRecursive(n)</code> we compute all polynomials up to order n, their roots, and their maximum and minimum values. With <code>logitPomDirect(n)</code> we do the same, using the formula with Stirling numbers.
+<hr>
+<center>
+<a href="../code/logitPom.R">Insert logitPom.R Here</a>
+</center>
+<hr>
+<hr>
+<p>Maybe useful 03/02/15</p>
+<p><span class="math display">\[
+-\log(1-\Psi(x))=-\log(1-\frac{1}{1+\exp(-x)})=x+\log(1+\exp(-x))
+\]</span></p>
+<p><span class="math display">\[
+x+\log(1+\exp(-x))=\sum_{s=1}^\infty\frac{(\Psi(x))^s}{s}
+\]</span></p>
+<p>###Probit</p>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-nesterov_polyak_06" class="csl-entry">
+Nesterov, Y., and B. T. Polyak. 2006. <span>“Cubic Regularization of Newton Method and Its Global Performance.”</span> <em>Mathematical Programming</em> A108: 177–205.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="quadratic-majorization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sharp-majorization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "none"
+},
+"keep_md": true,
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
