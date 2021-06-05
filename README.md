@@ -1,3 +1,3 @@
 # bras
 
-The text and supplementary stuff for "Block Relaxation Methods in Statistics"
+The text and supplementary stuff for the book "Block Relaxation Methods in Statistics"
