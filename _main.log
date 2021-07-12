@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.6.6)  14 JUN 2021 21:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.7.3)  12 JUL 2021 16:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **_main.tex
 (./_main.tex
-LaTeX2e <2021-06-01>
-L3 programming layer <2021-06-01> (/Users/deleeuw/Library/TinyTeX/texmf-dist/te
+LaTeX2e <2021-06-01> patch level 1
+L3 programming layer <2021-06-18> (/Users/deleeuw/Library/TinyTeX/texmf-dist/te
 x/latex/base/book.cls
 Document Class: book 2021/02/12 v1.4n Standard LaTeX document class
 (/Users/deleeuw/Library/TinyTeX/texmf-dist/tex/latex/base/bk12.clo
@@ -1557,10 +1557,10 @@ Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: 146D4387B1048D88B263985467DF44E8;16329.
  ) 
 Here is how much of TeX's memory you used:
- 12045 strings out of 480471
- 183855 string characters out of 5897489
- 479338 words of memory out of 5000000
- 28866 multiletter control sequences out of 15000+600000
+ 12047 strings out of 480452
+ 183906 string characters out of 5897156
+ 479795 words of memory out of 5000000
+ 28885 multiletter control sequences out of 15000+600000
  485115 words of font info for 84 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,19n,66p,1360b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1589,7 +1589,7 @@ ers/deleeuw/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></Users
 leeuw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 ></Users/deleeuw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msbm10.pfb>
-Output written on _main.pdf (249 pages, 2678564 bytes).
+Output written on _main.pdf (249 pages, 2678597 bytes).
 PDF statistics:
  2787 PDF objects out of 2984 (max. 8388607)
  2331 compressed objects within 24 object streams
