@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Using Convexity | Block Relaxation Methods in Statistics</title>
+  <title>4 Using Convexity | Block Relaxation Methods in Statistics</title>
   <meta name="description" content="null" />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Using Convexity | Block Relaxation Methods in Statistics" />
+  <meta property="og:title" content="4 Using Convexity | Block Relaxation Methods in Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Using Convexity | Block Relaxation Methods in Statistics" />
+  <meta name="twitter:title" content="4 Using Convexity | Block Relaxation Methods in Statistics" />
   
   <meta name="twitter:description" content="null" />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="blockrelaxation.html"/>
+<link rel="prev" href="coordinatedescent.html"/>
 <link rel="next" href="quadratic-majorization.html"/>
 <script src="libs/header-attrs-2.9.2/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -172,131 +172,169 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:generalizedblockrelaxation"><i class="fa fa-check"></i><b>2.4</b> Generalized Block Relaxation</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#alternatingleastsquares:examples:mcrals"><i class="fa fa-check"></i><b>2.4.1</b> MCR-ALS</a></li>
-<li class="chapter" data-level="2.4.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#dinkelbach-majorization"><i class="fa fa-check"></i><b>2.4.2</b> Dinkelbach Majorization</a></li>
+<li class="chapter" data-level="2.4.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:generalizedblockrelaxation:raschmodel"><i class="fa fa-check"></i><b>2.4.1</b> Rasch Model</a></li>
+<li class="chapter" data-level="2.4.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:generalizedblockrelaxation:nonlinearleastsquares"><i class="fa fa-check"></i><b>2.4.2</b> Nonlinear Least Squares</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-amgm-inequality"><i class="fa fa-check"></i><b>2.5</b> The AM/GM Inequality</a>
+<li class="chapter" data-level="2.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:blockorder"><i class="fa fa-check"></i><b>2.5</b> Block Order</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#gini-mean-difference"><i class="fa fa-check"></i><b>2.5.1</b> Gini Mean Difference</a></li>
-<li class="chapter" data-level="2.5.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-lasso-and-the-bridge"><i class="fa fa-check"></i><b>2.5.2</b> The Lasso and the Bridge</a></li>
-<li class="chapter" data-level="2.5.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#rayleigh-quotient"><i class="fa fa-check"></i><b>2.5.3</b> Rayleigh Quotient</a></li>
-<li class="chapter" data-level="2.5.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#the-majorization-method-for-mds"><i class="fa fa-check"></i><b>2.5.4</b> The Majorization Method for MDS</a></li>
+<li class="chapter" data-level="2.5.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:blockorder:projectingblocks"><i class="fa fa-check"></i><b>2.5.1</b> Projecting Blocks</a></li>
 </ul></li>
+<li class="chapter" data-level="2.6" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence"><i class="fa fa-check"></i><b>2.6</b> Rate of Convergence</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:luform"><i class="fa fa-check"></i><b>2.6.1</b> LU-form</a></li>
+<li class="chapter" data-level="2.6.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:productform"><i class="fa fa-check"></i><b>2.6.2</b> Product Form</a></li>
+<li class="chapter" data-level="2.6.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:blockoptimizationmethods"><i class="fa fa-check"></i><b>2.6.3</b> Block Optimization Methods</a></li>
+<li class="chapter" data-level="2.6.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:blocknewtonmethods"><i class="fa fa-check"></i><b>2.6.4</b> Block Newton Methods</a></li>
+<li class="chapter" data-level="2.6.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:constrainedproblems"><i class="fa fa-check"></i><b>2.6.5</b> Constrained Problems</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="using-convexity.html"><a href="using-convexity.html"><i class="fa fa-check"></i><b>3</b> Using Convexity</a>
+<li class="chapter" data-level="2.7" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples"><i class="fa fa-check"></i><b>2.7</b> Additional Examples</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="using-convexity.html"><a href="using-convexity.html#using-convexity-1"><i class="fa fa-check"></i><b>3.1</b> Using Convexity</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="using-convexity.html"><a href="using-convexity.html#tomography"><i class="fa fa-check"></i><b>3.1.1</b> Tomography</a></li>
-<li class="chapter" data-level="3.1.2" data-path="using-convexity.html"><a href="using-convexity.html#majorizing-and-minorizing-the-logarithm"><i class="fa fa-check"></i><b>3.1.2</b> Majorizing and Minorizing the Logarithm</a></li>
-<li class="chapter" data-level="3.1.3" data-path="using-convexity.html"><a href="using-convexity.html#aspects-of-correlation-matrices"><i class="fa fa-check"></i><b>3.1.3</b> Aspects of Correlation Matrices</a></li>
-<li class="chapter" data-level="3.1.4" data-path="using-convexity.html"><a href="using-convexity.html#partially-observed-linear-systems"><i class="fa fa-check"></i><b>3.1.4</b> Partially Observed Linear Systems</a></li>
-<li class="chapter" data-level="3.1.5" data-path="using-convexity.html"><a href="using-convexity.html#gpower"><i class="fa fa-check"></i><b>3.1.5</b> Gpower</a></li>
+<li class="chapter" data-level="2.7.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:canonicalcorrelation"><i class="fa fa-check"></i><b>2.7.1</b> Canonical Correlation</a></li>
+<li class="chapter" data-level="2.7.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:lowrankapproximation"><i class="fa fa-check"></i><b>2.7.2</b> Low Rank Approximation</a></li>
+<li class="chapter" data-level="2.7.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:optimalscalingwithlineals"><i class="fa fa-check"></i><b>2.7.3</b> Optimal Scaling with LINEALS</a></li>
+<li class="chapter" data-level="2.7.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:multinormalmaximumlikelihood"><i class="fa fa-check"></i><b>2.7.4</b> Multinormal Maximum Likelihood</a></li>
+<li class="chapter" data-level="2.7.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:arraymultinormals"><i class="fa fa-check"></i><b>2.7.5</b> Array Multinormals</a></li>
+<li class="chapter" data-level="2.7.6" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:raschmodel"><i class="fa fa-check"></i><b>2.7.6</b> Rasch Model</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="using-convexity.html"><a href="using-convexity.html#broadening-the-scope"><i class="fa fa-check"></i><b>3.2</b> Broadening the Scope</a>
+<li class="chapter" data-level="2.8" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples"><i class="fa fa-check"></i><b>2.8</b> Some Counterexamples</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="using-convexity.html"><a href="using-convexity.html#differences-of-convex-functions"><i class="fa fa-check"></i><b>3.2.1</b> Differences of Convex Functions</a></li>
-<li class="chapter" data-level="3.2.2" data-path="using-convexity.html"><a href="using-convexity.html#convexifiable-functions"><i class="fa fa-check"></i><b>3.2.2</b> Convexifiable Functions</a></li>
-<li class="chapter" data-level="3.2.3" data-path="using-convexity.html"><a href="using-convexity.html#piecewise-linear-majorization"><i class="fa fa-check"></i><b>3.2.3</b> Piecewise Linear Majorization</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html"><i class="fa fa-check"></i><b>4</b> Quadratic Majorization</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#nondiagonal-weights-in-least-squares"><i class="fa fa-check"></i><b>4.1.1</b> Nondiagonal Weights in Least Squares</a></li>
-<li class="chapter" data-level="4.1.2" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gifi-goes-logistic"><i class="fa fa-check"></i><b>4.1.2</b> Gifi Goes Logistic</a></li>
-<li class="chapter" data-level="4.1.3" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#a-matrix-example"><i class="fa fa-check"></i><b>4.1.3</b> A Matrix Example</a></li>
-<li class="chapter" data-level="4.1.4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gauss-newton-majorization"><i class="fa fa-check"></i><b>4.1.4</b> Gauss-Newton Majorization</a></li>
+<li class="chapter" data-level="2.8.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples:convergencetoasaddle"><i class="fa fa-check"></i><b>2.8.1</b> Convergence to a Saddle</a></li>
+<li class="chapter" data-level="2.8.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples:convergencetoincorrectsolutions"><i class="fa fa-check"></i><b>2.8.2</b> Convergence to Incorrect Solutions</a></li>
+<li class="chapter" data-level="2.8.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples:nonconvergenceandcycling"><i class="fa fa-check"></i><b>2.8.3</b> Non-convergence and Cycling</a></li>
+<li class="chapter" data-level="2.8.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples:sublinearconvergence"><i class="fa fa-check"></i><b>2.8.4</b> Sublinear Convergence</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html"><i class="fa fa-check"></i><b>5</b> Using Higher Derivatives</a>
+<li class="chapter" data-level="3" data-path="coordinatedescent.html"><a href="coordinatedescent.html"><i class="fa fa-check"></i><b>3</b> Coordinate Descent</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#taylor-majorization"><i class="fa fa-check"></i><b>5.1</b> Taylor Majorization</a>
+<li class="chapter" data-level="3.1" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:convergencerate"><i class="fa fa-check"></i><b>3.2</b> Convergence rate</a></li>
+<li class="chapter" data-level="3.3" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:examples"><i class="fa fa-check"></i><b>3.3</b> Examples</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#second-order"><i class="fa fa-check"></i><b>5.1.1</b> Second Order</a></li>
-<li class="chapter" data-level="5.1.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#higher-order"><i class="fa fa-check"></i><b>5.1.2</b> Higher Order</a></li>
+<li class="chapter" data-level="3.3.1" data-path="coordinatedescent.html"><a href="coordinatedescent.html#alternatingleastsquares:examples:mcrals"><i class="fa fa-check"></i><b>3.3.1</b> MCR-ALS</a></li>
+<li class="chapter" data-level="3.3.2" data-path="coordinatedescent.html"><a href="coordinatedescent.html#dinkelbach-majorization"><i class="fa fa-check"></i><b>3.3.2</b> Dinkelbach Majorization</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#nesterov-majorization"><i class="fa fa-check"></i><b>5.2</b> Nesterov Majorization</a>
+<li class="chapter" data-level="3.4" data-path="coordinatedescent.html"><a href="coordinatedescent.html#the-amgm-inequality"><i class="fa fa-check"></i><b>3.4</b> The AM/GM Inequality</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#revisiting-the-reciprocal"><i class="fa fa-check"></i><b>5.2.1</b> Revisiting the Reciprocal</a></li>
-<li class="chapter" data-level="5.2.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#logit"><i class="fa fa-check"></i><b>5.2.2</b> Logit</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="sharp-majorization.html"><a href="sharp-majorization.html"><i class="fa fa-check"></i><b>6</b> Sharp Majorization</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#comparing-majorizations"><i class="fa fa-check"></i><b>6.1</b> Comparing Majorizations</a></li>
-<li class="chapter" data-level="6.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-quadratic-majorization"><i class="fa fa-check"></i><b>6.2</b> Sharp Quadratic Majorization</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#even-and-odd-functions"><i class="fa fa-check"></i><b>6.2.1</b> Even and Odd Functions</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-piecewise-linear"><i class="fa fa-check"></i><b>6.3</b> Sharp Piecewise Linear</a></li>
-<li class="chapter" data-level="6.4" data-path="sharp-majorization.html"><a href="sharp-majorization.html#examples"><i class="fa fa-check"></i><b>6.4</b> Examples</a>
-<ul>
-<li class="chapter" data-level="6.4.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-cosine"><i class="fa fa-check"></i><b>6.4.1</b> The cosine</a></li>
-<li class="chapter" data-level="6.4.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-rasch-model"><i class="fa fa-check"></i><b>6.4.2</b> The Rasch Model</a></li>
-<li class="chapter" data-level="6.4.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#probits"><i class="fa fa-check"></i><b>6.4.3</b> Probits</a></li>
+<li class="chapter" data-level="3.4.1" data-path="coordinatedescent.html"><a href="coordinatedescent.html#gini-mean-difference"><i class="fa fa-check"></i><b>3.4.1</b> Gini Mean Difference</a></li>
+<li class="chapter" data-level="3.4.2" data-path="coordinatedescent.html"><a href="coordinatedescent.html#the-lasso-and-the-bridge"><i class="fa fa-check"></i><b>3.4.2</b> The Lasso and the Bridge</a></li>
+<li class="chapter" data-level="3.4.3" data-path="coordinatedescent.html"><a href="coordinatedescent.html#rayleigh-quotient"><i class="fa fa-check"></i><b>3.4.3</b> Rayleigh Quotient</a></li>
+<li class="chapter" data-level="3.4.4" data-path="coordinatedescent.html"><a href="coordinatedescent.html#the-majorization-method-for-mds"><i class="fa fa-check"></i><b>3.4.4</b> The Majorization Method for MDS</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html"><i class="fa fa-check"></i><b>7</b> Local and Localized Majorization</a>
+<li class="chapter" data-level="4" data-path="using-convexity.html"><a href="using-convexity.html"><i class="fa fa-check"></i><b>4</b> Using Convexity</a>
 <ul>
-<li class="chapter" data-level="7.0.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-in-a-neighborhood"><i class="fa fa-check"></i><b>7.0.1</b> Majorization in a Neighborhood</a></li>
-<li class="chapter" data-level="7.0.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#cartesian-folium"><i class="fa fa-check"></i><b>7.0.2</b> Cartesian Folium</a></li>
-<li class="chapter" data-level="7.0.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#univariate-cubics"><i class="fa fa-check"></i><b>7.0.3</b> Univariate Cubics</a></li>
-<li class="chapter" data-level="7.0.4" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-the-sphere"><i class="fa fa-check"></i><b>7.0.4</b> Majorization on the Sphere</a></li>
-<li class="chapter" data-level="7.0.5" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-a-hyperrectangle"><i class="fa fa-check"></i><b>7.0.5</b> Majorization on a Hyperrectangle</a></li>
-<li class="chapter" data-level="7.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#proximal-point-majorization"><i class="fa fa-check"></i><b>7.1</b> Proximal Point Majorization</a></li>
-<li class="chapter" data-level="7.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#sub-level-majorization"><i class="fa fa-check"></i><b>7.2</b> Sub-level Majorization</a></li>
-<li class="chapter" data-level="7.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#dinkelbach-majorization-1"><i class="fa fa-check"></i><b>7.3</b> Dinkelbach Majorization</a></li>
+<li class="chapter" data-level="4.1" data-path="using-convexity.html"><a href="using-convexity.html#using-convexity-1"><i class="fa fa-check"></i><b>4.1</b> Using Convexity</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="using-convexity.html"><a href="using-convexity.html#tomography"><i class="fa fa-check"></i><b>4.1.1</b> Tomography</a></li>
+<li class="chapter" data-level="4.1.2" data-path="using-convexity.html"><a href="using-convexity.html#majorizing-and-minorizing-the-logarithm"><i class="fa fa-check"></i><b>4.1.2</b> Majorizing and Minorizing the Logarithm</a></li>
+<li class="chapter" data-level="4.1.3" data-path="using-convexity.html"><a href="using-convexity.html#aspects-of-correlation-matrices"><i class="fa fa-check"></i><b>4.1.3</b> Aspects of Correlation Matrices</a></li>
+<li class="chapter" data-level="4.1.4" data-path="using-convexity.html"><a href="using-convexity.html#partially-observed-linear-systems"><i class="fa fa-check"></i><b>4.1.4</b> Partially Observed Linear Systems</a></li>
+<li class="chapter" data-level="4.1.5" data-path="using-convexity.html"><a href="using-convexity.html#gpower"><i class="fa fa-check"></i><b>4.1.5</b> Gpower</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>8</b> Background</a>
+<li class="chapter" data-level="4.2" data-path="using-convexity.html"><a href="using-convexity.html#broadening-the-scope"><i class="fa fa-check"></i><b>4.2</b> Broadening the Scope</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="background.html"><a href="background.html#introduction-2"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="background.html"><a href="background.html#analysis"><i class="fa fa-check"></i><b>8.2</b> Analysis</a>
-<ul>
-<li class="chapter" data-level="8.2.1" data-path="background.html"><a href="background.html#differentiability-and-derivatives"><i class="fa fa-check"></i><b>8.2.1</b> Differentiability and Derivatives</a></li>
-<li class="chapter" data-level="8.2.2" data-path="background.html"><a href="background.html#implicit-functions"><i class="fa fa-check"></i><b>8.2.2</b> Implicit Functions</a></li>
-<li class="chapter" data-level="8.2.3" data-path="background.html"><a href="background.html#necessary-and-sufficient-conditions-for-a-minimum"><i class="fa fa-check"></i><b>8.2.3</b> Necessary and Sufficient Conditions for a Minimum</a></li>
+<li class="chapter" data-level="4.2.1" data-path="using-convexity.html"><a href="using-convexity.html#differences-of-convex-functions"><i class="fa fa-check"></i><b>4.2.1</b> Differences of Convex Functions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="using-convexity.html"><a href="using-convexity.html#convexifiable-functions"><i class="fa fa-check"></i><b>4.2.2</b> Convexifiable Functions</a></li>
+<li class="chapter" data-level="4.2.3" data-path="using-convexity.html"><a href="using-convexity.html#piecewise-linear-majorization"><i class="fa fa-check"></i><b>4.2.3</b> Piecewise Linear Majorization</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="background.html"><a href="background.html#point-to-set-maps"><i class="fa fa-check"></i><b>8.3</b> Point-to-set Maps</a>
-<ul>
-<li class="chapter" data-level="8.3.1" data-path="background.html"><a href="background.html#marginal-functions-and-solution-maps"><i class="fa fa-check"></i><b>8.3.1</b> Marginal Functions and Solution Maps</a></li>
-<li class="chapter" data-level="8.3.2" data-path="background.html"><a href="background.html#jensens-inequality"><i class="fa fa-check"></i><b>8.3.2</b> Jensen’s Inequality</a></li>
-<li class="chapter" data-level="8.3.3" data-path="background.html"><a href="background.html#the-am-gm-inequality"><i class="fa fa-check"></i><b>8.3.3</b> The AM-GM Inequality</a></li>
-<li class="chapter" data-level="8.3.4" data-path="background.html"><a href="background.html#youngs-inequality"><i class="fa fa-check"></i><b>8.3.4</b> Young’s Inequality</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="background.html"><a href="background.html#background:fixedpoint"><i class="fa fa-check"></i><b>8.4</b> Fixed Point Problems and Methods</a>
+<li class="chapter" data-level="5" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html"><i class="fa fa-check"></i><b>5</b> Quadratic Majorization</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="background.html"><a href="background.html#subsequential-limits"><i class="fa fa-check"></i><b>8.4.1</b> Subsequential Limits</a></li>
-<li class="chapter" data-level="8.4.2" data-path="background.html"><a href="background.html#differentiable-convex-functions"><i class="fa fa-check"></i><b>8.4.2</b> Differentiable Convex Functions</a></li>
-<li class="chapter" data-level="8.4.3" data-path="background.html"><a href="background.html#algorithms-as-point-to-set-maps"><i class="fa fa-check"></i><b>8.4.3</b> Algorithms as Point-to-set Maps</a></li>
-<li class="chapter" data-level="8.4.4" data-path="background.html"><a href="background.html#convergence-of-function-values"><i class="fa fa-check"></i><b>8.4.4</b> Convergence of Function Values</a></li>
-<li class="chapter" data-level="8.4.5" data-path="background.html"><a href="background.html#convergence-of-solutions"><i class="fa fa-check"></i><b>8.4.5</b> Convergence of Solutions</a></li>
+<li class="chapter" data-level="5.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#nondiagonal-weights-in-least-squares"><i class="fa fa-check"></i><b>5.1.1</b> Nondiagonal Weights in Least Squares</a></li>
+<li class="chapter" data-level="5.1.2" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gifi-goes-logistic"><i class="fa fa-check"></i><b>5.1.2</b> Gifi Goes Logistic</a></li>
+<li class="chapter" data-level="5.1.3" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#a-matrix-example"><i class="fa fa-check"></i><b>5.1.3</b> A Matrix Example</a></li>
+<li class="chapter" data-level="5.1.4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gauss-newton-majorization"><i class="fa fa-check"></i><b>5.1.4</b> Gauss-Newton Majorization</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="background.html"><a href="background.html#rates-of-convergence"><i class="fa fa-check"></i><b>8.5</b> Rates of Convergence</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="background.html"><a href="background.html#over--and-under-relaxation"><i class="fa fa-check"></i><b>8.5.1</b> Over- and Under-Relaxation</a></li>
-<li class="chapter" data-level="8.5.2" data-path="background.html"><a href="background.html#acceleration-of-convergence-of-fixed-point-methods"><i class="fa fa-check"></i><b>8.5.2</b> Acceleration of Convergence of Fixed Point Methods</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="background.html"><a href="background.html#matrix-algebra"><i class="fa fa-check"></i><b>8.6</b> Matrix Algebra</a>
+<li class="chapter" data-level="6" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html"><i class="fa fa-check"></i><b>6</b> Using Higher Derivatives</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="background.html"><a href="background.html#eigenvalues-and-eigenvectors-of-symmetric-matrices"><i class="fa fa-check"></i><b>8.6.1</b> Eigenvalues and Eigenvectors of Symmetric Matrices</a></li>
-<li class="chapter" data-level="8.6.2" data-path="background.html"><a href="background.html#singular-values-and-singular-vectors"><i class="fa fa-check"></i><b>8.6.2</b> Singular Values and Singular Vectors</a></li>
-<li class="chapter" data-level="8.6.3" data-path="background.html"><a href="background.html#canonical-correlation"><i class="fa fa-check"></i><b>8.6.3</b> Canonical Correlation</a></li>
-<li class="chapter" data-level="8.6.4" data-path="background.html"><a href="background.html#modified-eigenvalue-problems"><i class="fa fa-check"></i><b>8.6.4</b> Modified Eigenvalue Problems</a></li>
-<li class="chapter" data-level="8.6.5" data-path="background.html"><a href="background.html#quadratic-on-a-sphere"><i class="fa fa-check"></i><b>8.6.5</b> Quadratic on a Sphere</a></li>
-<li class="chapter" data-level="8.6.6" data-path="background.html"><a href="background.html#generalized-inverses"><i class="fa fa-check"></i><b>8.6.6</b> Generalized Inverses</a></li>
-<li class="chapter" data-level="8.6.7" data-path="background.html"><a href="background.html#partitioned-matrices"><i class="fa fa-check"></i><b>8.6.7</b> Partitioned Matrices</a></li>
+<li class="chapter" data-level="6.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#taylor-majorization"><i class="fa fa-check"></i><b>6.1</b> Taylor Majorization</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#second-order"><i class="fa fa-check"></i><b>6.1.1</b> Second Order</a></li>
+<li class="chapter" data-level="6.1.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#higher-order"><i class="fa fa-check"></i><b>6.1.2</b> Higher Order</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="background.html"><a href="background.html#matrix-differential-calculus"><i class="fa fa-check"></i><b>8.7</b> Matrix Differential Calculus</a>
+<li class="chapter" data-level="6.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#nesterov-majorization"><i class="fa fa-check"></i><b>6.2</b> Nesterov Majorization</a>
 <ul>
-<li class="chapter" data-level="8.7.1" data-path="background.html"><a href="background.html#matrix-derivatives"><i class="fa fa-check"></i><b>8.7.1</b> Matrix Derivatives</a></li>
-<li class="chapter" data-level="8.7.2" data-path="background.html"><a href="background.html#derivatives-of-eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>8.7.2</b> Derivatives of Eigenvalues and Eigenvectors</a></li>
+<li class="chapter" data-level="6.2.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#revisiting-the-reciprocal"><i class="fa fa-check"></i><b>6.2.1</b> Revisiting the Reciprocal</a></li>
+<li class="chapter" data-level="6.2.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#logit"><i class="fa fa-check"></i><b>6.2.2</b> Logit</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="background.html"><a href="background.html#graphics-and-code"><i class="fa fa-check"></i><b>8.8</b> Graphics and Code</a>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sharp-majorization.html"><a href="sharp-majorization.html"><i class="fa fa-check"></i><b>7</b> Sharp Majorization</a>
 <ul>
-<li class="chapter" data-level="8.8.1" data-path="background.html"><a href="background.html#multidimensional-scaling"><i class="fa fa-check"></i><b>8.8.1</b> Multidimensional Scaling</a></li>
-<li class="chapter" data-level="8.8.2" data-path="background.html"><a href="background.html#cobweb-plots"><i class="fa fa-check"></i><b>8.8.2</b> Cobweb Plots</a></li>
+<li class="chapter" data-level="7.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#comparing-majorizations"><i class="fa fa-check"></i><b>7.1</b> Comparing Majorizations</a></li>
+<li class="chapter" data-level="7.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-quadratic-majorization"><i class="fa fa-check"></i><b>7.2</b> Sharp Quadratic Majorization</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#even-and-odd-functions"><i class="fa fa-check"></i><b>7.2.1</b> Even and Odd Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-piecewise-linear"><i class="fa fa-check"></i><b>7.3</b> Sharp Piecewise Linear</a></li>
+<li class="chapter" data-level="7.4" data-path="sharp-majorization.html"><a href="sharp-majorization.html#examples"><i class="fa fa-check"></i><b>7.4</b> Examples</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-cosine"><i class="fa fa-check"></i><b>7.4.1</b> The cosine</a></li>
+<li class="chapter" data-level="7.4.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-rasch-model"><i class="fa fa-check"></i><b>7.4.2</b> The Rasch Model</a></li>
+<li class="chapter" data-level="7.4.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#probits"><i class="fa fa-check"></i><b>7.4.3</b> Probits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html"><i class="fa fa-check"></i><b>8</b> Local and Localized Majorization</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-in-a-neighborhood"><i class="fa fa-check"></i><b>8.0.1</b> Majorization in a Neighborhood</a></li>
+<li class="chapter" data-level="8.0.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#cartesian-folium"><i class="fa fa-check"></i><b>8.0.2</b> Cartesian Folium</a></li>
+<li class="chapter" data-level="8.0.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#univariate-cubics"><i class="fa fa-check"></i><b>8.0.3</b> Univariate Cubics</a></li>
+<li class="chapter" data-level="8.0.4" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-the-sphere"><i class="fa fa-check"></i><b>8.0.4</b> Majorization on the Sphere</a></li>
+<li class="chapter" data-level="8.0.5" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-a-hyperrectangle"><i class="fa fa-check"></i><b>8.0.5</b> Majorization on a Hyperrectangle</a></li>
+<li class="chapter" data-level="8.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#proximal-point-majorization"><i class="fa fa-check"></i><b>8.1</b> Proximal Point Majorization</a></li>
+<li class="chapter" data-level="8.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#sub-level-majorization"><i class="fa fa-check"></i><b>8.2</b> Sub-level Majorization</a></li>
+<li class="chapter" data-level="8.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#dinkelbach-majorization-1"><i class="fa fa-check"></i><b>8.3</b> Dinkelbach Majorization</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>9</b> Background</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="background.html"><a href="background.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="background.html"><a href="background.html#analysis"><i class="fa fa-check"></i><b>9.2</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="background.html"><a href="background.html#differentiability-and-derivatives"><i class="fa fa-check"></i><b>9.2.1</b> Differentiability and Derivatives</a></li>
+<li class="chapter" data-level="9.2.2" data-path="background.html"><a href="background.html#implicit-functions"><i class="fa fa-check"></i><b>9.2.2</b> Implicit Functions</a></li>
+<li class="chapter" data-level="9.2.3" data-path="background.html"><a href="background.html#necessary-and-sufficient-conditions-for-a-minimum"><i class="fa fa-check"></i><b>9.2.3</b> Necessary and Sufficient Conditions for a Minimum</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="background.html"><a href="background.html#point-to-set-maps"><i class="fa fa-check"></i><b>9.3</b> Point-to-set Maps</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="background.html"><a href="background.html#marginal-functions-and-solution-maps"><i class="fa fa-check"></i><b>9.3.1</b> Marginal Functions and Solution Maps</a></li>
+<li class="chapter" data-level="9.3.2" data-path="background.html"><a href="background.html#jensens-inequality"><i class="fa fa-check"></i><b>9.3.2</b> Jensen’s Inequality</a></li>
+<li class="chapter" data-level="9.3.3" data-path="background.html"><a href="background.html#the-am-gm-inequality"><i class="fa fa-check"></i><b>9.3.3</b> The AM-GM Inequality</a></li>
+<li class="chapter" data-level="9.3.4" data-path="background.html"><a href="background.html#youngs-inequality"><i class="fa fa-check"></i><b>9.3.4</b> Young’s Inequality</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="background.html"><a href="background.html#background:fixedpoint"><i class="fa fa-check"></i><b>9.4</b> Fixed Point Problems and Methods</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="background.html"><a href="background.html#subsequential-limits"><i class="fa fa-check"></i><b>9.4.1</b> Subsequential Limits</a></li>
+<li class="chapter" data-level="9.4.2" data-path="background.html"><a href="background.html#differentiable-convex-functions"><i class="fa fa-check"></i><b>9.4.2</b> Differentiable Convex Functions</a></li>
+<li class="chapter" data-level="9.4.3" data-path="background.html"><a href="background.html#algorithms-as-point-to-set-maps"><i class="fa fa-check"></i><b>9.4.3</b> Algorithms as Point-to-set Maps</a></li>
+<li class="chapter" data-level="9.4.4" data-path="background.html"><a href="background.html#convergence-of-function-values"><i class="fa fa-check"></i><b>9.4.4</b> Convergence of Function Values</a></li>
+<li class="chapter" data-level="9.4.5" data-path="background.html"><a href="background.html#convergence-of-solutions"><i class="fa fa-check"></i><b>9.4.5</b> Convergence of Solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="background.html"><a href="background.html#rates-of-convergence"><i class="fa fa-check"></i><b>9.5</b> Rates of Convergence</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="background.html"><a href="background.html#over--and-under-relaxation"><i class="fa fa-check"></i><b>9.5.1</b> Over- and Under-Relaxation</a></li>
+<li class="chapter" data-level="9.5.2" data-path="background.html"><a href="background.html#acceleration-of-convergence-of-fixed-point-methods"><i class="fa fa-check"></i><b>9.5.2</b> Acceleration of Convergence of Fixed Point Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="background.html"><a href="background.html#matrix-algebra"><i class="fa fa-check"></i><b>9.6</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="background.html"><a href="background.html#eigenvalues-and-eigenvectors-of-symmetric-matrices"><i class="fa fa-check"></i><b>9.6.1</b> Eigenvalues and Eigenvectors of Symmetric Matrices</a></li>
+<li class="chapter" data-level="9.6.2" data-path="background.html"><a href="background.html#singular-values-and-singular-vectors"><i class="fa fa-check"></i><b>9.6.2</b> Singular Values and Singular Vectors</a></li>
+<li class="chapter" data-level="9.6.3" data-path="background.html"><a href="background.html#canonical-correlation"><i class="fa fa-check"></i><b>9.6.3</b> Canonical Correlation</a></li>
+<li class="chapter" data-level="9.6.4" data-path="background.html"><a href="background.html#modified-eigenvalue-problems"><i class="fa fa-check"></i><b>9.6.4</b> Modified Eigenvalue Problems</a></li>
+<li class="chapter" data-level="9.6.5" data-path="background.html"><a href="background.html#quadratic-on-a-sphere"><i class="fa fa-check"></i><b>9.6.5</b> Quadratic on a Sphere</a></li>
+<li class="chapter" data-level="9.6.6" data-path="background.html"><a href="background.html#generalized-inverses"><i class="fa fa-check"></i><b>9.6.6</b> Generalized Inverses</a></li>
+<li class="chapter" data-level="9.6.7" data-path="background.html"><a href="background.html#partitioned-matrices"><i class="fa fa-check"></i><b>9.6.7</b> Partitioned Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="background.html"><a href="background.html#matrix-differential-calculus"><i class="fa fa-check"></i><b>9.7</b> Matrix Differential Calculus</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="background.html"><a href="background.html#matrix-derivatives"><i class="fa fa-check"></i><b>9.7.1</b> Matrix Derivatives</a></li>
+<li class="chapter" data-level="9.7.2" data-path="background.html"><a href="background.html#derivatives-of-eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>9.7.2</b> Derivatives of Eigenvalues and Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="background.html"><a href="background.html#graphics-and-code"><i class="fa fa-check"></i><b>9.8</b> Graphics and Code</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="background.html"><a href="background.html#multidimensional-scaling"><i class="fa fa-check"></i><b>9.8.1</b> Multidimensional Scaling</a></li>
+<li class="chapter" data-level="9.8.2" data-path="background.html"><a href="background.html#cobweb-plots"><i class="fa fa-check"></i><b>9.8.2</b> Cobweb Plots</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -316,10 +354,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-convexity" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Using Convexity</h1>
-<div id="using-convexity-1" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Using Convexity</h2>
+<div id="using-convexity" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Using Convexity</h1>
+<div id="using-convexity-1" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Using Convexity</h2>
 <p>There are two major ways in which we use convexity in majorization.</p>
 <p>First, we can use the definition of convex functions directly. Thus we rely on the inequality
 <span class="math display">\[
@@ -349,8 +387,8 @@ subgradient of <span class="math inline">\(g\)</span> at <span class="math inlin
 sides by <span class="math inline">\(\pi(x),\)</span> and integrating gives the
 required result.
 <strong>QED</strong></p>
-<div id="tomography" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Tomography</h3>
+<div id="tomography" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Tomography</h3>
 <p>Suppose the function <span class="math inline">\(f\)</span> we must minimize is defined by
 <span class="math display">\[
 f(x)=h(\sum_{i=1}^n w_ix_i),
@@ -426,8 +464,8 @@ maximizing integrals is obviously a more general problem.</p>
 <p>#Tangential Majorization</p>
 <p>##Using the Tangent</p>
 </div>
-<div id="majorizing-and-minorizing-the-logarithm" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Majorizing and Minorizing the Logarithm</h3>
+<div id="majorizing-and-minorizing-the-logarithm" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Majorizing and Minorizing the Logarithm</h3>
 The logarithm is concave. Consequently, for all positive <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, we have the linear majorizer
 <span class="math display">\[
 \log x\leq\log y+\frac{1}{y}(x-y)=\log y+\frac{x}{y}-1.
@@ -463,8 +501,8 @@ Figure 2: Majorization and Minorization of Logarithm
 </center>
 <hr>
 </div>
-<div id="aspects-of-correlation-matrices" class="section level3" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Aspects of Correlation Matrices</h3>
+<div id="aspects-of-correlation-matrices" class="section level3" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Aspects of Correlation Matrices</h3>
 <p>Suppose <span class="math inline">\(\underline{x}_j,\cdots,\underline{x}_m\)</span> are random variables, and <span class="math inline">\(\mathcal{K}_j\)</span> are convex cones of Borel-measurable real-valued functions of <span class="math inline">\(\underline{x}_j\)</span> with finite variance. The elements of <span class="math inline">\(\mathcal{K}_j\)</span> are called <em>transformations</em> of the variable <span class="math inline">\(\underline{x}_j\)</span>.</p>
 <p>For instance, <span class="math inline">\(\mathcal{K}_j\)</span> can be the cone of monotone transformations, or the subspace of splines with given knots, or the subspace of quantifications of a categorical variable</p>
 <p>A transformation <span class="math inline">\(\kappa\in\mathcal{K}\)</span> is standardized if <span class="math inline">\(\mathbf{E}(\kappa(\underline{x}))=0\)</span> and <span class="math inline">\(\mathbf{E}(\kappa^2(\underline{x}))=1\)</span>. Standardized transformations define a sphere <span class="math inline">\(\mathcal{S}_j\)</span>.</p>
@@ -485,10 +523,10 @@ over all standardized transformations, which we do with block relaxation using <
 <p>This algorithm generalizes ACE, CA, and many other forms of MVA with OS. It was proposed first by <a href="">De Leeuw [1988a]</a>, with additional theretical results in <a href="">De Leeuw [1988b]</a>. The function <span class="math inline">\(f\)</span> can be based
 on multiple correlations, eigenvalues, determinants, and so on.</p>
 </div>
-<div id="partially-observed-linear-systems" class="section level3" number="3.1.4">
-<h3><span class="header-section-number">3.1.4</span> Partially Observed Linear Systems</h3>
-<p><span class="citation"><a href="#ref-deleeuw_C_04a" role="doc-biblioref">J. De Leeuw</a> (<a href="#ref-deleeuw_C_04a" role="doc-biblioref">2004</a>)</span> discusses the problem of finding an approximate solution to the homogeneous linear system <span class="math inline">\(AB=0\)</span> when there are cone and orthonormality restrictions on the columns of <span class="math inline">\(A\)</span> and when some elements of <span class="math inline">\(B\)</span> are restricted to known values, most commonly to zero. Think of the columns of <span class="math inline">\(A\)</span> as variables or sets of variables, and think of <span class="math inline">\(B\)</span> as regression coefficients or weights.</p>
-<p>The loss function used by <span class="citation"><a href="#ref-deleeuw_C_04a" role="doc-biblioref">J. De Leeuw</a> (<a href="#ref-deleeuw_C_04a" role="doc-biblioref">2004</a>)</span> is
+<div id="partially-observed-linear-systems" class="section level3" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Partially Observed Linear Systems</h3>
+<p><span class="citation"><a href="#ref-deleeuw_C_04a" role="doc-biblioref">De Leeuw</a> (<a href="#ref-deleeuw_C_04a" role="doc-biblioref">2004</a>)</span> discusses the problem of finding an approximate solution to the homogeneous linear system <span class="math inline">\(AB=0\)</span> when there are cone and orthonormality restrictions on the columns of <span class="math inline">\(A\)</span> and when some elements of <span class="math inline">\(B\)</span> are restricted to known values, most commonly to zero. Think of the columns of <span class="math inline">\(A\)</span> as variables or sets of variables, and think of <span class="math inline">\(B\)</span> as regression coefficients or weights.</p>
+<p>The loss function used by <span class="citation"><a href="#ref-deleeuw_C_04a" role="doc-biblioref">De Leeuw</a> (<a href="#ref-deleeuw_C_04a" role="doc-biblioref">2004</a>)</span> is
 <span class="math display">\[
 f(R)\mathop{=}\limits^{\Delta}\min_{B\in\mathcal{B}}\mathbf{tr} B&#39;RB,\tag{1}
 \]</span>
@@ -505,7 +543,7 @@ then the subgradient of <span class="math inline">\(f\)</span> at <span class="m
 \]</span>
 The subgradient inequality now says that for all correlation matrices <span class="math inline">\(R\)</span> and <span class="math inline">\(S\)</span> we have <span class="math inline">\(f(R)\leq \mathbf{tr}\ \nabla R\)</span>
 for all <span class="math inline">\(\nabla\in\partial f(S)\)</span>.</p>
-<p>The constraints on <span class="math inline">\(A\)</span> discussed in <span class="citation"><a href="#ref-deleeuw_C_04a" role="doc-biblioref">J. De Leeuw</a> (<a href="#ref-deleeuw_C_04a" role="doc-biblioref">2004</a>)</span> make it possible to fit a wide variety of multivariate analysis techniques. Columns of <span class="math inline">\(A\)</span>, or variables, are partitioned into blocks. Some blocks contain only a single variable, such variables are called <em>single</em>. Some blocks are constrained to be orthoblocks, which means that the variabes in the block are required to be orthonormal. Single variables may be cone-constrained, which means the corresponding column of <span class="math inline">\(A\)</span> is
+<p>The constraints on <span class="math inline">\(A\)</span> discussed in <span class="citation"><a href="#ref-deleeuw_C_04a" role="doc-biblioref">De Leeuw</a> (<a href="#ref-deleeuw_C_04a" role="doc-biblioref">2004</a>)</span> make it possible to fit a wide variety of multivariate analysis techniques. Columns of <span class="math inline">\(A\)</span>, or variables, are partitioned into blocks. Some blocks contain only a single variable, such variables are called <em>single</em>. Some blocks are constrained to be orthoblocks, which means that the variabes in the block are required to be orthonormal. Single variables may be cone-constrained, which means the corresponding column of <span class="math inline">\(A\)</span> is
 constrained to be in a cone in <span class="math inline">\(\mathbb{R}^n\)</span>. And orthoblocks may be subspace-constrained, which means all columns must be in the same subspace.</p>
 <p>We mention some illustrative special cases here. Common factor analysis of a data matrix <span class="math inline">\(Y\)</span> means finding an approximate solution to the system
 <span class="math display">\[
@@ -543,8 +581,8 @@ and in homogeneity analysis it is
 \sigma(X,Q_1\cdots,Q_m,\Gamma_1,\cdots,\Gamma_j)=\sum_{j=1}^m\|X-Q_j\Gamma_j\|^2.
 \]</span></p>
 </div>
-<div id="gpower" class="section level3" number="3.1.5">
-<h3><span class="header-section-number">3.1.5</span> Gpower</h3>
+<div id="gpower" class="section level3" number="4.1.5">
+<h3><span class="header-section-number">4.1.5</span> Gpower</h3>
 <p>** Rewrite for minimizing a concave function 02/21/15 **</p>
 <p>Consider the problem of maximizing a convex function <span class="math inline">\(f\)</span> on a compact set <span class="math inline">\(\mathbf{X}\)</span>. The function is not necessarily differentiable, the constraint set is not necessarily convex. Define
 <span class="math display">\[
@@ -590,10 +628,10 @@ then, from <span class="math inline">\(\text{(1)}\)</span>,
 \]</span></p>
 </div>
 </div>
-<div id="broadening-the-scope" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Broadening the Scope</h2>
-<div id="differences-of-convex-functions" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Differences of Convex Functions</h3>
+<div id="broadening-the-scope" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Broadening the Scope</h2>
+<div id="differences-of-convex-functions" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Differences of Convex Functions</h3>
 <p>For d.c. functions (differences of convex functions) such as <span class="math inline">\(\phi=\alpha-\beta\)</span> we can write
 <span class="math inline">\(\phi(\omega)\leq\alpha(\omega)-\beta(\xi)-\eta&#39;(\omega-\xi),\)</span>
 with <span class="math inline">\(\eta\in\partial\beta(\xi).\)</span>
@@ -622,21 +660,21 @@ The iteration radius at a fixed point turns out to be
 \]</span>
 For <span class="math inline">\(h(x)=|x|\)</span> we have <span class="math inline">\(h&#39;(x)=\pm 1\)</span> if <span class="math inline">\(x\not= 0\)</span>, and thus <span class="math inline">\(x^{(k+1)}=\pm 1.\)</span> The algorithm finishes in a single step, with the correct solution.</p>
 </div>
-<div id="convexifiable-functions" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Convexifiable Functions</h3>
+<div id="convexifiable-functions" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Convexifiable Functions</h3>
 </div>
-<div id="piecewise-linear-majorization" class="section level3" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Piecewise Linear Majorization</h3>
+<div id="piecewise-linear-majorization" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Piecewise Linear Majorization</h3>
 </div>
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-deleeuw_C_04a" class="csl-entry">
-———. 2004. <span>“Least Squares Optimal Scaling of Partially Observed Linear Systems.”</span> In <em>Recent Developments in Structural Equation Models</em>, edited by K. van Montfort, J. Oud, and A. Satorra. Dordrecht, Netherlands: Kluwer Academic Publishers. <a href="http://www.stat.ucla.edu/~deleeuw/janspubs/2004/chapters/deleeuw_C_04a.pdf">http://www.stat.ucla.edu/~deleeuw/janspubs/2004/chapters/deleeuw_C_04a.pdf</a>.
+———. 2004. <span>“Least Squares Optimal Scaling of Partially Observed Linear Systems.”</span> In <em>Recent Developments in Structural Equation Models</em>, edited by K. van Montfort, J. Oud, and A. Satorra. Dordrecht, Netherlands: Kluwer Academic Publishers. <a href="http://deleeuwpdx.net/janspubs/2004/chapters/deleeuw_C_04a.pdf">http://deleeuwpdx.net/janspubs/2004/chapters/deleeuw_C_04a.pdf</a>.
 </div>
 <div id="ref-dempster_laird_rubin_77" class="csl-entry">
-Dempster, A. P., N. M. Laird, and D. B. Rubin. 1977. <span>“<span class="nocase">Maximum Likelihood from Incomplete Data via the EM algorithm (with Discussion)</span>.”</span> <em>Journal of the Royal Statistical Society Series B</em> 39: 1–38.
+Dempster, A. P., N. M. Laird, and D. B. Rubin. 1977. <span>“<span class="nocase">Maximum Likelihood for Incomplete Data via the EM Algorithm</span>.”</span> <em>Journal of the Royal Statistical Society</em> B39: 1–38.
 </div>
 <div id="ref-gifi_B_90" class="csl-entry">
 Gifi, A. 1990. <em>Nonlinear Multivariate Analysis</em>. New York, N.Y.: Wiley.
@@ -647,7 +685,7 @@ Gifi, A. 1990. <em>Nonlinear Multivariate Analysis</em>. New York, N.Y.: Wiley.
           </div>
         </div>
       </div>
-<a href="blockrelaxation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="coordinatedescent.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="quadratic-majorization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

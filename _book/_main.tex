@@ -136,7 +136,7 @@
 
 \title{Block Relaxation Methods in Statistics}
 \author{Jan de Leeuw}
-\date{First created May 03, 2016. Last update July 12, 2021}
+\date{First created May 03, 2016. Last update July 14, 2021}
 
 \begin{document}
 \maketitle
@@ -203,7 +203,7 @@ Many of the remaining examples are taken from multivariate statistical analysis,
 
 We take the point of view in this book that having global convergence of an iterative algorithm, i.e.~convergence from an arbitrary starting point, is a desirable property. But it is neither necessary nor sufficient for the usefulness of the algorithm, because in addition one needs information about its speed of convergence. We try to give as much information as possible about \emph{convergence speed} and \emph{complexity} in our presentation of the examples.
 
-It should be noted that this book is a corrected, updated, and expanded version of a twenty-five year old chapter in a conference proceedings volume (\protect\hyperlink{ref-deleeuw_C_94c}{J. De Leeuw 1994}). It will not be possible to erase all the traces of these humble beginnings. Specifically, references will often be to material from before 1994, and more recent work will probably be less completely covered.
+It should be noted that this book is a corrected, updated, and expanded version of a twenty-five year old chapter in a conference proceedings volume (\protect\hyperlink{ref-deleeuw_C_94c}{De Leeuw 1994}). It will not be possible to erase all the traces of these humble beginnings. Specifically, references will often be to material from before 1994, and more recent work will probably be less completely covered.
 
 Much of the material in this book is pasted together from published and unpublished papers and reports. This may lead to inconsistencies in the notation and to annoying duplications. Over time I will eliminate these blemishes as much as possible.
 
@@ -228,7 +228,7 @@ In the special case in which blocks consist of only one coordinate we speak of t
 \emph{coordinate descent} (or \emph{CD}) method. If we are maximizing then it is \emph{coordinate ascent} (or \emph{CA}). The cyclic versions are \emph{CCD} and
 \emph{CCA}.
 
-\emph{Alternating Least Squares} (or \emph{ALS}) methods are block relaxation methods in which each minimization subproblem is a linear or nonlinear least squares problem. As far as we know, the term ``Alternating Least Squares'' was first used in \protect\hyperlink{ref-deleeuw_R_68d}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_R_68d}{1968}).
+\emph{Alternating Least Squares} (or \emph{ALS}) methods are block relaxation methods in which each minimization subproblem is a linear or nonlinear least squares problem. As far as we know, the term ``Alternating Least Squares'' was first used in \protect\hyperlink{ref-deleeuw_R_68d}{De Leeuw} (\protect\hyperlink{ref-deleeuw_R_68d}{1968}).
 There certainly were ALS methods before 1968, but the systematic use of these techniques in psychometrics and multivariate analysis started around that time.
 The inspiration clearly was the pioneering work of \protect\hyperlink{ref-kruskal_64a}{Kruskal} (\protect\hyperlink{ref-kruskal_64a}{1964a}), \protect\hyperlink{ref-kruskal_64b}{Kruskal} (\protect\hyperlink{ref-kruskal_64b}{1964b}) in nonmetric scaling.
 De Leeuw, Young, and Takane started the ALSOS system of techniques and programs around 1973
@@ -236,9 +236,9 @@ De Leeuw, Young, and Takane started the ALSOS system of techniques and programs 
 
 ALS works well for fitting the usual linear, bilinear, and multilinear forms to data. Thus it covers much of classical multivariate analysis and its extensions to higher dimensional arrays. But pretty early on problems arose in Euclidean multidimensional scaling, which required fitting quadratic forms or, even worse, square roots of quadratic forms to data. Straightforward ALS could not be used, because the standard matrix calculations of least squares and eigen decomposition did not apply. \protect\hyperlink{ref-takane_young_deleeuw_A_77}{Takane, Young, and De Leeuw} (\protect\hyperlink{ref-takane_young_deleeuw_A_77}{1977}) circumvented the problem by fitting squared distances using cyclic coordinate descent, which only involved unidimensional minimizations.
 
-Around 1975, however, De Leeuw greatly extended the scope of ALS by using \emph{majorization}. This was first applied to Euclidean multidimensional scaling by \protect\hyperlink{ref-deleeuw_C_77}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_C_77}{1977}), but it became clear early on that majorization was a general technique for algorithm construction that also covered, for example, the EM algorithm, which was discovered around the same time (\protect\hyperlink{ref-dempster_laird_rubin_77}{Dempster, Laird, and Rubin} (\protect\hyperlink{ref-dempster_laird_rubin_77}{1977})). In each iteration of a majorization algorithm we construct a \emph{surrogate function} (\protect\hyperlink{ref-lange_hunter_yang_00}{Lange, Hunter, and Yang} (\protect\hyperlink{ref-lange_hunter_yang_00}{2000})) or \emph{majorization} (\protect\hyperlink{ref-deleeuw_C_94c}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_C_94c}{1994}), \protect\hyperlink{ref-heiser_95}{Heiser} (\protect\hyperlink{ref-heiser_95}{1995})) that lies above the function we are minimizing and touches it in the current iterate. We then minimize this surrogate function to find an update of the current iterate, then construct a new majorization function in that update, and so on. The majorization function, if suitably chosen, can often be minimized using ALS techniques.
+Around 1975, however, De Leeuw greatly extended the scope of ALS by using \emph{majorization}. This was first applied to Euclidean multidimensional scaling by \protect\hyperlink{ref-deleeuw_C_77}{De Leeuw} (\protect\hyperlink{ref-deleeuw_C_77}{1977}), but it became clear early on that majorization was a general technique for algorithm construction that also covered, for example, the EM algorithm, which was discovered around the same time (\protect\hyperlink{ref-dempster_laird_rubin_77}{Dempster, Laird, and Rubin} (\protect\hyperlink{ref-dempster_laird_rubin_77}{1977})). In each iteration of a majorization algorithm we construct a \emph{surrogate function} (\protect\hyperlink{ref-lange_hunter_yang_00}{Lange, Hunter, and Yang} (\protect\hyperlink{ref-lange_hunter_yang_00}{2000})) or \emph{majorization} (\protect\hyperlink{ref-deleeuw_C_94c}{De Leeuw} (\protect\hyperlink{ref-deleeuw_C_94c}{1994}), \protect\hyperlink{ref-heiser_95}{Heiser} (\protect\hyperlink{ref-heiser_95}{1995})) that lies above the function we are minimizing and touches it in the current iterate. We then minimize this surrogate function to find an update of the current iterate, then construct a new majorization function in that update, and so on. The majorization function, if suitably chosen, can often be minimized using ALS techniques.
 
-\protect\hyperlink{ref-deleeuw_C_94c}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_C_94c}{1994}) argues there is another important class of algorithms extending ALS. It is intermediate, since it is a special case of block relaxation and it contains majorization as a special case. In \emph{augmentation methods} for the minimization of a real valued function we introduce an \emph{augmentation}, which uses an additional vector of variables, with a surrogate function on the product of both sets, such that the original objective function is the minimum of the surrogate function over the augmenting block of variables. We then apply block relaxation to the augmented function.
+\protect\hyperlink{ref-deleeuw_C_94c}{De Leeuw} (\protect\hyperlink{ref-deleeuw_C_94c}{1994}) argues there is another important class of algorithms extending ALS. It is intermediate, since it is a special case of block relaxation and it contains majorization as a special case. In \emph{augmentation methods} for the minimization of a real valued function we introduce an \emph{augmentation}, which uses an additional vector of variables, with a surrogate function on the product of both sets, such that the original objective function is the minimum of the surrogate function over the augmenting block of variables. We then apply block relaxation to the augmented function.
 
 Ortega and Rheinboldt majorization, Kantorovich,
 Toland duality, decomposition, quasi-linearization, Marshall-Olkin-Arnold, NIPALS, Moreau coupling functions
@@ -262,6 +262,7 @@ In the optimization and mathematical programming literature, at least until rece
 In the first place block relaxation methods often involve simple computations in each of their iterations. As a consequence they can tackle problems with a large number of variables, and they are often easily parallelized. In the second place, with the advent of personal computers it is not necessarily a problem any more to let an iterative process run for days in the background. Mainframe computer centers used to frown on such practices. Third, they are now many specific large problems characterized by a great deal of \emph{sparseness}, which make block and coordinate methods natural alternatives because they can take this sparseness into account. And finally, simple computations in each of the steps make it easy to write ad hoc programs in interpreted special purpose languages such as \texttt{R}. Such programs can take the special structure of the problem they are trying to solve into account, and this makes them more efficient compared to general purpose optimization methods which may have faster convergence rates.
 
 Statistics optimization
+
 R optimization
 
 \hypertarget{blockrelaxation}{%
@@ -490,7 +491,8 @@ In ordinary block relaxation
 \]
 but in generalized block relaxation we could update \(x_s\) by taking one or more steps of a stable and convergent iterative algorithm for minimizing \(f(x_1,\cdots,x_{s-1},z,x_{s+1},\cdots,x_p)\) over \(z\in\mathcal{X}_s\).
 
-\#\#\#Rasch Model\{\#blockrelaxation:generalizedblockrelaxation:raschmodel\}
+\hypertarget{blockrelaxation:generalizedblockrelaxation:raschmodel}{%
+\subsection{Rasch Model}\label{blockrelaxation:generalizedblockrelaxation:raschmodel}}
 
 In the item analysis model proposed by Rasch, we observe
 a binary \(n\times m\) matrix \(Y=\{y_{ij}\}\). The (unconditional) log-likelihood is
@@ -521,7 +523,8 @@ x_i^{(k+1)}=x_i^{(k)}-\frac{\pi_{i\star}(x^{(k)},z^{(k)})-y_{i\star}}
 \]
 and similarly for \(z_j^{(k+1)}.\)
 
-\#\#\#Nonlinear Least Squares\{\#blockrelaxation:generalizedblockrelaxation:nonlinearleastsquares\}
+\hypertarget{blockrelaxation:generalizedblockrelaxation:nonlinearleastsquares}{%
+\subsection{Nonlinear Least Squares}\label{blockrelaxation:generalizedblockrelaxation:nonlinearleastsquares}}
 
 Consider the problem of minimizing
 \[
@@ -535,7 +538,8 @@ given \(\theta\) is again linear regression.
 The best way of finding the optimal \(\theta\) for given \(\beta\) will typically depend on a more precise analysis
 of the problem, but one obvious alternative is to linearize the \(\phi_j\) and apply Gauss-Newton.
 
-\#\#Block Order\{\#blockrelaxation:blockorder\}
+\hypertarget{blockrelaxation:blockorder}{%
+\section{Block Order}\label{blockrelaxation:blockorder}}
 
 If there are more than two blocks, we can move
 through them in different ways. In analogy with linear methods
@@ -616,11 +620,14 @@ G_s(\overline\omega)=G_s(\omega)
 were used by
 \protect\hyperlink{ref-meng_rubin_93}{Meng and Rubin} (\protect\hyperlink{ref-meng_rubin_93}{1993}). They call the resulting algorithm the ECM algorithm.
 
-\#\#\#Projecting Blocks\{\#blockrelaxation:blockorder:projectingblocks\}
+\hypertarget{blockrelaxation:blockorder:projectingblocks}{%
+\subsection{Projecting Blocks}\label{blockrelaxation:blockorder:projectingblocks}}
 
-\#\#Rate of Convergence\{\#blockrelaxation:rateofconvergence\}
+\hypertarget{blockrelaxation:rateofconvergence}{%
+\section{Rate of Convergence}\label{blockrelaxation:rateofconvergence}}
 
-\#\#\#LU-form\{\#blockrelaxation:rateofconvergence:luform\}
+\hypertarget{blockrelaxation:rateofconvergence:luform}{%
+\subsection{LU-form}\label{blockrelaxation:rateofconvergence:luform}}
 
 In block relaxation methods, including generalized block methods, we update \(x=(x_1,\cdots,x_n)\)
 to \(y=(y_1,\cdots,y_n)\)
@@ -706,7 +713,8 @@ and if \(\mathcal{D}_1F_1=0\) and \(\mathcal{D}_2F_2=0\) this is
 \]
 Thus the non-zero eigenvalues are the eigenvalues of \((\mathcal{D}_1F_2)(\mathcal{D}_2F_1)\).
 
-\#\#\#Product Form\{\#blockrelaxation:rateofconvergence:productform\}
+\hypertarget{blockrelaxation:rateofconvergence:productform}{%
+\subsection{Product Form}\label{blockrelaxation:rateofconvergence:productform}}
 
 There is another way to derive the
 formulas from the previous section. We use the fact that the algorithmic map \(\mathcal{A}\)
@@ -771,7 +779,8 @@ A_1&0&\cdots&0&0\\
 In fact if \(\lambda\) is an eigenvalue of \(\Gamma(A_1,\cdots,A_p)\) then \(\lambda^p\) is an eigenvalue of \(A_pA_{p-1}\cdots A_1\), and if \(\mu\) is a eigenvalue of \(A_pA_{p-1}\cdots A_1\)
 then the \(p\) solutions of \(\lambda^p=\mu\) are eigenvalues of \(\Gamma(A_1,\cdots,A_p)\).
 
-\#\#\#Block Optimization Methods\{\#blockrelaxation:rateofconvergence:blockoptimizationmethods\}
+\hypertarget{blockrelaxation:rateofconvergence:blockoptimizationmethods}{%
+\subsection{Block Optimization Methods}\label{blockrelaxation:rateofconvergence:blockoptimizationmethods}}
 
 The results in the previous two sections were for general block modification methods. We now specialize to block relaxation methods for unconstrained differentiable optimization problems.
 The rate of convergence of block relaxation algorithms depends on
@@ -862,7 +871,8 @@ which gives the same result as obtained from the LU-form.
 The code in \texttt{blockRate.R} in Code Segment 3 computes \(\mathcal{M}(x)\) in one of four ways. We can use the analytical form of the Hessian or compute it numerically, and we can use the LU-form or the product form. If we compute the Hessian numerically we give the function we are minimizing as an argument, if we use the Hessian analytically we pass a function for evaluating it
 at \(x\).
 
-\#\#\#Block Newton Methods\{\#blockrelaxation:rateofconvergence:blocknewtonmethods\}
+\hypertarget{blockrelaxation:rateofconvergence:blocknewtonmethods}{%
+\subsection{Block Newton Methods}\label{blockrelaxation:rateofconvergence:blocknewtonmethods}}
 
 In block Newton methods we update using
 \[
@@ -879,7 +889,8 @@ update.
 
 Of course the single-step block Newton method does not guarantee decrease of the loss function, and consequently needs to be safeguarded in some way.
 
-\#\#\#Constrained Problems\{\#blockrelaxation:rateofconvergence:constrainedproblems\}
+\hypertarget{blockrelaxation:rateofconvergence:constrainedproblems}{%
+\subsection{Constrained Problems}\label{blockrelaxation:rateofconvergence:constrainedproblems}}
 
 Similar calculations can also be carried out in the case
 of constrained optimization, i.e.~when the subproblems optimize
@@ -940,9 +951,11 @@ V_{1r}
 \]
 which can easily be solved for \(U_{1r}\) and \(V_{1r}\).
 
-\#\#Additional Examples\{\#blockrelaxation:additionalexamples\}
+\hypertarget{blockrelaxation:additionalexamples}{%
+\section{Additional Examples}\label{blockrelaxation:additionalexamples}}
 
-\#\#\#Canonical Correlation\{\#blockrelaxation:additionalexamples:canonicalcorrelation\}
+\hypertarget{blockrelaxation:additionalexamples:canonicalcorrelation}{%
+\subsection{Canonical Correlation}\label{blockrelaxation:additionalexamples:canonicalcorrelation}}
 
 Canonical Correlation is a matrix problem in which the notion
 of blocks of variables is especially natural. The problem can
@@ -972,7 +985,8 @@ where \(\tilde\Delta^{(0)}\) consists of the columns corresponding with the domi
 
 Now consider \[\Xi^{(k)}=A^{(k)}((A^{(k)})'A^{(k)})^{-\frac12}=\Lambda^k\Delta_0(\Delta_0'\Lambda^{2k}\Delta_0)^{-\frac12}\]
 
-\#\#\#Low Rank Approximation\{\#blockrelaxation:additionalexamples:lowrankapproximation\}
+\hypertarget{blockrelaxation:additionalexamples:lowrankapproximation}{%
+\subsection{Low Rank Approximation}\label{blockrelaxation:additionalexamples:lowrankapproximation}}
 
 Given an \(n\times m\) matrix \(X\) we want to minimize
 \[
@@ -1030,7 +1044,8 @@ A^+&=XB^+=XX'A(A'XX'A)^{-\frac12},
 A^+(B^+)'=X\{X'A(A'XX'A)^{-1}A'X\}
 \]
 
-\#\#\#Optimal Scaling with LINEALS\{\#blockrelaxation:additionalexamples:optimalscalingwithlineals\}
+\hypertarget{blockrelaxation:additionalexamples:optimalscalingwithlineals}{%
+\subsection{Optimal Scaling with LINEALS}\label{blockrelaxation:additionalexamples:optimalscalingwithlineals}}
 
 Suppose we have \(m\) categorical variables, where variable \(j\) has \(k_j\) categories. Also
 suppose \(C_{j\ell}\) are the \(k_j\times k_\ell\) cross tables and \(D_j\) are the diagonal matrices with univariate marginals. Both the \(C_{jl}\) and the \(D_j\)
@@ -1062,7 +1077,7 @@ C_{j\ell}y_\ell&=\rho_{j\ell}(y_1,\cdots,y_m)D_j y_j,
 \end{align*}
 i.e.~if and only if the regressions between the quantified variables are both linear.
 
-\protect\hyperlink{ref-deleeuw_A_88a}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_A_88a}{1988}) has suggested to find standardized quantifications in such a way that the loss function
+\protect\hyperlink{ref-deleeuw_A_88a}{De Leeuw} (\protect\hyperlink{ref-deleeuw_A_88a}{1988}) has suggested to find standardized quantifications in such a way that the loss function
 \[
 f(y_1,\cdots,y_m)\sum_{j=1}^m\sum_{\ell=1}^m(\eta_{j\ell}^2(y_1,\cdots,y_m)-\rho_{j\ell}^2(y_1,\cdots,y_m))
 \]
@@ -1076,7 +1091,8 @@ over all \(y_j\) with \(e'D_jy_j=0\) and \(y_j'D_j^{\ }y_j^{\ }=1\). Thus each s
 amounts to finding the eigenvector corresponding with the smallest eigenvalue of the matrix
 in \(\text{(1)}\).
 
-\#\#\#Multinormal Maximum Likelihood\{\#blockrelaxation:additionalexamples:multinormalmaximumlikelihood\}
+\hypertarget{blockrelaxation:additionalexamples:multinormalmaximumlikelihood}{%
+\subsection{Multinormal Maximum Likelihood}\label{blockrelaxation:additionalexamples:multinormalmaximumlikelihood}}
 
 The negative log-likelihood for a multinormal random sample is
 \[
@@ -1119,9 +1135,11 @@ Taking expected values in Equation \ref{E:And2} gives
 \text{tr }\Sigma^{-1}\Sigma_s\Sigma^{-1}\Sigma_t.
 \]
 
-\#\#\#Array Multinormals\{\#blockrelaxation:additionalexamples:arraymultinormals\}
+\hypertarget{blockrelaxation:additionalexamples:arraymultinormals}{%
+\subsection{Array Multinormals}\label{blockrelaxation:additionalexamples:arraymultinormals}}
 
-\#\#\#Rasch Model\{\#blockrelaxation:additionalexamples:raschmodel\}
+\hypertarget{blockrelaxation:additionalexamples:raschmodel}{%
+\subsection{Rasch Model}\label{blockrelaxation:additionalexamples:raschmodel}}
 
 The Rasch example has a rather simple structure for the second
 derivatives of the negative log-likelihood \(f\) defined in section @(blockrelaxation:generalizedblockrelaxation:raschmodel).
@@ -1139,9 +1157,11 @@ with elements \(\pi_{ij}(x)(1-\pi_{ij}(x))\).The speed of convergence will
 depend on the maximum correlation, i.e.~on the degree in which the
 off-diagonal matrix \(\mathcal{D}_{12}f(x)\) deviates from independence.
 
-\#\#Some Counterexamples\{\#blockrelaxation:somecounterexamples\}
+\hypertarget{blockrelaxation:somecounterexamples}{%
+\section{Some Counterexamples}\label{blockrelaxation:somecounterexamples}}
 
-\#\#\#Convergence to a Saddle\{\#blockrelaxation:somecounterexamples:convergencetoasaddle\}
+\hypertarget{blockrelaxation:somecounterexamples:convergencetoasaddle}{%
+\subsection{Convergence to a Saddle}\label{blockrelaxation:somecounterexamples:convergencetoasaddle}}
 
 Convergence, even it occurs, does not need to be towards a minimum. Consider
 \[
@@ -1199,7 +1219,8 @@ has a saddle point at \((2,2)\), and
 \begin{bmatrix}0&0\\0&0\end{bmatrix}.
 \]
 
-\#\#\#Convergence to Incorrect Solutions\{\#blockrelaxation:somecounterexamples:convergencetoincorrectsolutions\}
+\hypertarget{blockrelaxation:somecounterexamples:convergencetoincorrectsolutions}{%
+\subsection{Convergence to Incorrect Solutions}\label{blockrelaxation:somecounterexamples:convergencetoincorrectsolutions}}
 
 Convergence needs not be towards a minimum, even if the
 function is convex. This example is an elaboration of the one in \protect\hyperlink{ref-abatzoglou_odonnell_82}{Abatzoglou and O'Donnell} (\protect\hyperlink{ref-abatzoglou_odonnell_82}{1982}).
@@ -1352,7 +1373,8 @@ The function is in red, the line \(b^{(k+1)}=b^{(k)}\) in blue. Thus over most o
 
 Figure 1: The UP, LOW, MID and RANDOM rules
 
-\#\#\#Non-convergence and Cycling\{\#blockrelaxation:somecounterexamples:nonconvergenceandcycling\}
+\hypertarget{blockrelaxation:somecounterexamples:nonconvergenceandcycling}{%
+\subsection{Non-convergence and Cycling}\label{blockrelaxation:somecounterexamples:nonconvergenceandcycling}}
 
 Coordinate descent may not converge at all, even if the
 function is differentiable.
@@ -1430,7 +1452,8 @@ function value is \(-3,\) the global minimum. At these two points all three part
 
 Powell gives some additional examples which show the same sort of cycling behaviour, but are somewhat smoother.
 
-\#\#\#Sublinear Convergence\{\#blockrelaxation:somecounterexamples:sublinearconvergence\}
+\hypertarget{blockrelaxation:somecounterexamples:sublinearconvergence}{%
+\subsection{Sublinear Convergence}\label{blockrelaxation:somecounterexamples:sublinearconvergence}}
 
 Convergence can be sublinear.
 
@@ -1452,13 +1475,16 @@ The sequence converges to zero, and by l'Hopitål's rule
 This leads to very slow convergence. The reason is that
 the matrix of second derivatives of \(\psi\) is singular at the origin.
 
-\#Coordinate Descent\{\#coordinatedescent\}
+\hypertarget{coordinatedescent}{%
+\chapter{Coordinate Descent}\label{coordinatedescent}}
 
-\#\#Introduction\{\#coordinatedescent:introduction\}
+\hypertarget{coordinatedescent:introduction}{%
+\section{Introduction}\label{coordinatedescent:introduction}}
 
 We discuss coordinate descent and ascent in a separate chapter, because it is a very important special case of block relaxation, with many really interesting examples.
 
-\#\#Convergence rate\{\#coordinatedescent:convergencerate\}
+\hypertarget{coordinatedescent:convergencerate}{%
+\section{Convergence rate}\label{coordinatedescent:convergencerate}}
 
 The product form of the derivative of the algorithmic map for coordinate descent is
 \[
@@ -1469,7 +1495,8 @@ The product form of the derivative of the algorithmic map for coordinate descent
 \]
 where the \(e_s\) are unit vectors (all elements zero, except for element \(s\), which is equal to one).
 
-\#\#Examples\{\#coordinatedescent:examples\}
+\hypertarget{coordinatedescent:examples}{%
+\section{Examples}\label{coordinatedescent:examples}}
 
 \#\#\#The Cartesian Folium\{\#coordinatedescent:examples:thecartesianfolium\}
 
@@ -1500,7 +1527,7 @@ See Figure 1 for contour plots of sections of \(f\) on two different scales.
 
 Figure 1: Folium, two scales, two sections
 
-Now apply coordinate descent (\protect\hyperlink{ref-deleeuw_U_07e}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_U_07e}{2007b})).
+Now apply coordinate descent (\protect\hyperlink{ref-deleeuw_U_07e}{De Leeuw} (\protect\hyperlink{ref-deleeuw_U_07e}{2007b})).
 The minimum over \(x\) for fixed \(y\) only exists if \(y>0\), in which case it is attained at \(\sqrt{y}\). In the same way,
 the minimum over \(y\) for fixed \(x>0\) is attained at \(\sqrt{x}\). Thus the algorithm is simply
 \begin{align*}
@@ -1950,7 +1977,7 @@ f(x_1,x_2)=\sum_{j=1}^m\sum_{\ell=1}^mw_{j\ell}(g_j(x_1)-h_j(x_2))(g_\ell(x_1)-h
 \]
 Of course \(x_1\) and \(x_2\) can be further partitioned into blocks if that is convenient. Even more structure is introduced into the ALS problem when the functions \(g_j\) and \(h_j\) are polynomials or multilinear functions.
 
-As explained in section \ref{introduction:somehistory} the term \emph{Alternating Least Squares} was first used in \protect\hyperlink{ref-deleeuw_R_68d}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_R_68d}{1968}). There certainly were ALS methods before 1968. Examples are the missing data methods in factorial analysis of variance pioneered by \protect\hyperlink{ref-yates_33}{Yayes} (\protect\hyperlink{ref-yates_33}{1933}), the iterative principal factor analysis method of \protect\hyperlink{ref-thomson_34}{Thomson} (\protect\hyperlink{ref-thomson_34}{1934}), or the MINRES method for factor analysis by \protect\hyperlink{ref-harman_jones_66}{Harman and Jones} (\protect\hyperlink{ref-harman_jones_66}{1966}). The systematic use of ALS techniques in psychometrics and multivariate analysis started after
+As explained in section \ref{introduction:somehistory} the term \emph{Alternating Least Squares} was first used in \protect\hyperlink{ref-deleeuw_R_68d}{De Leeuw} (\protect\hyperlink{ref-deleeuw_R_68d}{1968}). There certainly were ALS methods before 1968. Examples are the missing data methods in factorial analysis of variance pioneered by \protect\hyperlink{ref-yates_33}{Yayes} (\protect\hyperlink{ref-yates_33}{1933}), the iterative principal factor analysis method of \protect\hyperlink{ref-thomson_34}{Thomson} (\protect\hyperlink{ref-thomson_34}{1934}), or the MINRES method for factor analysis by \protect\hyperlink{ref-harman_jones_66}{Harman and Jones} (\protect\hyperlink{ref-harman_jones_66}{1966}). The systematic use of ALS techniques in psychometrics and multivariate analysis started after
 the pioneering work of \protect\hyperlink{ref-kruskal_64a}{Kruskal} (\protect\hyperlink{ref-kruskal_64a}{1964a}), \protect\hyperlink{ref-kruskal_64b}{Kruskal} (\protect\hyperlink{ref-kruskal_64b}{1964b}), \protect\hyperlink{ref-kruskal_65}{Kruskal} (\protect\hyperlink{ref-kruskal_65}{1965}) in nonmetric multidimensional scaling.
 De Leeuw, Young, and Takane started the ALSOS system of techniques and programs around 1973
 (see \protect\hyperlink{ref-young_deleeuw_takane_C_80}{F. W. Young, De Leeuw, and Takane} (\protect\hyperlink{ref-young_deleeuw_takane_C_80}{1980})),
@@ -2321,7 +2348,7 @@ There is \texttt{R} code for Yates augmentation in the file \texttt{yates.R}.
 \#\#\#Optimal Scaling with ORDINALS
 
 In LINEALS (section x.x.x) we try to find quantifications of the variables that linearize all bivariate regressions.
-\protect\hyperlink{ref-deleeuw_A_88a}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_A_88a}{1988}) has suggested to find standardized quantifications in such a way that the loss function
+\protect\hyperlink{ref-deleeuw_A_88a}{De Leeuw} (\protect\hyperlink{ref-deleeuw_A_88a}{1988}) has suggested to find standardized quantifications in such a way that the loss function
 \[
 f(y)=\mathop{\sum\sum}\limits_{j\not=\ell}\left\{y_j'C_{jl}^{\ }D_\ell^{-1}C_{\ell j}^{\ }y_j^{\ }-y_j'C_{jl}^{\ }y_\ell^{\ }y_\ell'C_{\ell j}^{\ }y_j^{\ }\right\}\tag{1}
 \]
@@ -2385,7 +2412,7 @@ Suppose we want to minimize
 \sigma(X)=\sum_{i=1}^m\sum_{j=1}^m(\delta_{ij}-d_{ij}^2(X))^2,
 \]
 with \(d_{ij}^2(X)=(x_i-x_j)'(x_i-x_j)\) squared Euclidean distance.
-An augmentation algorithm for this problem, modestly called ELEGANT, was designed by \protect\hyperlink{ref-deleeuw_U_75b}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_U_75b}{1975}). That paper was never published and the
+An augmentation algorithm for this problem, modestly called ELEGANT, was designed by \protect\hyperlink{ref-deleeuw_U_75b}{De Leeuw} (\protect\hyperlink{ref-deleeuw_U_75b}{1975}). That paper was never published and the
 manuscript is probably lost, but the algorithm was
 described, discussed, and applied by both \protect\hyperlink{ref-takane_77}{Takane} (\protect\hyperlink{ref-takane_77}{1977})
 and \protect\hyperlink{ref-browne_87}{Browne} (\protect\hyperlink{ref-browne_87}{1987}).
@@ -2440,7 +2467,7 @@ Thus we find \(X^{(k+1)}\) by computing eigenvalues and eigenvectors of \(C^{(k)
 
 \#\#\#Linear Mixed Model
 
-This example is taken from a paper of \protect\hyperlink{ref-deleeuw_liu_R_93}{J. De Leeuw and Liu} (\protect\hyperlink{ref-deleeuw_liu_R_93}{1993}), which describes the
+This example is taken from a paper of \protect\hyperlink{ref-deleeuw_liu_R_93}{De Leeuw and Liu} (\protect\hyperlink{ref-deleeuw_liu_R_93}{1993}), which describes the
 algorithm in detail. We simply give a list of results that show
 augmentation at work. We maximize a multinormal likelihood, not
 a least squares criterium.
@@ -3036,7 +3063,7 @@ The function \(g\) is convex in \(x\), and consequently the majorization algorit
 
 \#\#\#Generalized Weiszfeld Methods
 
-We discuss Weiszfeld's algorithm for the single facility location problem, or equivalently for the spatial median problem, in \href{../inequalities/location.md}{section 7.3.2}. But, in an important early article, \protect\hyperlink{ref-vosz_eckhardt_80}{Voss and Eckhardt} (\protect\hyperlink{ref-vosz_eckhardt_80}{1980}) pointed out that Weiszfeld's
+We discuss Weiszfeld's algorithm for the single facility location problem, or equivalently for the spatial median problem, in \href{../inequalities/location.md}{section 7.3.2}. But, in an important early article, \protect\hyperlink{ref-vosz_eckhardt_80}{Vosz and Eckhardt} (\protect\hyperlink{ref-vosz_eckhardt_80}{1980}) pointed out that Weiszfeld's
 algorithm is a member of a much more general class of algorithms, whch they called \emph{Generalized Weiszfeld Methods}.
 
 The problem Voß and Eckhardt consider is to minimize a twice continuously differentiable \(f\) over a
@@ -3123,7 +3150,7 @@ mathematical convenience, because many results are simpler in the univariate cas
 more easy to visualize and interpret.
 
 As pointed out by
-\protect\hyperlink{ref-deleeuw_lange_A_09}{J. De Leeuw and Lange} (\protect\hyperlink{ref-deleeuw_lange_A_09}{2009}) looking at the univariate case is obviously restrictive, but not as restrictive as it seems. Many
+\protect\hyperlink{ref-deleeuw_lange_A_09}{De Leeuw and Lange} (\protect\hyperlink{ref-deleeuw_lange_A_09}{2009}) looking at the univariate case is obviously restrictive, but not as restrictive as it seems. Many
 of the functions in optimization and statistics are \emph{separable}, which means they are of the form
 \[
 f(x)=\sum_{i=1}^n f_i(x_i),
@@ -3874,7 +3901,7 @@ There are several things in this analysis which may go wrong, and they are all q
 \subsection{The Majorization Method for MDS}\label{the-majorization-method-for-mds}}
 
 The first is an algorithm for multidimensional
-scaling, developed by \protect\hyperlink{ref-deleeuw_C_77}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_C_77}{1977}).
+scaling, developed by \protect\hyperlink{ref-deleeuw_C_77}{De Leeuw} (\protect\hyperlink{ref-deleeuw_C_77}{1977}).
 We want to minimize
 \[
 \sigma(X)=\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m w_{ij}(\delta_{ij}-d_{ij}(X))^2,
@@ -4176,9 +4203,9 @@ on multiple correlations, eigenvalues, determinants, and so on.
 \hypertarget{partially-observed-linear-systems}{%
 \subsection{Partially Observed Linear Systems}\label{partially-observed-linear-systems}}
 
-\protect\hyperlink{ref-deleeuw_C_04a}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_C_04a}{2004}) discusses the problem of finding an approximate solution to the homogeneous linear system \(AB=0\) when there are cone and orthonormality restrictions on the columns of \(A\) and when some elements of \(B\) are restricted to known values, most commonly to zero. Think of the columns of \(A\) as variables or sets of variables, and think of \(B\) as regression coefficients or weights.
+\protect\hyperlink{ref-deleeuw_C_04a}{De Leeuw} (\protect\hyperlink{ref-deleeuw_C_04a}{2004}) discusses the problem of finding an approximate solution to the homogeneous linear system \(AB=0\) when there are cone and orthonormality restrictions on the columns of \(A\) and when some elements of \(B\) are restricted to known values, most commonly to zero. Think of the columns of \(A\) as variables or sets of variables, and think of \(B\) as regression coefficients or weights.
 
-The loss function used by \protect\hyperlink{ref-deleeuw_C_04a}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_C_04a}{2004}) is
+The loss function used by \protect\hyperlink{ref-deleeuw_C_04a}{De Leeuw} (\protect\hyperlink{ref-deleeuw_C_04a}{2004}) is
 \[
 f(R)\mathop{=}\limits^{\Delta}\min_{B\in\mathcal{B}}\mathbf{tr} B'RB,\tag{1}
 \]
@@ -4198,7 +4225,7 @@ then the subgradient of \(f\) at \(R\) is
 The subgradient inequality now says that for all correlation matrices \(R\) and \(S\) we have \(f(R)\leq \mathbf{tr}\ \nabla R\)
 for all \(\nabla\in\partial f(S)\).
 
-The constraints on \(A\) discussed in \protect\hyperlink{ref-deleeuw_C_04a}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_C_04a}{2004}) make it possible to fit a wide variety of multivariate analysis techniques. Columns of \(A\), or variables, are partitioned into blocks. Some blocks contain only a single variable, such variables are called \emph{single}. Some blocks are constrained to be orthoblocks, which means that the variabes in the block are required to be orthonormal. Single variables may be cone-constrained, which means the corresponding column of \(A\) is
+The constraints on \(A\) discussed in \protect\hyperlink{ref-deleeuw_C_04a}{De Leeuw} (\protect\hyperlink{ref-deleeuw_C_04a}{2004}) make it possible to fit a wide variety of multivariate analysis techniques. Columns of \(A\), or variables, are partitioned into blocks. Some blocks contain only a single variable, such variables are called \emph{single}. Some blocks are constrained to be orthoblocks, which means that the variabes in the block are required to be orthonormal. Single variables may be cone-constrained, which means the corresponding column of \(A\) is
 constrained to be in a cone in \(\mathbb{R}^n\). And orthoblocks may be subspace-constrained, which means all columns must be in the same subspace.
 
 We mention some illustrative special cases here. Common factor analysis of a data matrix \(Y\) means finding an approximate solution to the system
@@ -4379,7 +4406,7 @@ We mention some simple properties of quadratic majorizers on \(\mathbb{R}^n\).
 
 \#\#Existence of Quadratic Majorizers
 
-We first study the univariate case, following \protect\hyperlink{ref-deleeuw_lange_A_09}{J. De Leeuw and Lange} (\protect\hyperlink{ref-deleeuw_lange_A_09}{2009}). If a quadratic \(g\) majorizes a differentiable \(f\) over \(\mathcal{X}\) at \(y\) then we must have
+We first study the univariate case, following \protect\hyperlink{ref-deleeuw_lange_A_09}{De Leeuw and Lange} (\protect\hyperlink{ref-deleeuw_lange_A_09}{2009}). If a quadratic \(g\) majorizes a differentiable \(f\) over \(\mathcal{X}\) at \(y\) then we must have
 \[
 g(x,y)=f(y)+f'(y)(x-y)+\frac12 a(y)(x-y)^2\geq f(x)
 \]
@@ -5260,7 +5287,7 @@ is either empty, or an interval of the form \([a_\star(y),+\infty)\) or \((a_\st
 a_\star(y)\mathop{=}\limits^{\Delta}\inf_a\mathcal{A}(y).
 \]
 If \(\mathcal{A}(y)=\emptyset\) we set \(a_\star(y)=+\infty\). The majorization function \(\phi(\bullet,y,a_\star(y))\) is called
-the \emph{sharpest quadratic majorization} of \(f\) at \(y\) (\protect\hyperlink{ref-deleeuw_lange_A_09}{J. De Leeuw and Lange 2009}).
+the \emph{sharpest quadratic majorization} of \(f\) at \(y\) (\protect\hyperlink{ref-deleeuw_lange_A_09}{De Leeuw and Lange 2009}).
 
 Now
 \[
@@ -5304,7 +5331,7 @@ The corresponding majorization algorithm is
 x^{(k+1)}=x^{(k)}-\frac{1}{\beta_V(x^{(k)})}V^{-1}\mathcal{D}f(x^{k}).
 \]
 
-If \(f\) is convex we can generalize the tangential majorization algorithm of \protect\hyperlink{ref-deleeuw_lange_A_09}{J. De Leeuw and Lange} (\protect\hyperlink{ref-deleeuw_lange_A_09}{2009}), section 6, to compute \(\beta.\)
+If \(f\) is convex we can generalize the tangential majorization algorithm of \protect\hyperlink{ref-deleeuw_lange_A_09}{De Leeuw and Lange} (\protect\hyperlink{ref-deleeuw_lange_A_09}{2009}), section 6, to compute \(\beta.\)
 For convex \(f\)
 \[
 b(x)\geq f(z)+(x-z)'\mathcal{D}f(z)-f(y)-(x-y)'\mathcal{D}f(y),
@@ -7063,7 +7090,7 @@ diagonalizing \(\Lambda^{-1}K'AK\Lambda^{-1},\) with \(\Gamma\) the correspondin
 and \(S\mathop{=}\limits^{\Delta}K\Lambda^{-1}L\). Then \(S'AS=\Gamma\) and \(S'BS=I\).
 Thus \(S\) diagonalizes both \(A\) and \(B\). For the more general case,
 in which we do not assume that \(Ax=0\) for all \(x\) with \(Bx=0\),
-we refer to \protect\hyperlink{ref-deleeuw_A_82b}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_A_82b}{1982}).
+we refer to \protect\hyperlink{ref-deleeuw_A_82b}{De Leeuw} (\protect\hyperlink{ref-deleeuw_A_82b}{1982}).
 
 \hypertarget{singular-values-and-singular-vectors}{%
 \subsection{Singular Values and Singular Vectors}\label{singular-values-and-singular-vectors}}
@@ -7460,7 +7487,7 @@ where \(1\leq i_s\leq p\) and \(1\leq j_s\leq q.\)
 \hypertarget{derivatives-of-eigenvalues-and-eigenvectors}{%
 \subsection{Derivatives of Eigenvalues and Eigenvectors}\label{derivatives-of-eigenvalues-and-eigenvectors}}
 
-This appendix summarizes some of the results in \protect\hyperlink{ref-deleeuw_R_07c}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_R_07c}{2007a}), \protect\hyperlink{ref-deleeuw_R_08b}{J. De Leeuw} (\protect\hyperlink{ref-deleeuw_R_08b}{2008}), and \protect\hyperlink{ref-deleeuw_sorenson_U_12b}{J. De Leeuw and Sorenson} (\protect\hyperlink{ref-deleeuw_sorenson_U_12b}{2012}). We refer to those reports for more extensive calculations and applications.
+This appendix summarizes some of the results in \protect\hyperlink{ref-deleeuw_R_07c}{De Leeuw} (\protect\hyperlink{ref-deleeuw_R_07c}{2007a}), \protect\hyperlink{ref-deleeuw_R_08b}{De Leeuw} (\protect\hyperlink{ref-deleeuw_R_08b}{2008}), and \protect\hyperlink{ref-deleeuw_sorenson_U_12b}{De Leeuw and Sorenson} (\protect\hyperlink{ref-deleeuw_sorenson_U_12b}{2012}). We refer to those reports for more extensive calculations and applications.
 
 Suppose \(A\) and \(B\) are two real symmetric matrices depending smoothly on a real parameter \(\theta\). The notation below suppresses the dependence on \(\theta\) of the various quantities we talk about, but it is important to remember that all eigenvalues and eigenvectors we talk about are functions of \(\theta\).
 
@@ -8012,49 +8039,49 @@ D'Esopo, D. A. 1959. {``{A Convex Programming Procedure}.''} \emph{Naval Researc
 Dax, A. 2003. {``{The Adventures of a Simple Algorithm}.''} \emph{Linear Algebra and Its Applications} 361: 41--61.
 
 \leavevmode\hypertarget{ref-deleeuw_R_68d}{}%
-De Leeuw, J. 1968. {``{Nonmetric Discriminant Analysis}.''} Research Note 06-68. Department of Data Theory, University of Leiden. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/1968/reports/deleeuw_R_68d.pdf}.
+De Leeuw, J. 1968. {``Nonmetric Discriminant Analysis.''} Research Note 06-68. Department of Data Theory, University of Leiden. \url{http://deleeuwpdx.net/janspubs/1968/reports/deleeuw_R_68d.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_U_75b}{}%
 ---------. 1975. {``{An Alternating Least Squares Approach to Squared Distance Scaling}.''} Department of Data Theory FSW/RUL.
 
 \leavevmode\hypertarget{ref-deleeuw_C_77}{}%
----------. 1977. {``Applications of Convex Analysis to Multidimensional Scaling.''} In \emph{Recent Developments in Statistics}, edited by J. R. Barra, F. Brodeau, G. Romier, and B. Van Cutsem, 133--45. Amsterdam, The Netherlands: North Holland Publishing Company. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/1977/chapters/deleeuw_C_77.pdf}.
+---------. 1977. {``Applications of Convex Analysis to Multidimensional Scaling.''} In \emph{Recent Developments in Statistics}, edited by J. R. Barra, F. Brodeau, G. Romier, and B. Van Cutsem, 133--45. Amsterdam, The Netherlands: North Holland Publishing Company. \url{http://deleeuwpdx.net/janspubs/1977/chapters/deleeuw_C_77.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_A_82b}{}%
----------. 1982. {``{Generalized Eigenvalue Problems with Positive Semidefinite Matrices}.''} \emph{Psychometrika} 47: 87--94. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/1982/articles/deleeuw_A_82b.pdf}.
+---------. 1982. {``{Generalized Eigenvalue Problems with Positive Semidefinite Matrices}.''} \emph{Psychometrika} 47: 87--94. \url{http://deleeuwpdx.net/janspubs/1982/articles/deleeuw_A_82b.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_A_88a}{}%
----------. 1988. {``Multivariate Analysis with Linearizable Regressions.''} \emph{Psychometrika} 53: 437--54. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/1988/articles/deleeuw_A_88a.pdf}.
+---------. 1988. {``Multivariate Analysis with Linearizable Regressions.''} \emph{Psychometrika} 53: 437--54. \url{http://deleeuwpdx.net/janspubs/1988/articles/deleeuw_A_88a.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_C_94c}{}%
----------. 1994. {``{Block Relaxation Algorithms in Statistics}.''} In \emph{Information Systems and Data Analysis}, edited by H. H. Bock, W. Lenski, and M. M. Richter, 308--24. Berlin: Springer Verlag. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/1994/chapters/deleeuw_C_94c.pdf}.
+---------. 1994. {``{Block Relaxation Algorithms in Statistics}.''} In \emph{Information Systems and Data Analysis}, edited by H. H. Bock, W. Lenski, and M. M. Richter, 308--24. Berlin: Springer Verlag. \url{http://deleeuwpdx.net/janspubs/1994/chapters/deleeuw_C_94c.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_C_04a}{}%
----------. 2004. {``Least Squares Optimal Scaling of Partially Observed Linear Systems.''} In \emph{Recent Developments in Structural Equation Models}, edited by K. van Montfort, J. Oud, and A. Satorra. Dordrecht, Netherlands: Kluwer Academic Publishers. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/2004/chapters/deleeuw_C_04a.pdf}.
+---------. 2004. {``Least Squares Optimal Scaling of Partially Observed Linear Systems.''} In \emph{Recent Developments in Structural Equation Models}, edited by K. van Montfort, J. Oud, and A. Satorra. Dordrecht, Netherlands: Kluwer Academic Publishers. \url{http://deleeuwpdx.net/janspubs/2004/chapters/deleeuw_C_04a.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_R_07c}{}%
----------. 2007a. {``Derivatives of Generalized Eigen Systems with Applications.''} Preprint Series 528. Los Angeles, CA: UCLA Department of Statistics. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/2007/reports/deleeuw_R_07c.pdf}.
+---------. 2007a. {``Derivatives of Generalized Eigen Systems with Applications.''} Preprint Series 528. Los Angeles, CA: UCLA Department of Statistics. \url{http://deleeuwpdx.net/janspubs/2007/reports/deleeuw_R_07c.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_U_07e}{}%
----------. 2007b. {``{Minimizing the Cartesian Folium}.''} \url{http://www.stat.ucla.edu/~deleeuw/janspubs/2007/notes/deleeuw_U_07e.pdf}.
+---------. 2007b. {``{Minimizing the Cartesian Folium}.''} \url{http://deleeuwpdx.net/janspubs/2007/notes/deleeuw_U_07e.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_R_08b}{}%
----------. 2008. {``{Derivatives of Fixed-Rank Approximations}.''} Preprint Series 547. Los Angeles, CA: UCLA Department of Statistics. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/2008/reports/deleeuw_R_08b.pdf}.
+---------. 2008. {``{Derivatives of Fixed-Rank Approximations}.''} Preprint Series 547. Los Angeles, CA: UCLA Department of Statistics. \url{http://deleeuwpdx.net/janspubs/2008/reports/deleeuw_R_08b.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_lange_A_09}{}%
-De Leeuw, J., and K. Lange. 2009. {``Sharp Quadratic Majorization in One Dimension.''} \emph{Computational Statistics and Data Analysis} 53: 2471--84. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/2009/articles/deleeuw_lange_A_09.pdf}.
+De Leeuw, J., and K. Lange. 2009. {``Sharp Quadratic Majorization in One Dimension.''} \emph{Computational Statistics and Data Analysis} 53: 2471--84. \url{https://doi.org/10.1016/j.csda.2009.01.002}.
 
 \leavevmode\hypertarget{ref-deleeuw_liu_R_93}{}%
-De Leeuw, J., and G. Liu. 1993. {``Majorization Algorithms for Mixed Model Analysis.''} Preprint 115. Los Angeles, CA: UCLA Statistics. \url{http://www.stat.ucla.edu/~deleeuw/janspubs/1993/reports/deleeuw_liu_R_93.pdf}.
+De Leeuw, J., and G. Liu. 1993. {``Majorization Algorithms for Mixed Model Analysis.''} Preprint 115. Los Angeles, CA: UCLA Statistics. \url{http://deleeuwpdx.net/janspubs/1993/reports/deleeuw_liu_R_93.pdf}.
 
 \leavevmode\hypertarget{ref-deleeuw_sorenson_U_12b}{}%
-De Leeuw, J., and K. Sorenson. 2012. {``{Derivatives of the Procrustus Transformation with Applications}.''} \url{http://www.stat.ucla.edu/~deleeuw/janspubs/2012/notes/deleeuw_sorenson_U_12b.pdf}.
+De Leeuw, J., and K. Sorenson. 2012. {``{Derivatives of the Procrustus Transformation with Applications}.''} \url{http://deleeuwpdx.net/janspubs/2012/notes/deleeuw_sorenson_U_12b.pdf}.
 
 \leavevmode\hypertarget{ref-delfour_12}{}%
 Delfour, M. C. 2012. \emph{Introduction to Optimization and Semidifferential Calculus}. SIAM.
 
 \leavevmode\hypertarget{ref-dempster_laird_rubin_77}{}%
-Dempster, A. P., N. M. Laird, and D. B. Rubin. 1977. {``{Maximum Likelihood from Incomplete Data via the EM algorithm (with Discussion)}.''} \emph{Journal of the Royal Statistical Society Series B} 39: 1--38.
+Dempster, A. P., N. M. Laird, and D. B. Rubin. 1977. {``{Maximum Likelihood for Incomplete Data via the EM Algorithm}.''} \emph{Journal of the Royal Statistical Society} B39: 1--38.
 
 \leavevmode\hypertarget{ref-demyanov_10}{}%
 Demyanov, V. F. 2010. {``Nonsmooth Optimization.''} In \emph{Nonlinear Optimization. Lectures Given at the c.i.m.e. Summer School Held in Cetraro, Italy, July 1-7, 2007.}, edited by G. Di Pillo and F. Schoen, 55--163. Lecture Notes in Mathematics 1989. Springer.
@@ -8063,7 +8090,7 @@ Demyanov, V. F. 2010. {``Nonsmooth Optimization.''} In \emph{Nonlinear Optimizat
 Dinkelbach, W. 1967. {``{On Nonlinear Fractional Programming}.''} \emph{Management Science} 13: 492--98.
 
 \leavevmode\hypertarget{ref-dontchev_rockafellar_14}{}%
-Dontchev, A. L., and R. T. Rockafellar. 2014. \emph{Implicit Functions and Solution Mappings}. Second Edition. Springer.
+Dontchev, A. L., and R. T. Rockafellar. 2014. \emph{Implicit Functions and Solution Mappings}. Second Edition. Springer Series in Operations Research and Financial Engineering. Springer.
 
 \leavevmode\hypertarget{ref-huard_79a}{}%
 (Ed), P. Huard. 1979. \emph{{Point-to-set Maps and Mathematical Programming}}. Edited by P. Huard. Amsterdam, Netherlands: North Holland Publishing Company.
@@ -8099,7 +8126,7 @@ Golub, G. H. 1973. {``{Some Modified Matrix Eigenvalue Problems}.''} \emph{{SIAM
 Groenen, P. J. F., P. Giaquinto, and H. A. L Kiers. 2003. {``{Weighted Majorization Algorithms for Weighted Least Squares Decomposition Models}.''} Econometric Institute Report EI 2003-09. Econometric Institute, Erasmus University Rotterdam. \url{http://repub.eur.nl/pub/1700/}.
 
 \leavevmode\hypertarget{ref-harman_jones_66}{}%
-Harman, H. H., and W. H. Jones. 1966. {``{Factor Analysis by Minimizing Residuals (MINRES)}.''} \emph{Psychometrika} 31: 351--68.
+Harman, H. H., and W. H. Jones. 1966. {``{Factor Analysis by Minimizing Residuals }.''} \emph{Psychometrika} 31: 351--68.
 
 \leavevmode\hypertarget{ref-hastie_tibshirani_90}{}%
 Hastie, T., and R. Tibshirani. 1990. \emph{Generalized Additive Models}. London: Chapman; Hall.
@@ -8279,7 +8306,7 @@ Varga, R. S. 1962. \emph{{Matrix Iterative Analysis}}. Englewood Cliffs: Prentic
 Von Mises, R., and H. Pollackzek-Geiringer. 1929. {``{Practische Verfahren der Gleichungs-aufl{ö}sung}.''} \emph{Zeitschrift für Angewandte Mathematik Und Mechanik} 9: 58-79 and 152-164.
 
 \leavevmode\hypertarget{ref-vosz_eckhardt_80}{}%
-Voss, H., and U. Eckhardt. 1980. {``{Linear Convergence of Generalized {W}eiszfeld's Method}.''} \emph{Computing} 25: 243--51.
+Vosz, H., and U. Eckhardt. 1980. {``{Linear Convergence of Generalized {W}eiszfeld's Method}.''} \emph{Computing} 25: 243--51.
 
 \leavevmode\hypertarget{ref-wainer_morgan_gustafsson_80}{}%
 Wainer, H., A. Morgan, and J. E. Gustafsson. 1980. {``{A Review of Estimation Procedures for the Rasch Model with an Eye toward Longish Tests}.''} \emph{Journal of Educational Statistics} 5: 35--64.
@@ -8300,7 +8327,7 @@ Wright, S. 2015. {``{Coordinate Descent Algorithms}.''} \emph{Mathematical Progr
 Xie, Y. 2015. \emph{{Dynamic Documents with R and knitr}}. Second Edition. CRC Press.
 
 \leavevmode\hypertarget{ref-xie_16}{}%
----------. 2016. \url{http://rstudio.github.io/bookdown/}.
+---------. 2016. \emph{Bookdown: Authoring Books with r Markdown.} \url{https://github.com/rstudio/bookdown}.
 
 \leavevmode\hypertarget{ref-yates_33}{}%
 Yayes, F. 1933. {``{The Analysis of Replicated Experiments when the Field Results are Incomplete}.''} \emph{Empirical Journal of Experimental Agriculture} 1: 129--42.
