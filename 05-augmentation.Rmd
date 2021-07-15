@@ -1,9 +1,9 @@
-#Augmentation and Decomposition Methods
+# Augmentation and Decomposition Methods
 
 
 
 
-##Introduction
+## Introduction
 
 We take up the historical developments. Alternating Least
 Squares was useful for many problems, but it some cases
@@ -20,7 +20,7 @@ The idea of adding variables
 that augment the problem to a simpler one is very general. It is
 also at the basis, for instance, of the Lagrange multiplier method.
 
-##Definition
+## Definition
 
 Formalizing augmentation is straightforward.
 Suppose $f$ is a real valued function, defined for
@@ -57,7 +57,7 @@ $$
 \min_{x\in\mathcal{X}}f(x)=\min_{x\in\mathcal{X}}\min_{y\in\mathcal{Y}}g(x,y)=\min_{y\in\mathcal{Y}}\min_{x\in\mathcal{X}}g(x,y)=\min_{y\in\mathcal{Y}}h(y).
 $$
 
-##Rate of Convergenc
+## Rate of Convergenc
 
 Because of the structure of $f$ we know that $\mathcal{D}f(x)=\mathcal{D}_1g(x,y(x))$,
 where $y(x)$ is defined implicitly by $f(x)=g(x,y(x))$, or more explicitly by
@@ -82,7 +82,7 @@ This shows how the iteration matrix does not depend (directly)
 on the derivatives of $g$ with respect to $y$, and can
 be interpreted as one minus the curvature of the function at the minimum, relative to the curvature of the augmentation function.
 
-##Half-Quadratic Methods
+## Half-Quadratic Methods
 
 
 _Half-quadratic_ or _HQ_ methods are used heavily in image restoration and reconstructions problems. They were introduced in two different but related forms in [Geman and Reynolds [1992]]() and [Geman and Yang [1995]]().
@@ -109,11 +109,11 @@ b=\begin{cases}h''(0^+)&\text{ if }t=0,\\
 $$
 
 
-##Examples
+## Examples
 
 
 
-###Yates Augmentation
+### Yates Augmentation
 
 
 A linear least squares problem is _balanced_ if the design matrix $A$ is orthogonal.
@@ -171,7 +171,7 @@ There is `R` code for Yates augmentation in the file `yates.R`.
 [Insert yates.R Here](../code/yates.R)
 </center>
 
-###Optimal Scaling with ORDINALS
+### Optimal Scaling with ORDINALS
 
 In LINEALS (section x.x.x) we try to find quantifications of the variables that linearize all bivariate regressions.
 @deleeuw_A_88a has suggested to find standardized quantifications in such a way that the loss function
@@ -208,7 +208,7 @@ If $y_j$ is treated as ordinal is must be monotone with the data, and so must al
 </center>
 <hr>
 
-###Least Squares Factor Analysis
+### Least Squares Factor Analysis
 
 
 In LS factor analysis we want to minimize
@@ -236,7 +236,7 @@ $$
 where $R_p^{(k)}$ is the best rank p approximation
 to $R-H^{(k)}$.
 
-###Squared Distance Scaling
+### Squared Distance Scaling
 
 Suppose we want to minimize
 $$
@@ -301,7 +301,7 @@ B(X^{(k)})$ and no intermediate computation or storage of the $\eta_{ijk\ell}$ i
 
 
 
-###Linear Mixed Model
+### Linear Mixed Model
 
 This example is taken from a paper of @deleeuw_liu_R_93, which describes the
 algorithm in detail. We simply give a list of results that show
@@ -348,7 +348,7 @@ B&=TS^{-1}T'+(y-Tx)(y-Tx)',\notag\\
 x&=(T'B^{-1}T+C^{-1})^{-1}T'B^{-1}y.\notag
 \end{align*}
 
-##Decomposition Methods
+## Decomposition Methods
 
 The following theorem is so simple it's almost embarassing. Nevertheless
 it seems to have some important applications to algorithm construction.
@@ -388,7 +388,7 @@ Observe we can always interchange the two infimum operations,
 because $\inf_{x\in X}\inf_{y\in Y}=\inf_{y\in Y}\inf_{x\in X}$. Because $f$ is extended real valued, the infimum always
 exists, although it may be $-\infty$.
 
-###Quadratic Form on a Sphere
+### Quadratic Form on a Sphere
 
 We now discuss an actual example. Consider the problem of minimizing the function
 $$
@@ -488,7 +488,7 @@ where the Lagrange multiplier $\mu$ is chosen such that $\theta^{2}b'A(A-\mu I)^
 \end{multline*}
 
 
-###Multidimensional Unfolding
+### Multidimensional Unfolding
 
 Now a data analysis example.
 In least-squares-squared metric unfolding (LSSMU) we must minimize

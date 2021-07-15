@@ -1498,7 +1498,8 @@ where the \(e_s\) are unit vectors (all elements zero, except for element \(s\),
 \hypertarget{coordinatedescent:examples}{%
 \section{Examples}\label{coordinatedescent:examples}}
 
-\#\#\#The Cartesian Folium\{\#coordinatedescent:examples:thecartesianfolium\}
+\hypertarget{coordinatedescent:examples:thecartesianfolium}{%
+\subsection{The Cartesian Folium}\label{coordinatedescent:examples:thecartesianfolium}}
 
 The ``folium cartesii'\,' (letter of Descartes to Mersenne, August 23, 1638) is the
 function \[f:\mathbb{R}^2\rightarrow\mathbb{R}\] defined by
@@ -1544,7 +1545,8 @@ then converges, linearly and monotonically, to \((1,1)\) with convergence rate \
 with \(y^{(0)}\leq 0\) then \(x^3+(y^{(0)})^3-3xy^{(0)}\) is unbounded below
 and thus coordinate descent fails.
 
-\#\#\#A Family of Quadratics\{\#coordinatedescent:examples:afamilyofquadratics\}
+\hypertarget{coordinatedescent:examples:afamilyofquadratics}{%
+\subsection{A Family of Quadratics}\label{coordinatedescent:examples:afamilyofquadratics}}
 
 This example shows some of the properties of coordinate relaxation. We
 want to minimize
@@ -1611,7 +1613,8 @@ while
 \]
 Thus function values converge twice as fast as the coordinates of the solution vector.
 
-\#\#\#Loglinear Models\{\#coordinatedescent:examples:loglinearmodels\}
+\hypertarget{coordinatedescent:examples:loglinearmodels}{%
+\subsection{Loglinear Models}\label{coordinatedescent:examples:loglinearmodels}}
 
 Let
 \[
@@ -1792,7 +1795,8 @@ then we find the same solution, although much more slowly,
 \end{Highlighting}
 \end{Shaded}
 
-\#\#\#Rayleigh Quotient\{\#coordinatedescent:examples:rayleighquotient\}
+\hypertarget{coordinatedescent:examples:rayleighquotient}{%
+\subsection{Rayleigh Quotient}\label{coordinatedescent:examples:rayleighquotient}}
 
 The problem is to minimize the Rayleigh quotient
 \[
@@ -1917,7 +1921,8 @@ for \(\overline{\mathcal{M}}(x)x=0\), while \(\mathcal{M}(x)x=1\).
 \caption{Case 3 -- CCA Works}\label{fig:rcase3}
 \end{figure}
 
-\#\#\#Squared Distance Scaling\{\#coordinatedescent:examples:squareddistancescaling\}
+\hypertarget{coordinatedescent:examples:squareddistancescaling}{%
+\subsection{Squared Distance Scaling}\label{coordinatedescent:examples:squareddistancescaling}}
 
 In ALSCAL {[}Takane, Young, De Leeuw, 1977{]} we find multidimensional scaling solutions by minimizing the loss function \emph{sstress}, defined by
 \[
@@ -1949,11 +1954,14 @@ Differentiating this and setting the derivative to zero gives the cubic equation
 -\theta\sum_{i=1}^n w_{kj}(\delta_{kj}-d_{ik}^2)+2\theta^2\sum_{i=1}^n w_{kj}(x_{it}-x_{kt})-\theta^3\sum_{i=1}^n w_{kj}
 \end{multline*}
 
-\#\#\#Least Squares Factor Analysis\{\#coordinatedescent:examples:leastsquaresfactoranalysis\}
+\hypertarget{coordinatedescent:examples:leastsquaresfactoranalysis}{%
+\subsection{Least Squares Factor Analysis}\label{coordinatedescent:examples:leastsquaresfactoranalysis}}
 
-\#Alternating Least Squares\{\#alternatingleastsquares\}
+\hypertarget{alternatingleastsquares}{%
+\chapter{Alternating Least Squares}\label{alternatingleastsquares}}
 
-\#\#Introduction\{\#alternatingleastsquares:introduction\}
+\hypertarget{alternatingleastsquares:introduction}{%
+\section{Introduction}\label{alternatingleastsquares:introduction}}
 
 An \emph{Alternating Least Squares} or \emph{ALS} algorithm is defined as a block relaxation algorithm applied to a least squares loss function. Least squares loss functions are somewhat loosely defined. We will discuss what we have in mind, before giving some of the history of ALS methods.
 
@@ -1983,9 +1991,11 @@ De Leeuw, Young, and Takane started the ALSOS system of techniques and programs 
 (see \protect\hyperlink{ref-young_deleeuw_takane_C_80}{F. W. Young, De Leeuw, and Takane} (\protect\hyperlink{ref-young_deleeuw_takane_C_80}{1980})),
 and De Leeuw, with many others, at Leiden University started the Gifi system around 1975 (see \protect\hyperlink{ref-gifi_B_90}{Gifi} (\protect\hyperlink{ref-gifi_B_90}{1990})).
 
-\#\#Close Relatives\{\#alternatingleastsquares:closerelatives\}
+\hypertarget{alternatingleastsquares:closerelatives}{%
+\section{Close Relatives}\label{alternatingleastsquares:closerelatives}}
 
-\#\#\#ALSOS\{\#alternatingleastsquares:closerelatives:alsos\}
+\hypertarget{alternatingleastsquares:closerelatives:alsos}{%
+\subsection{ALSOS}\label{alternatingleastsquares:closerelatives:alsos}}
 
 ALSOS algorithms are ALS algorithms in which one or more of the blocks defines transformations of variables.
 \[
@@ -2052,7 +2062,8 @@ and the component loadings \(\beta_{js}.\) In the case of
 monotone transformations this alternates
 monotone regression with two linear least squares problems.
 
-\#\#\#ACE\{\#alternatingleastsquares:closerelatives:ace\}
+\hypertarget{alternatingleastsquares:closerelatives:ace}{%
+\subsection{ACE}\label{alternatingleastsquares:closerelatives:ace}}
 
 The ACE methods, developed by \protect\hyperlink{ref-breiman_friedman_85}{Breiman and Friedman} (\protect\hyperlink{ref-breiman_friedman_85}{1985}),
 minimize over all \emph{smooth} functions.
@@ -2070,9 +2081,11 @@ Another obviously
 related area in statistics is the Generalized Additive Models discussed
 extensively by \protect\hyperlink{ref-hastie_tibshirani_90}{Hastie and Tibshirani} (\protect\hyperlink{ref-hastie_tibshirani_90}{1990}).
 
-\#\#\#NIPALS and PLS\{\#alternatingleastsquares:closerelatives:nipalsandpls\}
+\hypertarget{alternatingleastsquares:closerelatives:nipalsandpls}{%
+\subsection{NIPALS and PLS}\label{alternatingleastsquares:closerelatives:nipalsandpls}}
 
-\#\#Rate of Convergence\{\#alternatingleastsquares:rateofconvergence\}
+\hypertarget{alternatingleastsquares:rateofconvergence}{%
+\section{Rate of Convergence}\label{alternatingleastsquares:rateofconvergence}}
 
 The least squares loss function, in the most general form we consider here, is
 \[
@@ -2122,18 +2135,23 @@ are small, or because the \(f_i\) and \(g_i\) are linear or
 almost linear, we see that the rate of ALS will be the
 canonical correlation between \(G\) and \(H.\)
 
-\#\#Examples\{\#alternatingleastsquares:examples\}
+\hypertarget{alternatingleastsquares:examples}{%
+\section{Examples}\label{alternatingleastsquares:examples}}
 
-\#\#\#Homogeneity Analysis\{\#alternatingleastsquares:examples:homogeneityanalysis\}
+\hypertarget{alternatingleastsquares:examples:homogeneityanalysis}{%
+\subsection{Homogeneity Analysis}\label{alternatingleastsquares:examples:homogeneityanalysis}}
 
-\#\#\#Fixed Rank Approximation\{\#alternatingleastsquares:examples:fixedrankapproximation\}
+\hypertarget{alternatingleastsquares:examples:fixedrankapproximation}{%
+\subsection{Fixed Rank Approximation}\label{alternatingleastsquares:examples:fixedrankapproximation}}
 
-\#\#\#Multilinear Fitting\{\#alternatingleastsquares:examples:multilinearfitting\}
+\hypertarget{alternatingleastsquares:examples:multilinearfitting}{%
+\subsection{Multilinear Fitting}\label{alternatingleastsquares:examples:multilinearfitting}}
 
 \hypertarget{alternatingleastsquares:examples:mcrals}{%
 \subsection{MCR-ALS}\label{alternatingleastsquares:examples:mcrals}}
 
-\#\#\#Scaling and Splitting\{\#alternatingleastsquares:examples:scalingandsplitting\}
+\hypertarget{alternatingleastsquares:examples:scalingandsplitting}{%
+\subsection{Scaling and Splitting}\label{alternatingleastsquares:examples:scalingandsplitting}}
 
 Early on in the development of ALS algorithms some interesting
 complications where discovered. Let us consider canonical
@@ -2181,9 +2199,11 @@ proves the first part of the Theorem. The second part goes
 the same.
 \textbf{QED}
 
-\#Augmentation and Decomposition Methods
+\hypertarget{augmentation-and-decomposition-methods}{%
+\chapter{Augmentation and Decomposition Methods}\label{augmentation-and-decomposition-methods}}
 
-\#\#Introduction
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
 
 We take up the historical developments. Alternating Least
 Squares was useful for many problems, but it some cases
@@ -2200,7 +2220,8 @@ The idea of adding variables
 that augment the problem to a simpler one is very general. It is
 also at the basis, for instance, of the Lagrange multiplier method.
 
-\#\#Definition
+\hypertarget{definition}{%
+\section{Definition}\label{definition}}
 
 Formalizing augmentation is straightforward.
 Suppose \(f\) is a real valued function, defined for
@@ -2237,7 +2258,8 @@ then
 \min_{x\in\mathcal{X}}f(x)=\min_{x\in\mathcal{X}}\min_{y\in\mathcal{Y}}g(x,y)=\min_{y\in\mathcal{Y}}\min_{x\in\mathcal{X}}g(x,y)=\min_{y\in\mathcal{Y}}h(y).
 \]
 
-\#\#Rate of Convergenc
+\hypertarget{rate-of-convergenc}{%
+\section{Rate of Convergenc}\label{rate-of-convergenc}}
 
 Because of the structure of \(f\) we know that \(\mathcal{D}f(x)=\mathcal{D}_1g(x,y(x))\),
 where \(y(x)\) is defined implicitly by \(f(x)=g(x,y(x))\), or more explicitly by
@@ -2262,7 +2284,8 @@ This shows how the iteration matrix does not depend (directly)
 on the derivatives of \(g\) with respect to \(y\), and can
 be interpreted as one minus the curvature of the function at the minimum, relative to the curvature of the augmentation function.
 
-\#\#Half-Quadratic Methods
+\hypertarget{half-quadratic-methods}{%
+\section{Half-Quadratic Methods}\label{half-quadratic-methods}}
 
 \emph{Half-quadratic} or \emph{HQ} methods are used heavily in image restoration and reconstructions problems. They were introduced in two different but related forms in \href{}{Geman and Reynolds {[}1992{]}} and \href{}{Geman and Yang {[}1995{]}}.
 
@@ -2287,9 +2310,11 @@ b=\begin{cases}h''(0^+)&\text{ if }t=0,\\
 \end{cases}
 \]
 
-\#\#Examples
+\hypertarget{examples}{%
+\section{Examples}\label{examples}}
 
-\#\#\#Yates Augmentation
+\hypertarget{yates-augmentation}{%
+\subsection{Yates Augmentation}\label{yates-augmentation}}
 
 A linear least squares problem is \emph{balanced} if the design matrix \(A\) is orthogonal.
 In the balanced case the problem of minimizing
@@ -2345,7 +2370,8 @@ There is \texttt{R} code for Yates augmentation in the file \texttt{yates.R}.
 
 \href{../code/yates.R}{Insert yates.R Here}
 
-\#\#\#Optimal Scaling with ORDINALS
+\hypertarget{optimal-scaling-with-ordinals}{%
+\subsection{Optimal Scaling with ORDINALS}\label{optimal-scaling-with-ordinals}}
 
 In LINEALS (section x.x.x) we try to find quantifications of the variables that linearize all bivariate regressions.
 \protect\hyperlink{ref-deleeuw_A_88a}{De Leeuw} (\protect\hyperlink{ref-deleeuw_A_88a}{1988}) has suggested to find standardized quantifications in such a way that the loss function
@@ -2378,7 +2404,8 @@ If \(y_j\) is treated as ordinal is must be monotone with the data, and so must 
 
 \href{../code/ordinals.R}{Insert ordinals.R Here}
 
-\#\#\#Least Squares Factor Analysis
+\hypertarget{least-squares-factor-analysis}{%
+\subsection{Least Squares Factor Analysis}\label{least-squares-factor-analysis}}
 
 In LS factor analysis we want to minimize
 \[
@@ -2405,7 +2432,8 @@ H^{(k+1)}=\mathbf{diag}(I-R_p^{(k)})
 where \(R_p^{(k)}\) is the best rank p approximation
 to \(R-H^{(k)}\).
 
-\#\#\#Squared Distance Scaling
+\hypertarget{squared-distance-scaling}{%
+\subsection{Squared Distance Scaling}\label{squared-distance-scaling}}
 
 Suppose we want to minimize
 \[
@@ -2465,7 +2493,8 @@ B(X^{(k)})\mathop{=}\limits^{\Delta}\sum_{i=1}^m\sum_{j=1}^m(\delta_{ij}-d_{ij}^
 and \(A_{ij}\mathop{=}\limits^{\Delta}(e_i-e_j)(e_i-e_j)'\).
 Thus we find \(X^{(k+1)}\) by computing eigenvalues and eigenvectors of \(C^{(k)}+\frac{1}{2n^2} B(X^{(k)})\) and no intermediate computation or storage of the \(\eta_{ijk\ell}\) is required.
 
-\#\#\#Linear Mixed Model
+\hypertarget{linear-mixed-model}{%
+\subsection{Linear Mixed Model}\label{linear-mixed-model}}
 
 This example is taken from a paper of \protect\hyperlink{ref-deleeuw_liu_R_93}{De Leeuw and Liu} (\protect\hyperlink{ref-deleeuw_liu_R_93}{1993}), which describes the
 algorithm in detail. We simply give a list of results that show
@@ -2511,7 +2540,8 @@ B&=TS^{-1}T'+(y-Tx)(y-Tx)',\notag\\
 x&=(T'B^{-1}T+C^{-1})^{-1}T'B^{-1}y.\notag
 \end{align*}
 
-\#\#Decomposition Methods
+\hypertarget{decomposition-methods}{%
+\section{Decomposition Methods}\label{decomposition-methods}}
 
 The following theorem is so simple it's almost embarassing. Nevertheless
 it seems to have some important applications to algorithm construction.
@@ -2551,7 +2581,8 @@ Observe we can always interchange the two infimum operations,
 because \(\inf_{x\in X}\inf_{y\in Y}=\inf_{y\in Y}\inf_{x\in X}\). Because \(f\) is extended real valued, the infimum always
 exists, although it may be \(-\infty\).
 
-\#\#\#Quadratic Form on a Sphere
+\hypertarget{quadratic-form-on-a-sphere}{%
+\subsection{Quadratic Form on a Sphere}\label{quadratic-form-on-a-sphere}}
 
 We now discuss an actual example. Consider the problem of minimizing the function
 \[
@@ -2656,7 +2687,8 @@ where the Lagrange multiplier \(\mu\) is chosen such that \(\theta^{2}b'A(A-\mu 
 \min_{x'x=1}g(x,\theta)=\\\theta^{2}[(b'Ab+c)-2b'A(A-\mu I)^{-1}Ab+b'A(A-\mu I)^{-1}A(A-\mu I)^{-1}Ab]
 \end{multline*}
 
-\#\#\#Multidimensional Unfolding
+\hypertarget{multidimensional-unfolding}{%
+\subsection{Multidimensional Unfolding}\label{multidimensional-unfolding}}
 
 Now a data analysis example.
 In least-squares-squared metric unfolding (LSSMU) we must minimize
@@ -2749,9 +2781,11 @@ equation problem discussed in the Appendix. Since
 typically \(p\) is two or at most three, the subproblems are very small indeed and can be
 solved efficiently.
 
-\#Majorization Methods
+\hypertarget{majorization-methods}{%
+\chapter{Majorization Methods}\label{majorization-methods}}
 
-\#\#Introduction
+\hypertarget{introduction-2}{%
+\section{Introduction}\label{introduction-2}}
 
 The next step (history again) was to find \emph{systematic ways} to do
 augmentation (which is an art, remember). We start with examples.
@@ -2790,9 +2824,11 @@ which implies
 \alpha^{(k)}=\frac{1}{\|p^{(k)}\|}\left[\frac{\langle p^{(k)},\mathcal{D}f(x^{(k)})\rangle}{\gamma\|p^{(k)}\|}\right]^{\frac{1}{\lambda}}.
 \]
 
-\#\#Definitions
+\hypertarget{definitions}{%
+\section{Definitions}\label{definitions}}
 
-\#\#\#Majorization at a Point
+\hypertarget{majorization-at-a-point}{%
+\subsection{Majorization at a Point}\label{majorization-at-a-point}}
 
 Suppose \(f\) and \(g\) are real-valued functions on \(\mathcal{X}\subseteq\mathbb{R}^{n}\). We say
 that \(g\) \emph{majorizes} \(f\) \emph{over} \(\mathcal{X}\) \emph{at} \(y\in\mathcal{X}\) if
@@ -2868,7 +2904,8 @@ Figure 3: Quadratic Majorizer with an Infinite Number of Support Points
 
 In fact if \(f:x\rightarrow\max(x,0)\) and \(g:x\rightarrow|x|\) then \(g\) majorizes \(f\) at all \(y\leq 0\), and thus there even is a continuum of support points. And actually \(f\) itself majorizes \(f\) at all \(y\in\mathcal{X}.\)
 
-\#\#\#Majorization on a Set
+\hypertarget{majorization-on-a-set}{%
+\subsection{Majorization on a Set}\label{majorization-on-a-set}}
 
 We can have different majorizations of \(f\) on \(\mathcal{X}\) at different points \(y_1,\cdots,y_n\in\mathcal{X}\). Now consider the situation in which we have a different majorization for each point \(y\in\mathcal{X}\).
 
@@ -2954,7 +2991,8 @@ The code to produce all three figures is in \texttt{logitcouple.R}.
 
 \href{../code/logitcouple.R}{Insert logitcouple.R Here}
 
-\#\#\#Majorization Algorithm
+\hypertarget{majorization-algorithm}{%
+\subsection{Majorization Algorithm}\label{majorization-algorithm}}
 
 The basic idea of a \emph{majorization algorithm} is simple: it is the augmentation algorithm applied to the majorization function.
 
@@ -3024,7 +3062,8 @@ We also show the cobwebplot (see \href{../background/cobweb.html}{section 14.11.
 
 Figure 2
 
-\#\#\#Alternative Definitions
+\hypertarget{alternative-definitions}{%
+\subsection{Alternative Definitions}\label{alternative-definitions}}
 
 Suppose \(f\) and \(g\) are arbitrary real-valued functions on \(\mathcal{X}\). Define
 \begin{align*}
@@ -3044,9 +3083,11 @@ f(y)\leq g(y)\leq g(x)=f(x).
 
 \begin{center}\includegraphics{_main_files/figure-latex/strange-1} \end{center}
 
-\#\#Relatives
+\hypertarget{relatives}{%
+\section{Relatives}\label{relatives}}
 
-\#\#\#The Concave-Convex Procedure
+\hypertarget{the-concave-convex-procedure}{%
+\subsection{The Concave-Convex Procedure}\label{the-concave-convex-procedure}}
 
 The Concave-Convex Procedure (CCCP) was first proposed by \protect\hyperlink{ref-yuille_rangarajan_03}{Yuille and Rangarajan} (\protect\hyperlink{ref-yuille_rangarajan_03}{2003}). Its global convergence was studied using the Zangwill theory by \protect\hyperlink{ref-sriperumbudur_lanckriet_12}{Sriperumbudur and Lanckriet} (\protect\hyperlink{ref-sriperumbudur_lanckriet_12}{2012}), and its rate of convergence using block relaxation theory by \protect\hyperlink{ref-yen_peng_wang_lin_12}{Yen et al.} (\protect\hyperlink{ref-yen_peng_wang_lin_12}{2012}). The CCCP was discussed in a wider optimization context by \protect\hyperlink{ref-lipp_boyd_15}{Lipp and Boyd} (\protect\hyperlink{ref-lipp_boyd_15}{2015}).
 
@@ -3061,7 +3102,8 @@ g(x,y) = u(x)+v(y)+(x-y)'\mathcal{D}v(y).
 \]
 The function \(g\) is convex in \(x\), and consequently the majorization algorithm in this case is exactly the CCCP.
 
-\#\#\#Generalized Weiszfeld Methods
+\hypertarget{generalized-weiszfeld-methods}{%
+\subsection{Generalized Weiszfeld Methods}\label{generalized-weiszfeld-methods}}
 
 We discuss Weiszfeld's algorithm for the single facility location problem, or equivalently for the spatial median problem, in \href{../inequalities/location.md}{section 7.3.2}. But, in an important early article, \protect\hyperlink{ref-vosz_eckhardt_80}{Vosz and Eckhardt} (\protect\hyperlink{ref-vosz_eckhardt_80}{1980}) pointed out that Weiszfeld's
 algorithm is a member of a much more general class of algorithms, whch they called \emph{Generalized Weiszfeld Methods}.
@@ -3079,9 +3121,11 @@ x^{(k+1)}=\mathop{\mathbf{argmin}}\limits_{x\in\mathcal{X}} g(x,x^{(k)}).
 
 This, of course, is a majorization algorithm. In fact, it is an example of the quadratic mjaorization algorithms we discuss in detail in \href{../quadratic/README.html}{chapter 10}. Voß and Eckhardt proceed to prove global convergence, which actually follows directly from Zangwill's theory, and local linear convergence, which follows from Ostrowski's theorem.
 
-\#\#\#The EM Algorithm
+\hypertarget{the-em-algorithm}{%
+\subsection{The EM Algorithm}\label{the-em-algorithm}}
 
-\#\#\#The Lower-Bound Principle
+\hypertarget{the-lower-bound-principle}{%
+\subsection{The Lower-Bound Principle}\label{the-lower-bound-principle}}
 
 \hypertarget{dinkelbach-majorization}{%
 \subsection{Dinkelbach Majorization}\label{dinkelbach-majorization}}
@@ -3127,9 +3171,11 @@ g(x,y)=f(y)+h(x,y)<f(y)=g(y,y)\Rightarrow f(x)<f(y)
 If \(f(x)=a(x)/b(x)\), with \(b(x)>0\) for all \(x\in X\),
 then \(h(x,y)=a(x)-f(y)b(x)\) D-majorizes \(f(x)\) at \(y\).
 
-\#\#Further Results
+\hypertarget{further-results}{%
+\section{Further Results}\label{further-results}}
 
-\#\#\#Rate of Convergence
+\hypertarget{rate-of-convergence}{%
+\subsection{Rate of Convergence}\label{rate-of-convergence}}
 
 Majorization is a special case of our results for augmentation
 previous theory, because \(\mathcal{X}=\mathcal{Y}\) and because \(y(x)=x\).
@@ -3143,7 +3189,8 @@ Again, to some extent, finding a majorization function is an art. Many
 of the classical inequalities can be used (Cauchy-Schwarz, Jensen, H"older,
 Young, AM-GM, and so on).
 
-\#\#\#Univariate and Separable Functions
+\hypertarget{univariate-and-separable-functions}{%
+\subsection{Univariate and Separable Functions}\label{univariate-and-separable-functions}}
 
 Many of our examples are majorizations of a real-valued function \(f\) of a single real variable over the real line \(\mathbb{R}.\) This is partly for
 mathematical convenience, because many results are simpler in the univariate case. And partly for didactic reasons, because plots and tables are
@@ -3178,7 +3225,8 @@ f(x)\leq\frac12\sum_{i=1}^n d_i(f_i(x)-z_i(y))^2+
 \]
 with \(H\mathop{=}\limits^{\Delta}W-WD^{-1}W.\) The majorizer we have constructed is separable.
 
-\#\#\#Differentiable Functions
+\hypertarget{differentiable-functions}{%
+\subsection{Differentiable Functions}\label{differentiable-functions}}
 
 We first show that differentiable majorizations of differentiable functions must have certain properties at the
 support point.
@@ -3257,7 +3305,8 @@ One-sided Chebyshev. Find \(g\in\mathcal{G}\) such that \(g\geq f\),
 For instance \(\mathcal{G}\) can be the convex functions, or the polynomials of a certain degree,
 or piecewise linear functions or splines.
 
-\#\#\#Composition
+\hypertarget{composition}{%
+\subsection{Composition}\label{composition}}
 
 \textbf{Theorem: {[}Sum of functions{]}}
 Suppose \(h\) is defined on \(\mathcal{X}\otimes\mathcal{U}\) and \(f(x)=\int_U h(x,u)dF(u)\). Suppose \(k\) is defined on \(\mathcal{X}\otimes\mathcal{X}\otimes\mathcal{U}\) and satisfies
@@ -3308,7 +3357,8 @@ Because \(y\in S_{i}\) also \(g(y)=f_{i}(y)=f(y)\).
 
 This implies that if \(f=\min_{k} f_{k}\) has a quadratic majorizer at each \(y\), if each of the \(f_{k}\) has a quadratic majorizer at each \(y\).
 
-\#\#\#Majorization Duality
+\hypertarget{majorization-duality}{%
+\subsection{Majorization Duality}\label{majorization-duality}}
 
 Because \(g(x,y)\geq g(x,x)=f(x)\) for all \(x,y\in\mathcal{X}\) we have seen that
 \[
@@ -3338,7 +3388,8 @@ with \(z(y)\mathop{=}\limits^{\Delta}y-A^{-1}(y)\mathcal{D}f(y)\), and thus
 h(y)=\min_{x\in\mathcal{X}}g(x,y)&=f(y)-\frac12(\mathcal{D}f(y))'(A(y))^+\mathcal{D}f(y)+\\&+\min_{x\in\mathcal{X}}(x-z(y))'A(y)(x-z(y)).
 \end{align*}
 
-\#\#\#Necessary Conditions by Majorization
+\hypertarget{necessary-conditions-by-majorization}{%
+\subsection{Necessary Conditions by Majorization}\label{necessary-conditions-by-majorization}}
 
 Suppose \(g\) on \(\mathcal{X}\otimes\mathcal{X}\) majorizes \(f\) on \(\mathcal{X}\). We show that a necessary condition for \(\hat x\) to be a minimizer of \(f\) on \(\mathcal{X}\) is that \(\hat x\) minimizes the majorization function \(g(\bullet,\hat x)\) on \(\mathcal{X}\).
 
@@ -3380,7 +3431,8 @@ the necessary condition for a minimum is
 \hat x\in\mathbf{Arg}\mathop{\mathbf{min}}\limits_{x\in\mathcal{X}}x'\mathcal{D}f(\hat x).
 \]
 
-\#\#\#Majorizing Constraints
+\hypertarget{majorizing-constraints}{%
+\subsection{Majorizing Constraints}\label{majorizing-constraints}}
 
 Consider the nonlinear programming problem of minimizing \(f_0\) over \(x\in\mathcal{X}\)
 under the \emph{functional constraints} \(f_i(x)\leq 0\) for \(i=1,\cdots,n\).
@@ -3410,7 +3462,8 @@ f_0(x^{(k+1)})\leq g_0(x^{(k+1)},x^{(k)})\leq g_0(x^{(k)},x^{(k)})=f_0(x^{(k)}).
 
 Note that it may not be necessary to majorize all functions \(f_i\). Or, in other words, for some we can choose the trivial majorization \(g_i(x,y)=f_i(x)\).
 
-\#\#\#Majorizing Value Functions
+\hypertarget{majorizing-value-functions}{%
+\subsection{Majorizing Value Functions}\label{majorizing-value-functions}}
 
 Suppose \(f(x)=\max_{y\in\mathcal{Y}} g(x,y)\)
 and \(g(x,y)=\min_{z\in\mathcal{X}} h(x,y,z)\),
@@ -3472,9 +3525,11 @@ k(x,x)=\min_{y\in\mathcal{Y}}h(x,x,y)=\min_{y\in\mathcal{Y}}f(x,y)=g(x)
 \]
 Not necessary that \(\mathcal{Y}=\mathcal{X}\). Only \(h\) has to majorize \(f\) for \(k\) to majorize, \(f\) can be anything. This may be in the composition section.
 
-\#\#Some Examples
+\hypertarget{some-examples}{%
+\section{Some Examples}\label{some-examples}}
 
-\#\#\#The Reciprocal
+\hypertarget{the-reciprocal}{%
+\subsection{The Reciprocal}\label{the-reciprocal}}
 
 Minimizing the function \(f(x)=ax-\log(x)\), where \(a>0\) is a constant, over \(x>0\) is trivial. The first and second derivatives of \(f\) are
 \[
@@ -3526,7 +3581,8 @@ Here we show the majorization for \(a=3/2\) and \(y\) equal to \(1/10, 1\) and \
 
 Figure 2: Majorization of 3x/2+log(x) at y=1/10,1, and 3/2
 
-\#\#\#Cubics and Quartics
+\hypertarget{cubics-and-quartics}{%
+\subsection{Cubics and Quartics}\label{cubics-and-quartics}}
 
 Suppose \(f\) is a cubic, which is non-trivial in the sense that its third derivative is non-zero. Thus \(f\) has no minimum or maximum, because it is unbounded below and above.
 This immediately shows there can be no linear or quadratic majorizer \(g\) of \(f\), because if there was then \(g-f\) would be a non-trivial cubic, which does not have a minimum.
@@ -3657,7 +3713,8 @@ d&iterations&rate\\
 
 Table 1: Cubic Majorization of a Quartic
 
-\#\#\#Normal PDF and CDF
+\hypertarget{normal-pdf-and-cdf}{%
+\subsection{Normal PDF and CDF}\label{normal-pdf-and-cdf}}
 
 For a nice regular example we use the celebrated functions
 \begin{align*}
@@ -3695,18 +3752,20 @@ Figure 1: Quadratic Majorization of Normal PDF and CDF
 The inequalities in this section may be useful in majorizing multivariate functions involving \(\phi\) and \(\Phi\).
 They are mainly intended, however, to illustrate construction of quadratic majorizers in the smooth case.
 
-\#\#\#Logistic PDF and CDF
+\hypertarget{logistic-pdf-and-cdf}{%
+\subsection{Logistic PDF and CDF}\label{logistic-pdf-and-cdf}}
 
-\#Majorization Inequalities
+\hypertarget{majorization-inequalities}{%
+\chapter{Majorization Inequalities}\label{majorization-inequalities}}
 
-\#\#Introduction
+\hypertarget{introduction-3}{%
+\section{Introduction}\label{introduction-3}}
 
 \hypertarget{the-amgm-inequality}{%
 \section{The AM/GM Inequality}\label{the-amgm-inequality}}
 
-\#\#\#Absolute Values
-
-\#\#\#Absolute Values
+\hypertarget{absolute-values}{%
+\subsection{Absolute Values}\label{absolute-values}}
 
 Suppose the problem we have to solve is to minimize
 \[
@@ -3802,7 +3861,8 @@ w_{ij}(\xi)f_i(\theta)f_j(\theta)+\text{terms},
 \]
 minimization of which is a weighted least squares problem.
 
-\#\#\#Location Problems
+\hypertarget{location-problems}{%
+\subsection{Location Problems}\label{location-problems}}
 
 The \emph{Fermat-Weber problem} is to find a point \(x\in\mathbb{R}^m\) such that the sum of the Euclidean distances to \(m\) given points \(y_1,\cdots,y_m\) is minimized. Thus our loss function is
 \[
@@ -3850,7 +3910,8 @@ X_2^{(k+1)}=B_{22}(X^{(k)})^{-1}B_{21}(X^{(k)})X_1.
 \hypertarget{the-lasso-and-the-bridge}{%
 \subsection{The Lasso and the Bridge}\label{the-lasso-and-the-bridge}}
 
-\#\#Polar Norms and the Cauchy-Schwarz Inequality
+\hypertarget{polar-norms-and-the-cauchy-schwarz-inequality}{%
+\section{Polar Norms and the Cauchy-Schwarz Inequality}\label{polar-norms-and-the-cauchy-schwarz-inequality}}
 
 \hypertarget{rayleigh-quotient}{%
 \subsection{Rayleigh Quotient}\label{rayleigh-quotient}}
@@ -3965,7 +4026,8 @@ while for all configurations \[X\] we have
 \frac{1}{2}\text{tr }(X-\overline X)'V(X-\overline X).
 \]
 
-\#\#Conjugates and Young's Inequality
+\hypertarget{conjugates-and-youngs-inequality}{%
+\section{Conjugates and Young's Inequality}\label{conjugates-and-youngs-inequality}}
 
 \textbf{Example:} Let \(0<r<2\), \(p=\frac{2}{r}\), and \(q=\frac{2}{2-r}\). Then the previous result, applied to \(x^r\) and \(y^{2-r}\), becomes
 \[
@@ -4001,7 +4063,8 @@ One important application of these results is majorization of powers of Euclidea
 {(\sqrt{y'Ay})^{(2-r)}}\left\{\frac{r}{2}x'Ax+\frac{2-r}{2}y'Ay\right\}
 \]
 
-\#\#\#Support Vector Machines
+\hypertarget{support-vector-machines}{%
+\subsection{Support Vector Machines}\label{support-vector-machines}}
 
 \hypertarget{using-convexity}{%
 \chapter{Using Convexity}\label{using-convexity}}
@@ -4126,16 +4189,19 @@ considerable heuristic value, but it detracts somewhat from
 seeing the essential engine of the algorithm, which is the
 majorization.
 
-\#\#The EM Algorithm
+\hypertarget{the-em-algorithm-1}{%
+\section{The EM Algorithm}\label{the-em-algorithm-1}}
 
 The E-step of the EM algorithm,
 in our terminology, is the construction of a new majorization
 function. We prefer a nonstochastic description of EM, because
 maximizing integrals is obviously a more general problem.
 
-\#Tangential Majorization
+\hypertarget{tangential-majorization}{%
+\chapter{Tangential Majorization}\label{tangential-majorization}}
 
-\#\#Using the Tangent
+\hypertarget{using-the-tangent}{%
+\section{Using the Tangent}\label{using-the-tangent}}
 
 \hypertarget{majorizing-and-minorizing-the-logarithm}{%
 \subsection{Majorizing and Minorizing the Logarithm}\label{majorizing-and-minorizing-the-logarithm}}
@@ -4363,8 +4429,8 @@ For \(h(x)=|x|\) we have \(h'(x)=\pm 1\) if \(x\not= 0\), and thus \(x^{(k+1)}=\
 \hypertarget{quadratic-majorization}{%
 \chapter{Quadratic Majorization}\label{quadratic-majorization}}
 
-\hypertarget{introduction-1}{%
-\section{Introduction}\label{introduction-1}}
+\hypertarget{introduction-4}{%
+\section{Introduction}\label{introduction-4}}
 
 As we said, it is desirable that the subproblems in which we minimize the majorization function are simple. One way to guarantee this is to try to find a \emph{convex quadratic majorizer}. We mostly limit ourselves to convex quadratic majorizers because on \(\mathbb{R}^n\) concave ones have no minima and are of little use for algorithmic purposes. Of course on compact sets minimizers of concave quadratics do exist,
 and may be useful in some circumstances.
@@ -4772,14 +4838,17 @@ If we can find \(\gamma(y)\) such that
 
 Note: Use Nesterov's Gauss-Newton paper 03/13/15
 
-\#\#\#Marginal Functions
+\hypertarget{marginal-functions}{%
+\subsection{Marginal Functions}\label{marginal-functions}}
 
 \hypertarget{using-higher-derivatives}{%
 \chapter{Using Higher Derivatives}\label{using-higher-derivatives}}
 
-\#\#Introduction
+\hypertarget{introduction-5}{%
+\section{Introduction}\label{introduction-5}}
 
-\#\#Mean Value Majorization
+\hypertarget{mean-value-majorization}{%
+\section{Mean Value Majorization}\label{mean-value-majorization}}
 
 Suppose \(f\) is differentiable in an open set \(\mathcal{X}\) containing both \(x\) and \(y\) and the line connecting them. We can use the mean value theorem
 in the inequality form
@@ -5195,7 +5264,8 @@ x+\log(1+\exp(-x))=\sum_{s=1}^\infty\frac{(\Psi(x))^s}{s}
 \hypertarget{sharp-majorization}{%
 \chapter{Sharp Majorization}\label{sharp-majorization}}
 
-\#\#Introduction
+\hypertarget{introduction-6}{%
+\section{Introduction}\label{introduction-6}}
 
 \hypertarget{comparing-majorizations}{%
 \section{Comparing Majorizations}\label{comparing-majorizations}}
@@ -5619,8 +5689,8 @@ and \(x_2=+\frac43\sqrt{3}\). Thus \(\underline{\delta}_f(0)=-3.079201\)
 and \(\overline{\delta}_f(0)=+3.079201\). Using these values we can plot
 the broken-line minorization of \(f(x)=x^4-4x^2\) at \(y=0\). Compare this with the sharp quadratic minorization at \(y=0\), which is the function \(g(x)=-4x^2\).
 
-\hypertarget{examples}{%
-\section{Examples}\label{examples}}
+\hypertarget{examples-1}{%
+\section{Examples}\label{examples-1}}
 
 \hypertarget{the-cosine}{%
 \subsection{The cosine}\label{the-cosine}}
@@ -5786,7 +5856,8 @@ g(x)=f(y)+f'(y)(x-y)+\frac12 (x-y)^2.
 \hypertarget{local-and-localized-majorization}{%
 \chapter{Local and Localized Majorization}\label{local-and-localized-majorization}}
 
-\#\#Introduction
+\hypertarget{introduction-7}{%
+\section{Introduction}\label{introduction-7}}
 
 \hypertarget{majorization-in-a-neighborhood}{%
 \subsection{Majorization in a Neighborhood}\label{majorization-in-a-neighborhood}}
@@ -6226,8 +6297,8 @@ Figure 2: D-majorization at y = 1 for a = 0.5.
 \hypertarget{background}{%
 \chapter{Background}\label{background}}
 
-\hypertarget{introduction-2}{%
-\section{Introduction}\label{introduction-2}}
+\hypertarget{introduction-8}{%
+\section{Introduction}\label{introduction-8}}
 
 \hypertarget{analysis}{%
 \section{Analysis}\label{analysis}}
@@ -7730,7 +7801,8 @@ The iterations for \(a=.5\) starting with \(x^{(0)}=.1\) are in the cobweb plot 
 In the code section there is \texttt{R} code for a general cobweb plotter with a variable number
 of parameters.
 
-\#Code
+\hypertarget{code}{%
+\chapter{Code}\label{code}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7951,34 +8023,6 @@ Code Segment 3: Block Rate
 \end{Shaded}
 
 Code Segment 4: Cobweb Plotter
-
-\#NEWS
-
-001 03/10/16
-
-\begin{itemize}
-\tightlist
-\item
-  First translation from gitbook
-\end{itemize}
-
-002 03/16/16
-
-\begin{itemize}
-\tightlist
-\item
-  Now generates legal tex
-\item
-  crossrefs sorted out
-\end{itemize}
-
-003 03/17/16
-
-\begin{itemize}
-\tightlist
-\item
-  bibtex file completed
-\end{itemize}
 
 \#References
 

@@ -1,0 +1,223 @@
+# Code
+
+```{r blockrelax, eval = FALSE}
+
+blockRelax <-
+  function (f,
+            x,
+            g,
+            itmax = 100,
+            eps = 1e-8,
+            verbose = TRUE) {
+    k <- split (1:length (x), g)
+    m <- length (k)
+    fold <- f (x)
+    itel <- 1
+    blockFun <- function (z,  g,  y, i) {
+      y[i] <- z
+      return (g (y))
+    }
+    repeat {
+      for (i in 1:m) {
+        kk <- k[[i]]
+        o <-
+          optim (
+            x[kk],
+            blockFun,
+            gr = NULL,
+            g = f,
+            y = x,
+            i = kk,
+            method = "BFGS"
+          )
+        x[kk] <- o$par
+        fnew <- o$value
+      }
+      if (verbose)
+        cat(
+          "Iteration: ",
+          formatC (itel, width = 3, format = "d"),
+          "fold: ",
+          formatC (
+            fold,
+            digits = 8,
+            width = 12,
+            format = "f"
+          ),
+          "fnew: ",
+          formatC (
+            fnew,
+            digits = 8,
+            width = 12,
+            format = "f"
+          ),
+          "\n"
+        )
+      if ((itel == itmax) || ((fold - fnew) < eps))
+        break
+      itel <- itel + 1
+      fold <- fnew
+    }
+    return (list (x = x, f = fnew))
+  }
+```
+<center>
+`r code_nums("blockrelax", display = "f")`
+</center>
+<hr>
+```{r mls, eval = FALSE}
+
+bls <-
+  function (z,
+            y,
+            xold = rep(0, ncol(y)),
+            blocks = as.list(1:ncol(y)),
+            itmax = 100,
+            eps = 1e-10,
+            verbose = TRUE) {
+    nblocks <- length (blocks)
+    fold <- sum((z - y %*% xold) ^ 2)
+    xopt <- qr.solve(y, z)
+    eold <- sqrt (sum ((xold - xopt) ^ 2))
+    itel <- 1
+    repeat {
+      xwork <- xold
+      for (i in 1:nblocks) {
+        u <- drop (y %*% xwork)
+        yact <- y[, blocks[[i]], drop = FALSE]
+        xact <- xwork[blocks[[i]]]
+        yres <- z - (u - yact %*% xact)
+        xwork[blocks[[i]]] <- qr.solve (yact, yres)
+      }
+      xnew <- xwork
+      fnew <- sum((z - y %*% xnew) ^ 2)
+      enew <- sqrt (sum ((xold - xnew) ^ 2))
+      if (verbose) {
+        cat(
+          "itel: ",
+          formatC(itel, digits = 3, width = 3),
+          "fold: ",
+          formatC(
+            fold,
+            digits = 6,
+            width = 10,
+            format = "f"
+          ),
+          "fnew: ",
+          formatC(
+            fnew,
+            digits = 6,
+            width = 10,
+            format = "f"
+          ),
+          "ratio: ",
+          formatC(
+            enew / eold,
+            digits = 6,
+            width = 10,
+            format = "f"
+          ),
+          "\n"
+        )
+      }
+      if ((abs(fold - fnew) < eps) || (itel == itmax))
+        break()
+      fold <- fnew
+      eold <- enew
+      xold <- xnew
+      itel <- itel + 1
+    }
+    return (x)
+  }
+```
+<center>
+`r code_nums("mls", display = "f")`
+</center>
+<hr>
+```{r blockrate, eval = FALSE}
+
+blockRate <-
+  function (f,
+            x,
+            blocks = as.list (1:length(x)),
+            numerical = FALSE,
+            product_form = FALSE) {
+    if (numerical) {
+      h <- hessian (f, x)
+    } else {
+      h <- f (x)
+    }
+    nvar <- length (x)
+    nblocks <- length (blocks)
+    nb <- 1:nblocks
+    nn <- 1:nvar
+    g <-
+      sapply (nn, function (i)
+        which (sapply (blocks, function (x)
+          any (i == x))))
+    if (product_form) {
+      sder <- diag (nvar)
+      for (i in nb) {
+        bi <- blocks [[i]]
+        ei <- ifelse (outer(nn, bi, "=="), 1, 0)
+        sder <-
+          (diag(nvar) - ei %*% solve (h[bi, bi], h[bi, , drop = FALSE])) %*% sder
+      }
+    } else {
+      alow <- h * ifelse (outer (g, g, ">="), 1, 0)
+      sder <- -solve (alow, h - alow)
+    }
+    return (sder)
+  }
+```
+<center>
+`r code_nums("blockrate", display = "f")`
+</center>
+<hr>
+```{r cobwebplotter, eval = FALSE}
+
+cobwebPlotter <-
+  function (xold,
+            func,
+            lowx = 0,
+            hghx = 1,
+            lowy = lowx,
+            hghy = hghx,
+            eps = 1e-10,
+            itmax = 25,
+            ...) {
+    x <- seq (lowx, hghx, length = 100)
+    y <- sapply (x, function (x)
+      func (x, ...))
+    plot (
+      x,
+      y,
+      xlim = c(lowx , hghx),
+      ylim = c(lowy, hghy),
+      type = "l",
+      col = "RED",
+      lwd = 2
+    )
+    abline (0, 1, col = "BLUE")
+    base <- 0
+    itel <- 1
+    repeat {
+      xnew <- func (xold, ...)
+      if (itel > 1) {
+        lines (matrix(c(xold, xold, base, xnew), 2, 2))
+      }
+      lines (matrix(c(xold, xnew, xnew, xnew), 2, 2))
+      if ((abs (xnew - xold) < eps) || (itel == itmax)) {
+        break ()
+      }
+      base <- xnew
+      xold <- xnew
+      itel <- itel + 1
+    }
+  }
+```
+<center>
+`r code_nums("cobwebplotter", display = "f")`
+</center>
+
+#References

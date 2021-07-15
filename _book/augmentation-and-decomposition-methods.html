@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Using Higher Derivatives | Block Relaxation Methods in Statistics</title>
+  <title>5 Augmentation and Decomposition Methods | Block Relaxation Methods in Statistics</title>
   <meta name="description" content="null" />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Using Higher Derivatives | Block Relaxation Methods in Statistics" />
+  <meta property="og:title" content="5 Augmentation and Decomposition Methods | Block Relaxation Methods in Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Using Higher Derivatives | Block Relaxation Methods in Statistics" />
+  <meta name="twitter:title" content="5 Augmentation and Decomposition Methods | Block Relaxation Methods in Statistics" />
   
   <meta name="twitter:description" content="null" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="quadratic-majorization.html"/>
-<link rel="next" href="sharp-majorization.html"/>
+<link rel="prev" href="alternatingleastsquares.html"/>
+<link rel="next" href="majorization-methods.html"/>
 <script src="libs/header-attrs-2.9.2/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -462,413 +462,560 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-higher-derivatives" class="section level1" number="11">
-<h1><span class="header-section-number">11</span> Using Higher Derivatives</h1>
-<div id="introduction-5" class="section level2" number="11.1">
-<h2><span class="header-section-number">11.1</span> Introduction</h2>
+<div id="augmentation-and-decomposition-methods" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Augmentation and Decomposition Methods</h1>
+<div id="introduction-1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<p>We take up the historical developments. Alternating Least
+Squares was useful for many problems, but it some cases
+it was not powerful enough to do the job. Or, to put it
+differently, the subproblems were still too complicated
+to be efficiently solved a large number of times.
+In order to solve some
+additional least squares problems, we can use <em>augmentation</em>.
+We first illustrate this with some examples.</p>
+<p>The examples show that augmentation is somewhat of
+an art (like integration). The augmentation is in some cases not obvious, and there are no mechanical rules.
+The idea of adding variables
+that augment the problem to a simpler one is very general. It is
+also at the basis, for instance, of the Lagrange multiplier method.</p>
 </div>
-<div id="mean-value-majorization" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> Mean Value Majorization</h2>
-Suppose <span class="math inline">\(f\)</span> is differentiable in an open set <span class="math inline">\(\mathcal{X}\)</span> containing both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> and the line connecting them. We can use the mean value theorem
-in the inequality form
+<div id="definition" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Definition</h2>
+<p>Formalizing augmentation is straightforward.
+Suppose <span class="math inline">\(f\)</span> is a real valued function, defined for
+all <span class="math inline">\(x\in\mathcal{X}\)</span>, where <span class="math inline">\(\mathcal{X}\subseteq\mathbb{R}^n.\)</span>
+Suppose there exists another real valued function <span class="math inline">\(g,\)</span> defined
+on <span class="math inline">\(\mathcal{X}\otimes\mathcal{Y},\)</span> where <span class="math inline">\(\mathcal{Y}\subseteq\mathbb{R}^m,\)</span> such that
 <span class="math display">\[
-f(x)\leq f(y)+\sup_{0\leq\lambda\leq 1}
-(x-y)&#39;\mathcal{D}f(y+\lambda(x-y))
+f(x)=\min_{y\in\mathcal{Y}}g(x,y).
 \]</span>
-Define, for fixed <span class="math inline">\(x,y\)</span>
-<span class="math display">\[
-h(\lambda)\mathop{=}\limits^{\Delta}(x-y)&#39;\mathcal{D}f(y+\lambda(x-y))
-\]</span>
-The maximum of <span class="math inline">\(h\)</span> is attained at either <span class="math inline">\(\lambda=0\)</span>, or <span class="math inline">\(\lambda=1\)</span>, or at
-a point in the interior of the unit interval where the derivative with respect to <span class="math inline">\(\lambda\)</span> vanishes. Now
-<span class="math display">\[
-\mathcal{D}h(\lambda)=(x-y)&#39;\mathcal{D}^2f(y+\lambda(x-y))(x-y).
-\]</span>
-Thus for concave <span class="math inline">\(f\)</span> we see that <span class="math inline">\(h\)</span> is decreasing, and we recover our previous result
-<span class="math display">\[
-f(x)\leq f(y)+(x-y)&#39;\mathcal{D}f(y).
-\]</span>
-For convex <span class="math inline">\(f\)</span>, for which <span class="math inline">\(h\)</span> is increasing, we find
-<span class="math display">\[
-f(x)\leq f(y)+(x-y)&#39;\mathcal{D}f(x).
-\]</span>
-<hr>
-For the univariate cubic <span class="math inline">\(f(x)=a+bx+\frac12 cx^2+\frac16 dx^3\)</span> we have
-<span class="math display">\[
-\mathcal{D}f(x)=b+cx+\frac12 dx^2,
-\]</span>
-and thus we must
-compute <span class="math inline">\(\sup_{0\leq\lambda\leq 1}h(\lambda)\)</span>
-where
-<span class="math display">\[
-h(\lambda)\mathop{=}\limits^{\Delta}z(b+c(y+\lambda z)+\frac12d(y+\lambda z)^2),
-\]</span>
-where <span class="math inline">\(z\mathop{=}\limits^{\Delta}x-y\)</span>. If <span class="math inline">\(dz^3 &gt; 0\)</span> the quadratic <span class="math inline">\(h\)</span> is convex, and the maximum is attained at one of the endpoints, i.e.
-<span class="math display">\[
-\sup_{0\leq\lambda\leq 1}h(\lambda)=
-\max\{z(b+cy+\frac12 dy^2),z(b+cx+\frac12 dx^2)\}
-\]</span>
-<span class="math display">\[
-cz+\frac12 dz(x+y)&gt;0
-\]</span>
-<hr>
-</div>
-<div id="taylor-majorization" class="section level2" number="11.3">
-<h2><span class="header-section-number">11.3</span> Taylor Majorization</h2>
-<div id="second-order" class="section level3" number="11.3.1">
-<h3><span class="header-section-number">11.3.1</span> Second Order</h3>
-<p>We can take this one step further. Obviously
-<span class="math display">\[
-f(x)\leq f(y)+(x-y)&#39;\nabla f(y)+
-\frac{1}{2}\sup_{0\leq\lambda\leq 1}
-(x-y)&#39;\nabla^2f(y+\lambda(x-y))
-(x-y).
-\]</span>
-The main problem with these approaches based on the mean value theorem is that
-the majorizing function may not be simple. Nevertheless the approach can also be used to arrive at bounds
-which are computationally convenient.</p>
-<hr>
-<p>For a univariate cubic <span class="math inline">\(f(x)=a+bx+\frac12 cx^2+\frac16 dx^3\)</span> we find the majorization</p>
-<p><span class="math display">\[\begin{multline*}
-f(x)\leq f(y)+f&#39;(y)(x-y)+\frac12(x-y)^2\max_{0\leq\lambda\leq 1}\left(c+
-d(x+\lambda(y-x))\right)=\\=f(y)+f&#39;(y)(x-y)+\frac12(x-y)^2
-\begin{cases}
-c+d\max(x,y)&amp;\text{ if }d\geq 0,\\
-c+d\min(x,y)&amp;\text{ if }d\leq 0,\\
-\end{cases}
-\end{multline*}\]</span></p>
-<hr>
-<p>For the exponent</p>
-<p><span class="math display">\[\begin{multline*}
-\exp(x)\leq \exp(y)+\exp(y)(x-y)+\frac12 (x-y)^2\sup_{0\leq\lambda\leq 1}\exp(y+\lambda(x-y))=\\
-=\exp(y)+\exp(y)(x-y)+\frac12 (x-y)^2\exp(\max(x,y))
-\end{multline*}\]</span></p>
-<hr>
-For the folium with <span class="math inline">\(f(x)=x_1^3+x_2^3-3x_1^{\ }x_2^{\ }\)</span> we have
-<span class="math display">\[
-\mathcal{D}^2f(x)=\begin{bmatrix}6x_1&amp;-3\\-3&amp;6x_2\end{bmatrix}.
-\]</span>
-Thus a simple majorizer is given by <em>(incorrect 03/03/15)</em>
-<span class="math display">\[
-g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\max(x_1,x_2)(x-y)&#39;V(x-y),
-\]</span>
-with
-<span class="math display">\[
-V=\begin{bmatrix}6&amp;-3\\-3&amp;6\end{bmatrix}.
-\]</span>
-<hr>
-<p>NB: see probit section for <span class="math inline">\(f&#39;&#39;(x)\)</span> decreasing. 03/03/15</p>
-</div>
-<div id="higher-order" class="section level3" number="11.3.2">
-<h3><span class="header-section-number">11.3.2</span> Higher Order</h3>
-<p>From Taylor’s theorem with Lagrange form of the remainder discussed in <a href="../background/taylor.html">[A:Taylor]</a> it follows that
-<span class="math display">\[
-f(x)\leq g_p(x,y)+\frac{1}{(p+1)!}\sup_{0\leq\lambda\leq 1}&lt;\mathcal{D}^{p+1}f(x+\lambda(y-x)),(x-y)^{p+1}&gt;,
-\]</span>
-where <span class="math inline">\(g_p\)</span> is the <span class="math inline">\(p-\)</span>degree Taylor polynomial at <span class="math inline">\(y\)</span>.</p>
-<p>If all elements of the array in <span class="math inline">\(\frac{1}{(p+1)!}\mathcal{D}^{p+1}f(x+\lambda(y-x))\)</span>
-are less than <span class="math inline">\(\kappa\)</span> in absolute value for all <span class="math inline">\(x,y\)</span> and <span class="math inline">\(\lambda\)</span>, then this implies
-<span class="math display">\[
-f(x)\leq g_p(x,y)+\kappa\left\{\sum_{i=1}^n|x_i-y_i|\right\}^{p+1}
-\]</span></p>
-<p>We can also use the Frobenius norm and Cauchy-Schwartz to obtain
-<span class="math display">\[
-f(x)\leq g_p(x,y)+\kappa(x,y)\|x-y\|^{p+1},
-\]</span>
-where
-<span class="math display">\[
-\kappa(x,y)\mathop{=}\limits^{\Delta}\frac{1}{(p+1)!}\sup_{0\leq\lambda\leq 1}\|\mathcal{D}^{p+1}f(x+\lambda(y-x))\|.
-\]</span>
-Of course it remains to be seen if these formulas actually lead to useful majorization algorithms. For higher <span class="math inline">\(p\)</span> they will undoubtedly have fast convergence, but the optimizations in each iteration involve higher order multivariate polynomials and look pretty daunting.</p>
-</div>
-</div>
-<div id="nesterov-majorization" class="section level2" number="11.4">
-<h2><span class="header-section-number">11.4</span> Nesterov Majorization</h2>
-<p>Suppose <span class="math inline">\(f\)</span> is a function with third derivatives that are bounded
-in the sense that
-<span class="math display">\[
-\langle\mathcal{D}^3f(x),(x-y)^3\rangle\leq K_3\|x-y\|^3.\tag{1}
-\]</span>
-It is sufficient for this that the Hessian is Lipschitz continuous with Lipschitz constant <span class="math inline">\(K_3\)</span>. Majorization based on <span class="math inline">\((1)\)</span> was first discussed in an important article by <span class="citation"><a href="#ref-nesterov_polyak_06" role="doc-biblioref">Nesterov and Polyak</a> (<a href="#ref-nesterov_polyak_06" role="doc-biblioref">2006</a>)</span></p>
-Under these conditions we have the majorizer
-<span class="math display">\[
-g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+\frac16K_3\|x-y\|^3.
-\]</span>
-The term <span class="math inline">\(\|x-y\|^3\)</span> is convex in <span class="math inline">\(x\)</span>, but the majorizer <span class="math inline">\(g\)</span> itself is generally not convex, although it is convex whenever <span class="math inline">\(f\)</span> is. Majorizer <span class="math inline">\(g\)</span> has continuous first derivatives
-<span class="math display">\[
-\mathcal{D}_1g(x,y)=\mathcal{D}f(y)+\mathcal{D}^2f(y)(x-y)+\frac12K_3\|x-y\|(x-y),
-\]</span>
-and for <span class="math inline">\(x\not= y\)</span> the second derivative is
-<span class="math display">\[
-\mathcal{D}_{11}g(x,y)=\mathcal{D}^2f(y)+\frac12K_3\|x-y\|\left(I+\frac{(x-y)(x-y)&#39;}{(x-y)&#39;(x-y)}\right).
-\]</span>
-It follows that
-<span class="math display">\[
-\mathcal{D}^2f(y)+\frac12K_3\|x-y\|\lesssim\mathcal{D}_{11}g(x,y)\lesssim\mathcal{D}^2f(y)+K_3\|x-y\|,
-\]</span>
-and thus, by the squeeze theorem,
-<span class="math display">\[
-\lim_{x\rightarrow y}\mathcal{D}_{11}g(x,y)=\mathcal{D}^2f(y).
-\]</span>
-<hr>
-The majorization algorithm is, as usual,
-<span class="math display">\[
-x^{(k+1)}=\mathop{\mathbf{argmin}}\limits_{x} g(x,x^{(k)}),
-\]</span>
-and the majorizer is minimized at a point where <span class="math inline">\(\mathcal{D}_1g(x,x^{(k)})=0\)</span>. We write the stationary equation as
-<span class="math display">\[
-\left(\mathcal{D}^2f(y)+\frac12K_3\|x-y\| I\right)(x-y)=-\mathcal{D}f(y).
-\]</span>
-We write this as two equations, using what is effectively a form of decomposition.
-<span class="math display">\[\begin{align*}
-\left(\mathcal{D}^2f(y)+\frac12K_3\delta I\right)(x-y)&amp;=-\mathcal{D}f(y),\tag{2a}\\
-\delta&amp;=\|x-y\|.\tag{2b}
-\end{align*}\]</span>
-Let <span class="math inline">\(\mathcal{D}^2f(y)=K\Lambda K&#39;\)</span> be an eigen decomposition, and
-define <span class="math inline">\(g\mathop{=}\limits^{\Delta}-K&#39;\mathcal{D}f(y)\)</span> and <span class="math inline">\(z=K&#39;(x-y)\)</span>. Then solving
-<span class="math display">\[
-\left(\Lambda+\frac12K_3\delta I\right)z=g
-\]</span>
-for <span class="math inline">\(z\)</span> and using <span class="math inline">\((2b)\)</span> gives the <em>secular equation</em> in <span class="math inline">\(\delta\)</span>
-<span class="math display">\[
-\delta^2=\sum_{i=1}^n\frac{g_i^2}{(\lambda_i+\frac12 K_3\delta)^2}
-\]</span>
-<hr>
-The Cartesian folium is
-<span class="math display">\[
-f(x,y)=x^3+y^3-3xy
-\]</span>
-Thus
-<span class="math display">\[
-f(x+u,y+v)=
-f(x,y)+3au+3bv+3xu^2-3uv+3yv^2+u^3+v^3.
-\]</span>
-with
-<span class="math display">\[\begin{align*}
-a&amp;\mathop{=}\limits^{\Delta}x^2-y,\\
-b&amp;\mathop{=}\limits^{\Delta}y^2-x.
-\end{align*}\]</span>
-If
-<span class="math display">\[
-h(u,v)\mathop{=}\limits^{\Delta}\frac{(u^3+v^3)^\frac23}{u^2+v^2}
+We also suppose that minimizing <span class="math inline">\(f\)</span> over <span class="math inline">\(\mathcal{X}\)</span>
+is <em>hard</em> while minimizing <span class="math inline">\(g\)</span> over <span class="math inline">\(\mathcal{X}\)</span> is <em>easy</em> for
+all <span class="math inline">\(y\in\mathcal{Y}\)</span>. And we suppose
+that minimizing <span class="math inline">\(g\)</span> over <span class="math inline">\(y\in\mathcal{Y}\)</span>
+is also <em>easy</em> for all <span class="math inline">\(x\in\mathcal{X}.\)</span>
+This last assumption is not too far-fatched,
+because we already know what the value at the minimum is.</p>
+<p>I am not going to define <em>hard</em> and <em>easy</em>. What may
+be easy for you, may be hard for me.</p>
+<p>Anyway, by augmenting
+the function we are in the block-relaxation situation again,
+and we can apply our general results on global convergence
+and linear convergence. The results can be adapted to the
+augmentation situation.</p>
+<p>Note: augmentation duality.</p>
+<p><span class="math display">\[
+h(y)=\min_{x\in\mathcal{X}}g(x,y)
 \]</span>
 then
 <span class="math display">\[
-\max_{u,v}h(u,v)=\max_{u^2+v^2=1}(u^3+v^3)^\frac23=\max_\theta\ (\sin^3(\theta)+\cos^3(\theta))^\frac23=1,
-\]</span>
-and thus
+\min_{x\in\mathcal{X}}f(x)=\min_{x\in\mathcal{X}}\min_{y\in\mathcal{Y}}g(x,y)=\min_{y\in\mathcal{Y}}\min_{x\in\mathcal{X}}g(x,y)=\min_{y\in\mathcal{Y}}h(y).
+\]</span></p>
+</div>
+<div id="rate-of-convergenc" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Rate of Convergenc</h2>
+<p>Because of the structure of <span class="math inline">\(f\)</span> we know that <span class="math inline">\(\mathcal{D}f(x)=\mathcal{D}_1g(x,y(x))\)</span>,
+where <span class="math inline">\(y(x)\)</span> is defined implicitly by <span class="math inline">\(f(x)=g(x,y(x))\)</span>, or more explicitly by
 <span class="math display">\[
-u^3+v^3\leq(u^2+v^2)^\frac32.
+y(x)=\mathop{\mathbf{argmin}}\limits_{y\in\mathcal{Y}} g(x,y),
 \]</span>
-This gives the majorization we are looking for
+or, in the unconstrained and differentiable case,
 <span class="math display">\[
-g(x+u,y+v)=f(x,y)+3au+3bv+3xu^2-3uv+3yv^2+(u^2+v^2)^\frac32
+\mathcal{D}_2g(x,y(x))=0.
 \]</span>
-The derivatives are
+Differentiating again gives
+<span class="math display">\[
+\mathcal{D}^2f(x)=\mathcal{D}_{11}g(x,y(x))-\mathcal{D}_{12}g(x,y(x))
+[\mathcal{D}_{22}g(x,y(x))]^{-1}\mathcal{D}_{21}g(x,y(x)),
+\]</span></p>
+<p>It follows that
+<span class="math display">\[
+\mathcal{M}(x)=\mathcal{I}-[\mathcal{D}_{11}g(x,y(x))]^{-1}\mathcal{D}^2f(x).
+\]</span>
+This shows how the iteration matrix does not depend (directly)
+on the derivatives of <span class="math inline">\(g\)</span> with respect to <span class="math inline">\(y\)</span>, and can
+be interpreted as one minus the curvature of the function at the minimum, relative to the curvature of the augmentation function.</p>
+</div>
+<div id="half-quadratic-methods" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Half-Quadratic Methods</h2>
+<p><em>Half-quadratic</em> or <em>HQ</em> methods are used heavily in image restoration and reconstructions problems. They were introduced in two different but related forms in <a href="">Geman and Reynolds [1992]</a> and <a href="">Geman and Yang [1995]</a>.</p>
+<p><span class="math display">\[
+f(x)=\|Ax-z\|_2^2+\beta\sum_{i\in\mathcal{I}}\phi(u_i&#39;x-v_i)
+\]</span>
+potential funcion, regularization function. edge-preserving requires non-quadratic potential function typically <span class="math inline">\(U\)</span> is a discrete version of a differential operator, such as a first or second-order difference matrix
+<span class="math display">\[
+g(x,y)=\|Ax-z\|_2^2+\beta\sum_{i=1}^r\frac{b_i}{2}\|\mathcal{D}_ix\|_2^2+k(b_i)
+\]</span>
+<span class="math display">\[
+k(b):=\sup_{t\in\mathcal{R}}\left\{-\frac12bt^2+h(t)\right\}.
+\]</span>
+By convex conjugacy
+<span class="math display">\[
+h(t)=\inf_{b\in\mathcal{R}}\left\{\frac12bt^2+k(b)\right\}
+\]</span>
+and the infimum is attained at
+<span class="math display">\[
+b=\begin{cases}h&#39;&#39;(0^+)&amp;\text{ if }t=0,\\
+\frac{h&#39;(t)}{t}&amp;\text{ if }t\not= 0.
+\end{cases}
+\]</span></p>
+</div>
+<div id="examples" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Examples</h2>
+<div id="yates-augmentation" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Yates Augmentation</h3>
+<p>A linear least squares problem is <em>balanced</em> if the design matrix <span class="math inline">\(A\)</span> is orthogonal.
+In the balanced case the problem of minimizing
+<span class="math display">\[
+f(x)=(b-Ax)&#39;(b-Ax)\tag{1}
+\]</span>
+is easily solved, with solution <span class="math inline">\(x=A&#39;b\)</span>. Computing <span class="math inline">\(x\)</span> does not involve any matrix inversion. In the case of a balanced factorial design it simply involves computing means of rows, columns, slices, and so on.</p>
+<p>If some elements of <span class="math inline">\(b\)</span> are missing then we can partition <span class="math inline">\(A\)</span> and <span class="math inline">\(b\)</span> into a missing and non-missing part as in
+<span class="math display">\[
+A=\begin{bmatrix}A_1\\A_2\end{bmatrix}\qquad b=\begin{bmatrix}b_1\\b_2\end{bmatrix},
+\]</span>
+with <span class="math inline">\(A_1\)</span> and <span class="math inline">\(b_1\)</span> the non-missing part, and minimize
+<span class="math display">\[
+f(x)=(b_1-A_1x)&#39;(b_1-A_1x).
+\]</span>
+Now <span class="math inline">\(A_1&#39;A_1=I-A_2&#39;A_2&lt;I\)</span>, and the optimal <span class="math inline">\(x\)</span> can no longer be computed with a simple matrix multiplication.</p>
+<p>If one want to avoid matrix inversion, then we can use the basic approach suggested by <span class="citation"><a href="#ref-yates_33" role="doc-biblioref">Yayes</a> (<a href="#ref-yates_33" role="doc-biblioref">1933</a>)</span>. We define the augmentation <span class="math inline">\(g\)</span> by
+<span class="math display">\[
+g(x,z)=(b_1-A_1x)&#39;(b_1-A_1x)+(z-A_2x)&#39;(z-A_2x).
+\]</span>
+Because <span class="math inline">\(f(x)=\min_z g(x,z)\)</span> this leads to an easy block relaxation algorithm.
 <span class="math display">\[\begin{align*}
-\mathcal{D}_1g(u,v)&amp;=3a+6xu-3v+3\lambda u,\\
-\mathcal{D}_2g(u,v)&amp;=3b+6yv-3v+3\lambda v.
+z^{(k+1)}&amp;=A_2x^{(k)},\\
+x^{(k+1)}&amp;=A_1&#39;b_1+A_2&#39;z^{(k+1)}.
 \end{align*}\]</span>
-with <span class="math inline">\(\lambda\mathop{=}\limits^{\Delta}\sqrt{u^2+v^2}\)</span>. Thus
+This gives
+<span class="math display">\[\begin{align*}
+z^{(k+1)}&amp;=A_2A_1&#39;b_1+A_2A_2&#39;z^{(k)},\\
+x^{(k+1)}&amp;=A_1&#39;b_1+A_2&#39;A_2x^{(k)}.
+\end{align*}\]</span>
+As we have shown in section <a href="../blockrelaxation/bls.html">blockrelaxation:twoblockleastsquares</a> this implies an iteration radius equal to the largest eigenvalue of <span class="math inline">\(A_2&#39;A_2\)</span>.</p>
+Note that Yates augmentation can be used to transform any linear least squares problem to a balanced problem, even if there are no missing data. In minimizing <span class="math inline">\(f(x)\)</span> of <span class="math inline">\((1)\)</span> we first check if <span class="math inline">\(A&#39;A\lesssim I.\)</span> If this is the case, there is no need to normalize. If we do not have <span class="math inline">\(A&#39;A\lesssim I\)</span> we start by dividing <span class="math inline">\(A\)</span> by <span class="math inline">\(\tau(A)=\sqrt{\mathbf{tr}\ A&#39;A}\)</span>. This new normalized <span class="math inline">\(A\)</span>, say <span class="math inline">\(\tilde A\)</span>, now satisfies <span class="math inline">\(\tilde A&#39;\tilde A\lesssim I\)</span>. Then find any <span class="math inline">\(G\)</span> such that <span class="math inline">\(\tilde A&#39;\tilde A+G&#39;G=I\)</span>, and iterate according to
+<span class="math display">\[\begin{align*}
+z^{(k+1)}&amp;=Gx^{(k)},\\
+x^{(k+1)}&amp;=\tilde A&#39;b+G&#39;z^{(k+1)},
+\end{align*}\]</span>
+which amounts to
 <span class="math display">\[
-\begin{bmatrix}
-2x+\lambda&amp;-1\\
--1&amp;2y+\lambda
-\end{bmatrix}\begin{bmatrix}u\\v\end{bmatrix}=\begin{bmatrix}-a\\-b\end{bmatrix},
+x^{(k+1)}=\tilde A&#39;b+(I-\tilde A&#39;\tilde A)x^{(k)}.
+\]</span>
+The iteration radius is
+<span class="math display">\[
+\kappa=1-\frac{\lambda_{\text{min}}(A&#39;A)}{\mathbf{tr}\ A&#39;A}.
+\]</span>
+We can do better if we compute <span class="math inline">\(\tilde A\)</span> by dividing <span class="math inline">\(A\)</span> by its trace norm, i.e. its largest singular value. Then
+<span class="math display">\[
+\kappa=1-\frac{\lambda_{\text{min}}(A&#39;A)}{\lambda_{\text{max}}(A&#39;A)}.
+\]</span>
+There is <code>R</code> code for Yates augmentation in the file <code>yates.R</code>.
+<center>
+<a href="../code/yates.R">Insert yates.R Here</a>
+</center>
+</div>
+<div id="optimal-scaling-with-ordinals" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Optimal Scaling with ORDINALS</h3>
+<p>In LINEALS (section x.x.x) we try to find quantifications of the variables that linearize all bivariate regressions.
+<span class="citation"><a href="#ref-deleeuw_A_88a" role="doc-biblioref">De Leeuw</a> (<a href="#ref-deleeuw_A_88a" role="doc-biblioref">1988</a>)</span> has suggested to find standardized quantifications in such a way that the loss function
+<span class="math display">\[
+f(y)=\mathop{\sum\sum}\limits_{j\not=\ell}\left\{y_j&#39;C_{jl}^{\ }D_\ell^{-1}C_{\ell j}^{\ }y_j^{\ }-y_j&#39;C_{jl}^{\ }y_\ell^{\ }y_\ell&#39;C_{\ell j}^{\ }y_j^{\ }\right\}\tag{1}
+\]</span>
+is minimized.</p>
+<p>A more general loss function is
+<span class="math display">\[
+g(y,z)=\mathop{\sum\sum}\limits_{j\not=\ell} (z_{jl}-D_j^{-1}C_{j\ell}y_\ell)&#39;D_j(z_{jl}-D_j^{-1}C_{j\ell}y_\ell),\tag{2}
+\]</span>
+which must be minimized over both <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span>. The <span class="math inline">\(z_{jl}\)</span> are <span class="math inline">\(m(m-1)\)</span> vectors, called <em>regression targets</em>, and target <span class="math inline">\(z_{jl}\)</span> has <span class="math inline">\(k_j\)</span> elements.</p>
+<p>To see that this loss function generalizes <span class="math inline">\(\text{(1)}\)</span> suppose we constrain <span class="math inline">\(z\)</span> by requiring that <span class="math inline">\(z_{j\ell}\)</span> is proportional to <span class="math inline">\(y_j\)</span>, i.e. <span class="math inline">\(z_{j\ell}=r_{jl}y_j.\)</span>
+Then, using <span class="math inline">\(y_j&#39;D_jy_j=1\)</span>,
+<span class="math display">\[
+g(y,R)=\mathop{\sum\sum}\limits_{j\not=\ell} r_{jl}^2-2\mathop{\sum\sum}\limits_{j\not=\ell} r_{j\ell}y_j&#39;C_{j\ell}y_\ell+\mathop{\sum\sum}\limits_{j\not=\ell} y_\ell&#39;C_{\ell j}D_j^{-1}C_{j\ell}y_\ell.
+\]</span>
+This is minimized over <span class="math inline">\(R\)</span> by <span class="math inline">\(r_{j\ell}=y_j&#39;C_{j\ell}y_\ell\)</span>, and the minimum is precisely the loss function <span class="math inline">\(\text{(1)}\)</span>. Thus <span class="math inline">\(f(y)=\min_R g(y,R),\)</span> and <span class="math inline">\(g\)</span> is an augmentation of <span class="math inline">\(f\)</span>.
+Block relaxation for <span class="math inline">\(g\)</span> alternates minimization over <span class="math inline">\(R\)</span> for fixed <span class="math inline">\(y\)</span>, which we have shown to be easy, and minimization over <span class="math inline">\(y\)</span> for fixed <span class="math inline">\(R\)</span>, which is a modified eigenvalue problem of the kind discussed in BRAS3, section x.x.x. This is not necessarily simpler than the direct minimum eigenvalue problem for minimizing <span class="math inline">\(f\)</span> in section x.x.x.</p>
+<p>The major advantage from augmenting <span class="math inline">\(f\)</span> is that it now becomes simple to incorporate quite general restrictions on the <span class="math inline">\(z_{j\ell}.\)</span> For example, they can be required to be monotone with the original data, or a spline transformation, or a monotone spline. Or a mixture of these options. Thus we can constrain each individual regression
+functions <span class="math inline">\(D_j^{-1}C_{j\ell}y_\ell\)</span> to have one of a pre-determined number of shapes.</p>
+<p>In <code>ordinals.R</code> we implement the three standard options of the Gifi system. A vector <span class="math inline">\(y_j\)</span> is treated as nominal, ordinal, or numerical.
+If it is nominal then it is unconstrained, except for the normalization.
+In that case the <span class="math inline">\(z_{j\ell}\)</span> are also unconstrained for all <span class="math inline">\(\ell\)</span>.
+If <span class="math inline">\(y_j\)</span> is treated as ordinal is must be monotone with the data, and so must all <span class="math inline">\(z_{j\ell}\)</span>. And a numerical <span class="math inline">\(y_j\)</span> must be linear with the data, together with its targets <span class="math inline">\(z_{j\ell}\)</span>. Of course if all variables are numerical there is nothing to optimize, and we just compute correlations. If all variables are nominal there is nothing to optimize either, because we immediately get zero loss from any starting point.</p>
+<hr>
+<center>
+<a href="../code/ordinals.R">Insert ordinals.R Here</a>
+</center>
+<hr>
+</div>
+<div id="least-squares-factor-analysis" class="section level3" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Least Squares Factor Analysis</h3>
+<p>In LS factor analysis we want to minimize
+<span class="math display">\[
+\sigma(A)=\sum_{i=1}^m\sum_{j=1}^m w_{ij}(r_{ij}-\sum_{s=1}^p a_{is}a_{js})^2,
+\]</span>
+with
+<span class="math display">\[
+w_{ij}=
+\begin{cases}
+0,&amp; \text{if $i=j$,}\\
+1,&amp; \text{if $i\not=j$.}
+\end{cases}
+\]</span>
+We augment by adding the <em>communalities</em>, i.e. the diagonal elements
+of <span class="math inline">\(R\)</span> as variables, and by using ALS over <span class="math inline">\(A\)</span> and the communalities. For
+a complete <span class="math inline">\(R,\)</span> minimizing over <span class="math inline">\(A\)</span> just means computing the <span class="math inline">\(p\)</span> dominant
+eigenvalues-eigenvectors. This algorithm dates back to the thirties, when
+it was proposed by Thomson and others.</p>
+<p>Think of this as an algorithm for updating communalities. We have
+<span class="math display">\[
+H^{(k+1)}=\mathbf{diag}(I-R_p^{(k)})
+\]</span>
+where <span class="math inline">\(R_p^{(k)}\)</span> is the best rank p approximation
+to <span class="math inline">\(R-H^{(k)}\)</span>.</p>
+</div>
+<div id="squared-distance-scaling" class="section level3" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> Squared Distance Scaling</h3>
+<p>Suppose we want to minimize
+<span class="math display">\[
+\sigma(X)=\sum_{i=1}^m\sum_{j=1}^m(\delta_{ij}-d_{ij}^2(X))^2,
+\]</span>
+with <span class="math inline">\(d_{ij}^2(X)=(x_i-x_j)&#39;(x_i-x_j)\)</span> squared Euclidean distance.
+An augmentation algorithm for this problem, modestly called ELEGANT, was designed by <span class="citation"><a href="#ref-deleeuw_U_75b" role="doc-biblioref">De Leeuw</a> (<a href="#ref-deleeuw_U_75b" role="doc-biblioref">1975</a>)</span>. That paper was never published and the
+manuscript is probably lost, but the algorithm was
+described, discussed, and applied by both <span class="citation"><a href="#ref-takane_77" role="doc-biblioref">Takane</a> (<a href="#ref-takane_77" role="doc-biblioref">1977</a>)</span>
+and <span class="citation"><a href="#ref-browne_87" role="doc-biblioref">Browne</a> (<a href="#ref-browne_87" role="doc-biblioref">1987</a>)</span>.</p>
+<p>We augment <span class="math inline">\(\sigma\)</span> to
+<span class="math display">\[
+\sigma(X,\eta)=
+\sum_{i=1}^m\sum_{j=1}^m\sum_{k=1}^m\sum_{\ell=1}^m
+(\eta_{ijk\ell}-(x_i-x_j)&#39;(x_k-x_\ell))^2,
+\]</span>
+where we require <span class="math inline">\(\eta_{ijij}=\delta_{ij}\)</span> while the other <span class="math inline">\(\eta_{ijk\ell}\)</span> are
+free. Define <span class="math inline">\(C\mathop{=}\limits^{\Delta}XX&#39;\)</span> and assume that <span class="math inline">\(X\)</span> is column-centered, i.e. <span class="math inline">\(C\)</span> is doubly-centered. The augmentation works because
+<span class="math display">\[
+\sum_{i=1}^m\sum_{j=1}^m\sum_{k=1}^m\sum_{\ell=1}^m
+\left((x_i-x_j)&#39;(x_k-x_\ell)\right)^2=4n^2\mathbf{tr}\ C^2.
+\]</span>
+Also
+<span class="math display">\[
+\sum_{i=1}^m\sum_{j=1}^m\sum_{k=1}^m\sum_{\ell=1}^m\eta_{ijk\ell}(x_i-x_j)&#39;(x_k-x_\ell)=\mathbf{tr}\ UC,
+\]</span>
+where
+<span class="math display">\[
+u_{ij}\mathop{=}\limits^{\Delta}\sum_{k=1}^m\sum_{\ell=1}^m
+(\eta_{ikj\ell}-\eta_{i\ell kj}-\eta_{kij\ell}+\eta_{\ell i kj}).
+\]</span>
+Thus we can minimize the augmented loss function over <span class="math inline">\(X\)</span> for fixed <span class="math inline">\(\eta_{ijk\ell}\)</span> by
+minimizing <span class="math inline">\(\mathbf{tr}\ (\frac{1}{4n^2}U-XX&#39;)^2\)</span>.
+This means computing the <span class="math inline">\(p\)</span> largest eigenvalues and corresponding eigenvectors of <span class="math inline">\(U\)</span>.</p>
+<p>Minimizing the augmented loss over
+the <span class="math inline">\(\eta_{ijk\ell}\)</span> for
+fixed <span class="math inline">\(X\)</span> is
+<span class="math display">\[
+\eta_{ijk\ell}^{(k)}=
+\begin{cases}
+\delta_{ij}&amp;\text{ if } (i,j)=(k,\ell),\\
+(x_i^{(k)}-x_j^{(k)})&#39;(x_k^{(k)}-x_\ell^{(k)})&amp;\text{ otherwise}.
+\end{cases}
+\]</span>
+This is enough information to get the ALS algorithm going. The “elegance” so far is reducing a problem involving multivariate quartics to a sequence of eigenvalue problems. It is distinctly unelegant, however, that the computations need four-dimensional arrays. But it turns out these can easily be gotten rid of. We use
+<span class="math display">\[
+\sum_{i=1}^m\sum_{j=1}^m\sum_{k=1}^m\sum_{\ell=1}^m\eta_{ijk\ell}^{(k)}(x_i-x_j)&#39;(x_k-x_\ell)=
+2\mathbf{tr}\ C\left(2n^2C^{(k)}+
+B(X^{(k)})\right),
+\]</span>
+where
+<span class="math display">\[
+B(X^{(k)})\mathop{=}\limits^{\Delta}\sum_{i=1}^m\sum_{j=1}^m(\delta_{ij}-d_{ij}^2(X^{(k)}))A_{ij}
+\]</span>
+and <span class="math inline">\(A_{ij}\mathop{=}\limits^{\Delta}(e_i-e_j)(e_i-e_j)&#39;\)</span>.
+Thus we find <span class="math inline">\(X^{(k+1)}\)</span> by computing eigenvalues and eigenvectors of <span class="math inline">\(C^{(k)}+\frac{1}{2n^2} B(X^{(k)})\)</span> and no intermediate computation or storage of the <span class="math inline">\(\eta_{ijk\ell}\)</span> is required.</p>
+</div>
+<div id="linear-mixed-model" class="section level3" number="5.5.5">
+<h3><span class="header-section-number">5.5.5</span> Linear Mixed Model</h3>
+This example is taken from a paper of <span class="citation"><a href="#ref-deleeuw_liu_R_93" role="doc-biblioref">De Leeuw and Liu</a> (<a href="#ref-deleeuw_liu_R_93" role="doc-biblioref">1993</a>)</span>, which describes the
+algorithm in detail. We simply give a list of results that show
+augmentation at work. We maximize a multinormal likelihood, not
+a least squares criterium.
+<hr>
+<strong>Result:</strong> If <span class="math inline">\(A=B+TCT&#39;,\)</span> with <span class="math inline">\(B,C&gt;0\)</span>,
+<span class="math inline">\(y&#39;A^{-1}y=\min_x (y-Tx)&#39;B^{-1}(y-Tx)+x&#39;C^{-1}x.\)</span>
+<hr>
+<strong>Result:</strong> If <span class="math inline">\(A=B+TCT&#39;,\)</span> with <span class="math inline">\(B,C&gt;0\)</span>,
+<span class="math display">\[
+\log\det{A}=\log\det{B}+\log\det{C}+\log\det{C^{-1}+T&#39;B^{-1}T}.
+\]</span>
+<hr>
+<p><strong>Result:</strong> If <span class="math inline">\(A=B+TCT&#39;\)</span> then
+<span class="math display">\[\begin{multline*}
+\log\det{A}+y&#39;A^{-1}y=\min_{x}\
+\log\det{B}+\log\det{C}+\\
++\log\det{C^{-1}+T&#39;B^{-1}T}+\\
++(y-Tx)&#39;B^{-1}(y-Tx)+x&#39;C^{-1}x.
+\end{multline*}\]</span></p>
+<hr>
+<strong>Result:</strong> If <span class="math inline">\(T&gt;0\)</span> then
+<span class="math display">\[
+\log\det{T}=\min_{S&gt;0}\log\det{S}+\hbox{ tr }S^{-1}T-p,
+\]</span>
+with the unique minimum attained at <span class="math inline">\(S=T.\)</span>
+<hr>
+<p>We can use these four results to augment the original maximum likelihood problem.</p>
+<p><span class="math display">\[\begin{multline*}
+\log\det{A}+y&#39;A^{-1}y=\min_{x,S&gt;0}\ \log\det{B}+\log\det{C}+\\
++\log\det{S}+\hbox{ tr }S^{-1}(C^{-1}+T&#39;B^{-1}T)+\\
++(y-Tx)&#39;B^{-1}(y-Tx)+x&#39;C^{-1}x.
+\end{multline*}\]</span></p>
+<p>Minimize over <span class="math inline">\(x,S,B,C\)</span> using block-relaxation. The conditional minimizers
+are
+<span class="math display">\[\begin{align*}
+S&amp;=C^{-1}+T&#39;B^{-1}T,\notag\\
+C&amp;=S^{-1}+xx&#39;,\notag\\
+B&amp;=TS^{-1}T&#39;+(y-Tx)(y-Tx)&#39;,\notag\\
+x&amp;=(T&#39;B^{-1}T+C^{-1})^{-1}T&#39;B^{-1}y.\notag
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="decomposition-methods" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Decomposition Methods</h2>
+<p>The following theorem is so simple it’s almost embarassing. Nevertheless
+it seems to have some important applications to algorithm construction.</p>
+<p><strong>Theorem:</strong>
+Suppose <span class="math inline">\(G: X\otimes Y\Rightarrow Z\)</span> and <span class="math inline">\(f\)</span> is an extended real-valued function.
+Then
+<span class="math display">\[
+\inf_{z\in\overline{Z}} f(z)=\inf_{x\in X}\inf_{y\in Y} f(G(x,y)),
+\]</span>
+where <span class="math inline">\(\overline{Z}=G(X,Y)\)</span>. Moreover if the infimum on the right is attained in <span class="math inline">\((\hat x,\hat y)\)</span>,
+then the infimum on the left is attained in <span class="math inline">\(\hat z=G(\hat x,\hat y)\)</span>.</p>
+<p><strong>Proof:</strong> In the eating (see below).<strong>QED</strong></p>
+<p>Here are some quick examples. First take <span class="math inline">\(G(x,y)=x-y\)</span>. Then
+<span class="math display">\[\begin{align*}
+\inf_{z}f(z)&amp;=\inf_{x\geq 0}\inf_{y\geq 0}f(x-y)=\\
+&amp;=\inf_{x}\inf_{y}f(x-y).
+\end{align*}\]</span></p>
+<p>Now take <span class="math inline">\(G(x,\lambda)=\lambda x\)</span>, with <span class="math inline">\(\lambda\)</span> a scalar and <span class="math inline">\(x\)</span> a vector,
+<span class="math display">\[\begin{align*}
+\inf_{z}f(z)&amp;=\inf_{\lambda\geq 0}\inf_{x&#39;x=1}f(\lambda x)=\\
+&amp;=\inf_{\lambda}\inf_{x&#39;x=1}f(\lambda x)=\\
+&amp;=\inf_{\lambda}\inf_{x}f(\lambda x).
+\end{align*}\]</span>
+If <span class="math inline">\(G(x,\lambda)=\frac{x}{\lambda}\)</span>, with <span class="math inline">\(\lambda\not= 0\)</span> and <span class="math inline">\(x&#39;x=1\)</span>, then <span class="math inline">\(\overline Z\)</span> is the set of all vectors <span class="math inline">\(z\not= 0\)</span>. Thus
+<span class="math display">\[
+\inf_{z\not= 0}f(z)=\inf_{\lambda\not= 0}\inf_{x&#39;x=1}f(\frac{x}{\lambda}).
+\]</span>
+Somewhat less trivially, for a symmetric matrix argument <span class="math inline">\(A\)</span>,
+<span class="math display">\[
+\inf_{A}f(A)=\inf_{\mathbf{dg}(\Lambda)=\Lambda}\quad\inf_{K&#39;K=I}\ f(K\Lambda K&#39;).
+\]</span>
+Observe we can always interchange the two infimum operations,
+because <span class="math inline">\(\inf_{x\in X}\inf_{y\in Y}=\inf_{y\in Y}\inf_{x\in X}\)</span>. Because <span class="math inline">\(f\)</span> is extended real valued, the infimum always
+exists, although it may be <span class="math inline">\(-\infty\)</span>.</p>
+<div id="quadratic-form-on-a-sphere" class="section level3" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Quadratic Form on a Sphere</h3>
+<p>We now discuss an actual example. Consider the problem of minimizing the function
+<span class="math display">\[
+f(z)=\frac{(z-b)&#39;A(z-b)+c}{z&#39;z},
+\]</span>
+over <span class="math inline">\(z\not= 0\)</span>, where we make no assumptions on the matrix <span class="math inline">\(A\)</span>, the vector <span class="math inline">\(b\)</span>, and the
+scalar <span class="math inline">\(c\)</span>. Instead of going the usual route of differentiating and solving the
+stationary equations, we use the decomposition approach.</p>
+<p>Define
+<span class="math display">\[
+g(x,\lambda)=\frac{(\lambda x-b)&#39;A(\lambda x-b)+c}{\lambda^{2}x&#39;x},
+\]</span>
+or, letting <span class="math inline">\(\theta=\lambda^{-1}\)</span>,
+<span class="math display">\[
+g(x,\theta)=\frac{\theta^{2}(b&#39;Ab+c)-2\theta b&#39;Ax+x&#39;Ax}{x&#39;x},
+\]</span>
+Then
+<span class="math display">\[
+\inf_{z\not= 0}  f(z)=\inf_{x&#39;x=1}\inf_{\theta\geq 0} g(x,\theta),
+\]</span>
+but also
+<span class="math display">\[
+\inf_{z\not= 0}  f(z)=\inf_{x&#39;x=1}\inf_{\theta} g(x,\theta).
+\]</span>
+If <span class="math inline">\(x&#39;x=1\)</span> then
+<span class="math display">\[
+\inf_{\theta}g(x,\theta)=\inf_{\theta}\theta^{2}(b&#39;Ab+c)-2\theta b&#39;Ax+x&#39;Ax.
+\]</span>
+We distinguish three cases.</p>
+<ul>
+<li><p>If <span class="math inline">\(b&#39;Ab+c&gt;0\)</span> the minimum is attained at
+<span class="math display">\[
+\hat\theta=\frac{b&#39;Ax}{b&#39;Ab+c}
+\]</span>
+and the minimum is equal to <span class="math inline">\(x&#39;\overline Ax\)</span>, where
+<span class="math display">\[
+\overline A=A-\frac{Abb&#39;A}{b&#39;Ab+c}.
+\]</span>
+It follows that in this case <span class="math inline">\(\min_{z} f(z)\)</span> is
+the smallest eigenvalue of <span class="math inline">\(\overline A\)</span>, written as <span class="math inline">\(\kappa(\overline A)\)</span>.
+If <span class="math inline">\(\overline{x}\)</span> is the corresponding unit-length eigenvector, then the minimizer of <span class="math inline">\(f(z)\)</span> is
+<span class="math display">\[
+\hat z=\frac{b&#39;Ab+c}{b&#39;A&#39;\overline x}\ \overline x.
+\]</span></p></li>
+<li><p>If <span class="math inline">\(b&#39;Ab+c&lt;0\)</span> the minimum is not attained and <span class="math inline">\(\inf_{\theta} g(x,\theta)=-\infty\)</span> for
+each <span class="math inline">\(x\)</span>. Thus <span class="math inline">\(\inf_{z} f(z)=-\infty\)</span> as well.</p></li>
+<li><p>If <span class="math inline">\(b&#39;Ab+c=0\)</span> then we must distinguish two sub-cases. If <span class="math inline">\(b&#39;Ax=0\)</span> then <span class="math inline">\(\min_{\theta }g(x,\theta)=x&#39;Ax\)</span>. If <span class="math inline">\(b&#39;Ax\not=0\)</span> then <span class="math inline">\(\inf_{\theta} g(x,\theta)=-\infty\)</span> again.
+Thus if <span class="math inline">\(b&#39;Ab+c=0\)</span> we have <span class="math inline">\(\inf_{z} f(z)=-\infty\)</span>, unless both <span class="math inline">\(c=0\)</span> and <span class="math inline">\(Ab=0\)</span>,
+in which sub-case we have <span class="math inline">\(\min_{z} f(z)\)</span> equal to <span class="math inline">\(\kappa(A)\)</span>, the smallest eigenvalue of <span class="math inline">\(A\)</span>
+and the minimizer equal to any corresponding eigenvector.</p></li>
+</ul>
+<p>Of course if <span class="math inline">\(Ab=0\)</span> we have <span class="math inline">\(\overline A=A\)</span>. Thus
+<span class="math display">\[
+\inf_{z} f(z)=\begin{cases}
+\kappa(\overline A)&amp;\text{ if }(b&#39;Ab+c&gt;0)\text{ or }(Ab=0\text{ and }c=0),\\
+-\infty&amp;\text{otherwise}.
+\end{cases}
+\]</span></p>
+<p>Now start with the alternative decomposition
+<span class="math display">\[
+\min_{z\not= 0}f(z)=\min_{x&#39;x=1}\min_{\theta\geq 0}\theta^{2}(b&#39;Ab+c)-2\theta b&#39;Ax+x&#39;Ax.
+\]</span>
+We want to show that although the intermediate calculations are different, the
+result is the same.</p>
+<ul>
+<li><p>If <span class="math inline">\(b&#39;Ab+c&gt;0\)</span> and <span class="math inline">\(b&#39;Ax\geq 0\)</span> then <span class="math inline">\(\min_{\theta }g(x,\theta)=x&#39;\overline Ax\)</span>,
+as before. But if <span class="math inline">\(b&#39;Ab+c&gt;0\)</span> and <span class="math inline">\(b&#39;Ax&lt;0\)</span> the minimum is attained at <span class="math inline">\(\hat\theta=0\)</span>,
+and <span class="math inline">\(\min_{\theta }g(x,\theta)=x&#39;Ax\)</span>. Because <span class="math inline">\(\kappa(\overline A)\)</span>
+is less than or equal to <span class="math inline">\(\kappa(A)\)</span>, we still have <span class="math inline">\(\min_{z} f(z)\)</span> equal to the smallest eigenvalue of <span class="math inline">\(\overline A\)</span>.</p></li>
+<li><p>If <span class="math inline">\(b&#39;Ab+c&lt;0\)</span> we still have <span class="math inline">\(\inf_{z} f(z)=-\infty\)</span>.</p></li>
+<li><p>If <span class="math inline">\(b&#39;Ab+c=0\)</span> we distinguish three sub-cases. If <span class="math inline">\(b&#39;Ax=0\)</span> then <span class="math inline">\(\min_{\theta }g(x,\theta)=x&#39;Ax\)</span>,
+as before. If <span class="math inline">\(b&#39;Ax\&gt;0\)</span> then <span class="math inline">\(\inf_{\theta} g(x,\theta)=-\infty\)</span>. And if <span class="math inline">\(b&#39;Ax&lt;0\)</span>
+the minimum is attained at <span class="math inline">\(\hat\theta=0\)</span> and equal to <span class="math inline">\(x&#39;Ax\)</span>.
+Again we have <span class="math inline">\(\inf_{z} f(z)=-\infty\)</span>, unless both <span class="math inline">\(c=0\)</span> and <span class="math inline">\(Ab=0\)</span>, when <span class="math inline">\(\min_{z} f(z)\)</span> is equal to <span class="math inline">\(\kappa(A)\)</span>.</p></li>
+</ul>
+<p>We have solved the problem by using the decompositions~ and~. But we can
+also interchange the order of the infimums and use
+<span class="math display">\[
+\inf_{z\not= 0}  f(z)=\inf_{\theta\geq 0}\inf_{x&#39;x=1}g(x,\theta),
 \]</span>
 or
 <span class="math display">\[
-\begin{bmatrix}u\\v\end{bmatrix}=-\frac{1}{(2x+\lambda)(2y+\lambda)-1}
-\begin{bmatrix}2y+\lambda&amp;1\\1&amp;2x+\lambda\end{bmatrix}\begin{bmatrix}a\\b\end{bmatrix}.
-\]</span>
-Thus we must have
+\inf_{z\not= 0}  f(z)=\inf_{\theta}\inf_{x&#39;x=1}g(x,\theta).
+\]</span></p>
+<p>Let’s look at the problem <span class="math inline">\(\min_{x&#39;x=1}g(x,\theta)\)</span>. For a minimum we must have <span class="math inline">\(x=\theta(A-\mu I)^{-1}Ab,\)</span>
+where the Lagrange multiplier <span class="math inline">\(\mu\)</span> is chosen such that <span class="math inline">\(\theta^{2}b&#39;A(A-\mu I)^{-2}Ab=1\)</span>. At the minimum</p>
+<p><span class="math display">\[\begin{multline*}
+\min_{x&#39;x=1}g(x,\theta)=\\\theta^{2}[(b&#39;Ab+c)-2b&#39;A(A-\mu I)^{-1}Ab+b&#39;A(A-\mu I)^{-1}A(A-\mu I)^{-1}Ab]
+\end{multline*}\]</span></p>
+</div>
+<div id="multidimensional-unfolding" class="section level3" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Multidimensional Unfolding</h3>
+<p>Now a data analysis example.
+In least-squares-squared metric unfolding (LSSMU) we must minimize
 <span class="math display">\[
-\lambda^2=u^2+v^2=\frac{((2y+\lambda)a+b)^2+((2x+\lambda)b+a)^2}{((2x+\lambda)(2y+\lambda)-1)^2}
+\sigma(X,Y)=
+\sum_{i=1}^{n}\sum_{j=1}^{m}w_{ij}(\delta_{ij}^{2}-[x_{i}&#39;x_{i}^{}+y_{j}&#39;y_{j}^{}-2x_{i}&#39;y_{j}^{}])^{2}.
 \]</span>
-<hr>
-<p><span class="math display">\[
-f(x)=\frac16\sum_{i=1}^n x_i^3+\frac12 x&#39;Ax
-\]</span>
+over the <span class="math inline">\(n\times p\)</span> and <span class="math inline">\(m\times p\)</span> configuration matrices <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.
+This has been typically handled by block decomposition. The <span class="math inline">\((n+m)p\)</span> unknowns are partitioned
+into a number of subsets. Block relaxation algorithms then cycle through the subsets, minimizing
+over the parameters in the subset while keeping all parameters fixed at their current values. One
+cycle through the subsets is one iteration of the algorithm.</p>
+<p>In ALSCAL (<span class="citation"><a href="#ref-takane_young_deleeuw_A_77" role="doc-biblioref">Takane, Young, and De Leeuw</a> (<a href="#ref-takane_young_deleeuw_A_77" role="doc-biblioref">1977</a>)</span>)) coordinate descent is used, which means that the blocks consist of a single
+coordinate. There are <span class="math inline">\((n+m)p\)</span> blocks. Solving for the optimal coordinate, with all other
+fixed, means minimizing a quartic, which in turn means finding the roots of a cubic. The
+algorithm converges to a stationary point which is a global minimum with respect to each
+coordinate separately. An alternative algorithm, proposed by <span class="citation"><a href="#ref-browne_87" role="doc-biblioref">Browne</a> (<a href="#ref-browne_87" role="doc-biblioref">1987</a>)</span>, uses the <span class="math inline">\(n+m\)</span> points as blocks. Each substep is again an easy unidimensional minimization.
+Their algorithm converges to a stationary point which is a global minimum
+with respect to each point. Generally it is considered to be desirable to have fewer blocks,
+both to increase the speed of convergence and to restrict the class of local minima we
+can converge to.</p>
+<p>Let us use our basic theorem to construct a four-block algorithm for LSSMU. Minimizing~ is the same as minimizing
 <span class="math display">\[
-f(x)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+
-\frac16\sum_{i=1}^n (x_i-y_i)^3.
+\sigma(X,Y,\alpha,\beta)=
+\sum_{i=1}^{n}\sum_{j=1}^{m}w_{ij}(\delta_{ij}^{2}-[\alpha_{i}^{2}+\beta_{j}^{2}-2\alpha_{i}\beta_{j}x_{i}&#39;y_{j}^{}])^{2}
 \]</span>
+over <span class="math inline">\(\alpha,\beta, X,\)</span> and <span class="math inline">\(Y\)</span>, where the configuration matrices <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are constrained by <span class="math inline">\(\mathbf{diag}(XX&#39;)=I\)</span> and <span class="math inline">\(\mathbf{diag}(YY&#39;)=I\)</span>.</p>
+<p>The algorithm starts with values <span class="math inline">\(\Theta^{(0)}=(\alpha^{(0)},\beta^{(0)},X^{(0)},Y^{(0)})\)</span> satisfying the
+constraints. Suppose we have arrived at <span class="math inline">\(\Theta^{(k)}\)</span>. We then update
+<span class="math display">\[\begin{eqnarray}
+\alpha^{(k+1)}&amp;=\mathop{\mathbf{argmin}}\limits_{\alpha}&amp;\sigma(X^{(k)},Y^{(k)},\alpha,\beta^{(k)}),\\
+\beta^{(k+1)}&amp;=\mathop{\mathbf{argmin}}\limits_{\beta}&amp;\sigma(X^{(k)},Y^{(k)},\alpha^{(k+1)},\beta),\\
+X^{(k+1)}&amp;=\mathop{\mathbf{argmin}}\limits_{\mathbf{diag}(XX&#39;)=I}&amp;\sigma(X,Y^{(k)},\alpha^{(k+1)},\beta^{(k+1)}),\\
+Y^{(k+1)}&amp;=\mathop{\mathbf{argmin}}\limits_{\mathbf{diag}(YY&#39;)=I}&amp;\sigma(X^{(k+1)},Y,\alpha^{(k+1)},\beta^{(k+1)}).
+\end{eqnarray}\]</span>
+This gives <span class="math inline">\(\Theta^{(k+1)}\)</span>. It is understood that in each of the four substeps of~
+we compute the global minimum, and if the global minimum happens to be nonunique we
+select any of them. We also remark that, as with any block relaxation method having more
+than two blocks, there are many variations on this basic scheme. We can travel through
+the substeps in a different order, we can change the order in each cycle, we can pass
+through the substeps in random order, we can cycle through the first two substeps a number
+of times before going to the third and fourth, and so on. Each of these strategies has its
+own overall convergence rate, and further research would be needed to determine what is best.</p>
+<p>Let us look at the subproblems a bit more in detail to see how they can be best solved.
+Expanding~ and organizing terms by powers of <span class="math inline">\(\alpha\)</span> gives
+<span class="math display">\[\begin{align*}
+\sigma(X,Y,\alpha,\beta)&amp;=\sum_{i=1}^{n}\alpha_{i}^{4}\sum_{j=1}^{m}w_{ij}+\\
+&amp;-\sum_{i=1}^{n}\alpha_{i}^{3}\sum_{j=1}^{m}w_{ij}\beta_{j}c_{ij}+\\
+&amp;+\sum_{i=1}^{n}\alpha_{i}^{2}\sum_{j=1}^{m}w_{ij}(4\beta_{j}^{2}c_{ij}^{2}+2\beta_{j}^{2}-2\delta_{ij}^{2})+\\
+&amp;-\sum_{i=1}^{n}\alpha_{i}^{2}\sum_{j=1}^{m}4w_{ij}\beta_{j}^{3}c_{ij}+\\
+&amp;+\sum_{i=1}^{n}\sum_{j=1}^{m}w_{ij}(\delta_{ij}^{4}+\beta_{j}^{4}+4\delta_{ij}^{2}c_{ij}-2\delta_{ij}^{2}\beta_{j}^{2}),
+\end{align*}\]</span>
+where <span class="math inline">\(c_{ij}=x_{i}&#39;y_{j}^{}\)</span>. This is a sum of <span class="math inline">\(n\)</span> univariate quartic polynomials, which
+can be minimized separately to give the global minimum over <span class="math inline">\(\alpha\)</span>. Obviously the
+same applies to minimization over <span class="math inline">\(\beta\)</span>.</p>
+<p>For minimization over <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> we define
+<span class="math display">\[\begin{align*}
+r_{ij}&amp;=\frac{\delta_{ij}^{2}-[\alpha_{i}^{2}+\beta_{j}^{2}]}{2\alpha_{i}\beta_{j}},\\
+w_{ij}&amp;=4\alpha_{i}^{2}\beta_{j}^{2}w_{ij}.
+\end{align*}\]</span>
+Then
 <span class="math display">\[
-h(z)\mathop{=}\limits^{\Delta}\frac{\sum_{i=1}^n z_i^3}{(z&#39;z)^\frac32}
+\sigma(X,Y,\alpha,\beta)=\sum_{i=1}^{n}\sum_{j=1}^{m}w_{ij}[r_{ij}-x_{i}&#39;y_{j}^{}]^{2}.
 \]</span>
+Expanding and collecting terms gives
 <span class="math display">\[
-\max_z h(z)=\max_{z&#39;z=1}\sum_{i=1}^n z_i^3=1.
+\sigma(X,Y,\alpha,\beta)=\sum_{i=1}^{n}\psi_{i}(x_{i})
 \]</span>
-Thus
+with
 <span class="math display">\[
-g(x)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+
-\frac16\{(x-y)&#39;(x-y)\}^\frac32
-\]</span>
-majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>. Now
-<span class="math display">\[
-\mathcal{D}g(x)=\mathcal{D}f(y)+\mathcal{D}^2f(y)(x-y)+\frac12\lambda(x)(x-y)
+\psi_{i}(x_{i})=f_{i}^{}-2x_{i}&#39;g_{i}^{}+x_{i}&#39;H_{i}^{}x_{i}^{})
 \]</span>
 and
-<span class="math display">\[
-\mathcal{D}^2g(x)=\mathcal{D}^2f(y)+\frac12\lambda(x)I+\frac12\frac{1}{\lambda(x)}(x-y)(x-y)&#39;
-\]</span>
-where <span class="math inline">\(\lambda(x)=\sqrt{(x-y)&#39;(x-y)}\)</span>.</p>
-<hr>
-<p>Suppose <span class="math inline">\(f\)</span> is a multivariate quartic with bounds on the third and fourth derivatives. Thus</p>
-<p><span class="math display">\[\begin{multline}
-g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+\\+\frac16K_3\|x-y\|^3+\frac{1}{24}K_4\|x-y\|^4
-\end{multline}\]</span></p>
-<p>We minimize <span class="math inline">\(g\)</span> over <span class="math inline">\(x\)</span>, as usual. Thus we must solve
-<span class="math display">\[
-\left[\mathcal{D}^2f(y)+\frac12K_3\|x-y\|I+\frac16K_4\|x-y\|^2I\right](x-y)=-\mathcal{D}f(y).
-\]</span>
-Expand this to the two equations
 <span class="math display">\[\begin{align*}
-\left[\mathcal{D}^2f(y)+\frac12K_3\delta I+\frac16K_4\delta^2I\right](x-y)&amp;=-\mathcal{D}f(y),\\
-\|x-y\|&amp;=\delta.
-\end{align*}\]</span></p>
-<p>##Examples</p>
-<div id="revisiting-the-reciprocal" class="section level3" number="11.4.1">
-<h3><span class="header-section-number">11.4.1</span> Revisiting the Reciprocal</h3>
-<p>Here we come back to the function <span class="math inline">\(f:x\rightarrow ax-\log x.\)</span></p>
-<p>We start with a new majorization of the logarithm. In other contexts the logarithm, which is concave, has been majorized by a linear function. Since our <span class="math inline">\(f\)</span> uses the negative logarithm, which is convex, that will not work in our case. By Taylor
-<span class="math display">\[
-\log(x) = \log (y) + \frac{1}{y}(x-y)-\frac12\frac{1}{z^2}(x-y)^2,
-\]</span>
-where <span class="math inline">\(z\)</span> is between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Thus if we define
-<span class="math display">\[
-h(x,y)\mathop{=}\limits^{\Delta}\log (y) + \frac{1}{y}(x-y)-\frac12\begin{cases}
-\frac{(x-y)^2}{x^2}&amp;\text{if }x\leq y,\\
-\frac{(x-y)^2}{y^2}&amp;\text{otherwise}.
-\end{cases}
-\]</span>
-then, for all <span class="math inline">\(x&gt;0\)</span> and <span class="math inline">\(y&gt;0\)</span>,
-<span class="math display">\[
-\log(x)\geq h(x,y),
-\]</span>
-and thus, with <span class="math inline">\(g(x,y)=ax-h(x,y)\)</span>, we have <span class="math inline">\(f(x)\leq g(x,y).\)</span>
-with equality if and only if <span class="math inline">\(x=y\)</span>.</p>
-<p>Now <span class="math inline">\(g\)</span>, as a function of <span class="math inline">\(x\)</span>, is differentiable on the positive reals for all <span class="math inline">\(y\)</span>. In fact
-<span class="math display">\[
-\mathcal{D}_1g(x,y)=
-a-\frac{1}{y}+\begin{cases}
-\frac{y}{x^3}(x-y)&amp;\text{if }x\leq y,\\
-\frac{1}{y^2}(x-y)&amp;\text{otherwise}.
-\end{cases}
-\]</span>
-Let us find the solutions of <span class="math inline">\(\mathcal{D}_1g(x,y)=0\)</span>. First check if
-<span class="math display">\[
-a-\frac{1}{y}+\frac{1}{y^2}(x-y)=0
-\]</span>
-has a root <span class="math inline">\(x\geq y\)</span>. The unique root
-is <span class="math inline">\(x=2y-ay^2\)</span>. Thus if <span class="math inline">\(2y-ay^2\geq y\)</span>, i.e.
-if <span class="math inline">\(y\leq\frac{1}{a}\)</span>, this gives
-a solution to <span class="math inline">\(\mathcal{D}_1g(x,y)=0\)</span>. Note that the update in this case is the same
-update as Newton’s update for the reciprocal.</p>
-<p>Matters are a bit more complicated for finding a solution of
-<span class="math display">\[
-a-\frac{1}{y}+\frac{y}{x^3}(x-y)=0.
-\]</span>
-with <span class="math inline">\(x\leq y\)</span>. The equation can be written as the cubic equation in <span class="math inline">\(x\)</span>
-<span class="math display">\[
-(a-\frac{1}{y})x^3+yx-y^2=0.
-\]</span>
-If <span class="math inline">\(y&gt;\frac{1}{a}\)</span> then the cubic has only one real root. Because if there are two, then by Rolle the derivative should vanish somewhere on the interval between them, but the
-derivative is always positive. Since the cubic is negative for <span class="math inline">\(x=0\)</span> and positive for <span class="math inline">\(x=y\)</span>, the unique root is between zero and <span class="math inline">\(y\)</span>, and thus satisfies <span class="math inline">\(\mathcal{D}_1g(x,y)=0\)</span>.</p>
-</div>
-<div id="logit" class="section level3" number="11.4.2">
-<h3><span class="header-section-number">11.4.2</span> Logit</h3>
-<p>The logistic distribution
-<span class="math display">\[
-\Psi(x)=\frac{1}{1+\exp(-x)}
-\]</span>
-increases from zero to one on the real line.
-As we have seen before, the function
-<span class="math display">\[
-f(x)=x-\log\Psi(x)=\log(1+\exp(x))
-\]</span>
-is strictly convex. This follows directly from
-<span class="math display">\[\begin{align*}
-f&#39;(x)&amp;=\Psi(x),\\
-f&#39;&#39;(x)&amp;=\Psi(x)(1-\Psi(x)),
+f_{i}&amp;=\sum_{j=1}^{m}w_{ij}^{}r_{ij}^{2},\\
+g_{i}&amp;=\sum_{j=1}^{m}w_{ij}r_{ij}y_{j},\\
+H_{i}&amp;=\sum_{j=1}^{m}w_{ij}^{}y_{j}^{}y_{j}&#39;.
 \end{align*}\]</span>
-because the first derivative is increasing and the second derivative is positive.</p>
-<p><strong>Theorem:</strong>
-The r-th derivative <span class="math inline">\(f^{(r)}(x)\)</span> is
-a polynomial in <span class="math inline">\(\Psi(x)\)</span> of degree <span class="math inline">\(r\)</span>. Consequently for all <span class="math inline">\(r\)</span> there are two finite real numbers <span class="math inline">\(m_{r}&lt;M_{r}\)</span> such that <span class="math inline">\(m_{r}\leq f^{(r)}(x)\leq M_{r}\)</span> for all <span class="math inline">\(x\)</span>.</p>
-<p><strong>Proof:</strong>
-We know that <span class="math inline">\(f&#39;(x)=\Psi(x)\)</span>, and thus the result is true for <span class="math inline">\(r=1\)</span>. Now proceed
-by induction. If <span class="math inline">\(f^{(r)}(x)=P_{r}(\Psi(x))\)</span> for some polynomial <span class="math inline">\(P_{r}\)</span> of degree <span class="math inline">\(r\)</span>, then
-<span class="math display">\[
-f^{(r+1)}(x)=P_{r}&#39;(\Psi(x))\Psi(x)(1-\Psi(x)),
-\]</span>
-which is indeed a polynomial in <span class="math inline">\(\Psi(x)\)</span>
-of degree <span class="math inline">\(r+1\)</span>. In addition
-<span class="math display">\[\begin{align*}
-\sup_{x}f^{(r)}(x)&amp;=\max_{0\leq s\leq 1}P_{r}(s),\\
-\inf_{x}f^{(r)}(x)&amp;=\min_{0\leq s\leq 1}P_{r}(s),
-\end{align*}\]</span>
-and the quantities on the right-hand side are clearly finite.
-<strong>QED</strong></p>
-We illustrate the theorem by computing some higher derivatives
-<span class="math display">\[
-f^{(3)}(x)=\Psi(x)(1-\Psi(x))(1-2\Psi(x)),
-\]</span>
-<span class="math display">\[
-f^{(4)}(x)=\Psi(x)(1-\Psi(x))(1-6\Psi(x)+6\Psi^{2}(x)),
-\]</span>
-<span class="math display">\[
-f^{(5)}(x)=\Psi(x)(1-\Psi(x))(1-2\Psi(x))(1-12\Psi(x)+12\Psi^{2}(x))
-\]</span>
-which implies
-<span class="math display">\[\begin{align*}
- -\frac{1}{18}\sqrt{3}&amp;\leq f^{(3)}(x)\leq+\frac{1}{18}\sqrt{3},\\
--\frac18&amp;\leq f^{(4)}(x)\leq\frac{1}{24}
-\end{align*}\]</span>
-The derivatives of orders 2 to 5 are in Figure 1.
-<hr>
-<img src="_main_files/figure-html/logders-1.png" width="672" style="display: block; margin: auto;" />
-<center>
-Figure 1: Derivatives of the Log-logistic
-</center>
-<hr>
-And here is some <code>R</code> code for drawing the figure.
-<hr>
-<center>
-<a href="../code/logDers.R">Insert logDers.R Here</a>
-</center>
-<hr>
-<p>We now look more closely at the polynomials <span class="math inline">\(P_{r}\)</span>. From the proof of the we see that for <span class="math inline">\(r&gt;1\)</span> we have <span class="math inline">\(P_{r}(0)=P_{r}(1)=0\)</span>. Because <span class="math inline">\(P_{2}(s)=P_{2}(1-s)\)</span> we see that
-actually <span class="math inline">\(P_{r}(s)=P_{r}(1-s)\)</span> for all even <span class="math inline">\(r\)</span> and <span class="math inline">\(P_{r}(s)=-P_{r}(1-s)\)</span> for all odd <span class="math inline">\(r&gt;1\)</span>. This implies that <span class="math inline">\(P_{r}(\frac12)=0\)</span> for all odd <span class="math inline">\(r&gt;1\)</span>.</p>
-<p>We can go further than this and derive an explicit formula for the polynomials. The difference/differential equation we have to
-solve is <span class="math inline">\(P_{r+1}(x)=x(1-x)P_{r}&#39;(x),\)</span> where <span class="math inline">\(P_1(x)=1-x\)</span>. Its general solution is
-<span class="math display">\[
-P_r(x)=\sum_{j=1}^r(-1)^{j-1}(j-1)!S(j,r)x^j
-\]</span>
-where the <span class="math inline">\(S(j,r)\)</span> are the Stirling numbers of the second kind (the number of ways of partitioning <span class="math inline">\(r\)</span> elements into <span class="math inline">\(j\)</span> non-empty subsets).</p>
-The code in <code>logitPom.R</code> computes the polynomials <span class="math inline">\(P_r\)</span>. With <code>logitPomRecursive(n)</code> we compute all polynomials up to order n, their roots, and their maximum and minimum values. With <code>logitPomDirect(n)</code> we do the same, using the formula with Stirling numbers.
-<hr>
-<center>
-<a href="../code/logitPom.R">Insert logitPom.R Here</a>
-</center>
-<hr>
-<hr>
-<p>Maybe useful 03/02/15</p>
-<p><span class="math display">\[
--\log(1-\Psi(x))=-\log(1-\frac{1}{1+\exp(-x)})=x+\log(1+\exp(-x))
-\]</span></p>
-<p><span class="math display">\[
-x+\log(1+\exp(-x))=\sum_{s=1}^\infty\frac{(\Psi(x))^s}{s}
-\]</span></p>
-<p>###Probit</p>
+Again this is the sum of <span class="math inline">\(n\)</span> separate functions <span class="math inline">\(\psi_{i}\)</span>, quadratics in this case, which can
+be minimized separately for each <span class="math inline">\(x_{i}\)</span>. By symmetry, we have the same strategy
+to minimize over <span class="math inline">\(Y\)</span>.</p>
+<p>Minimizing over <span class="math inline">\(x_{i}\)</span>, under the constraint <span class="math inline">\(x_{i}&#39;x_{i}^{}=1\)</span>, leads to the secular
+equation problem discussed in the Appendix. Since
+typically <span class="math inline">\(p\)</span> is two or at most three, the subproblems are very small indeed and can be
+solved efficiently.</p>
 
 </div>
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-nesterov_polyak_06" class="csl-entry">
-Nesterov, Y., and B. T. Polyak. 2006. <span>“Cubic Regularization of Newton Method and Its Global Performance.”</span> <em>Mathematical Programming</em> A108: 177–205.
+<div id="ref-browne_87" class="csl-entry">
+Browne, M. W. 1987. <span>“<span class="nocase">The Young-Householder Algorithm and the Least Squares Multdimensional Scaling of Squared Distances</span>.”</span> <em>Journal of Classification</em> 4: 175–90.
+</div>
+<div id="ref-deleeuw_U_75b" class="csl-entry">
+———. 1975. <span>“<span class="nocase">An Alternating Least Squares Approach to Squared Distance Scaling</span>.”</span> Department of Data Theory FSW/RUL.
+</div>
+<div id="ref-deleeuw_A_88a" class="csl-entry">
+———. 1988. <span>“Multivariate Analysis with Linearizable Regressions.”</span> <em>Psychometrika</em> 53: 437–54. <a href="http://deleeuwpdx.net/janspubs/1988/articles/deleeuw_A_88a.pdf">http://deleeuwpdx.net/janspubs/1988/articles/deleeuw_A_88a.pdf</a>.
+</div>
+<div id="ref-deleeuw_liu_R_93" class="csl-entry">
+De Leeuw, J., and G. Liu. 1993. <span>“Majorization Algorithms for Mixed Model Analysis.”</span> Preprint 115. Los Angeles, CA: UCLA Statistics. <a href="http://deleeuwpdx.net/janspubs/1993/reports/deleeuw_liu_R_93.pdf">http://deleeuwpdx.net/janspubs/1993/reports/deleeuw_liu_R_93.pdf</a>.
+</div>
+<div id="ref-takane_77" class="csl-entry">
+Takane, Y. 1977. <span>“<span class="nocase">On the Relations among Four Methods of Multidimensional Scaling</span>.”</span> <em>Behaviormetrika</em> 4: 29–42.
+</div>
+<div id="ref-takane_young_deleeuw_A_77" class="csl-entry">
+Takane, Y., F. W. Young, and J. De Leeuw. 1977. <span>“Nonmetric Individual Differences in Multidimensional Scaling: An Alternating Least Squares Method with Optimal Scaling Features.”</span> <em>Psychometrika</em> 42: 7–67. <a href="http://www.stat.ucla.edu/~deleeuw/janspubs/1977/articles/takane_young_deleeuw_A_77.pdf">http://www.stat.ucla.edu/~deleeuw/janspubs/1977/articles/takane_young_deleeuw_A_77.pdf</a>.
+</div>
+<div id="ref-yates_33" class="csl-entry">
+Yayes, F. 1933. <span>“<span class="nocase">The Analysis of Replicated Experiments when the Field Results are Incomplete</span>.”</span> <em>Empirical Journal of Experimental Agriculture</em> 1: 129–42.
 </div>
 </div>
             </section>
@@ -876,8 +1023,8 @@ Nesterov, Y., and B. T. Polyak. 2006. <span>“Cubic Regularization of Newton Me
           </div>
         </div>
       </div>
-<a href="quadratic-majorization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sharp-majorization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="alternatingleastsquares.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="majorization-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

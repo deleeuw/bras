@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Majorization Methods | Block Relaxation Methods in Statistics</title>
+  <meta name="description" content="null" />
+  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Majorization Methods | Block Relaxation Methods in Statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="null" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Majorization Methods | Block Relaxation Methods in Statistics" />
+  
+  <meta name="twitter:description" content="null" />
+  
+
+<meta name="author" content="Jan de Leeuw" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="augmentation-and-decomposition-methods.html"/>
+<link rel="next" href="majorization-inequalities.html"/>
+<script src="libs/header-attrs-2.9.2/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Note</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#introduction:somehistory"><i class="fa fa-check"></i><b>1.1</b> Some History</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#introduction:optimizationmethods"><i class="fa fa-check"></i><b>1.2</b> Optimization Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="blockrelaxation.html"><a href="blockrelaxation.html"><i class="fa fa-check"></i><b>2</b> Block Relaxation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:definition"><i class="fa fa-check"></i><b>2.2</b> Definition</a></li>
+<li class="chapter" data-level="2.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples"><i class="fa fa-check"></i><b>2.3</b> First Examples</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples:twoblockleastsquares"><i class="fa fa-check"></i><b>2.3.1</b> Two-block Least Squares</a></li>
+<li class="chapter" data-level="2.3.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:firstexamples:multipleblockleastsquares"><i class="fa fa-check"></i><b>2.3.2</b> Multiple-block Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:generalizedblockrelaxation"><i class="fa fa-check"></i><b>2.4</b> Generalized Block Relaxation</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:generalizedblockrelaxation:raschmodel"><i class="fa fa-check"></i><b>2.4.1</b> Rasch Model</a></li>
+<li class="chapter" data-level="2.4.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:generalizedblockrelaxation:nonlinearleastsquares"><i class="fa fa-check"></i><b>2.4.2</b> Nonlinear Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:blockorder"><i class="fa fa-check"></i><b>2.5</b> Block Order</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:blockorder:projectingblocks"><i class="fa fa-check"></i><b>2.5.1</b> Projecting Blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence"><i class="fa fa-check"></i><b>2.6</b> Rate of Convergence</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:luform"><i class="fa fa-check"></i><b>2.6.1</b> LU-form</a></li>
+<li class="chapter" data-level="2.6.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:productform"><i class="fa fa-check"></i><b>2.6.2</b> Product Form</a></li>
+<li class="chapter" data-level="2.6.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:blockoptimizationmethods"><i class="fa fa-check"></i><b>2.6.3</b> Block Optimization Methods</a></li>
+<li class="chapter" data-level="2.6.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:blocknewtonmethods"><i class="fa fa-check"></i><b>2.6.4</b> Block Newton Methods</a></li>
+<li class="chapter" data-level="2.6.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:rateofconvergence:constrainedproblems"><i class="fa fa-check"></i><b>2.6.5</b> Constrained Problems</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples"><i class="fa fa-check"></i><b>2.7</b> Additional Examples</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:canonicalcorrelation"><i class="fa fa-check"></i><b>2.7.1</b> Canonical Correlation</a></li>
+<li class="chapter" data-level="2.7.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:lowrankapproximation"><i class="fa fa-check"></i><b>2.7.2</b> Low Rank Approximation</a></li>
+<li class="chapter" data-level="2.7.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:optimalscalingwithlineals"><i class="fa fa-check"></i><b>2.7.3</b> Optimal Scaling with LINEALS</a></li>
+<li class="chapter" data-level="2.7.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:multinormalmaximumlikelihood"><i class="fa fa-check"></i><b>2.7.4</b> Multinormal Maximum Likelihood</a></li>
+<li class="chapter" data-level="2.7.5" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:arraymultinormals"><i class="fa fa-check"></i><b>2.7.5</b> Array Multinormals</a></li>
+<li class="chapter" data-level="2.7.6" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:additionalexamples:raschmodel"><i class="fa fa-check"></i><b>2.7.6</b> Rasch Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples"><i class="fa fa-check"></i><b>2.8</b> Some Counterexamples</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples:convergencetoasaddle"><i class="fa fa-check"></i><b>2.8.1</b> Convergence to a Saddle</a></li>
+<li class="chapter" data-level="2.8.2" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples:convergencetoincorrectsolutions"><i class="fa fa-check"></i><b>2.8.2</b> Convergence to Incorrect Solutions</a></li>
+<li class="chapter" data-level="2.8.3" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples:nonconvergenceandcycling"><i class="fa fa-check"></i><b>2.8.3</b> Non-convergence and Cycling</a></li>
+<li class="chapter" data-level="2.8.4" data-path="blockrelaxation.html"><a href="blockrelaxation.html#blockrelaxation:somecounterexamples:sublinearconvergence"><i class="fa fa-check"></i><b>2.8.4</b> Sublinear Convergence</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="coordinatedescent.html"><a href="coordinatedescent.html"><i class="fa fa-check"></i><b>3</b> Coordinate Descent</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:convergencerate"><i class="fa fa-check"></i><b>3.2</b> Convergence rate</a></li>
+<li class="chapter" data-level="3.3" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:examples"><i class="fa fa-check"></i><b>3.3</b> Examples</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:examples:thecartesianfolium"><i class="fa fa-check"></i><b>3.3.1</b> The Cartesian Folium</a></li>
+<li class="chapter" data-level="3.3.2" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:examples:afamilyofquadratics"><i class="fa fa-check"></i><b>3.3.2</b> A Family of Quadratics</a></li>
+<li class="chapter" data-level="3.3.3" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:examples:loglinearmodels"><i class="fa fa-check"></i><b>3.3.3</b> Loglinear Models</a></li>
+<li class="chapter" data-level="3.3.4" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:examples:rayleighquotient"><i class="fa fa-check"></i><b>3.3.4</b> Rayleigh Quotient</a></li>
+<li class="chapter" data-level="3.3.5" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:examples:squareddistancescaling"><i class="fa fa-check"></i><b>3.3.5</b> Squared Distance Scaling</a></li>
+<li class="chapter" data-level="3.3.6" data-path="coordinatedescent.html"><a href="coordinatedescent.html#coordinatedescent:examples:leastsquaresfactoranalysis"><i class="fa fa-check"></i><b>3.3.6</b> Least Squares Factor Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html"><i class="fa fa-check"></i><b>4</b> Alternating Least Squares</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:closerelatives"><i class="fa fa-check"></i><b>4.2</b> Close Relatives</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:closerelatives:alsos"><i class="fa fa-check"></i><b>4.2.1</b> ALSOS</a></li>
+<li class="chapter" data-level="4.2.2" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:closerelatives:ace"><i class="fa fa-check"></i><b>4.2.2</b> ACE</a></li>
+<li class="chapter" data-level="4.2.3" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:closerelatives:nipalsandpls"><i class="fa fa-check"></i><b>4.2.3</b> NIPALS and PLS</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:rateofconvergence"><i class="fa fa-check"></i><b>4.3</b> Rate of Convergence</a></li>
+<li class="chapter" data-level="4.4" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:examples"><i class="fa fa-check"></i><b>4.4</b> Examples</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:examples:homogeneityanalysis"><i class="fa fa-check"></i><b>4.4.1</b> Homogeneity Analysis</a></li>
+<li class="chapter" data-level="4.4.2" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:examples:fixedrankapproximation"><i class="fa fa-check"></i><b>4.4.2</b> Fixed Rank Approximation</a></li>
+<li class="chapter" data-level="4.4.3" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:examples:multilinearfitting"><i class="fa fa-check"></i><b>4.4.3</b> Multilinear Fitting</a></li>
+<li class="chapter" data-level="4.4.4" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:examples:mcrals"><i class="fa fa-check"></i><b>4.4.4</b> MCR-ALS</a></li>
+<li class="chapter" data-level="4.4.5" data-path="alternatingleastsquares.html"><a href="alternatingleastsquares.html#alternatingleastsquares:examples:scalingandsplitting"><i class="fa fa-check"></i><b>4.4.5</b> Scaling and Splitting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html"><i class="fa fa-check"></i><b>5</b> Augmentation and Decomposition Methods</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#definition"><i class="fa fa-check"></i><b>5.2</b> Definition</a></li>
+<li class="chapter" data-level="5.3" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#rate-of-convergenc"><i class="fa fa-check"></i><b>5.3</b> Rate of Convergenc</a></li>
+<li class="chapter" data-level="5.4" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#half-quadratic-methods"><i class="fa fa-check"></i><b>5.4</b> Half-Quadratic Methods</a></li>
+<li class="chapter" data-level="5.5" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#examples"><i class="fa fa-check"></i><b>5.5</b> Examples</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#yates-augmentation"><i class="fa fa-check"></i><b>5.5.1</b> Yates Augmentation</a></li>
+<li class="chapter" data-level="5.5.2" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#optimal-scaling-with-ordinals"><i class="fa fa-check"></i><b>5.5.2</b> Optimal Scaling with ORDINALS</a></li>
+<li class="chapter" data-level="5.5.3" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#least-squares-factor-analysis"><i class="fa fa-check"></i><b>5.5.3</b> Least Squares Factor Analysis</a></li>
+<li class="chapter" data-level="5.5.4" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#squared-distance-scaling"><i class="fa fa-check"></i><b>5.5.4</b> Squared Distance Scaling</a></li>
+<li class="chapter" data-level="5.5.5" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#linear-mixed-model"><i class="fa fa-check"></i><b>5.5.5</b> Linear Mixed Model</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#decomposition-methods"><i class="fa fa-check"></i><b>5.6</b> Decomposition Methods</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#quadratic-form-on-a-sphere"><i class="fa fa-check"></i><b>5.6.1</b> Quadratic Form on a Sphere</a></li>
+<li class="chapter" data-level="5.6.2" data-path="augmentation-and-decomposition-methods.html"><a href="augmentation-and-decomposition-methods.html#multidimensional-unfolding"><i class="fa fa-check"></i><b>5.6.2</b> Multidimensional Unfolding</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="majorization-methods.html"><a href="majorization-methods.html"><i class="fa fa-check"></i><b>6</b> Majorization Methods</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="majorization-methods.html"><a href="majorization-methods.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="majorization-methods.html"><a href="majorization-methods.html#definitions"><i class="fa fa-check"></i><b>6.2</b> Definitions</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="majorization-methods.html"><a href="majorization-methods.html#majorization-at-a-point"><i class="fa fa-check"></i><b>6.2.1</b> Majorization at a Point</a></li>
+<li class="chapter" data-level="6.2.2" data-path="majorization-methods.html"><a href="majorization-methods.html#majorization-on-a-set"><i class="fa fa-check"></i><b>6.2.2</b> Majorization on a Set</a></li>
+<li class="chapter" data-level="6.2.3" data-path="majorization-methods.html"><a href="majorization-methods.html#majorization-algorithm"><i class="fa fa-check"></i><b>6.2.3</b> Majorization Algorithm</a></li>
+<li class="chapter" data-level="6.2.4" data-path="majorization-methods.html"><a href="majorization-methods.html#alternative-definitions"><i class="fa fa-check"></i><b>6.2.4</b> Alternative Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="majorization-methods.html"><a href="majorization-methods.html#relatives"><i class="fa fa-check"></i><b>6.3</b> Relatives</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="majorization-methods.html"><a href="majorization-methods.html#the-concave-convex-procedure"><i class="fa fa-check"></i><b>6.3.1</b> The Concave-Convex Procedure</a></li>
+<li class="chapter" data-level="6.3.2" data-path="majorization-methods.html"><a href="majorization-methods.html#generalized-weiszfeld-methods"><i class="fa fa-check"></i><b>6.3.2</b> Generalized Weiszfeld Methods</a></li>
+<li class="chapter" data-level="6.3.3" data-path="majorization-methods.html"><a href="majorization-methods.html#the-em-algorithm"><i class="fa fa-check"></i><b>6.3.3</b> The EM Algorithm</a></li>
+<li class="chapter" data-level="6.3.4" data-path="majorization-methods.html"><a href="majorization-methods.html#the-lower-bound-principle"><i class="fa fa-check"></i><b>6.3.4</b> The Lower-Bound Principle</a></li>
+<li class="chapter" data-level="6.3.5" data-path="majorization-methods.html"><a href="majorization-methods.html#dinkelbach-majorization"><i class="fa fa-check"></i><b>6.3.5</b> Dinkelbach Majorization</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="majorization-methods.html"><a href="majorization-methods.html#further-results"><i class="fa fa-check"></i><b>6.4</b> Further Results</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="majorization-methods.html"><a href="majorization-methods.html#rate-of-convergence"><i class="fa fa-check"></i><b>6.4.1</b> Rate of Convergence</a></li>
+<li class="chapter" data-level="6.4.2" data-path="majorization-methods.html"><a href="majorization-methods.html#univariate-and-separable-functions"><i class="fa fa-check"></i><b>6.4.2</b> Univariate and Separable Functions</a></li>
+<li class="chapter" data-level="6.4.3" data-path="majorization-methods.html"><a href="majorization-methods.html#differentiable-functions"><i class="fa fa-check"></i><b>6.4.3</b> Differentiable Functions</a></li>
+<li class="chapter" data-level="6.4.4" data-path="majorization-methods.html"><a href="majorization-methods.html#composition"><i class="fa fa-check"></i><b>6.4.4</b> Composition</a></li>
+<li class="chapter" data-level="6.4.5" data-path="majorization-methods.html"><a href="majorization-methods.html#majorization-duality"><i class="fa fa-check"></i><b>6.4.5</b> Majorization Duality</a></li>
+<li class="chapter" data-level="6.4.6" data-path="majorization-methods.html"><a href="majorization-methods.html#necessary-conditions-by-majorization"><i class="fa fa-check"></i><b>6.4.6</b> Necessary Conditions by Majorization</a></li>
+<li class="chapter" data-level="6.4.7" data-path="majorization-methods.html"><a href="majorization-methods.html#majorizing-constraints"><i class="fa fa-check"></i><b>6.4.7</b> Majorizing Constraints</a></li>
+<li class="chapter" data-level="6.4.8" data-path="majorization-methods.html"><a href="majorization-methods.html#majorizing-value-functions"><i class="fa fa-check"></i><b>6.4.8</b> Majorizing Value Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="majorization-methods.html"><a href="majorization-methods.html#some-examples"><i class="fa fa-check"></i><b>6.5</b> Some Examples</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="majorization-methods.html"><a href="majorization-methods.html#the-reciprocal"><i class="fa fa-check"></i><b>6.5.1</b> The Reciprocal</a></li>
+<li class="chapter" data-level="6.5.2" data-path="majorization-methods.html"><a href="majorization-methods.html#cubics-and-quartics"><i class="fa fa-check"></i><b>6.5.2</b> Cubics and Quartics</a></li>
+<li class="chapter" data-level="6.5.3" data-path="majorization-methods.html"><a href="majorization-methods.html#normal-pdf-and-cdf"><i class="fa fa-check"></i><b>6.5.3</b> Normal PDF and CDF</a></li>
+<li class="chapter" data-level="6.5.4" data-path="majorization-methods.html"><a href="majorization-methods.html#logistic-pdf-and-cdf"><i class="fa fa-check"></i><b>6.5.4</b> Logistic PDF and CDF</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html"><i class="fa fa-check"></i><b>7</b> Majorization Inequalities</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#the-amgm-inequality"><i class="fa fa-check"></i><b>7.2</b> The AM/GM Inequality</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#absolute-values"><i class="fa fa-check"></i><b>7.2.1</b> Absolute Values</a></li>
+<li class="chapter" data-level="7.2.2" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#gini-mean-difference"><i class="fa fa-check"></i><b>7.2.2</b> Gini Mean Difference</a></li>
+<li class="chapter" data-level="7.2.3" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#location-problems"><i class="fa fa-check"></i><b>7.2.3</b> Location Problems</a></li>
+<li class="chapter" data-level="7.2.4" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#the-lasso-and-the-bridge"><i class="fa fa-check"></i><b>7.2.4</b> The Lasso and the Bridge</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#polar-norms-and-the-cauchy-schwarz-inequality"><i class="fa fa-check"></i><b>7.3</b> Polar Norms and the Cauchy-Schwarz Inequality</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#rayleigh-quotient"><i class="fa fa-check"></i><b>7.3.1</b> Rayleigh Quotient</a></li>
+<li class="chapter" data-level="7.3.2" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#the-majorization-method-for-mds"><i class="fa fa-check"></i><b>7.3.2</b> The Majorization Method for MDS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#conjugates-and-youngs-inequality"><i class="fa fa-check"></i><b>7.4</b> Conjugates and Young’s Inequality</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="majorization-inequalities.html"><a href="majorization-inequalities.html#support-vector-machines"><i class="fa fa-check"></i><b>7.4.1</b> Support Vector Machines</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="using-convexity.html"><a href="using-convexity.html"><i class="fa fa-check"></i><b>8</b> Using Convexity</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="using-convexity.html"><a href="using-convexity.html#using-convexity-1"><i class="fa fa-check"></i><b>8.1</b> Using Convexity</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="using-convexity.html"><a href="using-convexity.html#tomography"><i class="fa fa-check"></i><b>8.1.1</b> Tomography</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="using-convexity.html"><a href="using-convexity.html#the-em-algorithm-1"><i class="fa fa-check"></i><b>8.2</b> The EM Algorithm</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="tangential-majorization.html"><a href="tangential-majorization.html"><i class="fa fa-check"></i><b>9</b> Tangential Majorization</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="tangential-majorization.html"><a href="tangential-majorization.html#using-the-tangent"><i class="fa fa-check"></i><b>9.1</b> Using the Tangent</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="tangential-majorization.html"><a href="tangential-majorization.html#majorizing-and-minorizing-the-logarithm"><i class="fa fa-check"></i><b>9.1.1</b> Majorizing and Minorizing the Logarithm</a></li>
+<li class="chapter" data-level="9.1.2" data-path="tangential-majorization.html"><a href="tangential-majorization.html#aspects-of-correlation-matrices"><i class="fa fa-check"></i><b>9.1.2</b> Aspects of Correlation Matrices</a></li>
+<li class="chapter" data-level="9.1.3" data-path="tangential-majorization.html"><a href="tangential-majorization.html#partially-observed-linear-systems"><i class="fa fa-check"></i><b>9.1.3</b> Partially Observed Linear Systems</a></li>
+<li class="chapter" data-level="9.1.4" data-path="tangential-majorization.html"><a href="tangential-majorization.html#gpower"><i class="fa fa-check"></i><b>9.1.4</b> Gpower</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="tangential-majorization.html"><a href="tangential-majorization.html#broadening-the-scope"><i class="fa fa-check"></i><b>9.2</b> Broadening the Scope</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="tangential-majorization.html"><a href="tangential-majorization.html#differences-of-convex-functions"><i class="fa fa-check"></i><b>9.2.1</b> Differences of Convex Functions</a></li>
+<li class="chapter" data-level="9.2.2" data-path="tangential-majorization.html"><a href="tangential-majorization.html#convexifiable-functions"><i class="fa fa-check"></i><b>9.2.2</b> Convexifiable Functions</a></li>
+<li class="chapter" data-level="9.2.3" data-path="tangential-majorization.html"><a href="tangential-majorization.html#piecewise-linear-majorization"><i class="fa fa-check"></i><b>9.2.3</b> Piecewise Linear Majorization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html"><i class="fa fa-check"></i><b>10</b> Quadratic Majorization</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#introduction-4"><i class="fa fa-check"></i><b>10.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#nondiagonal-weights-in-least-squares"><i class="fa fa-check"></i><b>10.1.1</b> Nondiagonal Weights in Least Squares</a></li>
+<li class="chapter" data-level="10.1.2" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gifi-goes-logistic"><i class="fa fa-check"></i><b>10.1.2</b> Gifi Goes Logistic</a></li>
+<li class="chapter" data-level="10.1.3" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#a-matrix-example"><i class="fa fa-check"></i><b>10.1.3</b> A Matrix Example</a></li>
+<li class="chapter" data-level="10.1.4" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#gauss-newton-majorization"><i class="fa fa-check"></i><b>10.1.4</b> Gauss-Newton Majorization</a></li>
+<li class="chapter" data-level="10.1.5" data-path="quadratic-majorization.html"><a href="quadratic-majorization.html#marginal-functions"><i class="fa fa-check"></i><b>10.1.5</b> Marginal Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html"><i class="fa fa-check"></i><b>11</b> Using Higher Derivatives</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#introduction-5"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#mean-value-majorization"><i class="fa fa-check"></i><b>11.2</b> Mean Value Majorization</a></li>
+<li class="chapter" data-level="11.3" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#taylor-majorization"><i class="fa fa-check"></i><b>11.3</b> Taylor Majorization</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#second-order"><i class="fa fa-check"></i><b>11.3.1</b> Second Order</a></li>
+<li class="chapter" data-level="11.3.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#higher-order"><i class="fa fa-check"></i><b>11.3.2</b> Higher Order</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#nesterov-majorization"><i class="fa fa-check"></i><b>11.4</b> Nesterov Majorization</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#revisiting-the-reciprocal"><i class="fa fa-check"></i><b>11.4.1</b> Revisiting the Reciprocal</a></li>
+<li class="chapter" data-level="11.4.2" data-path="using-higher-derivatives.html"><a href="using-higher-derivatives.html#logit"><i class="fa fa-check"></i><b>11.4.2</b> Logit</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="sharp-majorization.html"><a href="sharp-majorization.html"><i class="fa fa-check"></i><b>12</b> Sharp Majorization</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#introduction-6"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#comparing-majorizations"><i class="fa fa-check"></i><b>12.2</b> Comparing Majorizations</a></li>
+<li class="chapter" data-level="12.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-quadratic-majorization"><i class="fa fa-check"></i><b>12.3</b> Sharp Quadratic Majorization</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#even-and-odd-functions"><i class="fa fa-check"></i><b>12.3.1</b> Even and Odd Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="sharp-majorization.html"><a href="sharp-majorization.html#sharp-piecewise-linear"><i class="fa fa-check"></i><b>12.4</b> Sharp Piecewise Linear</a></li>
+<li class="chapter" data-level="12.5" data-path="sharp-majorization.html"><a href="sharp-majorization.html#examples-1"><i class="fa fa-check"></i><b>12.5</b> Examples</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-cosine"><i class="fa fa-check"></i><b>12.5.1</b> The cosine</a></li>
+<li class="chapter" data-level="12.5.2" data-path="sharp-majorization.html"><a href="sharp-majorization.html#the-rasch-model"><i class="fa fa-check"></i><b>12.5.2</b> The Rasch Model</a></li>
+<li class="chapter" data-level="12.5.3" data-path="sharp-majorization.html"><a href="sharp-majorization.html#probits"><i class="fa fa-check"></i><b>12.5.3</b> Probits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html"><i class="fa fa-check"></i><b>13</b> Local and Localized Majorization</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#introduction-7"><i class="fa fa-check"></i><b>13.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-in-a-neighborhood"><i class="fa fa-check"></i><b>13.1.1</b> Majorization in a Neighborhood</a></li>
+<li class="chapter" data-level="13.1.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#cartesian-folium"><i class="fa fa-check"></i><b>13.1.2</b> Cartesian Folium</a></li>
+<li class="chapter" data-level="13.1.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#univariate-cubics"><i class="fa fa-check"></i><b>13.1.3</b> Univariate Cubics</a></li>
+<li class="chapter" data-level="13.1.4" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-the-sphere"><i class="fa fa-check"></i><b>13.1.4</b> Majorization on the Sphere</a></li>
+<li class="chapter" data-level="13.1.5" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#majorization-on-a-hyperrectangle"><i class="fa fa-check"></i><b>13.1.5</b> Majorization on a Hyperrectangle</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#proximal-point-majorization"><i class="fa fa-check"></i><b>13.2</b> Proximal Point Majorization</a></li>
+<li class="chapter" data-level="13.3" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#sub-level-majorization"><i class="fa fa-check"></i><b>13.3</b> Sub-level Majorization</a></li>
+<li class="chapter" data-level="13.4" data-path="local-and-localized-majorization.html"><a href="local-and-localized-majorization.html#dinkelbach-majorization-1"><i class="fa fa-check"></i><b>13.4</b> Dinkelbach Majorization</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>14</b> Background</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="background.html"><a href="background.html#introduction-8"><i class="fa fa-check"></i><b>14.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.2" data-path="background.html"><a href="background.html#analysis"><i class="fa fa-check"></i><b>14.2</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="background.html"><a href="background.html#differentiability-and-derivatives"><i class="fa fa-check"></i><b>14.2.1</b> Differentiability and Derivatives</a></li>
+<li class="chapter" data-level="14.2.2" data-path="background.html"><a href="background.html#implicit-functions"><i class="fa fa-check"></i><b>14.2.2</b> Implicit Functions</a></li>
+<li class="chapter" data-level="14.2.3" data-path="background.html"><a href="background.html#necessary-and-sufficient-conditions-for-a-minimum"><i class="fa fa-check"></i><b>14.2.3</b> Necessary and Sufficient Conditions for a Minimum</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="background.html"><a href="background.html#point-to-set-maps"><i class="fa fa-check"></i><b>14.3</b> Point-to-set Maps</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="background.html"><a href="background.html#marginal-functions-and-solution-maps"><i class="fa fa-check"></i><b>14.3.1</b> Marginal Functions and Solution Maps</a></li>
+<li class="chapter" data-level="14.3.2" data-path="background.html"><a href="background.html#jensens-inequality"><i class="fa fa-check"></i><b>14.3.2</b> Jensen’s Inequality</a></li>
+<li class="chapter" data-level="14.3.3" data-path="background.html"><a href="background.html#the-am-gm-inequality"><i class="fa fa-check"></i><b>14.3.3</b> The AM-GM Inequality</a></li>
+<li class="chapter" data-level="14.3.4" data-path="background.html"><a href="background.html#youngs-inequality"><i class="fa fa-check"></i><b>14.3.4</b> Young’s Inequality</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="background.html"><a href="background.html#background:fixedpoint"><i class="fa fa-check"></i><b>14.4</b> Fixed Point Problems and Methods</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="background.html"><a href="background.html#subsequential-limits"><i class="fa fa-check"></i><b>14.4.1</b> Subsequential Limits</a></li>
+<li class="chapter" data-level="14.4.2" data-path="background.html"><a href="background.html#differentiable-convex-functions"><i class="fa fa-check"></i><b>14.4.2</b> Differentiable Convex Functions</a></li>
+<li class="chapter" data-level="14.4.3" data-path="background.html"><a href="background.html#algorithms-as-point-to-set-maps"><i class="fa fa-check"></i><b>14.4.3</b> Algorithms as Point-to-set Maps</a></li>
+<li class="chapter" data-level="14.4.4" data-path="background.html"><a href="background.html#convergence-of-function-values"><i class="fa fa-check"></i><b>14.4.4</b> Convergence of Function Values</a></li>
+<li class="chapter" data-level="14.4.5" data-path="background.html"><a href="background.html#convergence-of-solutions"><i class="fa fa-check"></i><b>14.4.5</b> Convergence of Solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="background.html"><a href="background.html#rates-of-convergence"><i class="fa fa-check"></i><b>14.5</b> Rates of Convergence</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="background.html"><a href="background.html#over--and-under-relaxation"><i class="fa fa-check"></i><b>14.5.1</b> Over- and Under-Relaxation</a></li>
+<li class="chapter" data-level="14.5.2" data-path="background.html"><a href="background.html#acceleration-of-convergence-of-fixed-point-methods"><i class="fa fa-check"></i><b>14.5.2</b> Acceleration of Convergence of Fixed Point Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="background.html"><a href="background.html#matrix-algebra"><i class="fa fa-check"></i><b>14.6</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="background.html"><a href="background.html#eigenvalues-and-eigenvectors-of-symmetric-matrices"><i class="fa fa-check"></i><b>14.6.1</b> Eigenvalues and Eigenvectors of Symmetric Matrices</a></li>
+<li class="chapter" data-level="14.6.2" data-path="background.html"><a href="background.html#singular-values-and-singular-vectors"><i class="fa fa-check"></i><b>14.6.2</b> Singular Values and Singular Vectors</a></li>
+<li class="chapter" data-level="14.6.3" data-path="background.html"><a href="background.html#canonical-correlation"><i class="fa fa-check"></i><b>14.6.3</b> Canonical Correlation</a></li>
+<li class="chapter" data-level="14.6.4" data-path="background.html"><a href="background.html#modified-eigenvalue-problems"><i class="fa fa-check"></i><b>14.6.4</b> Modified Eigenvalue Problems</a></li>
+<li class="chapter" data-level="14.6.5" data-path="background.html"><a href="background.html#quadratic-on-a-sphere"><i class="fa fa-check"></i><b>14.6.5</b> Quadratic on a Sphere</a></li>
+<li class="chapter" data-level="14.6.6" data-path="background.html"><a href="background.html#generalized-inverses"><i class="fa fa-check"></i><b>14.6.6</b> Generalized Inverses</a></li>
+<li class="chapter" data-level="14.6.7" data-path="background.html"><a href="background.html#partitioned-matrices"><i class="fa fa-check"></i><b>14.6.7</b> Partitioned Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="background.html"><a href="background.html#matrix-differential-calculus"><i class="fa fa-check"></i><b>14.7</b> Matrix Differential Calculus</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="background.html"><a href="background.html#matrix-derivatives"><i class="fa fa-check"></i><b>14.7.1</b> Matrix Derivatives</a></li>
+<li class="chapter" data-level="14.7.2" data-path="background.html"><a href="background.html#derivatives-of-eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>14.7.2</b> Derivatives of Eigenvalues and Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="background.html"><a href="background.html#graphics-and-code"><i class="fa fa-check"></i><b>14.8</b> Graphics and Code</a>
+<ul>
+<li class="chapter" data-level="14.8.1" data-path="background.html"><a href="background.html#multidimensional-scaling"><i class="fa fa-check"></i><b>14.8.1</b> Multidimensional Scaling</a></li>
+<li class="chapter" data-level="14.8.2" data-path="background.html"><a href="background.html#cobweb-plots"><i class="fa fa-check"></i><b>14.8.2</b> Cobweb Plots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>15</b> Code</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Block Relaxation Methods in Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="majorization-methods" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Majorization Methods</h1>
+<div id="introduction-2" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Introduction</h2>
+<p>The next step (history again) was to find <em>systematic ways</em> to do
+augmentation (which is an art, remember). We start with examples.</p>
+<p>An early occurrence of majorization, in the specific context of finding a suitable step size for descent methods,
+is in <span class="citation"><a href="#ref-ortega_rheinboldt_70a" role="doc-biblioref">Ortega and Rheinboldt</a> (<a href="#ref-ortega_rheinboldt_70a" role="doc-biblioref">1970b</a>)</span>). They call this
+approach the <em>Majorization Principle</em>, which exists alongside other step size principles such as the <em>Curry-Altman Principle</em>,
+the <em>Goldstein Principle</em>, and the <em>Minimization Principle</em>.</p>
+<p>Suppose we have a current solution <span class="math inline">\(x^{(k)}\)</span> and a descent direction <span class="math inline">\(p^{(k)}\)</span>.
+Consider the function
+<span class="math display">\[
+g(\alpha):=f(x^{(k)}-\alpha p^{(k)}).
+\]</span>
+Suppose we can find a function <span class="math inline">\(h\)</span> such that <span class="math inline">\(g(\alpha)\leq h(\alpha)\)</span>
+for all <span class="math inline">\(0&lt;\alpha&lt;\overline{\alpha}\)</span> and such that <span class="math inline">\(g(0)=h(0)\)</span>. Now set
+<span class="math display">\[
+\alpha^{(k)}:=\mathop{\mathbf{argmin}}_{0\leq\alpha\leq\overline{\alpha}}h(\alpha).
+\]</span>
+Then the sandwich inequality says
+<span class="math display">\[
+g(\alpha^{(k)})\leq h(\alpha^{(k)})\leq h(0)=g(0),
+\]</span>
+and thus <span class="math inline">\(f(x^{(k)}-\alpha^{(k)}p^{(k)})\leq f(x^{(k)}).\)</span></p>
+<p>Ortega and Rheinboldt point out that if the derivative of <span class="math inline">\(f\)</span> is Hölder continuous, i.e. if for some <span class="math inline">\(0&lt;\lambda\leq 1\)</span>
+<span class="math display">\[
+\|\mathcal{D}f(x)-\mathcal{D}f(y)\|\leq\gamma\|x-y\|^\lambda,
+\]</span>
+then we can choose
+<span class="math display">\[
+h(\alpha)=h(0)-\alpha\langle p^{(k)},\mathcal{D}f(x^{(k)})\rangle+\frac{\gamma}{1+\lambda}(\alpha\|p^{(k)}\|)^{1+\lambda},
+\]</span>
+which implies
+<span class="math display">\[
+\alpha^{(k)}=\frac{1}{\|p^{(k)}\|}\left[\frac{\langle p^{(k)},\mathcal{D}f(x^{(k)})\rangle}{\gamma\|p^{(k)}\|}\right]^{\frac{1}{\lambda}}.
+\]</span></p>
+</div>
+<div id="definitions" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Definitions</h2>
+<div id="majorization-at-a-point" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Majorization at a Point</h3>
+<p>Suppose <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are real-valued functions on <span class="math inline">\(\mathcal{X}\subseteq\mathbb{R}^{n}\)</span>. We say
+that <span class="math inline">\(g\)</span> <em>majorizes</em> <span class="math inline">\(f\)</span> <em>over</em> <span class="math inline">\(\mathcal{X}\)</span> <em>at</em> <span class="math inline">\(y\in\mathcal{X}\)</span> if</p>
+<ul>
+<li><span class="math inline">\(g(x)\geq f(x)\)</span> for all <span class="math inline">\(x\in\mathcal{X}\)</span>,</li>
+<li><span class="math inline">\(g(y)=f(y)\)</span>.</li>
+</ul>
+<p>If the first condition can be replaced by</p>
+<ul>
+<li><span class="math inline">\(g(x)\)</span> &gt; <span class="math inline">\(f(x)\)</span> for all <span class="math inline">\(x\in\mathcal{X}\)</span> with <span class="math inline">\(x\not= y\)</span>,</li>
+</ul>
+<p>we say that majorization at <span class="math inline">\(y\in\mathcal{X}\)</span> is <em>strict</em>.</p>
+<p>Equivalently majorization is strict if the second condition can be replaced by</p>
+<ul>
+<li><span class="math inline">\(g(x)=f(x)\)</span> if and only if <span class="math inline">\(x=y\)</span>.</li>
+</ul>
+<hr>
+Since we formulate all optimization problems we encounter as minimization problems, we only use <em>majorization</em>, not
+<em>minorization</em>. But just for completeness, if <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> over <span class="math inline">\(\mathcal{X}\)</span>, then <span class="math inline">\(f\)</span> <em>minorizes</em> <span class="math inline">\(g\)</span> at <span class="math inline">\(y\)</span> over <span class="math inline">\(\mathcal{X}\)</span>.
+<hr>
+<hr>
+We will see plenty of examples as we go on, but for now a simple one suffices. Figure 1 shows the logarithm
+on <span class="math inline">\(\mathbb{R}^+\)</span> strictly majorized at <span class="math inline">\(+1\)</span> by the linear
+function <span class="math inline">\(g:x\rightarrow x-1.\)</span>
+<hr>
+<img src="_main_files/figure-html/loog-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 1: Linear Majorizer of the Log at +1
+</center>
+<hr>
+<p>Note that the definition of majorization at a point always has to take the set <span class="math inline">\(\mathcal{X}\)</span> into account.
+If <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> over <span class="math inline">\(\mathcal{X}\)</span> at <span class="math inline">\(y\)</span>,
+then it may very well not majorize over a larger set. But, of course, it does majorize <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> over any subset of <span class="math inline">\(\mathcal{X}\)</span> containing <span class="math inline">\(y\)</span>.</p>
+<p>In most of our examples and applications <span class="math inline">\(\mathcal{X}\)</span>
+will be equal to <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\mathbb{R}^+\)</span>, or <span class="math inline">\(\mathbb{R}^n\)</span> but in some cases we consider majorization over an interval or, more generally, a convex subset of <span class="math inline">\(\mathbb{R}^n.\)</span> If we do not explicitly mention the set on which <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span>, then we implicitly mean the whole domain of <span class="math inline">\(f\)</span>. But we’ll try to be as explicit as possible, because our treatment, unlike some earlier ones, does not just discuss majorization over the whole space where <span class="math inline">\(f\)</span> is defined.</p>
+As an example, consider the cubic <span class="math inline">\(f:x\rightarrow\frac13 x^3-4x\)</span> which is majorized
+at <span class="math inline">\(+1\)</span> on the half-open interval <span class="math inline">\((-\infty,4]\)</span> by the quadratic <span class="math inline">\(g: x\rightarrow\frac43-7x+2x^2\)</span>. This particular quadratic is constructed, by the way, by solving the
+equations <span class="math inline">\(f(1)=g(1), f&#39;(1)=g&#39;(1),\)</span> and <span class="math inline">\(f(4)=g(4)\)</span>. On the other hand it is easy to see that a non-trivial cubic <span class="math inline">\(f\)</span> cannot be
+majorized at any <span class="math inline">\(y\)</span> by a quadratic <span class="math inline">\(g\)</span> on the whole real line, because <span class="math inline">\(g-f\)</span>, which is again a non-trivial cubic, would have to be non-negative for all <span class="math inline">\(x,\)</span> which is impossible.
+<hr>
+<img src="_main_files/figure-html/cubby-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 2: Quadratic Majorizer of a Cubic on an Interval
+</center>
+<hr>
+It follows directly from the definition that <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> if and only if <span class="math inline">\(g-f\)</span> has a global minimum over <span class="math inline">\(\mathcal{X}\)</span>, equal to zero, at <span class="math inline">\(y\)</span>. And majorization is strict if this minimum is unique. Thus a necessary and sufficient condition for majorization at <span class="math inline">\(y\in\mathcal{X}\)</span> is
+<span class="math display">\[
+\min_{x\in\mathcal{X}}\ (g(x)-f(x))=g(y)-f(y)=0.
+\]</span>
+Since a global minimum is also a local minimum, it follows that if <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\in\mathcal{X}\)</span> then <span class="math inline">\(g-f\)</span> has a local minimum , equal to zero, over <span class="math inline">\(\mathcal{X}\)</span> at <span class="math inline">\(y\)</span>. This is a convenient necessary condition for majorization.
+A sufficient condition for <span class="math inline">\(g\)</span> to majorize <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> is that <span class="math inline">\(g-f\)</span> is a convex function with a minimum at <span class="math inline">\(y\)</span> equal to zero. Because of convexity this minimum is then necessarily the global minimum.
+<hr>
+<p>If <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\in\mathcal{X}\)</span> then the points <span class="math inline">\(y\in\mathcal{X}\)</span> where <span class="math inline">\(g(y)=f(y)\)</span> are called <em>support points</em>. If majorization is strict there is only one support point. There can, however, be arbitrarily many.</p>
+Consider <span class="math inline">\(f:x\rightarrow x^2-10\sin^2(x)\)</span> and <span class="math inline">\(g:x\rightarrow x^2\)</span>.
+Then <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> on the real line, with support points at all integer multiples of <span class="math inline">\(\pi\)</span>. This is illustrated in Figure 3.
+<hr>
+<img src="_main_files/figure-html/infty-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 3: Quadratic Majorizer with an Infinite Number of Support Points
+</center>
+<hr>
+<p>In fact if <span class="math inline">\(f:x\rightarrow\max(x,0)\)</span> and <span class="math inline">\(g:x\rightarrow|x|\)</span> then <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at all <span class="math inline">\(y\leq 0\)</span>, and thus there even is a continuum of support points. And actually <span class="math inline">\(f\)</span> itself majorizes <span class="math inline">\(f\)</span> at all <span class="math inline">\(y\in\mathcal{X}.\)</span></p>
+</div>
+<div id="majorization-on-a-set" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Majorization on a Set</h3>
+We can have different majorizations of <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{X}\)</span> at different points <span class="math inline">\(y_1,\cdots,y_n\in\mathcal{X}\)</span>. Now consider the situation in which we have a different majorization for each point <span class="math inline">\(y\in\mathcal{X}\)</span>.
+<hr>
+<p>Suppose <span class="math inline">\(f\)</span> is a real-valued function on <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(g\)</span> is a real-valued function on <span class="math inline">\(\mathcal{X}\otimes\mathcal{X}\)</span>. We say
+that <span class="math inline">\(g\)</span> is a <em>majorization scheme</em> for <span class="math inline">\(f\)</span> <em>on</em> <span class="math inline">\(\mathcal{X}\)</span> if</p>
+<ul>
+<li><span class="math inline">\(g(x,y)\geq f(x)\)</span> for all <span class="math inline">\(x,y\in\mathcal{X}\)</span>,</li>
+<li><span class="math inline">\(g(y,y)=f(y)\)</span> for all <span class="math inline">\(y\in\mathcal{X}\)</span>.</li>
+</ul>
+<p>Majorization is <em>strict</em> if the first condition can be replaced by</p>
+<ul>
+<li><span class="math inline">\(g(x,y)&gt;f(x)\)</span> for all <span class="math inline">\(x,y\in\mathcal{X}\)</span> with <span class="math inline">\(x\not= y\)</span>.</li>
+</ul>
+<p>Or, equivalently, if the second condition can be replaced by</p>
+<ul>
+<li><span class="math inline">\(g(x,y)=f(x)\)</span> if and only if <span class="math inline">\(x=y\)</span>.</li>
+</ul>
+<hr>
+<p>We call <span class="math inline">\(g\)</span> a <em>majorization scheme</em> for <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{X}\)</span>, because <span class="math inline">\(g\)</span> automatically gives a majorization for <span class="math inline">\(f\)</span> for every <span class="math inline">\(y\in\mathcal{X}\)</span>. Thus a majorization of <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{X}\)</span> at <span class="math inline">\(y\)</span> is a real-valued function <span class="math inline">\(g\)</span> on <span class="math inline">\(\mathcal{X}\)</span>, a majorization scheme for <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{X}\)</span> is a real-valued function on <span class="math inline">\(\mathcal{X}\otimes\mathcal{X}\)</span>.</p>
+<p>Because <span class="math inline">\(g(x,y)\geq g(x,x)=f(x)\)</span> for all <span class="math inline">\(x,y\in\mathcal{X}\)</span> we see that
+<span class="math display">\[
+f(x)=\min_{y\in\mathcal{X}}g(x,y)
+\]</span>
+for all <span class="math inline">\(x\in\mathcal{X}\)</span>. Thus <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> if and only if <span class="math inline">\(f(x)=\min_{y\in\mathcal{X}} g(x,y)\)</span> and the minimum is attained for <span class="math inline">\(y=x.\)</span> Strict majorization means the minimum is unique. It follows that the majorization relation between functions is a special case of the augmentation relation.</p>
+<p>As an example of a majorization scheme for <span class="math inline">\(f:x\rightarrow -\log(1+\exp(-x))\)</span> we use
+<span class="math display">\[
+g(x,y)=f(y)+f&#39;(y)(x-y)+\frac18(x-y)^2.
+\]</span>
+Also define the function <span class="math inline">\(h\)</span> by <span class="math inline">\(h(x,y)=f(x)\)</span>.</p>
+<p>Function <span class="math inline">\(g\)</span> is plotted in figure <a href="majorization-methods.html#fig:logitcouple">6.1</a> in blue, function <span class="math inline">\(h\)</span> is in red.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:logitcouple"></span>
+<img src="graphics/logitcouple.png" alt="Majorization Scheme for log(1+exp(x))" width="698" />
+<p class="caption">
+Figure 6.1: Majorization Scheme for log(1+exp(x))
+</p>
+</div>
+<p>Note that the intersection of the graph of both <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> with the diagonal vertical plane <span class="math inline">\(x=y\)</span> is the set of <span class="math inline">\((x,y,z)\)</span> such that <span class="math inline">\(x=y\)</span> and <span class="math inline">\(z=g(x,x)=h(x,x)=f(x)\)</span>. This is the white line in the plot.</p>
+<p>Graphs of the intersection of the graphs of <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> with the vertical planes <span class="math inline">\(y=c\)</span> parallel to the <span class="math inline">\(x\)</span>-axes at <span class="math inline">\(y=-5,-2,0,2,5\)</span> are in Ffigure @ref(fig.interplanes). The red lines are the intersections with <span class="math inline">\(h\)</span>, i.e. the
+function <span class="math inline">\(f\)</span>, the blue lines are the quadratics majorizing <span class="math inline">\(f\)</span> at <span class="math inline">\(y=-5,-2,0,2,5\)</span>.</p>
+<hr>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:interplanes"></span>
+<img src="_main_files/figure-html/interplanes-1.png" alt="Intersections of $g$ with $y=c$ planes" width="672" />
+<p class="caption">
+Figure 6.2: Intersections of <span class="math inline">\(g\)</span> with <span class="math inline">\(y=c\)</span> planes
+</p>
+</div>
+<p>Graphs of intersection of the graphs of <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> with the vertical planes <span class="math inline">\(x=c\)</span> parallel to the <span class="math inline">\(y\)</span>-axes at <span class="math inline">\(x=-5,-2,0,2,5\)</span> are in figure
+@ref{fig.logitother}. They illustrate that <span class="math inline">\(\min_y g(x,y)=f(x)\)</span>. The horizontal red lines are the intersections of the planes <span class="math inline">\(x=c\)</span> with the graph of <span class="math inline">\(h\)</span> at <span class="math inline">\(f(-5),f(-2),f(0),f(2),\)</span> and <span class="math inline">\(f(5)\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:logitother"></span>
+<img src="_main_files/figure-html/logitother-1.png" alt="Intersections of $g$ with $x=c$ planes" width="672" />
+<p class="caption">
+Figure 6.3: Intersections of <span class="math inline">\(g\)</span> with <span class="math inline">\(x=c\)</span> planes
+</p>
+</div>
+The code to produce all three figures is in <code>logitcouple.R</code>.
+<hr>
+<center>
+<a href="../code/logitcouple.R">Insert logitcouple.R Here</a>
+</center>
+<hr>
+</div>
+<div id="majorization-algorithm" class="section level3" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Majorization Algorithm</h3>
+<p>The basic idea of a <em>majorization algorithm</em> is simple: it is the augmentation algorithm applied to the majorization function.</p>
+<p>Suppose our current best
+approximation to the minimum of <span class="math inline">\(f\)</span> is <span class="math inline">\(x^{(k)}\)</span>, and we have a <span class="math inline">\(g\)</span> that majorizes <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{X}\)</span> in <span class="math inline">\(x^{(k)}\)</span>. If <span class="math inline">\(x^{(k)}\)</span> already minimizes <span class="math inline">\(g\)</span> we stop, otherwise we update <span class="math inline">\(x^{(k)}\)</span> to <span class="math inline">\(x^{(k+1)}\)</span> by minimizing <span class="math inline">\(g\)</span> over <span class="math inline">\(\mathcal{X}\)</span>.</p>
+<p>If we do not stop, we have the <em>sandwich inequality</em>
+<span class="math display">\[
+f(x^{(k+1)})\leq g(x^{(k+1)})&lt;g(x^{(k)})=f(x^{(k)}),
+\]</span>
+and in the case of strict majorization even
+<span class="math display">\[
+f(x^{(k+1)})&lt;g(x^{(k+1)})&lt;g(x^{(k)})=f(x^{(k)}).
+\]</span></p>
+<p>We then select a new function <span class="math inline">\(g\)</span> that majorizes <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{X}\)</span> at <span class="math inline">\(x^{(k+1)}\)</span>. Repeating these steps produces a decreasing sequence of function values, and the usual compactness and continuity conditions guarantee convergence of both sequences <span class="math inline">\(x^{(k)}\)</span> and <span class="math inline">\(f(x^{(k)})\)</span>.</p>
+<p>Here is an artificial example, chosen because of its simplicity.
+Consider <span class="math inline">\(f(x)=x^4-10x^2.\)</span> Because <span class="math inline">\(x^2\geq y^2+2y(x-y)=2yx-y^2\)</span>
+we see that <span class="math inline">\(g(x,y)=x^4-20yx+10y^2\)</span>
+is a suitable majorization function. The majorization
+algorithm is <span class="math inline">\(x^{(k+1)}=\sqrt[3]{5x^{(k)}}.\)</span></p>
+The first iterations of the algorithm are illustrated in Figure 1. We
+start with <span class="math inline">\(x^{(0)}=3,\)</span> where <span class="math inline">\(f\)</span> is <span class="math inline">\(-9\)</span>. Then <span class="math inline">\(g(x,3)\)</span> is
+the blue function.
+It is minimized at <span class="math inline">\(x^{(1)}\approx 2.4662,\)</span>
+where <span class="math inline">\(g(x^{(1)},3)\approx -20.9795,\)</span>
+and <span class="math inline">\(f(x^{(1)})\approx -23.8288.\)</span> We then majorize by using
+the green function <span class="math inline">\(g(x,x^{(1)})\)</span>, which has
+its minimum at about <span class="math inline">\(2.3103,\)</span>
+equal to about <span class="math inline">\(-24.6430.\)</span> The
+corresponding value of <span class="math inline">\(f\)</span> at this point
+is about <span class="math inline">\(-24.8861.\)</span> Thus we are rapidly getting close to the local
+minimum at <span class="math inline">\(\sqrt{5}\approx 2.2361,\)</span> with value <span class="math inline">\(-25.\)</span> The linear
+convergence rate at the stationary point is <span class="math inline">\(\frac{1}{3}.\)</span>
+<hr>
+<img src="_main_files/figure-html/bookfig5-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 1: Toy example, first iterations
+</center>
+<hr>
+Table 1 show the iterations to convergence, with an estimate of the iteration radius in the last column.
+<hr>
+<pre><code>## Iteration:    1 fold:   -9.00000000 fnew:  -23.82883884 xold:    3.00000000 xnew:    2.46621207 ratio:    0.00000000 
+## Iteration:    2 fold:  -23.82883884 fnew:  -24.88612919 xold:    2.46621207 xnew:    2.31029165 ratio:    0.32250955 
+## Iteration:    3 fold:  -24.88612919 fnew:  -24.98789057 xold:    2.31029165 xnew:    2.26054039 ratio:    0.32971167 
+## Iteration:    4 fold:  -24.98789057 fnew:  -24.99867394 xold:    2.26054039 xnew:    2.24419587 ratio:    0.33212463 
+## Iteration:    5 fold:  -24.99867394 fnew:  -24.99985337 xold:    2.24419587 xnew:    2.23877400 ratio:    0.33293027 
+## Iteration:    6 fold:  -24.99985337 fnew:  -24.99998373 xold:    2.23877400 xnew:    2.23696962 ratio:    0.33319896 
+## Iteration:    7 fold:  -24.99998373 fnew:  -24.99999819 xold:    2.23696962 xnew:    2.23636848 ratio:    0.33328854 
+## Iteration:    8 fold:  -24.99999819 fnew:  -24.99999980 xold:    2.23636848 xnew:    2.23616814 ratio:    0.33331840 
+## Iteration:    9 fold:  -24.99999980 fnew:  -24.99999998 xold:    2.23616814 xnew:    2.23610137 ratio:    0.33332836 
+## Iteration:   10 fold:  -24.99999998 fnew:  -25.00000000 xold:    2.23610137 xnew:    2.23607911 ratio:    0.33333167 
+## Iteration:   11 fold:  -25.00000000 fnew:  -25.00000000 xold:    2.23607911 xnew:    2.23607169 ratio:    0.33333278 
+## Iteration:   12 fold:  -25.00000000 fnew:  -25.00000000 xold:    2.23607169 xnew:    2.23606921 ratio:    0.33333315 
+## Iteration:   13 fold:  -25.00000000 fnew:  -25.00000000 xold:    2.23606921 xnew:    2.23606839 ratio:    0.33333327 
+## Iteration:   14 fold:  -25.00000000 fnew:  -25.00000000 xold:    2.23606839 xnew:    2.23606811 ratio:    0.33333331 
+## Iteration:   15 fold:  -25.00000000 fnew:  -25.00000000 xold:    2.23606811 xnew:    2.23606802 ratio:    0.33333333</code></pre>
+<center>
+Table 1: Toy example, iterations to convergence
+</center>
+<hr>
+We also show the cobwebplot (see <a href="../background/cobweb.html">section 14.11.2</a>) for the iterations, which illustrates the decrease of the difference between subsequent iterates.
+<hr>
+<img src="_main_files/figure-html/cobexample-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 2
+</center>
+<hr>
+</div>
+<div id="alternative-definitions" class="section level3" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Alternative Definitions</h3>
+<p>Suppose <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are arbitrary real-valued functions on <span class="math inline">\(\mathcal{X}\)</span>. Define
+<span class="math display">\[\begin{align*}
+\mathcal{S}_-(f,g):=&amp;\{x\in\mathcal{X}\mid f(x)\leq g(x)\},\\
+\mathcal{S}_0(f,g):=&amp;\{x\in\mathcal{X}\mid f(x)=g(x)\}.
+\end{align*}\]</span>
+Thus <span class="math inline">\(\mathcal{S}_0(f,g)\subseteq\mathcal{S}_-(f,g).\)</span>
+Then if
+<span class="math display">\[\begin{align*}
+x&amp;\in\mathcal{S}_0(f,g),\\
+y&amp;\in\mathop{\mathbf{argmin}}_{x\in\mathcal{S}_-(f,g)}g(x),
+\end{align*}\]</span>
+we have
+<span class="math display">\[
+f(y)\leq g(y)\leq g(x)=f(x).
+\]</span></p>
+<p><img src="_main_files/figure-html/strange-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="relatives" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Relatives</h2>
+<div id="the-concave-convex-procedure" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> The Concave-Convex Procedure</h3>
+<p>The Concave-Convex Procedure (CCCP) was first proposed by <span class="citation"><a href="#ref-yuille_rangarajan_03" role="doc-biblioref">Yuille and Rangarajan</a> (<a href="#ref-yuille_rangarajan_03" role="doc-biblioref">2003</a>)</span>. Its global convergence was studied using the Zangwill theory by <span class="citation"><a href="#ref-sriperumbudur_lanckriet_12" role="doc-biblioref">Sriperumbudur and Lanckriet</a> (<a href="#ref-sriperumbudur_lanckriet_12" role="doc-biblioref">2012</a>)</span>, and its rate of convergence using block relaxation theory by <span class="citation"><a href="#ref-yen_peng_wang_lin_12" role="doc-biblioref">Yen et al.</a> (<a href="#ref-yen_peng_wang_lin_12" role="doc-biblioref">2012</a>)</span>. The CCCP was discussed in a wider optimization context by <span class="citation"><a href="#ref-lipp_boyd_15" role="doc-biblioref">Lipp and Boyd</a> (<a href="#ref-lipp_boyd_15" role="doc-biblioref">2015</a>)</span>.</p>
+<p>The starting point of Yuille and Rangarajan, in the context of energy functions for discrete dynamical systems, is the decomposition of a function <span class="math inline">\(f\)</span> with bounded Hessian into a sum of a convex and a concave function. As we shall show in <a href="../linear/dc.html">section 9.2.1</a> on differences of convex
+functions any function on a compact set with continuous second derivatives can be decomposed in this way. If <span class="math inline">\(f=u+v\)</span> with <span class="math inline">\(u\)</span> convex and <span class="math inline">\(v\)</span> concave, then the CCCP is the algorithm
+<span class="math display">\[
+\mathcal{D}u(x^{(k+1)})=-\mathcal{D}v(x^{(k)}).
+\]</span>
+Now, by tangential majorization, <span class="math inline">\(f(x)\leq g(x,y)\)</span> with
+<span class="math display">\[
+g(x,y) = u(x)+v(y)+(x-y)&#39;\mathcal{D}v(y).
+\]</span>
+The function <span class="math inline">\(g\)</span> is convex in <span class="math inline">\(x\)</span>, and consequently the majorization algorithm in this case is exactly the CCCP.</p>
+</div>
+<div id="generalized-weiszfeld-methods" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Generalized Weiszfeld Methods</h3>
+<p>We discuss Weiszfeld’s algorithm for the single facility location problem, or equivalently for the spatial median problem, in <a href="../inequalities/location.md">section 7.3.2</a>. But, in an important early article, <span class="citation"><a href="#ref-vosz_eckhardt_80" role="doc-biblioref">Vosz and Eckhardt</a> (<a href="#ref-vosz_eckhardt_80" role="doc-biblioref">1980</a>)</span> pointed out that Weiszfeld’s
+algorithm is a member of a much more general class of algorithms, whch they called <em>Generalized Weiszfeld Methods</em>.</p>
+<p>The problem Voß and Eckhardt consider is to minimize a twice continuously differentiable <span class="math inline">\(f\)</span> over a
+polyhedron <span class="math inline">\(\mathcal{X}\subseteq\mathbb{R}^n\)</span>, defined by a number of linear inequalities. They assume that <span class="math inline">\(f\)</span> is bounded from below on <span class="math inline">\(\mathcal{X}\)</span> and that the sublevel sets <span class="math inline">\(\{x\mid f(x)\leq\gamma\}\)</span> have a empty of bounded intersection with <span class="math inline">\(\mathcal{X}\)</span>. They
+define the quadratic approximation
+<span class="math display">\[
+g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;A(y)(x-y)
+\]</span>
+for which they assume that <span class="math inline">\(g(x,y)\geq f(x)\)</span> for all <span class="math inline">\(x\in\mathcal{X}.\)</span> In addition the spectral norm <span class="math inline">\(\|A(y)\|\)</span> is must be bounded from above on <span class="math inline">\(\mathcal{X}\)</span> by <span class="math inline">\(A_\infty\)</span>, and the smallest eigenvalue of <span class="math inline">\(A(y)\)</span> must be bounded from below on <span class="math inline">\(\mathcal{X}\)</span> by a positive number <span class="math inline">\(\gamma_0\)</span>. Their algorithm is
+<span class="math display">\[
+x^{(k+1)}=\mathop{\mathbf{argmin}}\limits_{x\in\mathcal{X}} g(x,x^{(k)}).
+\]</span></p>
+<p>This, of course, is a majorization algorithm. In fact, it is an example of the quadratic mjaorization algorithms we discuss in detail in <a href="../quadratic/README.html">chapter 10</a>. Voß and Eckhardt proceed to prove global convergence, which actually follows directly from Zangwill’s theory, and local linear convergence, which follows from Ostrowski’s theorem.</p>
+</div>
+<div id="the-em-algorithm" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> The EM Algorithm</h3>
+</div>
+<div id="the-lower-bound-principle" class="section level3" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> The Lower-Bound Principle</h3>
+</div>
+<div id="dinkelbach-majorization" class="section level3" number="6.3.5">
+<h3><span class="header-section-number">6.3.5</span> Dinkelbach Majorization</h3>
+<p>Suppose <span class="math inline">\(f\)</span> is defined on <span class="math inline">\(X\)</span> and <span class="math inline">\(g\)</span> on <span class="math inline">\(X\otimes X\)</span>. Then we
+say that <span class="math inline">\(g\)</span> <em>G-majorizes</em> <span class="math inline">\(f\)</span> at <span class="math inline">\(y\in X\)</span> if
+<span class="math display">\[\begin{align*}
+f(x)&amp;\leq g(x,y),\\
+f(y)&amp;= g(y,y),
+\end{align*}\]</span>
+We say that <span class="math inline">\(g\)</span> G-majorizes <span class="math inline">\(f\)</span> on <span class="math inline">\(X\)</span> if it majorizes <span class="math inline">\(f\)</span> for each <span class="math inline">\(y\in X\)</span>.</p>
+<p>Suppose <span class="math inline">\(f\)</span> is defined on <span class="math inline">\(X\)</span> and <span class="math inline">\(h\)</span> on <span class="math inline">\(X\otimes X\)</span>. Then we
+say that <span class="math inline">\(h\)</span> <em>H-majorizes</em> <span class="math inline">\(f\)</span> at <span class="math inline">\(y\in X\)</span> if
+<span class="math display">\[\begin{align*}
+f(x)-f(y)&amp;\leq h(x,y),\\
+h(y,y)&amp;=0.
+\end{align*}\]</span></p>
+<p><strong>Theorem:</strong> If <span class="math inline">\(h\)</span> H-majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>, then <span class="math inline">\(g\)</span> defined by <span class="math inline">\(g(x,y)=f(y)+h(x,y)\)</span> G-majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>. Conversely,
+if <span class="math inline">\(g\)</span> G-majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>, then <span class="math inline">\(h\)</span> defined
+by <span class="math inline">\(h(x,y)=g(x,y)-f(y)\)</span> H-majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>.</p>
+<p>Suppose <span class="math inline">\(f\)</span> is defined on <span class="math inline">\(X\)</span> and <span class="math inline">\(h\)</span> on <span class="math inline">\(X\otimes X\)</span>. Then we
+say that <span class="math inline">\(h\)</span> <em>D-majorizes</em> <span class="math inline">\(f\)</span> at <span class="math inline">\(y\in X\)</span> if
+<span class="math display">\[\begin{align*}
+h(x,y) &lt; 0 &amp;\Rightarrow  f(x)&lt;f(y),\\
+h(y,y)&amp;=0.
+\end{align*}\]</span></p>
+<p><strong>Theorem</strong>
+If <span class="math inline">\(h\)</span> H-majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>, then <span class="math inline">\(h\)</span>
+D-majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>.</p>
+<p>The difference between D-majorization and H-majorization
+is that if <span class="math inline">\(h(x,y)&gt;0\)</span> we can have <span class="math inline">\(f(x)-f(y)&gt;h(x,y)\)</span>.</p>
+<p>Quick note: D-majorization is also
+<span class="math display">\[
+g(x,y)=f(y)+h(x,y)&lt;f(y)=g(y,y)\Rightarrow f(x)&lt;f(y)
+\]</span></p>
+<p>If <span class="math inline">\(f(x)=a(x)/b(x)\)</span>, with <span class="math inline">\(b(x)&gt;0\)</span> for all <span class="math inline">\(x\in X\)</span>,
+then <span class="math inline">\(h(x,y)=a(x)-f(y)b(x)\)</span> D-majorizes <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(y\)</span>.</p>
+</div>
+</div>
+<div id="further-results" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Further Results</h2>
+<div id="rate-of-convergence" class="section level3" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Rate of Convergence</h3>
+<p>Majorization is a special case of our results for augmentation
+previous theory, because <span class="math inline">\(\mathcal{X}=\mathcal{Y}\)</span> and because <span class="math inline">\(y(x)=x\)</span>.</p>
+<p>This implies that <span class="math inline">\(\mathcal{D}_2(x,x)=0\)</span>
+for all <span class="math inline">\(x,\)</span> and
+consequently <span class="math inline">\(\mathcal{D}_{12}=-\mathcal{D}_{22}.\)</span>
+Thus <span class="math inline">\(\mathcal{M}(x)=-\mathcal{D}_{11}^{-1}\mathcal{D}_{12}^{\ }.\)</span></p>
+<p>Again, to some extent, finding a majorization function is an art. Many
+of the classical inequalities can be used (Cauchy-Schwarz, Jensen, H"older,
+Young, AM-GM, and so on).</p>
+</div>
+<div id="univariate-and-separable-functions" class="section level3" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Univariate and Separable Functions</h3>
+<p>Many of our examples are majorizations of a real-valued function <span class="math inline">\(f\)</span> of a single real variable over the real line <span class="math inline">\(\mathbb{R}.\)</span> This is partly for
+mathematical convenience, because many results are simpler in the univariate case. And partly for didactic reasons, because plots and tables are
+more easy to visualize and interpret.</p>
+<p>As pointed out by
+<span class="citation"><a href="#ref-deleeuw_lange_A_09" role="doc-biblioref">De Leeuw and Lange</a> (<a href="#ref-deleeuw_lange_A_09" role="doc-biblioref">2009</a>)</span> looking at the univariate case is obviously restrictive, but not as restrictive as it seems. Many
+of the functions in optimization and statistics are <em>separable</em>, which means they are of the form
+<span class="math display">\[
+f(x)=\sum_{i=1}^n f_i(x_i),
+\]</span>
+and majorizing each of the univariate <span class="math inline">\(f_i\)</span> gives a majorization of <span class="math inline">\(f\)</span>.
+Note that if <span class="math inline">\(f(x)=\prod_{i=1}^n f_i(x)\)</span>, where the <span class="math inline">\(f_i\)</span> are positive,
+can be turned into a separable problem by taking logarithms.</p>
+<p>In addition it is often possible to majorize a non-separable function by a separable one. Suppose, for example, that
+<span class="math display">\[
+f(x)=\frac12\sum_{i=1}^n\sum_{j=1}^n w_{ij}f_i(x_i)f_j(x_j),
+\]</span>
+where <span class="math inline">\(W=\{w_{ij}\}\)</span> is positive semi-definite. Suppose we can find a diagonal <span class="math inline">\(D\)</span> such that <span class="math inline">\(W\lesssim D\)</span> then for any two vectors <span class="math inline">\(u\)</span>
+and <span class="math inline">\(v\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span></p>
+<p><span class="math display">\[\begin{multline*}
+u&#39;Wu=(v+(u-v))&#39;W(v+(u-v))\leq \\v&#39;Wv+(u-v)&#39;Wv+(u-v)&#39;D(u-v)=\\
+(u-z)&#39;D(u-z)+v&#39;(W-WD^{-1}W)v,
+\end{multline*}\]</span></p>
+<p>where <span class="math inline">\(z\mathop{=}\limits^{\Delta}(I-D^{-1}W)v.\)</span> Thus
+<span class="math display">\[
+f(x)\leq\frac12\sum_{i=1}^n d_i(f_i(x)-z_i(y))^2+
+\frac12\sum_{i=1}^n\sum_{j=1}^nh_{ij}f_i(y)f_j(y),
+\]</span>
+with <span class="math inline">\(H\mathop{=}\limits^{\Delta}W-WD^{-1}W.\)</span> The majorizer we have constructed is separable.</p>
+</div>
+<div id="differentiable-functions" class="section level3" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> Differentiable Functions</h3>
+We first show that differentiable majorizations of differentiable functions must have certain properties at the
+support point.
+<hr>
+<p><strong>Theorem</strong>: Suppose <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are differentiable at <span class="math inline">\(y\)</span>. If <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>, then</p>
+<ul>
+<li><span class="math inline">\(g(y)=f(y)\)</span>,</li>
+<li><span class="math inline">\(g&#39;(y)=f&#39;(y)\)</span>,</li>
+</ul>
+<p>If <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are twice differentiable at <span class="math inline">\(y\)</span>, then in addition</p>
+<ul>
+<li><span class="math inline">\(g&#39;&#39;(y)\geq f&#39;&#39;(y)\)</span>,</li>
+</ul>
+<p>and if <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> strictly</p>
+<ul>
+<li><span class="math inline">\(g&#39;&#39;(y)&gt;f&#39;&#39;(y)\)</span>.</li>
+</ul>
+<strong>Proof:</strong>
+If <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> then <span class="math inline">\(g-f\)</span> has a minimum at <span class="math inline">\(y\)</span>. Now use the
+familiar necessary conditions for the minimum of a differentiable function, which say
+the derivative at the minimum is zero and the second derivative is non-negative.
+<strong>QED</strong>
+<hr>
+<p>The conditions in the theorem are only necessary because they are local, they only say something about the value of <span class="math inline">\(g\)</span> and its derivatives at <span class="math inline">\(y\)</span>. But majorization is a global relation to make global statements we need conditions like convexity. We already know that if <span class="math inline">\(g-f\)</span> is convex with a minimum at <span class="math inline">\(y\)</span> equal to zero,
+then <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>. For differentiable <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> this means that if <span class="math inline">\(f-g\)</span> is convex
+then <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> if and only if <span class="math inline">\(f(y)=g(y)\)</span> and <span class="math inline">\(f&#39;(y)=g&#39;(y)\)</span>. And for twice-differentiable <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> with <span class="math inline">\(f&#39;&#39;(x)\geq 0\)</span> for all <span class="math inline">\(x\)</span> again <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> if and only if <span class="math inline">\(f(y)=g(y)\)</span> and <span class="math inline">\(f&#39;(y)=g&#39;(y)\)</span>.</p>
+In the case of majorization at a single <span class="math inline">\(y\)</span> we have <span class="math inline">\(f&#39;(y)=g&#39;(y)\)</span> for differentiable functions. If <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{Y}\subseteq\mathcal{X}\)</span>
+then <span class="math inline">\(g(x,y)-f(x)\geq 0\)</span> for all <span class="math inline">\(x\in\mathcal{X}\)</span>
+and all <span class="math inline">\(y\in\mathcal{Y}\)</span>. Thus
+<span class="math display">\[
+0=g(y,y)-f(y)=\min_{x\in\mathcal{X}}g(x,y)-f(x)
+\]</span>
+for each <span class="math inline">\(y\in\mathcal{Y}\)</span>. In addition
+<span class="math display">\[
+f(x)=g(x,x)=\min_{y\in\mathcal{Y}}g(x,y).
+\]</span>
+<hr>
+<p>In the case of majorization at a single <span class="math inline">\(y\)</span> we had <span class="math inline">\(f&#39;(y)=g&#39;(y)\)</span> for differentiable functions. In general
+the function <span class="math inline">\(f\)</span> defined by <span class="math inline">\(f(x)=\min_{y\in\mathcal{Y}} g(x,y)\)</span> is not differentiable. If the partials <span class="math inline">\(\mathcal{D}_1g\)</span> are continuous then the derivative at <span class="math inline">\(x\)</span> in the direction <span class="math inline">\(z\)</span> satisfies
+<span class="math display">\[
+df_z(x)=\min_y\{z&#39;D_1g(x,y)\mid f(x)=g(x,y)\}.
+\]</span>
+In the case of strict majorization this gives
+<span class="math display">\[
+\mathcal{D}f(x)=\mathcal{D}_1g(x,x).
+\]</span></p>
+<hr>
+<p>Theorem  can be generalized in many directions if differentiability fails.
+If <span class="math inline">\(f\)</span> has a left and right derivatives in <span class="math inline">\(y\)</span>, for instance, and <span class="math inline">\(g\)</span> is differentiable, then
+<span class="math display">\[
+f&#39;_R(y)\leq g&#39;(y)\leq f&#39;_L(y).
+\]</span></p>
+<p>If <span class="math inline">\(f\)</span> is convex, then <span class="math inline">\(f&#39;_L(y) \leq f&#39;_R(y)\)</span>, and <span class="math inline">\(f&#39;(y)\)</span> must exist in order for a differentiable <span class="math inline">\(g\)</span> to majorize <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>. In this case <span class="math inline">\(g&#39;(y)=f&#39;(y)\)</span>.</p>
+<p>For nonconvex <span class="math inline">\(f\)</span> more general differential inclusions are possible using the four Dini derivatives of <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> [see, for example, McShane, 1944, Chapter V].</p>
+<p>Locally Lipschitz functions, Proximinal and Frechet and Clarke subgradients, sandwich and squeeze theorems</p>
+<p>One-sided Chebyshev. Find <span class="math inline">\(g\in\mathcal{G}\)</span> such that <span class="math inline">\(g\geq f\)</span>,
+<span class="math inline">\(g(y)=f(y)\)</span> and <span class="math inline">\(\sup_x|g(x)-f(x)|\)</span> is minimized.
+For instance <span class="math inline">\(\mathcal{G}\)</span> can be the convex functions, or the polynomials of a certain degree,
+or piecewise linear functions or splines.</p>
+</div>
+<div id="composition" class="section level3" number="6.4.4">
+<h3><span class="header-section-number">6.4.4</span> Composition</h3>
+<p><strong>Theorem: [Sum of functions]</strong>
+Suppose <span class="math inline">\(h\)</span> is defined on <span class="math inline">\(\mathcal{X}\otimes\mathcal{U}\)</span> and <span class="math inline">\(f(x)=\int_U h(x,u)dF(u)\)</span>. Suppose <span class="math inline">\(k\)</span> is defined on <span class="math inline">\(\mathcal{X}\otimes\mathcal{X}\otimes\mathcal{U}\)</span> and satisfies
+<span class="math display">\[
+h(x,u)=k(x,x,u)=\min_{y\in\mathcal{X}} k(x,y,u)
+\]</span>
+for all <span class="math inline">\(x\in\mathcal{X}\)</span> and <span class="math inline">\(u\in\mathcal{U}\)</span>. Then <span class="math inline">\(g\)</span> defined by
+<span class="math display">\[
+g(x,y)=\int_U k(x,y,u)dF(u)
+\]</span>
+satisfies
+<span class="math display">\[
+f(x)=\min_{y\in\mathcal{X}} g(x,y)
+\]</span></p>
+<strong>Proof:</strong> <span class="math inline">\(h(x,u)=k(x,x,u)\leq k(x,y,u)\)</span>. Integrate to get <span class="math inline">\(f(x)=g(x,x)\leq g(x,y)\)</span>.
+<strong>QED</strong>
+<hr>
+<p><strong>Theorem: [Inf of functions]</strong>
+Suppose <span class="math inline">\(f=\inf_{u} v(\bullet,u)\)</span> and let <span class="math inline">\(X(u)=\{x|f(x)=v(x,u)\}\)</span>.
+Suppose <span class="math inline">\(y\in X(u)\)</span> and <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(v(\bullet,u)\)</span> at <span class="math inline">\(y\)</span>. Then <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>.</p>
+<strong>Proof:</strong> <span class="math inline">\(g(x)\geq v(x,u)\geq\inf_{u} v(x,u)=f(x)\)</span>, and because <span class="math inline">\(y\in X(u)\)</span>
+also <span class="math inline">\(g(y)=v(y,u)=f(y)\)</span>.
+<strong>QED</strong>
+<hr>
+Observe the theorem is not true for <span class="math inline">\(sup\)</span>, and also we cannot say that
+if <span class="math inline">\(w(\bullet,u )\)</span> majorizes <span class="math inline">\(v(\bullet,u)\)</span> for all <span class="math inline">\(u\)</span> at <span class="math inline">\(y\)</span>, then <span class="math inline">\(g=\inf_{u} w(\bullet,u)\)</span>
+majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>.
+<hr>
+<p><strong>Theorem: [Composition of functions]</strong>
+If <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> and <span class="math inline">\(\gamma:\mathbb{R}\rightarrow \mathbb{R}\)</span> is non-decreasing, then <span class="math inline">\(\gamma\circ g\)</span> majorizes <span class="math inline">\(\gamma\circ f\)</span> at <span class="math inline">\(y\)</span>. If, in addition, <span class="math inline">\(\gamma\)</span> majorizes
+the non-decreasing <span class="math inline">\(\eta:\mathbb{R}\rightarrow \mathbb{R}\)</span> at <span class="math inline">\(g(y)\)</span>, then <span class="math inline">\(\gamma\circ g\)</span>
+majorizes <span class="math inline">\(\eta\circ f\)</span>.</p>
+<strong>Proof:</strong> <span class="math inline">\(g(x)\geq f(x)\)</span> and thus <span class="math inline">\(\gamma(g(x))\geq\gamma(f(x))\)</span>. Also <span class="math inline">\(g(y)=f(y)\)</span> and thus <span class="math inline">\(\gamma(g(y))=\gamma(f(y))\)</span>. For the second part
+we have <span class="math inline">\(\gamma(g(x))\geq\eta(g(x))\geq\eta(f(x))\)</span> and <span class="math inline">\(\gamma(g(y))=\eta(g(y))=\eta(f(y))\)</span>.
+<strong>QED</strong>
+<hr>
+<p><strong>Theorem: </strong>
+Suppose <span class="math inline">\(f=\min_{k} f_{k}\)</span> and let <span class="math inline">\(S_{i}\)</span> be the set where <span class="math inline">\(f=f_{i}\)</span>.
+If <span class="math inline">\(y\in S_{i}\)</span> and <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f_{i}\)</span> at <span class="math inline">\(y\)</span>, then <span class="math inline">\(g\)</span> majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>.</p>
+<strong>Proof:</strong>
+First <span class="math inline">\(g(x)\geq f_{i}(x)\geq\min_{k} f_{k}(x)=f(x)\)</span>.
+Because <span class="math inline">\(y\in S_{i}\)</span> also <span class="math inline">\(g(y)=f_{i}(y)=f(y)\)</span>.
+<strong>QED</strong>
+<hr>
+This implies that if <span class="math inline">\(f=\min_{k} f_{k}\)</span> has a quadratic majorizer at each <span class="math inline">\(y\)</span>, if each of the <span class="math inline">\(f_{k}\)</span> has a quadratic majorizer at each <span class="math inline">\(y\)</span>.
+<hr>
+</div>
+<div id="majorization-duality" class="section level3" number="6.4.5">
+<h3><span class="header-section-number">6.4.5</span> Majorization Duality</h3>
+<p>Because <span class="math inline">\(g(x,y)\geq g(x,x)=f(x)\)</span> for all <span class="math inline">\(x,y\in\mathcal{X}\)</span> we have seen that
+<span class="math display">\[
+f(x)=\min_{y\in\mathcal{X}}g(x,y)
+\]</span>
+for all <span class="math inline">\(x\in\mathcal{X}\)</span>.
+Thus
+<span class="math display">\[
+\min_{x\in\mathcal{X}}f(x)=\min_{x\in\mathcal{X}}\min_{y\in\mathcal{X}}g(x,y)=\min_{y\in\mathcal{X}}h(y).
+\]</span>
+where
+<span class="math display">\[
+h:y\rightarrow \min_{x\in\mathcal{X}}g(x,y).
+\]</span></p>
+<p>Suppose, for example, that our majorization on <span class="math inline">\(\mathcal{X}\)</span> is of the form
+<span class="math display">\[
+g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;A(y)(x-y),
+\]</span>
+with <span class="math inline">\(A(y)\)</span> positive definite for all <span class="math inline">\(y\)</span>. This can be rewritten as
+<span class="math display">\[\begin{align*}
+g(x,y)&amp;=f(y)-\frac12(\mathcal{D}f(y))&#39;A^{-1}(y)\mathcal{D}f(y)+\\
+&amp;+(x-z(y))&#39;A(y)(x-z(y)),
+\end{align*}\]</span>
+with <span class="math inline">\(z(y)\mathop{=}\limits^{\Delta}y-A^{-1}(y)\mathcal{D}f(y)\)</span>, and thus
+<span class="math display">\[\begin{align*}
+h(y)=\min_{x\in\mathcal{X}}g(x,y)&amp;=f(y)-\frac12(\mathcal{D}f(y))&#39;(A(y))^+\mathcal{D}f(y)+\\&amp;+\min_{x\in\mathcal{X}}(x-z(y))&#39;A(y)(x-z(y)).
+\end{align*}\]</span></p>
+</div>
+<div id="necessary-conditions-by-majorization" class="section level3" number="6.4.6">
+<h3><span class="header-section-number">6.4.6</span> Necessary Conditions by Majorization</h3>
+<p>Suppose <span class="math inline">\(g\)</span> on <span class="math inline">\(\mathcal{X}\otimes\mathcal{X}\)</span> majorizes <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{X}\)</span>. We show that a necessary condition for <span class="math inline">\(\hat x\)</span> to be a minimizer of <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathcal{X}\)</span> is that <span class="math inline">\(\hat x\)</span> minimizes the majorization function <span class="math inline">\(g(\bullet,\hat x)\)</span> on <span class="math inline">\(\mathcal{X}\)</span>.</p>
+<p><strong>Theorem:</strong>
+If
+<span class="math display">\[
+\hat x\in\mathbf{Arg}\mathop{\mathbf{min}}\limits_{x\in\mathcal{X}}f(x),
+\]</span>
+then
+<span class="math display">\[
+\hat x\in\mathbf{Arg}\mathop{\mathbf{min}}\limits_{x\in\mathcal{X}}g(x,\hat x).
+\]</span></p>
+<p><strong>Proof:</strong> Suppose <span class="math inline">\(\overline x\in\mathcal{X}\)</span> is such that <span class="math inline">\(g(\overline x,\hat x)&lt;g(\hat x,\hat x).\)</span>
+Then
+<span class="math display">\[
+f(\overline x)\leq g(\overline x,\hat x)&lt; g(\hat x,\hat x)=f(\hat x),
+\]</span>
+which contradicts that <span class="math inline">\(\hat x\)</span> minimizes <span class="math inline">\(f\)</span>.
+<strong>QED</strong></p>
+<p>As an example, suppose that we have a quadratic majorization of the form
+<span class="math display">\[
+f(x)\leq f(y)+
+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;A(x-y),
+\]</span>
+with <span class="math inline">\(A\)</span> positive definite.
+If <span class="math inline">\(\hat x\)</span> minimizes <span class="math inline">\(f\)</span> over <span class="math inline">\(\mathcal{X}\)</span>, then we must have
+<span class="math display">\[
+\hat x\in\mathbf{Arg}\mathop{\mathbf{min}}\limits_{x\in\mathcal{X}}\ (x-\hat z)&#39;A(x-\hat z),
+\]</span>
+with <span class="math inline">\(\hat z\mathop{=}\limits^{\Delta}\hat x-A^{-1}\mathcal{D}f(\hat x)\)</span>. Thus <span class="math inline">\(\hat x\)</span> must be the weighted least squares projection of <span class="math inline">\(\hat z\)</span> on <span class="math inline">\(\mathcal{X}\)</span>. If <span class="math inline">\(\mathcal{X}\)</span> is all of <span class="math inline">\(\mathbb{R}^n\)</span>
+then we must have <span class="math inline">\(\hat x=\hat z\)</span>, which means <span class="math inline">\(\mathcal{D}f(\hat x)=0\)</span>.</p>
+<p>For a concave function <span class="math inline">\(f\)</span> on a bounded set we
+have <span class="math inline">\(g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)\)</span>, and thus
+the necessary condition for a minimum is
+<span class="math display">\[
+\hat x\in\mathbf{Arg}\mathop{\mathbf{min}}\limits_{x\in\mathcal{X}}x&#39;\mathcal{D}f(\hat x).
+\]</span></p>
+</div>
+<div id="majorizing-constraints" class="section level3" number="6.4.7">
+<h3><span class="header-section-number">6.4.7</span> Majorizing Constraints</h3>
+<p>Consider the nonlinear programming problem of minimizing <span class="math inline">\(f_0\)</span> over <span class="math inline">\(x\in\mathcal{X}\)</span>
+under the <em>functional constraints</em> <span class="math inline">\(f_i(x)\leq 0\)</span> for <span class="math inline">\(i=1,\cdots,n\)</span>.</p>
+<p>Suppose <span class="math inline">\(g_i\)</span> majorizes <span class="math inline">\(f_i\)</span> on <span class="math inline">\(\mathcal{X}\)</span>. Consider the algorithm
+<span class="math display">\[
+x^{(k+1)}\in\mathop{\mathbf{argmin}}\limits_{x\in\mathcal{X}}\{g_0(x,x^{(k)})\mid g_i(x,x^{(k)})\leq 0\}.
+\]</span>
+Lipp and Boyd [2014] propose this algorthm for the case in which
+the <span class="math inline">\(f_i\)</span> are DC (differences of convex functions), as a generalization of the Convex-Concave procedure of II.1.3.2. We show the algorithm is stable. Remember that <span class="math inline">\(x\in\mathcal{X}\)</span> is <em>feasible</em> if it satisfies the functional constraints.</p>
+<p><strong>Result:</strong>
+If <span class="math inline">\(x^{(k)}\)</span> is feasible, then <span class="math inline">\(x^{(k+1)}\)</span> is feasible
+and <span class="math inline">\(f_0(x^{(k+1)})\leq f_0(x^{(k)})\)</span>.</p>
+<p><strong>Proof:</strong>
+By majorization, for <span class="math inline">\(i=1,\cdots,n\)</span> we have
+<span class="math display">\[
+f_i(x^{(k+1)})\leq
+g_i(x^{(k+1)},x^{(k)})\leq 0.
+\]</span>
+Second, the sandwich inequality says
+<span class="math display">\[
+f_0(x^{(k+1)})\leq g_0(x^{(k+1)},x^{(k)})\leq g_0(x^{(k)},x^{(k)})=f_0(x^{(k)}).
+\]</span>
+<strong>QED</strong></p>
+<p>Note that it may not be necessary to majorize all functions <span class="math inline">\(f_i\)</span>. Or, in other words, for some we can choose the trivial majorization <span class="math inline">\(g_i(x,y)=f_i(x)\)</span>.</p>
+</div>
+<div id="majorizing-value-functions" class="section level3" number="6.4.8">
+<h3><span class="header-section-number">6.4.8</span> Majorizing Value Functions</h3>
+Suppose <span class="math inline">\(f(x)=\max_{y\in\mathcal{Y}} g(x,y)\)</span>
+and <span class="math inline">\(g(x,y)=\min_{z\in\mathcal{X}} h(x,y,z)\)</span>,
+i.e. <span class="math inline">\(h(x,y,z)\geq g(x,y)\)</span> for all <span class="math inline">\(x,z\in\mathcal{X}\)</span> and <span class="math inline">\(y\in\mathcal{Y}\)</span>
+and <span class="math inline">\(h(x,y,x)=g(x,y)\)</span> for all <span class="math inline">\(x\in\mathcal{X}\)</span>
+and <span class="math inline">\(y\in\mathcal{Y}\)</span>. Then, by weak duality,
+<span class="math display">\[
+f(x)=\max_{y\in\mathcal{Y}}\min_{z\in\mathcal{X}} h(x,y,z)\leq\min_{z\in\mathcal{X}}\max_{y\in\mathcal{Y}}
+h(x,y,z)=\min_{z\in\mathcal{X}} k(x,z),
+\]</span>
+where
+<span class="math display">\[
+k(x,z)\mathop{=}\limits^{\Delta}\max_{y\in\mathcal{Y}}h(x,y,z).
+\]</span>
+Note that
+<span class="math display">\[
+k(x,x)=\max_{y\in\mathcal{Y}}h(x,y,x)=\max_{y\in\mathcal{Y}}g(x,y)=f(x),
+\]</span>
+which means that actually
+<span class="math display">\[
+f(x)=\min_{z\in\mathcal{X}} k(x,z)
+\]</span>
+and thus <span class="math inline">\(k\)</span> majorizes <span class="math inline">\(f\)</span> in <span class="math inline">\(z\)</span>.
+<hr>
+Note: See how the following fits in 03/07/15. Or does it ?
+<hr>
+<p>Suppose the problem we want to solve is minimizing <span class="math inline">\(g(x,y)\)</span> over <span class="math inline">\(x\in X\)</span>
+and <span class="math inline">\(y\in Y\)</span>. If both minimizing <span class="math inline">\(g(x,y)\)</span> over <span class="math inline">\(x\in X\)</span> for fixed <span class="math inline">\(y\in Y\)</span>
+and minimizing <span class="math inline">\(g(x,y)\)</span> over <span class="math inline">\(y\in Y\)</span> for fixed <span class="math inline">\(x\in X\)</span> is easy, then we
+often use block-relaxation, alternating the two conditional minimization
+problems until convergence.</p>
+<p>But now suppose only one of the two problems, say
+minimizing <span class="math inline">\(g(x,y)\)</span> over <span class="math inline">\(y\in Y\)</span> for fixed <span class="math inline">\(x\in X\)</span>, is easy. Define
+<span class="math display">\[
+f(x)=\min_{y\in Y} g(x,y)
+\]</span>
+and let <span class="math inline">\(y(x)\)</span> be any <span class="math inline">\(y\in Y\)</span> such that <span class="math inline">\(f(x)=g(x,y(x))\)</span>.</p>
+Suppose we have a majorizing function <span class="math inline">\(h(x,z)\)</span> for <span class="math inline">\(f(x)\)</span>. Thus
+<span class="math display">\[\begin{align*}
+f(x)&amp;\leq h(x,z)\qquad\forall x,z\in X,\\
+f(x)&amp;= h(x,x)\qquad\forall x\in X.
+\end{align*}\]</span>
+Suppose our current best solution for <span class="math inline">\(x\)</span> is <span class="math inline">\(\tilde x\)</span>, with corresponding <span class="math inline">\(\tilde y=y(\tilde x)\)</span>. Let <span class="math inline">\(x^+\)</span> be any minimizer of <span class="math inline">\(h(x,\tilde x)\)</span> over <span class="math inline">\(x\in X\)</span>. Now
+<span class="math display">\[
+g(x^+,y(x^+))=f(x^+)\leq h(x^+,\tilde x)\leq h(\tilde x,\tilde x)=f(\tilde x)=g(\tilde x,y(\tilde x))
+\]</span>
+which means that <span class="math inline">\((x^+,y(x^+))\)</span> gives a lower loss function value than <span class="math inline">\((\tilde x,y(\tilde x))\)</span>. Thus we have, under the usual conditions, a convergent algorithm.
+<hr>
+Note: See how the following fits in 03/13/15. Or does it ?
+<hr>
+<p>Suppose <span class="math inline">\(g(x)=\min_{y\in\mathcal{Y}}f(x,y)\)</span> and <span class="math inline">\(f(x,y)=\min_{z\in\mathcal{X}}h(x,z,y)\)</span>. Define <span class="math inline">\(k(x,z)\mathop{=}\limits^{\Delta}\min_{y\in\mathcal{Y}}h(x,z,y)\)</span>. Then
+<span class="math display">\[
+g(x)=\min_{y\in\mathcal{Y}} f(x,y)=\min_{y\in\mathcal{Y}}\min_{z\in\mathcal{X}}h(x,z,y)=\min_{z\in\mathcal{X}}\min_{y\in\mathcal{Y}}\min_{z\in\mathcal{X}}h(x,z,y)=\min_{z\in\mathcal{X}}k(x,z).
+\]</span>
+<span class="math display">\[
+k(x,x)=\min_{y\in\mathcal{Y}}h(x,x,y)=\min_{y\in\mathcal{Y}}f(x,y)=g(x)
+\]</span>
+Not necessary that <span class="math inline">\(\mathcal{Y}=\mathcal{X}\)</span>. Only <span class="math inline">\(h\)</span> has to majorize <span class="math inline">\(f\)</span> for <span class="math inline">\(k\)</span> to majorize, <span class="math inline">\(f\)</span> can be anything. This may be in the composition section.</p>
+</div>
+</div>
+<div id="some-examples" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Some Examples</h2>
+<div id="the-reciprocal" class="section level3" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> The Reciprocal</h3>
+<p>Minimizing the function <span class="math inline">\(f(x)=ax-\log(x)\)</span>, where <span class="math inline">\(a&gt;0\)</span> is a constant, over <span class="math inline">\(x&gt;0\)</span> is trivial. The first and second derivatives of <span class="math inline">\(f\)</span> are
+<span class="math display">\[
+f&#39;(x)=a-\frac{1}{x},
+\]</span>
+and
+<span class="math display">\[
+f&#39;&#39;(x)=\frac{1}{x^2}.
+\]</span>
+We see from <span class="math inline">\(f&#39;&#39;(x)&gt;0\)</span> that <span class="math inline">\(f\)</span> is strictly convex on the positive reals. It has its unique minimum for <span class="math inline">\(a-1/x=0\)</span>, i.e. for <span class="math inline">\(x=1/a\)</span>, and the minimum value is <span class="math inline">\(1+\log(a)\)</span>.</p>
+<p>Thus iterative algorithms to minimize the function, which can also be thought of as iterative algorithms to compute the reciprocal of a positive number <span class="math inline">\(a\)</span>, are of little interest in themselves. But it is of some interest to compare various algorithms, such as different majorization methods, in terms of robustness, speed of convergence, and so on.</p>
+Here are plots of the function <span class="math inline">\(f\)</span> for <span class="math inline">\(a=1/3\)</span> and for <span class="math inline">\(a=3/2\)</span>.
+<hr>
+<img src="_main_files/figure-html/afuncs-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 1: ax+log(x) for a = 1/3 (left) and a=3/2 (right)
+</center>
+<hr>
+<p>Because <span class="math inline">\(-\log(x)=\log(1/x)\)</span> the concavity of the logarithm shows
+that
+<span class="math display">\[
+\log(\frac{1}{x})\leq\log(\frac{1}{y})+y\left(\frac{1}{x}-\frac{1}{y}\right),
+\]</span>
+or
+<span class="math display">\[
+-\log(x)\leq-\log(y)+\frac{y}{x}-1.
+\]</span>
+Thus
+<span class="math display">\[
+g(x,y)=ax-\log(y)+\frac{y}{x}-1
+\]</span>
+majorizes <span class="math inline">\(f\)</span>, and minimizing the majorizer gives the very simple algorithm
+<span class="math display">\[
+x^{(k+1)}= \sqrt{\frac{x^{(k)}}{a}}.
+\]</span>
+The derivative of the update function <span class="math inline">\(h(x)\mathop{=}\limits^{\Delta}\sqrt{x/a}\)</span> at <span class="math inline">\(1/a\)</span>
+is <span class="math inline">\(1/2\)</span>. Thus our majorization iterations have linear convergence, with
+ratio <span class="math inline">\(1/2\)</span>.
+If <span class="math inline">\(x^{(0)}&lt;1/a\)</span> the algorithm generates an increasing sequence converging to <span class="math inline">\(1/a\)</span>. If <span class="math inline">\(x^{(0)}&gt;1/a\)</span> we have a decreasing sequence converging to <span class="math inline">\(1/a\)</span>.
+Because <span class="math inline">\(ax^{(k+1)}=\sqrt{ax^{(k)}}\)</span> we have the explicit expression
+<span class="math display">\[
+x^{(k)}=a^{\left(\frac{1}{2^k}-1\right)}\left(x^{(0)}\right)^{\left(\frac{1}{2^k}\right)}.
+\]</span></p>
+Here we show the majorization for <span class="math inline">\(a=3/2\)</span> and <span class="math inline">\(y\)</span> equal to <span class="math inline">\(1/10, 1\)</span> and <span class="math inline">\(3/2\)</span>.
+<hr>
+<img src="_main_files/figure-html/maj3-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 2: Majorization of 3x/2+log(x) at y=1/10,1, and 3/2
+</center>
+<hr>
+</div>
+<div id="cubics-and-quartics" class="section level3" number="6.5.2">
+<h3><span class="header-section-number">6.5.2</span> Cubics and Quartics</h3>
+<p>Suppose <span class="math inline">\(f\)</span> is a cubic, which is non-trivial in the sense that its third derivative is non-zero. Thus <span class="math inline">\(f\)</span> has no minimum or maximum, because it is unbounded below and above.
+This immediately shows there can be no linear or quadratic majorizer <span class="math inline">\(g\)</span> of <span class="math inline">\(f\)</span>, because if there was then <span class="math inline">\(g-f\)</span> would be a non-trivial cubic, which does not have a minimum.</p>
+<p>For a quadratic <span class="math inline">\(g\)</span> to majorize a non-trivial quartic <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span> we must have</p>
+<p><span class="math display">\[\begin{multline*}
+f(y)+f&#39;(y)(x-y)+\frac12f&#39;&#39;(y)(x-y)^2+\frac16f&#39;&#39;&#39;(y)(x-y)^3+\frac{1}{24}f^{iv}(x-y)^4\leq\\ f(y)+f&#39;(y)(x-y)+\frac12c(x-y)^2,
+\end{multline*}\]</span></p>
+<p>for all <span class="math inline">\(x\)</span>. Of course <span class="math inline">\(f^{iv}(y)\)</span> is a constant, independent of <span class="math inline">\(y\)</span>, for a quartic. This can be written as <span class="math inline">\(\frac12(x-y)^2q(x)\leq 0\)</span> for all <span class="math inline">\(x\)</span>, where
+<span class="math display">\[
+q(x)\mathop{=}\limits^{\Delta}(f&#39;&#39;(y)-c)+\frac13f&#39;&#39;&#39;(y)(x-y)+\frac{1}{12}f^{iv}(y)(x-y)^2.
+\]</span>
+If <span class="math inline">\(f^{iv}&gt;0\)</span> no quadratic majorization exists. If <span class="math inline">\(f^{iv}&lt;0\)</span> we complete the square to
+<span class="math display">\[
+q(x)=\frac{1}{12}f^{iv}\left(x-y+2\frac{f&#39;&#39;&#39;(y)}{f^{iv}}\right)^2+\left(f&#39;&#39;(y)-\frac13\frac{(f&#39;&#39;&#39;(y))^2}{f^{iv}}-c\right),
+\]</span>
+and see we must have
+<span class="math display">\[
+c\geq c(y)\mathop{=}\limits^{\Delta}f&#39;&#39;(y)-\frac13\frac{(f&#39;&#39;&#39;(y))^2}{f^{iv}}.
+\]</span></p>
+<p><strong>Example 1:</strong> In our first example we use the polynomial <span class="math inline">\(f(x)=1+5x+5x^2-5x^3-6x^4\)</span>, and we show quadratic
+majorizers using <span class="math inline">\(c=c(y)\)</span> for <span class="math inline">\(y\)</span> equal to <span class="math inline">\(-.75, -.25, +.25,\)</span> and <span class="math inline">\(+.75\)</span>.</p>
+<hr>
+<img src="_main_files/figure-html/qcm-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 1: Quadratic Majorization of a Quartic
+</center>
+<hr>
+Note that the quadratic majorizer for <span class="math inline">\(y=.75\)</span> is concave, which means it does not have a minimum and we cannot carry out a majorization step. All four majorizers have two support points, one at <span class="math inline">\(y\)</span> and the other at <span class="math inline">\(y-2\frac{f&#39;&#39;&#39;(y)}{f^{iv}(y)}\)</span>, which is the solution of <span class="math inline">\(q(x)=0\)</span> if <span class="math inline">\(c=c(y)\)</span>.
+The <code>R</code> code for drawing the figures is in <code>quarticCubicMe.R</code>. Note the function <code>quarticCubicMe</code> does not return anything, it is merely used for its graphical side effects.
+<hr>
+<center>
+<a href="../code/quarticCubicMe.R">Insert quarticCubicMe.R Here</a>
+</center>
+<hr>
+<p>The majorization algorithm corresponding to our quadratic majorization is
+<span class="math display">\[
+x^{(k+1)}=x^{(k)}-\frac{f&#39;(x^{(k)})}{c(x^{(k)})}.
+\]</span>
+If it converges to a stationary point at <span class="math inline">\(x\)</span> with <span class="math inline">\(f&#39;(x)=0\)</span>
+and <span class="math inline">\(f&#39;&#39;(x)\geq 0\)</span> then the iteration radius is
+<span class="math display">\[
+\kappa(x)=1-\frac{f&#39;&#39;(x)}{c(x)}.
+\]</span>
+Note that in the quartic case both <span class="math inline">\(f&#39;&#39;\)</span> and <span class="math inline">\(c\)</span> are quadratics, so the
+convergence rate <span class="math inline">\(\lambda\)</span> is a ratio of two quadratics. If <span class="math inline">\(f&#39;&#39;(x)&gt;0\)</span>
+and <span class="math inline">\(f&#39;&#39;&#39;(x)\not= 0\)</span> then <span class="math inline">\(0&lt;\lambda(x)&lt;1\)</span>. If <span class="math inline">\(f&#39;&#39;&#39;(x)=0\)</span> then <span class="math inline">\(\lambda(x)=0\)</span> and we have superlinear convergence.
+If <span class="math inline">\(f&#39;&#39;(x)=0\)</span> and <span class="math inline">\(f&#39;&#39;&#39;(x)\not= 0\)</span> we have <span class="math inline">\(\lambda(x)=1\)</span> and convergence is sublinear.</p>
+<strong>Example 2:</strong> We illustrate this with the quartic
+<span class="math display">\[
+f(x)=+\frac56 x+\frac34 x^2+\frac16 x^3-\frac{1}{24}x^4
+\]</span>
+which has both <span class="math inline">\(f&#39;(-1)=0\)</span> and <span class="math inline">\(f&#39;&#39;(-1)=0\)</span>. Quadratic majorizers are shown in Figure 2.
+<img src="_main_files/figure-html/ex2-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 2: Quadratic Majorization of a Quartic at a Saddlepoint
+</center>
+<hr>
+<p>The iterative majorization algorithm in <code>itQuartic.R</code>, which stops if we have reached a solution to within 1e-10, has not converged after 100,000 iterations.</p>
+<pre><code>Iteration:  100000 xold:   -0.99998667 xnew:   -0.99998667 fold:   -0.29166667 fnew:   -0.29166667 lbd:    0.99998000
+$x
+[1] -0.9999867
+
+$lbd
+[1] 0.99998</code></pre>
+<hr>
+<center>
+<a href="../code/itQuartic.R">Insert itQuartic.R Here</a>
+</center>
+<hr>
+<strong>Example 3:</strong> The next quartic has <span class="math inline">\(f&#39;(1)=0\)</span> and <span class="math inline">\(f&#39;&#39;&#39;(1)=0\)</span>. This implies that <span class="math inline">\(f(1+x)=f(1-x)\)</span>
+for all <span class="math inline">\(x\)</span>, which in turn implies that quadratic majorizers using <span class="math inline">\(c=c(y)\)</span> have their minima or maxima at 1. We identify the polynomial by requiring <span class="math inline">\(f(0)=0\)</span>, <span class="math inline">\(f&#39;&#39;(1)=1\)</span> and <span class="math inline">\(f^{iv}(1)=1\)</span>. This gives
+<span class="math display">\[
+f(x)=-\frac56 x+\frac14 x^2+\frac16 x^3-\frac{1}{24} x^4.
+\]</span>
+Quadratic majorizers are in Figure 3.
+<hr>
+<img src="_main_files/figure-html/symq-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 3: Quadratic Majorization of a Symmetric Quartic
+</center>
+<hr>
+<p>In this case the majorization algorithm converges to the solution <span class="math inline">\(x=1\)</span> in a single iteration, no matter where we start. This is true even if the quadratic is concave, because then the update actually goes to the <em>maximum</em> of the majorizing quadratic (which means that, strictly speaking, we do not make a majorization step).</p>
+<p>If we want to majorize a quartic <span class="math inline">\(f\)</span> by a cubic
+<span class="math display">\[
+g(x)=f(y)+f&#39;(y)(x-y)+\frac12 c(x-y)^2+\frac16 d(x-y)^3,
+\]</span>
+then we can use the same reasoning as before to come up with
+<span class="math display">\[
+c\geq c_d(y)\mathop{=}\limits^{\Delta}f&#39;&#39;(y)-\frac13\frac{(f&#39;&#39;&#39;(y)-d)^2}{f^{iv}}.
+\]</span>
+In each iteration we have to minimize the cubic <span class="math inline">\(g\)</span> over <span class="math inline">\(x\)</span>. This needs to be qualified, of course, because the cubic does not have a minimum. So we modify the rule to choosing the local minimum of the cubic, if there is one. Differentiating the implicit function for the update <span class="math inline">\(x^+\)</span> gives
+<span class="math display">\[
+\mathcal{D}x^+(y)=1-\frac{f&#39;&#39;(y)}{c+d(x^+(y)-y)},
+\]</span>
+and thus at a fixed point <span class="math inline">\(x\)</span> the iteration radius, using <span class="math inline">\(c=c_d(y)\)</span>, it is
+<span class="math display">\[
+\lambda(x)=1-\frac{f&#39;&#39;(x)}{c_d(x)}.
+\]</span>
+We have fast convergence if <span class="math inline">\(d\)</span> is close to <span class="math inline">\(f&#39;&#39;&#39;(x)\)</span>, and superlinear convergence if <span class="math inline">\(d=f&#39;&#39;&#39;(x)\)</span>.</p>
+<strong>Example 4:</strong> In Figure 4 we use the quartic <span class="math inline">\(1+5x+5x^2-5x^3-6x^4\)</span> again to illustrate cubic majorization with <span class="math inline">\(d\)</span> cleverly chosen to be <span class="math inline">\(f&#39;&#39;&#39;(x_\infty)\)</span>. The cubic majorization functions are much closer than the quadratic ones in Figure 1.
+<hr>
+<img src="_main_files/figure-html/qcub-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 4: Cubic Majorization of a Quartic
+</center>
+<hr>
+Table 1 shows different iteration counts for different values of <span class="math inline">\(d.\)</span> In this case
+we have <span class="math inline">\(f&#39;&#39;&#39;(x)=29.50256\)</span>, where <span class="math inline">\(x=-0.4132122\)</span>.
+<hr>
+<span class="math display">\[
+\begin{matrix}
+\hline
+d&amp;iterations&amp;rate\\
+\hline
+\ 0&amp;11&amp;0.16627\\
+\ 5&amp;11&amp;0.12093\\
+10&amp;10&amp;0.08016\\
+15&amp;09&amp;0.04598\\
+20&amp;08&amp;0.02027\\
+25&amp;06&amp;0.00462\\
+30&amp;04&amp;0.00005\\
+\hline
+\end{matrix}
+\]</span>
+<center>
+Table 1: Cubic Majorization of a Quartic
+<hr>
+</div>
+<div id="normal-pdf-and-cdf" class="section level3" number="6.5.3">
+<h3><span class="header-section-number">6.5.3</span> Normal PDF and CDF</h3>
+For a nice regular example we use the celebrated functions
+<span class="math display">\[\begin{align*}
+\phi(x)&amp; = \frac{1}{\sqrt{2\pi}}e^{-z^2/2},\\
+\Phi(x)&amp; = \int_{-\infty}^{x} \phi(z)\,dz.
+\end{align*}\]</span>
+Of course <span class="math inline">\(\Phi&#39;(x)=\phi(x).\)</span> And consequently
+<span class="math display">\[\begin{align*}
+\Phi&#39;&#39;(x)&amp;=\phi&#39;(x)=-x\phi(x), \\
+\Phi&#39;&#39;&#39;(x)&amp;=\phi&#39;&#39;(x)=-(1-x^{2})\phi(x),\\
+\Phi^{iv}(x)&amp;=\phi&#39;&#39;&#39;(x)=-x(x^{2}-3)\phi(x).
+\end{align*}\]</span>
+To obtain quadratic majorizers we must bound the second derivatives. We can bound <span class="math inline">\(\Phi&#39;&#39;(x)\)</span> by setting its derivative equal to zero.
+We have <span class="math inline">\(\Phi&#39;&#39;&#39;(x)=0\)</span> for <span class="math inline">\(x=\pm 1\)</span>, and thus <span class="math inline">\(|\Phi&#39;&#39;(x)|\leq\phi(1)\)</span>. In the same way <span class="math inline">\(\phi&#39;&#39;&#39;(x)=0\)</span> for <span class="math inline">\(x=0\)</span> and <span class="math inline">\(x=\pm\sqrt{3}\)</span>. At those values <span class="math inline">\(|\phi&#39;&#39;(x)|\leq 2\phi(\sqrt{3}).\)</span>
+More precisely, it follows that
+<span class="math display">\[\begin{align*}
+0&amp;\leq\Phi&#39;(x)=\phi(x)\leq \phi(0),\\
+-\phi(1)&amp;\leq\Phi&#39;&#39;(x)=\phi&#39;(x)\leq\phi(1),\\
+-\phi(0)&amp;\leq\Phi&#39;&#39;&#39;(x)=\phi&#39;&#39;(x)\leq 2\phi(\sqrt{3}).
+\end{align*}\]</span>
+Thus we have the quadratic majorizers
+<span class="math display">\[
+\Phi(x)\leq\Phi(y)+\phi(y)(x-y)+\frac12\phi(1)(x-y)^{2},
+\]</span>
+and
+<span class="math display">\[
+\phi(x)\leq\phi(y)-y\phi(y)(x-y)+\phi(\sqrt{3})(x-y)^{2}.
+\]</span>
+The majorizers are illustrated for both <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\phi\)</span> at the points <span class="math inline">\(y=0\)</span> and <span class="math inline">\(y=-3\)</span> in Figure 1.
+<hr>
+<img src="_main_files/figure-html/normal-1.png" width="672" style="display: block; margin: auto;" />
+<center>
+Figure 1: Quadratic Majorization of Normal PDF and CDF
+</center>
+<hr>
+<p>The inequalities in this section may be useful in majorizing multivariate functions involving <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\Phi\)</span>.
+They are mainly intended, however, to illustrate construction of quadratic majorizers in the smooth case.</p>
+</div>
+<div id="logistic-pdf-and-cdf" class="section level3" number="6.5.4">
+<h3><span class="header-section-number">6.5.4</span> Logistic PDF and CDF</h3>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-deleeuw_lange_A_09" class="csl-entry">
+De Leeuw, J., and K. Lange. 2009. <span>“Sharp Quadratic Majorization in One Dimension.”</span> <em>Computational Statistics and Data Analysis</em> 53: 2471–84. <a href="https://doi.org/10.1016/j.csda.2009.01.002">https://doi.org/10.1016/j.csda.2009.01.002</a>.
+</div>
+<div id="ref-lipp_boyd_15" class="csl-entry">
+Lipp, T., and S. Boyd. 2015. <span>“<span class="nocase">Variations and Extension of the Convex–concave Procedure</span>.”</span> <em>Optimization and Engineering</em>, 1–25.
+</div>
+<div id="ref-ortega_rheinboldt_70a" class="csl-entry">
+———. 1970b. <span>“<span class="nocase">Local and Global Convergence of Generalized Linear Iterations</span>.”</span> In <em>Numerical Solution of Nonlinear Problems</em>, edited by J. M. Ortega and W. C. Rheinboldt. Philadelphia, <span>PA</span>: Society of Inductrial; Applied Mathematics.
+</div>
+<div id="ref-sriperumbudur_lanckriet_12" class="csl-entry">
+Sriperumbudur, B. K., and G. R. G. Lanckriet. 2012. <span>“<span class="nocase">A Proof of Convergence of the Concave-Convex Procedure Using Zangwill’s Theory</span>.”</span> <em>Neural Computation</em> 24: 1391–1407.
+</div>
+<div id="ref-vosz_eckhardt_80" class="csl-entry">
+Vosz, H., and U. Eckhardt. 1980. <span>“<span class="nocase">Linear Convergence of Generalized <span>W</span>eiszfeld’s Method</span>.”</span> <em>Computing</em> 25: 243–51.
+</div>
+<div id="ref-yen_peng_wang_lin_12" class="csl-entry">
+Yen, E.-H., N. Peng, P.-W. Wang, and S.-D. Lin. 2012. <span>“<span class="nocase">On Convergence Rate of Concave-Convex Procedure</span>.”</span> In <em>Paper Presented at 5th NIPS Workshop on Optimization for Machine Learning, Lake Tahoe, December 8 2012</em>. <a href="http://opt-ml.org/oldopt/papers/opt2012_paper_10.pdf">http://opt-ml.org/oldopt/papers/opt2012_paper_10.pdf</a>.
+</div>
+<div id="ref-yuille_rangarajan_03" class="csl-entry">
+Yuille, A. L., and A. Rangarajan. 2003. <span>“<span>The Concave-Convex Procedure</span>.”</span> <em>Neural Computation</em> 15: 915–36.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="augmentation-and-decomposition-methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="majorization-inequalities.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "none"
+},
+"keep_md": true,
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

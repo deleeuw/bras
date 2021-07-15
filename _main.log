@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.7.3)  14 JUL 2021 16:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.7.3)  14 JUL 2021 17:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -489,16 +489,16 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 4.
-[3] [4] [5] [6])
+[3] [4] [5] [6] [7] [8] [9])
 \tf@toc=\write5
 \openout5 = `_main.toc'.
 
-[7] [8
+[10] [11
 
-] [9] [10
+] [12
 
 ]
-<graphics/bookfig1.png, id=663, 781.92125pt x 308.15125pt>
+<graphics/bookfig1.png, id=1044, 781.92125pt x 308.15125pt>
 File: graphics/bookfig1.png Graphic file (type png)
 <use graphics/bookfig1.png>
 Package pdftex.def Info: graphics/bookfig1.png  used on input line 178.
@@ -512,22 +512,22 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 94.
 (/Users/deleeuw/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [11] [12 <./graphics/bookfig1.png>] [13] [14]
+) [13] [14 <./graphics/bookfig1.png>] [15] [16]
 Chapter 1.
-[15
+[17
 
-] [16] [17] [18]
+] [18] [19] [20]
 Chapter 2.
-[19
+[21
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[20] [21] [22] [23] [24] [25] [26] [27]
+[22] [23] [24] [25] [26] [27] [28] [29]
 
-LaTeX Warning: Reference `T:triv' on page 28 undefined on input line 598.
+LaTeX Warning: Reference `T:triv' on page 30 undefined on input line 598.
 
-[28] [29] [30] [31]
+[30] [31] [32] [33]
 Overfull \hbox (12.4024pt too wide) detected at line 813
 \OMS/lmsy/m/n/12 M\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 ) = \OMS/l
 msy/m/n/12 ^^@ [][] [] \OML/lmm/m/it/12 ;
@@ -539,7 +539,7 @@ Overfull \hbox (10.48148pt too wide) detected at line 832
 = \OMS/lmsy/m/n/12 ^^@ [] [] \OT1/lmr/m/n/12 =$ 
  []
 
-[32] [33] [34] [35] [36]
+[34] [35] [36] [37] [38]
 Underfull \hbox (badness 2689) in paragraph at lines 1058--1061
 \T1/lmr/m/n/12 Of course $\OML/lmm/m/it/12 ^^Z[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/
 12 y[]; []  ; y[]\OT1/lmr/m/n/12 ) = \OML/lmm/m/it/12 ^^Z[]\OT1/lmr/m/n/12 (\OM
@@ -547,26 +547,26 @@ L/lmm/m/it/12 y[]; []  ; y[]\OT1/lmr/m/n/12 )$ \T1/lmr/m/n/12 for all $\OML/lmm
 /m/it/12 j$ \T1/lmr/m/n/12 and $\OML/lmm/m/it/12 `$\T1/lmr/m/n/12 , and
  []
 
-[37] [38]
+[39] [40]
 
-LaTeX Warning: Reference `E:And2' on page 39 undefined on input line 1132.
+LaTeX Warning: Reference `E:And2' on page 41 undefined on input line 1132.
 
-[39]
-<_main_files/figure-latex/saddlecontour-1.pdf, id=1026, 434.62375pt x 248.93pt>
+[41]
+<_main_files/figure-latex/saddlecontour-1.pdf, id=1407, 434.62375pt x 248.93pt>
 
 File: _main_files/figure-latex/saddlecontour-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/saddlecontour-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/saddlecontour-1.pdf  used on 
 input line 1174.
 (pdftex.def)             Requested size: 390.02371pt x 223.38539pt.
-<_main_files/figure-latex/saddlepersp-1.pdf, id=1027, 222.8325pt x 199.74625pt>
+<_main_files/figure-latex/saddlepersp-1.pdf, id=1408, 222.8325pt x 199.74625pt>
 
 File: _main_files/figure-latex/saddlepersp-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/saddlepersp-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/saddlepersp-1.pdf  used on in
 put line 1183.
 (pdftex.def)             Requested size: 222.83534pt x 199.7488pt.
-[40 <./_main_files/figure-latex/saddlecontour-1.pdf>] [41 <./_main_files/figure
+[42 <./_main_files/figure-latex/saddlecontour-1.pdf>] [43 <./_main_files/figure
 -latex/saddlepersp-1.pdf>]
 Underfull \hbox (badness 1014) in paragraph at lines 1231--1234
 \T1/lmr/m/n/12 To com-pute $[] \OML/lmm/m/it/12 f\OT1/lmr/m/n/12 (\OML/lmm/m/it
@@ -574,331 +574,300 @@ Underfull \hbox (badness 1014) in paragraph at lines 1231--1234
 tions. If
  []
 
-[42] [43]
+[44] [45]
 Underfull \hbox (badness 1173) in paragraph at lines 1301--1303
 []\T1/lmr/m/n/12 We make the nec-es-sary cal-cu-la-tions, start-ing from the le
 ft. De-fine
  []
 
-[44] [45]
-<_main_files/figure-latex/uprule-1.pdf, id=1077, 442.65375pt x 291.0875pt>
+[46] [47]
+<_main_files/figure-latex/uprule-1.pdf, id=1457, 442.65375pt x 291.0875pt>
 File: _main_files/figure-latex/uprule-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/uprule-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/uprule-1.pdf  used on input l
 ine 1372.
 (pdftex.def)             Requested size: 390.0228pt x 256.47757pt.
-[46 <./_main_files/figure-latex/uprule-1.pdf>] [47]
+[48 <./_main_files/figure-latex/uprule-1.pdf>] [49]
 Underfull \vbox (badness 3396) has occurred while \output is active []
 
-[48] [49] [50
+[50] [51] [52
 
 ]
 Chapter 3.
 
-Overfull \hbox (10.17352pt too wide) in paragraph at lines 1501--1502
-\T1/lmr/m/n/12 ###The Carte-sian Folium{#coordinatedescent:examples:thecartesia
-nfolium} 
- []
+Underfull \vbox (badness 4752) has occurred while \output is active []
 
-[51]
-<_main_files/figure-latex/folium-1.pdf, id=1120, 409.53pt x 219.82124pt>
+[53]
+<_main_files/figure-latex/folium-1.pdf, id=1500, 409.53pt x 219.82124pt>
 File: _main_files/figure-latex/folium-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/folium-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/folium-1.pdf  used on input l
-ine 1526.
+ine 1527.
 (pdftex.def)             Requested size: 390.02612pt x 209.35223pt.
-[52 <./_main_files/figure-latex/folium-1.pdf>]
-Overfull \hbox (23.55064pt too wide) in paragraph at lines 1547--1548
-[]\T1/lmr/m/n/12 ###A Fam-ily of Quadrat-ics{#coordinatedescent:examples:afamil
-yofquadratics} 
- []
 
-[53] [54] [55] [56] [57] [58] [59] [60]
-<graphics/rcase2.png, id=1175, 481.8pt x 481.8pt>
+Underfull \vbox (badness 3568) has occurred while \output is active []
+
+[54]
+Underfull \vbox (badness 1389) has occurred while \output is active []
+
+[55 <./_main_files/figure-latex/folium-1.pdf>] [56] [57] [58] [59] [60] [61] [6
+2] [63]
+<graphics/rcase2.png, id=1565, 481.8pt x 481.8pt>
 File: graphics/rcase2.png Graphic file (type png)
 <use graphics/rcase2.png>
-Package pdftex.def Info: graphics/rcase2.png  used on input line 1904.
+Package pdftex.def Info: graphics/rcase2.png  used on input line 1908.
 (pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
 
-Overfull \hbox (91.8135pt too wide) in paragraph at lines 1904--1905
+Overfull \hbox (91.8135pt too wide) in paragraph at lines 1908--1909
  [][] 
  []
 
-<graphics/rcase3.png, id=1176, 481.8pt x 481.8pt>
+<graphics/rcase3.png, id=1566, 481.8pt x 481.8pt>
 File: graphics/rcase3.png Graphic file (type png)
 <use graphics/rcase3.png>
-Package pdftex.def Info: graphics/rcase3.png  used on input line 1913.
+Package pdftex.def Info: graphics/rcase3.png  used on input line 1917.
 (pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
 
-Overfull \hbox (91.8135pt too wide) in paragraph at lines 1913--1914
+Overfull \hbox (91.8135pt too wide) in paragraph at lines 1917--1918
  [][] 
  []
 
+[64] [65 <./graphics/rcase2.png>] [66 <./graphics/rcase3.png>] [67] [68
 
-Overfull \hbox (49.47134pt too wide) in paragraph at lines 1920--1921
-[]\T1/lmr/m/n/12 ###Squared Dis-tance Scal-ing{#coordinatedescent:examples:squa
-reddistancescaling} 
- []
-
-[61] [62 <./graphics/rcase2.png>] [63 <./graphics/rcase3.png>] [64]
-Overfull \hbox (88.13982pt too wide) in paragraph at lines 1952--1953
-[]\T1/lmr/m/n/12 ###Least Squares Fac-tor Anal-y-sis{#coordinatedescent:example
-s:leastsquaresfactoranalysis} 
- []
-
-[65] [66] [67]
-Overfull \hbox (3.98488pt too wide) in paragraph at lines 2073--2074
-[]\T1/lmr/m/n/12 ###NIPALS and PLS{#alternatingleastsquares:closerelatives:nipa
-lsandpls} 
- []
-
-[68]
-Overfull \hbox (49.10611pt too wide) in paragraph at lines 2127--2128
-[]\T1/lmr/m/n/12 ###Homogeneity Anal-y-sis{#alternatingleastsquares:examples:ho
-mogeneityanalysis} 
- []
-
-
-Overfull \hbox (92.58286pt too wide) in paragraph at lines 2129--2130
-[]\T1/lmr/m/n/12 ###Fixed Rank Ap-prox-i-ma-tion{#alternatingleastsquares:examp
-les:fixedrankapproximation} 
- []
-
-
-Overfull \hbox (14.41423pt too wide) in paragraph at lines 2131--2132
-[]\T1/lmr/m/n/12 ###Multilinear Fit-ting{#alternatingleastsquares:examples:mult
-ilinearfitting} 
- []
-
-
-Overfull \hbox (32.99257pt too wide) in paragraph at lines 2136--2137
-\T1/lmr/m/n/12 ###Scaling and Split-ting{#alternatingleastsquares:examples:scal
-ingandsplitting} 
- []
-
-[69]
-Overfull \hbox (1.42558pt too wide) detected at line 2173
+]
+Chapter 4.
+[69] [70] [71] [72] [73]
+Overfull \hbox (1.42558pt too wide) detected at line 2191
 [] [] \OML/lmm/m/it/12 ^^[\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 X; Y; A; B\OT1/lmr/
 m/n/12 ) = [] [] \OML/lmm/m/it/12 ^^[\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 X; Y; A;
  B\OT1/lmr/m/n/12 ) = [](1 \OMS/lmsy/m/n/12 ^^@ \OML/lmm/m/it/12 ^^Z[]\OT1/lmr/
 m/n/12 (\OML/lmm/m/it/12 X; Y\OT1/lmr/m/n/12 ))\OML/lmm/m/it/12 :
  []
 
-[70]
+[74]
+Chapter 5.
+[75
 
-Package hyperref Warning: Suppressing link with empty target on input line 2267
+] [76]
+
+Package hyperref Warning: Suppressing link with empty target on input line 2290
 .
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 2267
+Package hyperref Warning: Suppressing link with empty target on input line 2290
 .
 
-[71] [72] [73] [74] [75] [76] [77] [78] [79]
+[77] [78] [79] [80] [81] [82] [83] [84]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
-588.
+619.
 (/Users/deleeuw/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [80]
+) [85]
 
-LaTeX Warning: Reference `E:g2' on page 81 undefined on input line 2642.
-
-
-LaTeX Warning: Reference `E:g3' on page 81 undefined on input line 2642.
-
-[81]
-
-LaTeX Warning: Reference `E:sstress' on page 82 undefined on input line 2683.
+LaTeX Warning: Reference `E:g2' on page 86 undefined on input line 2673.
 
 
-LaTeX Warning: Reference `E:alg' on page 82 undefined on input line 2698.
+LaTeX Warning: Reference `E:g3' on page 86 undefined on input line 2673.
 
-[82]
+[86]
 
-LaTeX Warning: Reference `E:expand' on page 83 undefined on input line 2708.
+LaTeX Warning: Reference `E:sstress' on page 87 undefined on input line 2715.
 
-[83] [84]
-<_main_files/figure-latex/loog-1.pdf, id=1356, 436.63126pt x 248.93pt>
+[87]
+
+LaTeX Warning: Reference `E:alg' on page 88 undefined on input line 2730.
+
+
+LaTeX Warning: Reference `E:expand' on page 88 undefined on input line 2740.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[88] [89] [90]
+Chapter 6.
+[91
+
+]
+<_main_files/figure-latex/loog-1.pdf, id=1793, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/loog-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/loog-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/loog-1.pdf  used on input lin
-e 2833.
+e 2869.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
-[85] [86 <./_main_files/figure-latex/loog-1.pdf>]
-<_main_files/figure-latex/cubby-1.pdf, id=1373, 440.64626pt x 253.94875pt>
+[92]
+<_main_files/figure-latex/cubby-1.pdf, id=1800, 440.64626pt x 253.94875pt>
 File: _main_files/figure-latex/cubby-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/cubby-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/cubby-1.pdf  used on input li
-ne 2849.
+ne 2885.
 (pdftex.def)             Requested size: 390.01561pt x 224.7698pt.
-[87 <./_main_files/figure-latex/cubby-1.pdf>]
-<_main_files/figure-latex/infty-1.pdf, id=1385, 440.64626pt x 255.95625pt>
+[93 <./_main_files/figure-latex/loog-1.pdf>]
+<_main_files/figure-latex/infty-1.pdf, id=1812, 440.64626pt x 255.95625pt>
 File: _main_files/figure-latex/infty-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/infty-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/infty-1.pdf  used on input li
-ne 2865.
+ne 2901.
 (pdftex.def)             Requested size: 390.01561pt x 226.54665pt.
-[88 <./_main_files/figure-latex/infty-1.pdf>]
-<graphics/logitcouple.png, id=1398, 1401.235pt x 911.405pt>
+[94 <./_main_files/figure-latex/cubby-1.pdf>] [95 <./_main_files/figure-latex/i
+nfty-1.pdf>]
+<graphics/logitcouple.png, id=1837, 1401.235pt x 911.405pt>
 File: graphics/logitcouple.png Graphic file (type png)
 <use graphics/logitcouple.png>
-Package pdftex.def Info: graphics/logitcouple.png  used on input line 2920.
+Package pdftex.def Info: graphics/logitcouple.png  used on input line 2957.
 (pdftex.def)             Requested size: 843.31323pt x 548.51605pt.
 
-Overfull \hbox (453.31323pt too wide) in paragraph at lines 2920--2921
+Overfull \hbox (453.31323pt too wide) in paragraph at lines 2957--2958
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 27.51605pt on input line 2925.
+LaTeX Warning: Float too large for page by 27.51605pt on input line 2962.
 
-<_main_files/figure-latex/interplanes-1.pdf, id=1399, 440.64626pt x 248.93pt>
+<_main_files/figure-latex/interplanes-1.pdf, id=1838, 440.64626pt x 248.93pt>
 File: _main_files/figure-latex/interplanes-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/interplanes-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/interplanes-1.pdf  used on in
-put line 2934.
+put line 2971.
 (pdftex.def)             Requested size: 390.01561pt x 220.32771pt.
-[89] [90 <./graphics/logitcouple.png (PNG copy)>]
-<_main_files/figure-latex/logitother-1.pdf, id=1409, 440.64626pt x 250.9375pt>
+<_main_files/figure-latex/logitother-1.pdf, id=1839, 440.64626pt x 250.9375pt>
 File: _main_files/figure-latex/logitother-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/logitother-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/logitother-1.pdf  used on inp
-ut line 2946.
+ut line 2983.
 (pdftex.def)             Requested size: 390.01561pt x 222.10455pt.
-
-Underfull \vbox (badness 1014) has occurred while \output is active []
-
-[91 <./_main_files/figure-latex/interplanes-1.pdf>] [92 <./_main_files/figure-l
-atex/logitother-1.pdf>]
-<_main_files/figure-latex/bookfig5-1.pdf, id=1436, 440.64626pt x 248.93pt>
+[96] [97 <./graphics/logitcouple.png (PNG copy)>] [98 <./_main_files/figure-lat
+ex/interplanes-1.pdf> <./_main_files/figure-latex/logitother-1.pdf>]
+<_main_files/figure-latex/bookfig5-1.pdf, id=1871, 440.64626pt x 248.93pt>
 File: _main_files/figure-latex/bookfig5-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/bookfig5-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/bookfig5-1.pdf  used on input
- line 2995.
+ line 3033.
 (pdftex.def)             Requested size: 390.01561pt x 220.32771pt.
-
-Overfull \hbox (344.80435pt too wide) in paragraph at lines 3017--3017
+[99]
+Overfull \hbox (344.80435pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:    1 fold:   -9.00000000 fnew:  -23.82883884 xo
 ld:    3.00000000 xnew:    2.46621207 ratio:    0.00000000[] 
  []
 
 
-Overfull \hbox (344.76933pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.76933pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:    2 fold:  -23.82883884 fnew:  -24.88612919 xo
 ld:    2.46621207 xnew:    2.31029165 ratio:    0.32250955[] 
  []
 
 
-Overfull \hbox (344.74832pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.74832pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:    3 fold:  -24.88612919 fnew:  -24.98789057 xo
 ld:    2.31029165 xnew:    2.26054039 ratio:    0.32971167[] 
  []
 
 
-Overfull \hbox (344.75533pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.75533pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:    4 fold:  -24.98789057 fnew:  -24.99867394 xo
 ld:    2.26054039 xnew:    2.24419587 ratio:    0.33212463[] 
  []
 
 
-Overfull \hbox (344.76233pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.76233pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:    5 fold:  -24.99867394 fnew:  -24.99985337 xo
 ld:    2.24419587 xnew:    2.23877400 ratio:    0.33293027[] 
  []
 
 
-Overfull \hbox (344.7133pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.7133pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:    6 fold:  -24.99985337 fnew:  -24.99998373 xo
 ld:    2.23877400 xnew:    2.23696962 ratio:    0.33319896[] 
  []
 
 
-Overfull \hbox (344.7063pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.7063pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:    7 fold:  -24.99998373 fnew:  -24.99999819 xo
 ld:    2.23696962 xnew:    2.23636848 ratio:    0.33328854[] 
  []
 
 
-Overfull \hbox (344.7133pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.7133pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:    8 fold:  -24.99999819 fnew:  -24.99999980 xo
 ld:    2.23636848 xnew:    2.23616814 ratio:    0.33331840[] 
  []
 
 
-Overfull \hbox (344.6993pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.6993pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:    9 fold:  -24.99999980 fnew:  -24.99999998 xo
 ld:    2.23616814 xnew:    2.23610137 ratio:    0.33332836[] 
  []
 
 
-Overfull \hbox (344.74832pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.74832pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:   10 fold:  -24.99999998 fnew:  -25.00000000 xo
 ld:    2.23610137 xnew:    2.23607911 ratio:    0.33333167[] 
  []
 
 
-Overfull \hbox (344.79034pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.79034pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:   11 fold:  -25.00000000 fnew:  -25.00000000 xo
 ld:    2.23607911 xnew:    2.23607169 ratio:    0.33333278[] 
  []
 
 
-Overfull \hbox (344.78334pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.78334pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:   12 fold:  -25.00000000 fnew:  -25.00000000 xo
 ld:    2.23607169 xnew:    2.23606921 ratio:    0.33333315[] 
  []
 
-[93 <./_main_files/figure-latex/bookfig5-1.pdf>]
-Overfull \hbox (344.78334pt too wide) in paragraph at lines 3017--3017
+
+Overfull \hbox (344.78334pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:   13 fold:  -25.00000000 fnew:  -25.00000000 xo
 ld:    2.23606921 xnew:    2.23606839 ratio:    0.33333327[] 
  []
 
 
-Overfull \hbox (344.79034pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.79034pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:   14 fold:  -25.00000000 fnew:  -25.00000000 xo
 ld:    2.23606839 xnew:    2.23606811 ratio:    0.33333331[] 
  []
 
 
-Overfull \hbox (344.79735pt too wide) in paragraph at lines 3017--3017
+Overfull \hbox (344.79735pt too wide) in paragraph at lines 3055--3055
 []\T1/lmtt/m/n/12 ## Iteration:   15 fold:  -25.00000000 fnew:  -25.00000000 xo
 ld:    2.23606811 xnew:    2.23606802 ratio:    0.33333333[] 
  []
 
-<_main_files/figure-latex/cobexample-1.pdf, id=1449, 434.62375pt x 248.93pt>
+[100 <./_main_files/figure-latex/bookfig5-1.pdf>]
+<_main_files/figure-latex/cobexample-1.pdf, id=1890, 434.62375pt x 248.93pt>
 File: _main_files/figure-latex/cobexample-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/cobexample-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/cobexample-1.pdf  used on inp
-ut line 3023.
+ut line 3061.
 (pdftex.def)             Requested size: 390.02371pt x 223.38539pt.
-[94 <./_main_files/figure-latex/cobexample-1.pdf>]
-<_main_files/figure-latex/strange-1.pdf, id=1462, 440.64626pt x 248.93pt>
+<_main_files/figure-latex/strange-1.pdf, id=1891, 440.64626pt x 248.93pt>
 File: _main_files/figure-latex/strange-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/strange-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/strange-1.pdf  used on input 
-line 3045.
+line 3084.
 (pdftex.def)             Requested size: 390.01561pt x 220.32771pt.
-[95 <./_main_files/figure-latex/strange-1.pdf>] [96]
-Underfull \hbox (badness 1454) in paragraph at lines 3119--3121
+[101 <./_main_files/figure-latex/cobexample-1.pdf>] [102 <./_main_files/figure-
+latex/strange-1.pdf>] [103]
+Underfull \hbox (badness 1454) in paragraph at lines 3163--3165
 []\T1/lmr/m/n/12 The dif-fer-ence be-tween D-majorization and H-majorization is
  that if
  []
 
-[97] [98] [99]
+[104] [105] [106]
 
-LaTeX Warning: Reference `T:nes' on page 100 undefined on input line 3243.
+LaTeX Warning: Reference `T:nes' on page 107 undefined on input line 3291.
 
-[100] [101] [102] [103]
-Underfull \hbox (badness 4266) in paragraph at lines 3415--3420
-[]\T1/lmr/m/n/12 Suppose $\OML/lmm/m/it/12 f\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x
-\OT1/lmr/m/n/12 ) = [][] \OML/lmm/m/it/12 g\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x;
- y\OT1/lmr/m/n/12 )$ \T1/lmr/m/n/12 and $\OML/lmm/m/it/12 g\OT1/lmr/m/n/12 (\OM
-L/lmm/m/it/12 x; y\OT1/lmr/m/n/12 ) = [][] \OML/lmm/m/it/12 h\OT1/lmr/m/n/12 (\
-OML/lmm/m/it/12 x; y; z\OT1/lmr/m/n/12 )$\T1/lmr/m/n/12 ,
+[107] [108] [109] [110]
+Underfull \hbox (badness 4266) in paragraph at lines 3468--3473
+\T1/lmr/m/n/12 Suppose $\OML/lmm/m/it/12 f\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\O
+T1/lmr/m/n/12 ) = [][] \OML/lmm/m/it/12 g\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x; y
+\OT1/lmr/m/n/12 )$ \T1/lmr/m/n/12 and $\OML/lmm/m/it/12 g\OT1/lmr/m/n/12 (\OML/
+lmm/m/it/12 x; y\OT1/lmr/m/n/12 ) = [][] \OML/lmm/m/it/12 h\OT1/lmr/m/n/12 (\OM
+L/lmm/m/it/12 x; y; z\OT1/lmr/m/n/12 )$\T1/lmr/m/n/12 ,
  []
 
-[104]
-Overfull \hbox (8.26566pt too wide) detected at line 3469
+[111]
+Overfull \hbox (8.26566pt too wide) detected at line 3522
 \OML/lmm/m/it/12 g\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 ) = [] \OM
 L/lmm/m/it/12 f\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x; y\OT1/lmr/m/n/12 ) = [] [] 
 \OML/lmm/m/it/12 h\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x; z; y\OT1/lmr/m/n/12 ) = 
@@ -907,181 +876,191 @@ n/12 ) = [] \OML/lmm/m/it/12 k\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x; z\OT1/lmr/m/
 n/12 )\OML/lmm/m/it/12 :
  []
 
-[105]
-<_main_files/figure-latex/afuncs-1.pdf, id=1539, 436.63126pt x 248.93pt>
+[112]
+<_main_files/figure-latex/afuncs-1.pdf, id=1996, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/afuncs-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/afuncs-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/afuncs-1.pdf  used on input l
-ine 3493.
+ine 3548.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
-[106 <./_main_files/figure-latex/afuncs-1.pdf>]
-<_main_files/figure-latex/maj3-1.pdf, id=1551, 436.63126pt x 248.93pt>
+[113 <./_main_files/figure-latex/afuncs-1.pdf>]
+<_main_files/figure-latex/maj3-1.pdf, id=2009, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/maj3-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/maj3-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/maj3-1.pdf  used on input lin
-e 3525.
-(pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
-[107 <./_main_files/figure-latex/maj3-1.pdf>]
-<_main_files/figure-latex/qcm-1.pdf, id=1563, 436.63126pt x 248.93pt>
-File: _main_files/figure-latex/qcm-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/qcm-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/qcm-1.pdf  used on input line
- 3556.
-(pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
-[108 <./_main_files/figure-latex/qcm-1.pdf>]
-<_main_files/figure-latex/ex2-1.pdf, id=1576, 436.63126pt x 248.93pt>
-File: _main_files/figure-latex/ex2-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/ex2-1.pdf>
-Package pdftex.def Info: _main_files/figure-latex/ex2-1.pdf  used on input line
- 3585.
+e 3580.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[109]
-Overfull \hbox (332.29326pt too wide) in paragraph at lines 3598--3598
+[114] [115 <./_main_files/figure-latex/maj3-1.pdf>]
+<_main_files/figure-latex/qcm-1.pdf, id=2027, 436.63126pt x 248.93pt>
+File: _main_files/figure-latex/qcm-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/qcm-1.pdf>
+Package pdftex.def Info: _main_files/figure-latex/qcm-1.pdf  used on input line
+ 3612.
+(pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
+[116 <./_main_files/figure-latex/qcm-1.pdf>]
+<_main_files/figure-latex/ex2-1.pdf, id=2040, 436.63126pt x 248.93pt>
+File: _main_files/figure-latex/ex2-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/ex2-1.pdf>
+Package pdftex.def Info: _main_files/figure-latex/ex2-1.pdf  used on input line
+ 3641.
+(pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
+[117 <./_main_files/figure-latex/ex2-1.pdf>]
+Overfull \hbox (332.29326pt too wide) in paragraph at lines 3654--3654
 []\T1/lmtt/m/n/12 Iteration:  100000 xold:   -0.99998667 xnew:   -0.99998667 fo
 ld:   -0.29166667 fnew:   -0.29166667 lbd:    0.99998000[] 
  []
 
-<_main_files/figure-latex/symq-1.pdf, id=1583, 436.63126pt x 248.93pt>
+<_main_files/figure-latex/symq-1.pdf, id=2053, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/symq-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/symq-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/symq-1.pdf  used on input lin
-e 3609.
+e 3665.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
-[110 <./_main_files/figure-latex/ex2-1.pdf>] [111 <./_main_files/figure-latex/s
-ymq-1.pdf>]
-<_main_files/figure-latex/qcub-1.pdf, id=1607, 436.63126pt x 248.93pt>
+[118 <./_main_files/figure-latex/symq-1.pdf>]
+<_main_files/figure-latex/qcub-1.pdf, id=2065, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/qcub-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/qcub-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/qcub-1.pdf  used on input lin
-e 3635.
+e 3691.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
 
-Underfull \vbox (badness 4569) has occurred while \output is active []
+Underfull \vbox (badness 1418) has occurred while \output is active []
 
-[112 <./_main_files/figure-latex/qcub-1.pdf>] [113]
-<_main_files/figure-latex/normal-1.pdf, id=1623, 436.63126pt x 252.945pt>
+[119]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[120 <./_main_files/figure-latex/qcub-1.pdf>]
+<_main_files/figure-latex/normal-1.pdf, id=2082, 436.63126pt x 252.945pt>
 File: _main_files/figure-latex/normal-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/normal-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/normal-1.pdf  used on input l
-ine 3691.
+ine 3748.
 (pdftex.def)             Requested size: 389.99971pt x 225.93086pt.
-[114 <./_main_files/figure-latex/normal-1.pdf>] [115] [116] [117] [118]
+[121] [122 <./_main_files/figure-latex/normal-1.pdf>]
+Chapter 7.
+[123
 
-LaTeX Warning: Command \textflorin invalid in math mode on input line 3911.
+] [124] [125] [126] [127]
+
+LaTeX Warning: Command \textflorin invalid in math mode on input line 3972.
 
 
-LaTeX Warning: Command \textflorin invalid in math mode on input line 3911.
+LaTeX Warning: Command \textflorin invalid in math mode on input line 3972.
 
-[119] [120]
+[128]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 3979.
-<graphics/ozo.png, id=1683, 481.8pt x 481.8pt>
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 4041.
+[129]
+<graphics/ozo.png, id=2159, 481.8pt x 481.8pt>
 File: graphics/ozo.png Graphic file (type png)
 <use graphics/ozo.png>
-Package pdftex.def Info: graphics/ozo.png  used on input line 3994.
+Package pdftex.def Info: graphics/ozo.png  used on input line 4056.
 (pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
 
-Overfull \hbox (91.8135pt too wide) in paragraph at lines 3994--3994
+Overfull \hbox (91.8135pt too wide) in paragraph at lines 4056--4056
  [] 
  []
 
 
-Underfull \vbox (badness 2261) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[121]
-<graphics/aza.png, id=1690, 481.8pt x 481.8pt>
+[130]
+<graphics/aza.png, id=2165, 481.8pt x 481.8pt>
 File: graphics/aza.png Graphic file (type png)
 <use graphics/aza.png>
-Package pdftex.def Info: graphics/aza.png  used on input line 3996.
+Package pdftex.def Info: graphics/aza.png  used on input line 4058.
 (pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
 
-Overfull \hbox (91.8135pt too wide) in paragraph at lines 3996--3996
+Overfull \hbox (91.8135pt too wide) in paragraph at lines 4058--4058
  [] 
  []
 
 
 Underfull \vbox (badness 7133) has occurred while \output is active []
 
-[122 <./graphics/ozo.png>]
+[131 <./graphics/ozo.png>]
 Underfull \vbox (badness 7133) has occurred while \output is active []
 
-[123 <./graphics/aza.png>] [124]
-Chapter 4.
-[125
+[132 <./graphics/aza.png>] [133] [134
 
-] [126] [127]
-<_main_files/figure-latex/mylog-1.pdf, id=1723, 436.63126pt x 248.93pt>
+]
+Chapter 8.
+[135] [136] [137] [138]
+Chapter 9.
+<_main_files/figure-latex/mylog-1.pdf, id=2209, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/mylog-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/mylog-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/mylog-1.pdf  used on input li
-ne 4157.
+ne 4223.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1158) has occurred while \output is active []
 
-[128]
-<_main_files/figure-latex/morelog-1.pdf, id=1729, 436.63126pt x 248.93pt>
+[139
+
+]
+<_main_files/figure-latex/morelog-1.pdf, id=2217, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/morelog-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/morelog-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/morelog-1.pdf  used on input 
-line 4171.
+line 4237.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[129 <./_main_files/figure-latex/mylog-1.pdf>] [130 <./_main_files/figure-latex
+[140 <./_main_files/figure-latex/mylog-1.pdf>] [141 <./_main_files/figure-latex
 /morelog-1.pdf>]
 
-Package hyperref Warning: Suppressing link with empty target on input line 4200
+Package hyperref Warning: Suppressing link with empty target on input line 4266
 .
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 4200
+Package hyperref Warning: Suppressing link with empty target on input line 4266
 .
 
-[131] [132] [133] [134] [135] [136
+[142] [143] [144] [145] [146]
+Chapter 10.
+[147
 
-]
-Chapter 5.
-[137] [138] [139]
-Overfull \hbox (50.04153pt too wide) detected at line 4482
+] [148] [149]
+Overfull \hbox (50.04153pt too wide) detected at line 4548
 \OML/lmm/m/it/12 ^^N[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x; y\OT1/lmr/m/n/12 ) \
 OMS/lmsy/m/n/12 ^^U \OML/lmm/m/it/12 ^^U[] [] \OMS/lmsy/m/n/12 ^^U [] \OML/lmm/
 m/it/12 ^^U[] [] ;
  []
 
-<graphics/cali.png, id=1842, 505.89pt x 505.89pt>
+<graphics/cali.png, id=2325, 505.89pt x 505.89pt>
 File: graphics/cali.png Graphic file (type png)
 <use graphics/cali.png>
-Package pdftex.def Info: graphics/cali.png  used on input line 4495.
+Package pdftex.def Info: graphics/cali.png  used on input line 4561.
 (pdftex.def)             Requested size: 505.89645pt x 505.89645pt.
 
-Overfull \hbox (115.89645pt too wide) in paragraph at lines 4495--4496
+Overfull \hbox (115.89645pt too wide) in paragraph at lines 4561--4562
  [][] 
  []
 
-[140] [141] [142 <./graphics/cali.png>] [143] [144]
-<_main_files/figure-latex/pnorm-1.pdf, id=1884, 436.63126pt x 252.945pt>
+[150] [151] [152 <./graphics/cali.png>] [153] [154]
+<_main_files/figure-latex/pnorm-1.pdf, id=2367, 436.63126pt x 252.945pt>
 File: _main_files/figure-latex/pnorm-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/pnorm-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/pnorm-1.pdf  used on input li
-ne 4620.
+ne 4686.
 (pdftex.def)             Requested size: 389.99971pt x 225.93086pt.
-<_main_files/figure-latex/dnorm-1.pdf, id=1885, 436.63126pt x 248.93pt>
+<_main_files/figure-latex/dnorm-1.pdf, id=2368, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/dnorm-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/dnorm-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/dnorm-1.pdf  used on input li
-ne 4624.
+ne 4690.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[145 <./_main_files/figure-latex/pnorm-1.pdf>] [146 <./_main_files/figure-latex
+[155 <./_main_files/figure-latex/pnorm-1.pdf>] [156 <./_main_files/figure-latex
 /dnorm-1.pdf>]
-Overfull \hbox (21.33911pt too wide) detected at line 4667
+Overfull \hbox (21.33911pt too wide) detected at line 4733
 \OML/lmm/m/it/12 f\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 ) = \OML/l
 mm/m/it/12 f\OT1/lmr/m/n/12 ([]) + 2 [] [] \OML/lmm/m/it/12 w[]\OT1/lmr/m/n/12 
 (\OML/lmm/m/it/12 y[] \OMS/lmsy/m/n/12 ^^@ \OML/lmm/m/it/12 h[]\OT1/lmr/m/n/12 
@@ -1092,37 +1071,37 @@ it/12 h[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 )) + [] [] \OML/lmm
 /12 ))[]\OML/lmm/m/it/12 :
  []
 
-[147] [148] [149] [150
+[157] [158] [159] [160
 
 ]
-Chapter 6.
-[151] [152] [153] [154] [155] [156] [157] [158] [159]
-<_main_files/figure-latex/logders-1.pdf, id=1994, 442.65375pt x 294.09875pt>
+Chapter 11.
+[161] [162] [163] [164] [165] [166] [167] [168] [169]
+<_main_files/figure-latex/logders-1.pdf, id=2480, 442.65375pt x 294.09875pt>
 File: _main_files/figure-latex/logders-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/logders-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/logders-1.pdf  used on input 
-line 5161.
+line 5230.
 (pdftex.def)             Requested size: 390.0228pt x 259.1308pt.
-[160 <./_main_files/figure-latex/logders-1.pdf>]
-Overfull \hbox (42.20059pt too wide) in paragraph at lines 5179--5180
+[170 <./_main_files/figure-latex/logders-1.pdf>]
+Overfull \hbox (42.20059pt too wide) in paragraph at lines 5248--5249
 []\T1/lmr/m/n/12 The code in \T1/lmtt/m/n/12 logitPom.R \T1/lmr/m/n/12 com-pute
 s the poly-no-mi-als $\OML/lmm/m/it/12 P[]$\T1/lmr/m/n/12 . With \T1/lmtt/m/n/1
 2 logitPomRecursive(n)
  []
 
-[161] [162
+[171] [172
 
 ]
-Chapter 7.
-[163]
-<_main_files/figure-latex/minplot-1.pdf, id=2024, 436.63126pt x 248.93pt>
+Chapter 12.
+[173]
+<_main_files/figure-latex/minplot-1.pdf, id=2511, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/minplot-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/minplot-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/minplot-1.pdf  used on input 
-line 5237.
+line 5307.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
-[164 <./_main_files/figure-latex/minplot-1.pdf>] [165] [166]
-Overfull \hbox (17.96487pt too wide) detected at line 5362
+[174 <./_main_files/figure-latex/minplot-1.pdf>] [175] [176]
+Overfull \hbox (17.96487pt too wide) detected at line 5432
 \OML/lmm/m/it/12 x[] \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 y \OMS/lmsy/m/n/12 ^^@ 
 \OT1/lmr/m/n/12 2[]\OML/lmm/m/it/12 V[]\OT1/lmr/m/n/12 (\OMS/lmsy/m/n/12 D\OML/
 lmm/m/it/12 f\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x[]\OT1/lmr/m/n/12 ) \OMS/lmsy/m
@@ -1130,28 +1109,28 @@ lmm/m/it/12 f\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x[]\OT1/lmr/m/n/12 ) \OMS/lmsy/m
  ))
  []
 
-[167] [168]
+[177] [178]
 
-LaTeX Warning: Reference `ruitenburg_theorem' on page 169 undefined on input li
-ne 5439.
+LaTeX Warning: Reference `ruitenburg_theorem' on page 179 undefined on input li
+ne 5509.
 
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 5446.
+(amsmath)                 on input line 5516.
 
-[169]
+[179]
 
-LaTeX Warning: Reference `declining_ratio' on page 170 undefined on input line 
-5466.
+LaTeX Warning: Reference `declining_ratio' on page 180 undefined on input line 
+5536.
 
-[170]
+[180]
 
-LaTeX Warning: Reference `convex_sqrt' on page 171 undefined on input line 5504
+LaTeX Warning: Reference `convex_sqrt' on page 181 undefined on input line 5574
 .
 
-[171] [172] [173]
-Overfull \hbox (42.0674pt too wide) detected at line 5631
+[181] [182] [183]
+Overfull \hbox (42.0674pt too wide) detected at line 5701
 []\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 ) = [](\OML/lmm/m/it/12 y\
 OT1/lmr/m/n/12 ) \OMS/lmsy/m/n/12 ^^@ []\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 y\OT1
 /lmr/m/n/12 )(\OML/lmm/m/it/12 x \OMS/lmsy/m/n/12 ^^@ \OML/lmm/m/it/12 y\OT1/lm
@@ -1164,314 +1143,306 @@ msy/m/n/12 ^^@ \OML/lmm/m/it/12 y\OT1/lmr/m/n/12 )[] + [] [](\OML/lmm/m/it/12 y
  []
 
 
-Overfull \hbox (36.23111pt too wide) detected at line 5658
+Overfull \hbox (36.23111pt too wide) detected at line 5728
 []
  []
 
-[174]
-<_main_files/figure-latex/three-1.pdf, id=2114, 448.67625pt x 275.0275pt>
+[184]
+<_main_files/figure-latex/three-1.pdf, id=2601, 448.67625pt x 275.0275pt>
 File: _main_files/figure-latex/three-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/three-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/three-1.pdf  used on input li
-ne 5662.
+ne 5732.
 (pdftex.def)             Requested size: 390.00972pt x 239.06636pt.
-<_main_files/figure-latex/cosine-1.pdf, id=2115, 436.63126pt x 248.93pt>
+<_main_files/figure-latex/cosine-1.pdf, id=2602, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/cosine-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/cosine-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/cosine-1.pdf  used on input l
-ine 5670.
+ine 5740.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
 
 Underfull \vbox (badness 4479) has occurred while \output is active []
 
-[175 <./_main_files/figure-latex/three-1.pdf>] [176 <./_main_files/figure-latex
-/cosine-1.pdf>] [177] [178] [179] [180
+[185 <./_main_files/figure-latex/three-1.pdf>] [186 <./_main_files/figure-latex
+/cosine-1.pdf>] [187] [188] [189] [190
 
 ]
-Chapter 8.
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 5792.
-
-[181] [182] [183]
-Overfull \hbox (196.60428pt too wide) in paragraph at lines 5930--5930
+Chapter 13.
+[191] [192] [193]
+Overfull \hbox (196.60428pt too wide) in paragraph at lines 6001--6001
 []\T1/lmtt/m/n/12 Iteration:    1 fold:   -0.08283333 fnew:   -0.13968825 xold:
     0.50000000 xnew:    0.74900000[] 
  []
 
 
-Overfull \hbox (196.54124pt too wide) in paragraph at lines 5930--5930
+Overfull \hbox (196.54124pt too wide) in paragraph at lines 6001--6001
 []\T1/lmtt/m/n/12 Iteration:    2 fold:   -0.13968825 fnew:   -0.16376999 xold:
     0.74900000 xnew:    0.93599900[] 
  []
 
 
-Overfull \hbox (196.52724pt too wide) in paragraph at lines 5930--5930
+Overfull \hbox (196.52724pt too wide) in paragraph at lines 6001--6001
 []\T1/lmtt/m/n/12 Iteration:    3 fold:   -0.16376999 fnew:   -0.16565882 xold:
     0.93599900 xnew:    0.99490387[] 
  []
 
 
-Overfull \hbox (196.54825pt too wide) in paragraph at lines 5930--5930
+Overfull \hbox (196.54825pt too wide) in paragraph at lines 6001--6001
 []\T1/lmtt/m/n/12 Iteration:    4 fold:   -0.16565882 fnew:   -0.16566717 xold:
     0.99490387 xnew:    0.99897403[] 
  []
 
 
-Overfull \hbox (196.52724pt too wide) in paragraph at lines 5930--5930
+Overfull \hbox (196.52724pt too wide) in paragraph at lines 6001--6001
 []\T1/lmtt/m/n/12 Iteration:    5 fold:   -0.16566717 fnew:   -0.16566717 xold:
     0.99897403 xnew:    0.99899895[] 
  []
 
 
-Overfull \hbox (196.50623pt too wide) in paragraph at lines 5930--5930
+Overfull \hbox (196.50623pt too wide) in paragraph at lines 6001--6001
 []\T1/lmtt/m/n/12 Iteration:    6 fold:   -0.16566717 fnew:   -0.16566717 xold:
     0.99899895 xnew:    0.99899900[] 
  []
 
-[184]
-Overfull \hbox (196.59027pt too wide) in paragraph at lines 5955--5955
+[194]
+Overfull \hbox (196.59027pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:    1 fold:    0.04116667 fnew:    0.04116567 xold:
     0.50000000 xnew:    0.50100000[] 
  []
 
 
-Overfull \hbox (196.57626pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.57626pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:    2 fold:    0.04116567 fnew:    0.04116467 xold:
     0.50100000 xnew:    0.50199900[] 
  []
 
 
-Overfull \hbox (196.56226pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.56226pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:    3 fold:    0.04116467 fnew:    0.04116368 xold:
     0.50199900 xnew:    0.50299500[] 
  []
 
 
-Overfull \hbox (196.57626pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.57626pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:    4 fold:    0.04116368 fnew:    0.04116270 xold:
     0.50299500 xnew:    0.50398603[] 
  []
 
 
-Overfull \hbox (196.59027pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.59027pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:    5 fold:    0.04116270 fnew:    0.04116174 xold:
     0.50398603 xnew:    0.50497015[] 
  []
 
 
-Overfull \hbox (196.60428pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.60428pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:   89 fold:    0.04114559 fnew:    0.04114559 xold:
     0.53141255 xnew:    0.53142580[] 
  []
 
 
-Overfull \hbox (196.60428pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.60428pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:   90 fold:    0.04114559 fnew:    0.04114559 xold:
     0.53142580 xnew:    0.53143822[] 
  []
 
 
-Overfull \hbox (196.59027pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.59027pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:   91 fold:    0.04114559 fnew:    0.04114559 xold:
     0.53143822 xnew:    0.53144986[] 
  []
 
 
-Overfull \hbox (196.58327pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.58327pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:   92 fold:    0.04114559 fnew:    0.04114559 xold:
     0.53144986 xnew:    0.53146077[] 
  []
 
 
-Overfull \hbox (196.58327pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.58327pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:   93 fold:    0.04114559 fnew:    0.04114559 xold:
     0.53146077 xnew:    0.53147099[] 
  []
 
 
-Overfull \hbox (196.58327pt too wide) in paragraph at lines 5955--5955
+Overfull \hbox (196.58327pt too wide) in paragraph at lines 6026--6026
 []\T1/lmtt/m/n/12 Iteration:   94 fold:    0.04114559 fnew:    0.04114559 xold:
     0.53147099 xnew:    0.53148056[] 
  []
 
-<graphics/cobweb001.png, id=2179, 481.8pt x 481.8pt>
+<graphics/cobweb001.png, id=2668, 481.8pt x 481.8pt>
 File: graphics/cobweb001.png Graphic file (type png)
 <use graphics/cobweb001.png>
-Package pdftex.def Info: graphics/cobweb001.png  used on input line 5961.
+Package pdftex.def Info: graphics/cobweb001.png  used on input line 6032.
 (pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
 
-Overfull \hbox (91.8135pt too wide) in paragraph at lines 5961--5962
+Overfull \hbox (91.8135pt too wide) in paragraph at lines 6032--6033
  [][] 
  []
 
-<graphics/cobweb249.png, id=2180, 481.8pt x 481.8pt>
+<graphics/cobweb249.png, id=2669, 481.8pt x 481.8pt>
 File: graphics/cobweb249.png Graphic file (type png)
 <use graphics/cobweb249.png>
-Package pdftex.def Info: graphics/cobweb249.png  used on input line 5970.
+Package pdftex.def Info: graphics/cobweb249.png  used on input line 6041.
 (pdftex.def)             Requested size: 481.8135pt x 481.8135pt.
 
-Overfull \hbox (91.8135pt too wide) in paragraph at lines 5970--5971
+Overfull \hbox (91.8135pt too wide) in paragraph at lines 6041--6042
  [][] 
  []
 
-[185] [186 <./graphics/cobweb001.png>] [187 <./graphics/cobweb249.png>] [188] [
-189] [190] [191] [192]
-<_main_files/figure-latex/qtwothree-1.pdf, id=2230, 438.63875pt x 252.945pt>
+[195] [196 <./graphics/cobweb001.png>] [197 <./graphics/cobweb249.png>] [198] [
+199] [200] [201] [202]
+<_main_files/figure-latex/qtwothree-1.pdf, id=2719, 438.63875pt x 252.945pt>
 File: _main_files/figure-latex/qtwothree-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/qtwothree-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/qtwothree-1.pdf  used on inpu
-t line 6216.
+t line 6287.
 (pdftex.def)             Requested size: 390.00574pt x 224.90034pt.
 
 Underfull \vbox (badness 1424) has occurred while \output is active []
 
-[193]
-<_main_files/figure-latex/qhalf-1.pdf, id=2236, 436.63126pt x 248.93pt>
+[203]
+<_main_files/figure-latex/qhalf-1.pdf, id=2724, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/qhalf-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/qhalf-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/qhalf-1.pdf  used on input li
-ne 6222.
+ne 6293.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
-[194 <./_main_files/figure-latex/qtwothree-1.pdf> <./_main_files/figure-latex/q
-half-1.pdf>] [195] [196
+[204 <./_main_files/figure-latex/qtwothree-1.pdf> <./_main_files/figure-latex/q
+half-1.pdf>] [205] [206
 
 ]
-Chapter 9.
-[197] [198] [199] [200] [201]
+Chapter 14.
+[207] [208] [209] [210] [211]
 Underfull \vbox (badness 1596) has occurred while \output is active []
 
-[202] [203] [204] [205] [206] [207] [208] [209] [210]
+[212] [213] [214] [215] [216] [217] [218] [219] [220]
 
-LaTeX Warning: Reference `T:triv' on page 211 undefined on input line 6812.
+LaTeX Warning: Reference `T:triv' on page 221 undefined on input line 6883.
 
-[211]
-<graphics/bookfig3.png, id=2392, 786.94pt x 586.19pt>
+[221]
+<graphics/bookfig3.png, id=2880, 786.94pt x 586.19pt>
 File: graphics/bookfig3.png Graphic file (type png)
 <use graphics/bookfig3.png>
-Package pdftex.def Info: graphics/bookfig3.png  used on input line 6888.
+Package pdftex.def Info: graphics/bookfig3.png  used on input line 6959.
 (pdftex.def)             Requested size: 736.33752pt x 548.49632pt.
 
-Overfull \hbox (346.33752pt too wide) in paragraph at lines 6888--6889
+Overfull \hbox (346.33752pt too wide) in paragraph at lines 6959--6960
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 26.82964pt on input line 6893.
+LaTeX Warning: Float too large for page by 26.82964pt on input line 6964.
 
-[212] [213 <./graphics/bookfig3.png>]
+[222] [223 <./graphics/bookfig3.png>]
 
-LaTeX Warning: Reference `T:ostrow' on page 214 undefined on input line 6944.
+LaTeX Warning: Reference `T:ostrow' on page 224 undefined on input line 7015.
 
-[214]
-Underfull \hbox (badness 1365) in paragraph at lines 6984--6984
-[]\T1/lmr/bx/n/14.4 Acceleration of Con-ver-gence of Fixed Point
+[224]
+Underfull \hbox (badness 1102) in paragraph at lines 7061--7061
+[]\T1/lmr/bx/n/14.4 Eigenvalues and Eigen-vec-tors of Sym-met-ric
  []
 
-[215] [216] [217] [218] [219] [220]
-Underfull \hbox (badness 10000) in paragraph at lines 7187--7189
+[225] [226] [227] [228] [229] [230]
+Underfull \hbox (badness 10000) in paragraph at lines 7258--7260
 [][]$\T1/lmr/m/n/12 http : / / en . wikipedia . org / wiki / Principal _ angles
 $[] []$http : / / meyer . math . ncsu .
  []
 
-[221] [222] [223] [224]
-<_main_files/figure-latex/secular1-1.pdf, id=2482, 436.63126pt x 248.93pt>
+[231] [232] [233] [234]
+<_main_files/figure-latex/secular1-1.pdf, id=2970, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/secular1-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/secular1-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/secular1-1.pdf  used on input
- line 7315.
+ line 7386.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
-[225 <./_main_files/figure-latex/secular1-1.pdf>] [226] [227]
-<_main_files/figure-latex/secular2-1.pdf, id=2526, 436.63126pt x 248.93pt>
+[235 <./_main_files/figure-latex/secular1-1.pdf>] [236] [237]
+<_main_files/figure-latex/secular2-1.pdf, id=3015, 436.63126pt x 248.93pt>
 File: _main_files/figure-latex/secular2-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/secular2-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/secular2-1.pdf  used on input
- line 7414.
+ line 7485.
 (pdftex.def)             Requested size: 389.99971pt x 222.34465pt.
-[228 <./_main_files/figure-latex/secular2-1.pdf>] [229] [230] [231] [232] [233]
-[234] [235]
-<_main_files/figure-latex/cobnewton-1.pdf, id=2598, 245.91875pt x 248.93pt>
+[238 <./_main_files/figure-latex/secular2-1.pdf>] [239] [240] [241] [242] [243]
+[244] [245]
+<_main_files/figure-latex/cobnewton-1.pdf, id=3086, 245.91875pt x 248.93pt>
 File: _main_files/figure-latex/cobnewton-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/cobnewton-1.pdf>
 Package pdftex.def Info: _main_files/figure-latex/cobnewton-1.pdf  used on inpu
-t line 7723.
+t line 7794.
 (pdftex.def)             Requested size: 245.92188pt x 248.93317pt.
-[236] [237 <./_main_files/figure-latex/cobnewton-1.pdf>]
-Underfull \vbox (badness 10000) detected at line 7796
+[246] [247 <./_main_files/figure-latex/cobnewton-1.pdf>] [248
+
+]
+Chapter 15.
+[249] [250]
+Underfull \vbox (badness 10000) detected at line 7937
  []
 
 
-Underfull \vbox (badness 10000) detected at line 7796
+Underfull \vbox (badness 10000) detected at line 7937
  []
 
-[238] [239] [240] [241]
-Underfull \vbox (badness 10000) detected at line 7951
- []
-
-
-Underfull \vbox (badness 10000) detected at line 7951
- []
-
-[242] [243]
-Underfull \hbox (badness 1424) in paragraph at lines 8011--8013
+[251] [252] [253] [254]
+Underfull \hbox (badness 1424) in paragraph at lines 8055--8057
 \T1/lmr/m/n/12 approximation Al-go-rithms.'' \T1/lmr/m/it/12 An-nals of the In-
 sti-tute of Sta-tis-ti-cal
  []
 
 
-Underfull \hbox (badness 2591) in paragraph at lines 8026--8028
+Underfull \hbox (badness 2591) in paragraph at lines 8070--8072
 [][]\T1/lmr/m/n/12 Céa, J. 1968. ``Les Méth-odes de `De-scente' dans la The-o-r
 ie de
  []
 
-[244]
-Underfull \hbox (badness 1348) in paragraph at lines 8041--8043
+[255]
+Underfull \hbox (badness 1348) in paragraph at lines 8085--8087
 [][]\T1/lmr/m/n/12 De Leeuw, J. 1968. ``Non-metric Dis-crim-i-nant Anal-y-sis.'
 ' Re-search
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 8041--8043
+Underfull \hbox (badness 1515) in paragraph at lines 8085--8087
 \T1/lmr/m/n/12 Note 06-68. De-part-ment of Data The-ory, Uni-ver-sity of Lei-de
 n.
  []
 
-[245] [246] [247] [248] [249]
-Underfull \hbox (badness 1762) in paragraph at lines 8266--8268
+[256] [257] [258] [259] [260] [261]
+Underfull \hbox (badness 1762) in paragraph at lines 8310--8312
 \T1/lmr/m/n/12 Meth-ode der kle-in-sten Quadrate führt, sowie lineäre Gle-ichun
 -gen
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 8266--8268
+Underfull \hbox (badness 1033) in paragraph at lines 8310--8312
 \T1/lmr/m/it/12 Der Mathematisch-Physikalischen Klasse Der Königlich Bay-erisch
 en
  []
 
-[250]
-Underfull \hbox (badness 10000) in paragraph at lines 8287--8289
+
+Underfull \hbox (badness 10000) in paragraph at lines 8331--8333
 []$\T1/lmr/m/n/12 http : / / www . stat . ucla . edu / ~deleeuw / janspubs / 19
 77 / articles / takane _
  []
 
-[251]
-Underfull \hbox (badness 10000) in paragraph at lines 8344--8346
+[262] [263]
+Underfull \hbox (badness 10000) in paragraph at lines 8388--8390
 []$\T1/lmr/m/n/12 http : / / www . stat . ucla . edu / ~deleeuw / janspubs / 19
 80 / chapters / young _
  []
 
-[252] [253] (./_main.aux)
+[264] (./_main.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 20FEF9CFEE82DB438505BBB2C885FD8D;20474.
+(rerunfilecheck)             Checksum: D2F38FDC449F783E8E8ABC100C2C16D7;32553.
  ) 
 Here is how much of TeX's memory you used:
- 12154 strings out of 480452
- 187151 string characters out of 5897156
- 480158 words of memory out of 5000000
- 28936 multiletter control sequences out of 15000+600000
+ 12461 strings out of 480452
+ 193621 string characters out of 5897156
+ 484203 words of memory out of 5000000
+ 29084 multiletter control sequences out of 15000+600000
  485115 words of font info for 84 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,19n,66p,1354b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1500,10 +1471,10 @@ ers/deleeuw/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></Users
 leeuw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 ></Users/deleeuw/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msbm10.pfb>
-Output written on _main.pdf (253 pages, 2684890 bytes).
+Output written on _main.pdf (264 pages, 2702919 bytes).
 PDF statistics:
- 2975 PDF objects out of 2984 (max. 8388607)
- 2513 compressed objects within 26 object streams
- 686 named destinations out of 1000 (max. 500000)
- 1179 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3499 PDF objects out of 3580 (max. 8388607)
+ 3021 compressed objects within 31 object streams
+ 845 named destinations out of 1000 (max. 500000)
+ 1771 words of extra memory for PDF output out of 10000 (max. 10000000)
 

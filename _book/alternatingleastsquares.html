@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Using Higher Derivatives | Block Relaxation Methods in Statistics</title>
+  <title>4 Alternating Least Squares | Block Relaxation Methods in Statistics</title>
   <meta name="description" content="null" />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Using Higher Derivatives | Block Relaxation Methods in Statistics" />
+  <meta property="og:title" content="4 Alternating Least Squares | Block Relaxation Methods in Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Using Higher Derivatives | Block Relaxation Methods in Statistics" />
+  <meta name="twitter:title" content="4 Alternating Least Squares | Block Relaxation Methods in Statistics" />
   
   <meta name="twitter:description" content="null" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="quadratic-majorization.html"/>
-<link rel="next" href="sharp-majorization.html"/>
+<link rel="prev" href="coordinatedescent.html"/>
+<link rel="next" href="augmentation-and-decomposition-methods.html"/>
 <script src="libs/header-attrs-2.9.2/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -462,413 +462,265 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-higher-derivatives" class="section level1" number="11">
-<h1><span class="header-section-number">11</span> Using Higher Derivatives</h1>
-<div id="introduction-5" class="section level2" number="11.1">
-<h2><span class="header-section-number">11.1</span> Introduction</h2>
+<div id="alternatingleastsquares" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Alternating Least Squares</h1>
+<div id="alternatingleastsquares:introduction" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<p>An <em>Alternating Least Squares</em> or <em>ALS</em> algorithm is defined as a block relaxation algorithm applied to a least squares loss function. Least squares loss functions are somewhat loosely defined. We will discuss what we have in mind, before giving some of the history of ALS methods.</p>
+<p>We start with have a functions <span class="math inline">\(f\)</span> of the form
+<span class="math display">\[
+f(x)=\sum_{j=1}^m\sum_{\ell=1}^m w_{j\ell}g_j(x)g_\ell(x),
+\]</span>
+where <span class="math inline">\(W\)</span> is an <span class="math inline">\(m\times m\)</span> fixed positive semi-definite matrix of <em>weights</em>, and we minimize <span class="math inline">\(f\)</span> over <span class="math inline">\(x\in\mathcal{X}\)</span>.</p>
+<p>One obvious property of least squares loss functions is that they are bounded below by zero, which means that a decreasing sequence of loss function values <span class="math inline">\(f^{(k)}=f(x^{(k)}),\)</span> generated for example by an iterative algorithm, necessarily converges.</p>
+<p>Alternating least squares methods by definition use block relaxation, so we introduce a block structure. As usual the block structure is designed to make the minimization subproblems relatively easy to solve. A first step towards simplicity is to
+<span class="math display">\[
+f(x_1,\cdots,x_p)=\sum_{j=1}^m\sum_{\ell=1}^mw_{j\ell}g_j(x_1,\cdots,x_p)g_\ell(x_1,\cdots,x_p),
+\]</span>
+which must be minimized over <span class="math inline">\(x_s\in\mathcal{X}_s\)</span>, where <span class="math inline">\(\mathcal{X}=\mathcal{X}_1\otimes\cdots\otimes\mathcal{X}_p\)</span>. To make the problem interesting for block optimization we have separated the constraints on <span class="math inline">\(x\)</span> into separate constraints on the <span class="math inline">\(n\)</span> blocks <span class="math inline">\(x_i\)</span>.</p>
+<p>In many ALS examples there is additional structure. A familar special case has the form
+<span class="math display">\[
+f(x_1,x_2)=\sum_{j=1}^m\sum_{\ell=1}^mw_{j\ell}(g_j(x_1)-h_j(x_2))(g_\ell(x_1)-h_\ell(x_2))
+\]</span>
+Of course <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> can be further partitioned into blocks if that is convenient. Even more structure is introduced into the ALS problem when the functions <span class="math inline">\(g_j\)</span> and <span class="math inline">\(h_j\)</span> are polynomials or multilinear functions.</p>
+<hr>
+<p>As explained in section <a href="introduction.html#introduction:somehistory">1.1</a> the term <em>Alternating Least Squares</em> was first used in <span class="citation"><a href="#ref-deleeuw_R_68d" role="doc-biblioref">De Leeuw</a> (<a href="#ref-deleeuw_R_68d" role="doc-biblioref">1968</a>)</span>. There certainly were ALS methods before 1968. Examples are the missing data methods in factorial analysis of variance pioneered by <span class="citation"><a href="#ref-yates_33" role="doc-biblioref">Yayes</a> (<a href="#ref-yates_33" role="doc-biblioref">1933</a>)</span>, the iterative principal factor analysis method of <span class="citation"><a href="#ref-thomson_34" role="doc-biblioref">Thomson</a> (<a href="#ref-thomson_34" role="doc-biblioref">1934</a>)</span>, or the MINRES method for factor analysis by <span class="citation"><a href="#ref-harman_jones_66" role="doc-biblioref">Harman and Jones</a> (<a href="#ref-harman_jones_66" role="doc-biblioref">1966</a>)</span>. The systematic use of ALS techniques in psychometrics and multivariate analysis started after
+the pioneering work of <span class="citation"><a href="#ref-kruskal_64a" role="doc-biblioref">Kruskal</a> (<a href="#ref-kruskal_64a" role="doc-biblioref">1964a</a>)</span>, <span class="citation"><a href="#ref-kruskal_64b" role="doc-biblioref">Kruskal</a> (<a href="#ref-kruskal_64b" role="doc-biblioref">1964b</a>)</span>, <span class="citation"><a href="#ref-kruskal_65" role="doc-biblioref">Kruskal</a> (<a href="#ref-kruskal_65" role="doc-biblioref">1965</a>)</span> in nonmetric multidimensional scaling.
+De Leeuw, Young, and Takane started the ALSOS system of techniques and programs around 1973
+(see <span class="citation"><a href="#ref-young_deleeuw_takane_C_80" role="doc-biblioref">F. W. Young, De Leeuw, and Takane</a> (<a href="#ref-young_deleeuw_takane_C_80" role="doc-biblioref">1980</a>)</span>),
+and De Leeuw, with many others, at Leiden University started the Gifi system around 1975 (see <span class="citation"><a href="#ref-gifi_B_90" role="doc-biblioref">Gifi</a> (<a href="#ref-gifi_B_90" role="doc-biblioref">1990</a>)</span>).</p>
 </div>
-<div id="mean-value-majorization" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> Mean Value Majorization</h2>
-Suppose <span class="math inline">\(f\)</span> is differentiable in an open set <span class="math inline">\(\mathcal{X}\)</span> containing both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> and the line connecting them. We can use the mean value theorem
-in the inequality form
+<div id="alternatingleastsquares:closerelatives" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Close Relatives</h2>
+<div id="alternatingleastsquares:closerelatives:alsos" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> ALSOS</h3>
+<p>ALSOS algorithms are ALS algorithms in which one or more of the blocks defines transformations of variables.
 <span class="math display">\[
-f(x)\leq f(y)+\sup_{0\leq\lambda\leq 1}
-(x-y)&#39;\mathcal{D}f(y+\lambda(x-y))
-\]</span>
-Define, for fixed <span class="math inline">\(x,y\)</span>
-<span class="math display">\[
-h(\lambda)\mathop{=}\limits^{\Delta}(x-y)&#39;\mathcal{D}f(y+\lambda(x-y))
-\]</span>
-The maximum of <span class="math inline">\(h\)</span> is attained at either <span class="math inline">\(\lambda=0\)</span>, or <span class="math inline">\(\lambda=1\)</span>, or at
-a point in the interior of the unit interval where the derivative with respect to <span class="math inline">\(\lambda\)</span> vanishes. Now
-<span class="math display">\[
-\mathcal{D}h(\lambda)=(x-y)&#39;\mathcal{D}^2f(y+\lambda(x-y))(x-y).
-\]</span>
-Thus for concave <span class="math inline">\(f\)</span> we see that <span class="math inline">\(h\)</span> is decreasing, and we recover our previous result
-<span class="math display">\[
-f(x)\leq f(y)+(x-y)&#39;\mathcal{D}f(y).
-\]</span>
-For convex <span class="math inline">\(f\)</span>, for which <span class="math inline">\(h\)</span> is increasing, we find
-<span class="math display">\[
-f(x)\leq f(y)+(x-y)&#39;\mathcal{D}f(x).
-\]</span>
-<hr>
-For the univariate cubic <span class="math inline">\(f(x)=a+bx+\frac12 cx^2+\frac16 dx^3\)</span> we have
-<span class="math display">\[
-\mathcal{D}f(x)=b+cx+\frac12 dx^2,
-\]</span>
-and thus we must
-compute <span class="math inline">\(\sup_{0\leq\lambda\leq 1}h(\lambda)\)</span>
-where
-<span class="math display">\[
-h(\lambda)\mathop{=}\limits^{\Delta}z(b+c(y+\lambda z)+\frac12d(y+\lambda z)^2),
-\]</span>
-where <span class="math inline">\(z\mathop{=}\limits^{\Delta}x-y\)</span>. If <span class="math inline">\(dz^3 &gt; 0\)</span> the quadratic <span class="math inline">\(h\)</span> is convex, and the maximum is attained at one of the endpoints, i.e.
-<span class="math display">\[
-\sup_{0\leq\lambda\leq 1}h(\lambda)=
-\max\{z(b+cy+\frac12 dy^2),z(b+cx+\frac12 dx^2)\}
-\]</span>
-<span class="math display">\[
-cz+\frac12 dz(x+y)&gt;0
-\]</span>
-<hr>
-</div>
-<div id="taylor-majorization" class="section level2" number="11.3">
-<h2><span class="header-section-number">11.3</span> Taylor Majorization</h2>
-<div id="second-order" class="section level3" number="11.3.1">
-<h3><span class="header-section-number">11.3.1</span> Second Order</h3>
-<p>We can take this one step further. Obviously
-<span class="math display">\[
-f(x)\leq f(y)+(x-y)&#39;\nabla f(y)+
-\frac{1}{2}\sup_{0\leq\lambda\leq 1}
-(x-y)&#39;\nabla^2f(y+\lambda(x-y))
-(x-y).
-\]</span>
-The main problem with these approaches based on the mean value theorem is that
-the majorizing function may not be simple. Nevertheless the approach can also be used to arrive at bounds
-which are computationally convenient.</p>
-<hr>
-<p>For a univariate cubic <span class="math inline">\(f(x)=a+bx+\frac12 cx^2+\frac16 dx^3\)</span> we find the majorization</p>
-<p><span class="math display">\[\begin{multline*}
-f(x)\leq f(y)+f&#39;(y)(x-y)+\frac12(x-y)^2\max_{0\leq\lambda\leq 1}\left(c+
-d(x+\lambda(y-x))\right)=\\=f(y)+f&#39;(y)(x-y)+\frac12(x-y)^2
-\begin{cases}
-c+d\max(x,y)&amp;\text{ if }d\geq 0,\\
-c+d\min(x,y)&amp;\text{ if }d\leq 0,\\
-\end{cases}
-\end{multline*}\]</span></p>
-<hr>
-<p>For the exponent</p>
-<p><span class="math display">\[\begin{multline*}
-\exp(x)\leq \exp(y)+\exp(y)(x-y)+\frac12 (x-y)^2\sup_{0\leq\lambda\leq 1}\exp(y+\lambda(x-y))=\\
-=\exp(y)+\exp(y)(x-y)+\frac12 (x-y)^2\exp(\max(x,y))
-\end{multline*}\]</span></p>
-<hr>
-For the folium with <span class="math inline">\(f(x)=x_1^3+x_2^3-3x_1^{\ }x_2^{\ }\)</span> we have
-<span class="math display">\[
-\mathcal{D}^2f(x)=\begin{bmatrix}6x_1&amp;-3\\-3&amp;6x_2\end{bmatrix}.
-\]</span>
-Thus a simple majorizer is given by <em>(incorrect 03/03/15)</em>
-<span class="math display">\[
-g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\max(x_1,x_2)(x-y)&#39;V(x-y),
-\]</span>
-with
-<span class="math display">\[
-V=\begin{bmatrix}6&amp;-3\\-3&amp;6\end{bmatrix}.
-\]</span>
-<hr>
-<p>NB: see probit section for <span class="math inline">\(f&#39;&#39;(x)\)</span> decreasing. 03/03/15</p>
-</div>
-<div id="higher-order" class="section level3" number="11.3.2">
-<h3><span class="header-section-number">11.3.2</span> Higher Order</h3>
-<p>From Taylor’s theorem with Lagrange form of the remainder discussed in <a href="../background/taylor.html">[A:Taylor]</a> it follows that
-<span class="math display">\[
-f(x)\leq g_p(x,y)+\frac{1}{(p+1)!}\sup_{0\leq\lambda\leq 1}&lt;\mathcal{D}^{p+1}f(x+\lambda(y-x)),(x-y)^{p+1}&gt;,
-\]</span>
-where <span class="math inline">\(g_p\)</span> is the <span class="math inline">\(p-\)</span>degree Taylor polynomial at <span class="math inline">\(y\)</span>.</p>
-<p>If all elements of the array in <span class="math inline">\(\frac{1}{(p+1)!}\mathcal{D}^{p+1}f(x+\lambda(y-x))\)</span>
-are less than <span class="math inline">\(\kappa\)</span> in absolute value for all <span class="math inline">\(x,y\)</span> and <span class="math inline">\(\lambda\)</span>, then this implies
-<span class="math display">\[
-f(x)\leq g_p(x,y)+\kappa\left\{\sum_{i=1}^n|x_i-y_i|\right\}^{p+1}
+f(x,z)=\sum_{j=1}^m\sum_{\ell=1}^mw_{j\ell}g_j(x_1,\cdots,x_p,z)g_\ell(x_1,\cdots,x_p,z).
 \]</span></p>
-<p>We can also use the Frobenius norm and Cauchy-Schwartz to obtain
+<p>Suppose we have <span class="math inline">\(n\)</span> observations on two sets of variables <span class="math inline">\(x_i\)</span>
+and <span class="math inline">\(y_i.\)</span> We want to fit a model of the form
 <span class="math display">\[
-f(x)\leq g_p(x,y)+\kappa(x,y)\|x-y\|^{p+1},
+F_\theta(\Phi(x_i))\approx G_\xi(\Psi(y_i))
 \]</span>
-where
+where the unknowns are the structural parameters <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\xi\)</span>
+and the transformations <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\Psi.\)</span>
+In ALS we measure loss-of-fit by
 <span class="math display">\[
-\kappa(x,y)\mathop{=}\limits^{\Delta}\frac{1}{(p+1)!}\sup_{0\leq\lambda\leq 1}\|\mathcal{D}^{p+1}f(x+\lambda(y-x))\|.
+\sigma(\theta,\xi,\Phi,\Psi)=
+\sum_{i=1}^n[F_\theta(\Phi(x_i))-G_\xi(\Psi(y_i))]^2.
 \]</span>
-Of course it remains to be seen if these formulas actually lead to useful majorization algorithms. For higher <span class="math inline">\(p\)</span> they will undoubtedly have fast convergence, but the optimizations in each iteration involve higher order multivariate polynomials and look pretty daunting.</p>
+This loss function is minimized by starting with initial estimates
+for the transformations, minimizing over the structural
+parameters, keeping the transformations fixed at their
+current values, and then minimizing over the transformations,
+with structural values kept fixed at their new values.
+These two minimizations are alternated, which produces a
+nonincreasing sequence of loss function values, bounded
+below by zero, and thus convergent. This is a version of
+the trivial convergence theorem.</p>
+<p>The first ALS example is due to <span class="citation"><a href="#ref-kruskal_65" role="doc-biblioref">Kruskal</a> (<a href="#ref-kruskal_65" role="doc-biblioref">1965</a>)</span>.
+We have a factorial ANOVA, with, say, two factors, and we
+minimize
+<span class="math display">\[
+\sigma(\phi,\mu,\alpha,\beta)=
+\sum_{i=1}^n\sum_{j=1}^m[\phi(y_{ij})-(\mu+\alpha_i+\beta_j)]^2.
+\]</span>
+Kruskal required <span class="math inline">\(\phi\)</span> to be monotonic. Minimizing loss for fixed <span class="math inline">\(\phi\)</span> is just doing an analysis of variance, minimizing
+loss over <span class="math inline">\(\phi\)</span> for fixed <span class="math inline">\(\mu,\alpha,\beta\)</span> is doing a
+<em>monotone regression</em>. Obviously also some normalization
+requirement is needed to exclude trivial zero solutions.</p>
+<p>This general idea was extended by
+De Leeuw, Young, and Takane around 1975 to
+<span class="math display">\[
+\sigma(\phi;\psi_1,\cdots,\psi_m)=
+\sum_{i=1}^n[\phi(y_i)-\sum_{s=1}^p\psi_j(x_{ij})]^2.
+\]</span>
+This ALSOS work, in the period 1975-1980, is summarized in <span class="citation"><a href="#ref-young_deleeuw_takane_C_80" role="doc-biblioref">F. W. Young, De Leeuw, and Takane</a> (<a href="#ref-young_deleeuw_takane_C_80" role="doc-biblioref">1980</a>)</span>.
+Subsequent work, culminating in the book by <span class="citation"><a href="#ref-gifi_B_90" role="doc-biblioref">Gifi</a> (<a href="#ref-gifi_B_90" role="doc-biblioref">1990</a>)</span>
+generalized this to
+ALSOS versions of principal component analysis, path analysis, canonical
+analysis, discriminant analysis, MANOVA, and so on.
+The classes of transformations over which loss was minimized were
+usually step-functions, splines, monotone functions, or low-degree
+polynomials. To illustrate the use of more sets in ALS, consider
+<span class="math display">\[
+\sigma(\psi_1,\cdots,\psi_m;\alpha,\beta)=
+\sum_{i=1}^n\sum_{j=1}^m (\psi_j(x_{ij})-
+\sum_{s=1}^p\alpha_{is}\beta_{js})^2.
+\]</span>
+This is principal component analysis (or partial singular value
+decomposition) with optimal scaling. We can now cycle over three
+sets, the transformations, the component scores <span class="math inline">\(\alpha_{is}\)</span>
+and the component loadings <span class="math inline">\(\beta_{js}.\)</span> In the case of
+monotone transformations this alternates
+monotone regression with two linear least squares problems.</p>
+</div>
+<div id="alternatingleastsquares:closerelatives:ace" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> ACE</h3>
+<p>The ACE methods, developed by <span class="citation"><a href="#ref-breiman_friedman_85" role="doc-biblioref">Breiman and Friedman</a> (<a href="#ref-breiman_friedman_85" role="doc-biblioref">1985</a>)</span>,
+minimize over all <em>smooth</em> functions.</p>
+<p>A problem with
+ACE is that smoothers, at least most smoothers, often do not
+minimize a loss function, or the same loss function as is used for the
+remaining parameters.</p>
+<p>In any case, ACE is less general than ALS, because not all
+least squares problems can be interpreted as computing
+conditional expectations.</p>
+<p>Another obviously
+related area in statistics is the Generalized Additive Models discussed
+extensively by <span class="citation"><a href="#ref-hastie_tibshirani_90" role="doc-biblioref">Hastie and Tibshirani</a> (<a href="#ref-hastie_tibshirani_90" role="doc-biblioref">1990</a>)</span>.</p>
+</div>
+<div id="alternatingleastsquares:closerelatives:nipalsandpls" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> NIPALS and PLS</h3>
 </div>
 </div>
-<div id="nesterov-majorization" class="section level2" number="11.4">
-<h2><span class="header-section-number">11.4</span> Nesterov Majorization</h2>
-<p>Suppose <span class="math inline">\(f\)</span> is a function with third derivatives that are bounded
-in the sense that
+<div id="alternatingleastsquares:rateofconvergence" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Rate of Convergence</h2>
+<p>The least squares loss function, in the most general form we consider here, is
 <span class="math display">\[
-\langle\mathcal{D}^3f(x),(x-y)^3\rangle\leq K_3\|x-y\|^3.\tag{1}
+f(x)=\frac12\sum_{j=1}^m\sum_{\ell=1}^m w_{j\ell}g_j(x)g_\ell(x),
 \]</span>
-It is sufficient for this that the Hessian is Lipschitz continuous with Lipschitz constant <span class="math inline">\(K_3\)</span>. Majorization based on <span class="math inline">\((1)\)</span> was first discussed in an important article by <span class="citation"><a href="#ref-nesterov_polyak_06" role="doc-biblioref">Nesterov and Polyak</a> (<a href="#ref-nesterov_polyak_06" role="doc-biblioref">2006</a>)</span></p>
-Under these conditions we have the majorizer
+with <span class="math inline">\(W\)</span> a fixed symmetric positive semi-definite matrix of weights.</p>
+<p>Thus
 <span class="math display">\[
-g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+\frac16K_3\|x-y\|^3.
-\]</span>
-The term <span class="math inline">\(\|x-y\|^3\)</span> is convex in <span class="math inline">\(x\)</span>, but the majorizer <span class="math inline">\(g\)</span> itself is generally not convex, although it is convex whenever <span class="math inline">\(f\)</span> is. Majorizer <span class="math inline">\(g\)</span> has continuous first derivatives
-<span class="math display">\[
-\mathcal{D}_1g(x,y)=\mathcal{D}f(y)+\mathcal{D}^2f(y)(x-y)+\frac12K_3\|x-y\|(x-y),
-\]</span>
-and for <span class="math inline">\(x\not= y\)</span> the second derivative is
-<span class="math display">\[
-\mathcal{D}_{11}g(x,y)=\mathcal{D}^2f(y)+\frac12K_3\|x-y\|\left(I+\frac{(x-y)(x-y)&#39;}{(x-y)&#39;(x-y)}\right).
-\]</span>
-It follows that
-<span class="math display">\[
-\mathcal{D}^2f(y)+\frac12K_3\|x-y\|\lesssim\mathcal{D}_{11}g(x,y)\lesssim\mathcal{D}^2f(y)+K_3\|x-y\|,
-\]</span>
-and thus, by the squeeze theorem,
-<span class="math display">\[
-\lim_{x\rightarrow y}\mathcal{D}_{11}g(x,y)=\mathcal{D}^2f(y).
-\]</span>
-<hr>
-The majorization algorithm is, as usual,
-<span class="math display">\[
-x^{(k+1)}=\mathop{\mathbf{argmin}}\limits_{x} g(x,x^{(k)}),
-\]</span>
-and the majorizer is minimized at a point where <span class="math inline">\(\mathcal{D}_1g(x,x^{(k)})=0\)</span>. We write the stationary equation as
-<span class="math display">\[
-\left(\mathcal{D}^2f(y)+\frac12K_3\|x-y\| I\right)(x-y)=-\mathcal{D}f(y).
-\]</span>
-We write this as two equations, using what is effectively a form of decomposition.
-<span class="math display">\[\begin{align*}
-\left(\mathcal{D}^2f(y)+\frac12K_3\delta I\right)(x-y)&amp;=-\mathcal{D}f(y),\tag{2a}\\
-\delta&amp;=\|x-y\|.\tag{2b}
-\end{align*}\]</span>
-Let <span class="math inline">\(\mathcal{D}^2f(y)=K\Lambda K&#39;\)</span> be an eigen decomposition, and
-define <span class="math inline">\(g\mathop{=}\limits^{\Delta}-K&#39;\mathcal{D}f(y)\)</span> and <span class="math inline">\(z=K&#39;(x-y)\)</span>. Then solving
-<span class="math display">\[
-\left(\Lambda+\frac12K_3\delta I\right)z=g
-\]</span>
-for <span class="math inline">\(z\)</span> and using <span class="math inline">\((2b)\)</span> gives the <em>secular equation</em> in <span class="math inline">\(\delta\)</span>
-<span class="math display">\[
-\delta^2=\sum_{i=1}^n\frac{g_i^2}{(\lambda_i+\frac12 K_3\delta)^2}
-\]</span>
-<hr>
-The Cartesian folium is
-<span class="math display">\[
-f(x,y)=x^3+y^3-3xy
-\]</span>
-Thus
-<span class="math display">\[
-f(x+u,y+v)=
-f(x,y)+3au+3bv+3xu^2-3uv+3yv^2+u^3+v^3.
-\]</span>
-with
-<span class="math display">\[\begin{align*}
-a&amp;\mathop{=}\limits^{\Delta}x^2-y,\\
-b&amp;\mathop{=}\limits^{\Delta}y^2-x.
-\end{align*}\]</span>
-If
-<span class="math display">\[
-h(u,v)\mathop{=}\limits^{\Delta}\frac{(u^3+v^3)^\frac23}{u^2+v^2}
-\]</span>
-then
-<span class="math display">\[
-\max_{u,v}h(u,v)=\max_{u^2+v^2=1}(u^3+v^3)^\frac23=\max_\theta\ (\sin^3(\theta)+\cos^3(\theta))^\frac23=1,
-\]</span>
-and thus
-<span class="math display">\[
-u^3+v^3\leq(u^2+v^2)^\frac32.
-\]</span>
-This gives the majorization we are looking for
-<span class="math display">\[
-g(x+u,y+v)=f(x,y)+3au+3bv+3xu^2-3uv+3yv^2+(u^2+v^2)^\frac32
-\]</span>
-The derivatives are
-<span class="math display">\[\begin{align*}
-\mathcal{D}_1g(u,v)&amp;=3a+6xu-3v+3\lambda u,\\
-\mathcal{D}_2g(u,v)&amp;=3b+6yv-3v+3\lambda v.
-\end{align*}\]</span>
-with <span class="math inline">\(\lambda\mathop{=}\limits^{\Delta}\sqrt{u^2+v^2}\)</span>. Thus
-<span class="math display">\[
-\begin{bmatrix}
-2x+\lambda&amp;-1\\
--1&amp;2y+\lambda
-\end{bmatrix}\begin{bmatrix}u\\v\end{bmatrix}=\begin{bmatrix}-a\\-b\end{bmatrix},
-\]</span>
-or
-<span class="math display">\[
-\begin{bmatrix}u\\v\end{bmatrix}=-\frac{1}{(2x+\lambda)(2y+\lambda)-1}
-\begin{bmatrix}2y+\lambda&amp;1\\1&amp;2x+\lambda\end{bmatrix}\begin{bmatrix}a\\b\end{bmatrix}.
-\]</span>
-Thus we must have
-<span class="math display">\[
-\lambda^2=u^2+v^2=\frac{((2y+\lambda)a+b)^2+((2x+\lambda)b+a)^2}{((2x+\lambda)(2y+\lambda)-1)^2}
-\]</span>
-<hr>
-<p><span class="math display">\[
-f(x)=\frac16\sum_{i=1}^n x_i^3+\frac12 x&#39;Ax
-\]</span>
-<span class="math display">\[
-f(x)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+
-\frac16\sum_{i=1}^n (x_i-y_i)^3.
-\]</span>
-<span class="math display">\[
-h(z)\mathop{=}\limits^{\Delta}\frac{\sum_{i=1}^n z_i^3}{(z&#39;z)^\frac32}
-\]</span>
-<span class="math display">\[
-\max_z h(z)=\max_{z&#39;z=1}\sum_{i=1}^n z_i^3=1.
-\]</span>
-Thus
-<span class="math display">\[
-g(x)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+
-\frac16\{(x-y)&#39;(x-y)\}^\frac32
-\]</span>
-majorizes <span class="math inline">\(f\)</span> at <span class="math inline">\(y\)</span>. Now
-<span class="math display">\[
-\mathcal{D}g(x)=\mathcal{D}f(y)+\mathcal{D}^2f(y)(x-y)+\frac12\lambda(x)(x-y)
+\mathcal{D}f(x)=\sum_{j=1}^m\sum_{\ell=1}^m w_{j\ell}g_j(x)\mathcal{D}g_\ell(x),
 \]</span>
 and
 <span class="math display">\[
-\mathcal{D}^2g(x)=\mathcal{D}^2f(y)+\frac12\lambda(x)I+\frac12\frac{1}{\lambda(x)}(x-y)(x-y)&#39;
-\]</span>
-where <span class="math inline">\(\lambda(x)=\sqrt{(x-y)&#39;(x-y)}\)</span>.</p>
-<hr>
-<p>Suppose <span class="math inline">\(f\)</span> is a multivariate quartic with bounds on the third and fourth derivatives. Thus</p>
-<p><span class="math display">\[\begin{multline}
-g(x,y)=f(y)+(x-y)&#39;\mathcal{D}f(y)+\frac12(x-y)&#39;\mathcal{D}^2f(y)(x-y)+\\+\frac16K_3\|x-y\|^3+\frac{1}{24}K_4\|x-y\|^4
-\end{multline}\]</span></p>
-<p>We minimize <span class="math inline">\(g\)</span> over <span class="math inline">\(x\)</span>, as usual. Thus we must solve
+\mathcal{D}^2f(x)=\sum_{j=1}^m\sum_{\ell=1}^m w_{j\ell}
+\left\{g_j(x)\mathcal{D}^2g_\ell(x)+\mathcal{D}g_j(x)(\mathcal{D}g_\ell{x})&#39;\right\}.
+\]</span></p>
+<p><strong>Note:</strong> Older piece follows (fix) 03/12/15</p>
+<p>It is easy to apply the general results from the previous
+sections to ALS. The results show that it is important that
+the solutions to the subproblems are unique. The least squares
+loss function has some special structure in its second
+derivatives which we can often exploit in a detailed
+analysis. If
 <span class="math display">\[
-\left[\mathcal{D}^2f(y)+\frac12K_3\|x-y\|I+\frac16K_4\|x-y\|^2I\right](x-y)=-\mathcal{D}f(y).
+\sigma(\omega,\xi)=\sum_{i=1}^n (f_i(\omega)-g_i(\xi))^2,
 \]</span>
-Expand this to the two equations
-<span class="math display">\[\begin{align*}
-\left[\mathcal{D}^2f(y)+\frac12K_3\delta I+\frac16K_4\delta^2I\right](x-y)&amp;=-\mathcal{D}f(y),\\
-\|x-y\|&amp;=\delta.
-\end{align*}\]</span></p>
-<p>##Examples</p>
-<div id="revisiting-the-reciprocal" class="section level3" number="11.4.1">
-<h3><span class="header-section-number">11.4.1</span> Revisiting the Reciprocal</h3>
-<p>Here we come back to the function <span class="math inline">\(f:x\rightarrow ax-\log x.\)</span></p>
-<p>We start with a new majorization of the logarithm. In other contexts the logarithm, which is concave, has been majorized by a linear function. Since our <span class="math inline">\(f\)</span> uses the negative logarithm, which is convex, that will not work in our case. By Taylor
+then
 <span class="math display">\[
-\log(x) = \log (y) + \frac{1}{y}(x-y)-\frac12\frac{1}{z^2}(x-y)^2,
+\mathcal{D}^2\sigma=
+\begin{bmatrix}
+S_1&amp;0\\
+0&amp;S_2
+\end{bmatrix}
++
+\begin{bmatrix}
+G&#39;G&amp;-G&#39;H\\
+-H&#39;G&amp;H&#39;H
+\end{bmatrix},
 \]</span>
-where <span class="math inline">\(z\)</span> is between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Thus if we define
-<span class="math display">\[
-h(x,y)\mathop{=}\limits^{\Delta}\log (y) + \frac{1}{y}(x-y)-\frac12\begin{cases}
-\frac{(x-y)^2}{x^2}&amp;\text{if }x\leq y,\\
-\frac{(x-y)^2}{y^2}&amp;\text{otherwise}.
-\end{cases}
-\]</span>
-then, for all <span class="math inline">\(x&gt;0\)</span> and <span class="math inline">\(y&gt;0\)</span>,
-<span class="math display">\[
-\log(x)\geq h(x,y),
-\]</span>
-and thus, with <span class="math inline">\(g(x,y)=ax-h(x,y)\)</span>, we have <span class="math inline">\(f(x)\leq g(x,y).\)</span>
-with equality if and only if <span class="math inline">\(x=y\)</span>.</p>
-<p>Now <span class="math inline">\(g\)</span>, as a function of <span class="math inline">\(x\)</span>, is differentiable on the positive reals for all <span class="math inline">\(y\)</span>. In fact
-<span class="math display">\[
-\mathcal{D}_1g(x,y)=
-a-\frac{1}{y}+\begin{cases}
-\frac{y}{x^3}(x-y)&amp;\text{if }x\leq y,\\
-\frac{1}{y^2}(x-y)&amp;\text{otherwise}.
-\end{cases}
-\]</span>
-Let us find the solutions of <span class="math inline">\(\mathcal{D}_1g(x,y)=0\)</span>. First check if
-<span class="math display">\[
-a-\frac{1}{y}+\frac{1}{y^2}(x-y)=0
-\]</span>
-has a root <span class="math inline">\(x\geq y\)</span>. The unique root
-is <span class="math inline">\(x=2y-ay^2\)</span>. Thus if <span class="math inline">\(2y-ay^2\geq y\)</span>, i.e.
-if <span class="math inline">\(y\leq\frac{1}{a}\)</span>, this gives
-a solution to <span class="math inline">\(\mathcal{D}_1g(x,y)=0\)</span>. Note that the update in this case is the same
-update as Newton’s update for the reciprocal.</p>
-<p>Matters are a bit more complicated for finding a solution of
-<span class="math display">\[
-a-\frac{1}{y}+\frac{y}{x^3}(x-y)=0.
-\]</span>
-with <span class="math inline">\(x\leq y\)</span>. The equation can be written as the cubic equation in <span class="math inline">\(x\)</span>
-<span class="math display">\[
-(a-\frac{1}{y})x^3+yx-y^2=0.
-\]</span>
-If <span class="math inline">\(y&gt;\frac{1}{a}\)</span> then the cubic has only one real root. Because if there are two, then by Rolle the derivative should vanish somewhere on the interval between them, but the
-derivative is always positive. Since the cubic is negative for <span class="math inline">\(x=0\)</span> and positive for <span class="math inline">\(x=y\)</span>, the unique root is between zero and <span class="math inline">\(y\)</span>, and thus satisfies <span class="math inline">\(\mathcal{D}_1g(x,y)=0\)</span>.</p>
+with <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span> the Jacobians of <span class="math inline">\(f\)</span> and <span class="math inline">\(g,\)</span> and with <span class="math inline">\(S_1\)</span>
+and <span class="math inline">\(S_2\)</span> weighted sums of the Hessians of the <span class="math inline">\(f_i\)</span> and <span class="math inline">\(g_i,\)</span>
+with weights equal to the least squares residuals at the
+solution. If <span class="math inline">\(S_1\)</span> and <span class="math inline">\(S_2\)</span> are small, because the residuals
+are small, or because the <span class="math inline">\(f_i\)</span> and <span class="math inline">\(g_i\)</span> are linear or
+almost linear, we see that the rate of ALS will be the
+canonical correlation between <span class="math inline">\(G\)</span> and <span class="math inline">\(H.\)</span></p>
 </div>
-<div id="logit" class="section level3" number="11.4.2">
-<h3><span class="header-section-number">11.4.2</span> Logit</h3>
-<p>The logistic distribution
+<div id="alternatingleastsquares:examples" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Examples</h2>
+<div id="alternatingleastsquares:examples:homogeneityanalysis" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Homogeneity Analysis</h3>
+</div>
+<div id="alternatingleastsquares:examples:fixedrankapproximation" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Fixed Rank Approximation</h3>
+</div>
+<div id="alternatingleastsquares:examples:multilinearfitting" class="section level3" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Multilinear Fitting</h3>
+</div>
+<div id="alternatingleastsquares:examples:mcrals" class="section level3" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> MCR-ALS</h3>
+</div>
+<div id="alternatingleastsquares:examples:scalingandsplitting" class="section level3" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> Scaling and Splitting</h3>
+<p>Early on in the development of ALS algorithms some interesting
+complications where discovered. Let us consider canonical
+correlation analysis with optimal scaling. There we want
+to minimize
 <span class="math display">\[
-\Psi(x)=\frac{1}{1+\exp(-x)}
+\sigma(X,Y,A,B)=\hbox{tr }(XA-YB)&#39;(XA-YB),
 \]</span>
-increases from zero to one on the real line.
-As we have seen before, the function
-<span class="math display">\[
-f(x)=x-\log\Psi(x)=\log(1+\exp(x))
-\]</span>
-is strictly convex. This follows directly from
-<span class="math display">\[\begin{align*}
-f&#39;(x)&amp;=\Psi(x),\\
-f&#39;&#39;(x)&amp;=\Psi(x)(1-\Psi(x)),
-\end{align*}\]</span>
-because the first derivative is increasing and the second derivative is positive.</p>
-<p><strong>Theorem:</strong>
-The r-th derivative <span class="math inline">\(f^{(r)}(x)\)</span> is
-a polynomial in <span class="math inline">\(\Psi(x)\)</span> of degree <span class="math inline">\(r\)</span>. Consequently for all <span class="math inline">\(r\)</span> there are two finite real numbers <span class="math inline">\(m_{r}&lt;M_{r}\)</span> such that <span class="math inline">\(m_{r}\leq f^{(r)}(x)\leq M_{r}\)</span> for all <span class="math inline">\(x\)</span>.</p>
+where the <span class="math inline">\(X\)</span> and the <span class="math inline">\(Y\)</span> are optimally scaled or transformed
+variables. This problem is analyzed in detail in <span class="citation"><a href="#ref-vanderburg_deleeuw_A_83" role="doc-biblioref">Van der Burg and De Leeuw</a> (<a href="#ref-vanderburg_deleeuw_A_83" role="doc-biblioref">1983</a>)</span>. This seems like a perfectly
+straightforward ALS problem. It can be formulated as a problem
+with the two blocks <span class="math inline">\((X,Y)\)</span>
+and <span class="math inline">\((A,B),\)</span> or as a problem
+with the four blocks <span class="math inline">\(X,Y,A,B.\)</span> But no matter how one
+formulates it, a normalization must be chosen to prevent
+trivial solutions. In the spirit of canonical analysis
+it makes sense to
+require <span class="math inline">\(A&#39;X&#39;XA=\mathcal{I}\)</span>
+or <span class="math inline">\(B&#39;Y&#39;YB=\mathcal{I}.\)</span>
+Both sets of conditions
+basically lead to the same solution, but in the intermediate iterations
+the normalization condition creates a problem, because
+it involves elements from two different blocks. Also,
+although <span class="math inline">\(A&#39;X&#39;XA=\mathcal{I}\)</span> is a simple constraint on <span class="math inline">\(A\)</span> for
+given <span class="math inline">\(X\)</span>, it is not such a simple constraint on <span class="math inline">\(X\)</span>
+for given $A.</p>
+<p>The solution to this dilemma, basically due to Takane, is
+to constrain either <span class="math inline">\((X,A)\)</span> or <span class="math inline">\((Y,B),\)</span> always update
+the unconstrained block, and switch normalizations after
+each update. Global convergence (at least of loss function
+values) is guaranteed by the following analysis.</p>
+<p><strong>Theorem 1: </strong>
+<span class="math display">\[\min_A\min_{B&#39;Y&#39;YB=\mathcal{I}}\sigma(X,Y,A,B)=
+\min_{A&#39;X&#39;XA=\mathcal{I}}\min_B\sigma(X,Y,A,B)=\sum_{s=1}^p(1-\rho_s^2(X,Y)).
+\]</span></p>
 <p><strong>Proof:</strong>
-We know that <span class="math inline">\(f&#39;(x)=\Psi(x)\)</span>, and thus the result is true for <span class="math inline">\(r=1\)</span>. Now proceed
-by induction. If <span class="math inline">\(f^{(r)}(x)=P_{r}(\Psi(x))\)</span> for some polynomial <span class="math inline">\(P_{r}\)</span> of degree <span class="math inline">\(r\)</span>, then
 <span class="math display">\[
-f^{(r+1)}(x)=P_{r}&#39;(\Psi(x))\Psi(x)(1-\Psi(x)),
+\min_A\sigma(X,Y,A,B)=\text{ tr }B&#39;Y&#39;YB-B&#39;Y&#39;X(X&#39;X)^{-1}X&#39;YB,
 \]</span>
-which is indeed a polynomial in <span class="math inline">\(\Psi(x)\)</span>
-of degree <span class="math inline">\(r+1\)</span>. In addition
-<span class="math display">\[\begin{align*}
-\sup_{x}f^{(r)}(x)&amp;=\max_{0\leq s\leq 1}P_{r}(s),\\
-\inf_{x}f^{(r)}(x)&amp;=\min_{0\leq s\leq 1}P_{r}(s),
-\end{align*}\]</span>
-and the quantities on the right-hand side are clearly finite.
+and minimizing the right-hand side over <span class="math inline">\(B&#39;Y&#39;YB=\mathcal{I}\)</span> clearly
+proves the first part of the Theorem. The second part goes
+the same.
 <strong>QED</strong></p>
-We illustrate the theorem by computing some higher derivatives
-<span class="math display">\[
-f^{(3)}(x)=\Psi(x)(1-\Psi(x))(1-2\Psi(x)),
-\]</span>
-<span class="math display">\[
-f^{(4)}(x)=\Psi(x)(1-\Psi(x))(1-6\Psi(x)+6\Psi^{2}(x)),
-\]</span>
-<span class="math display">\[
-f^{(5)}(x)=\Psi(x)(1-\Psi(x))(1-2\Psi(x))(1-12\Psi(x)+12\Psi^{2}(x))
-\]</span>
-which implies
-<span class="math display">\[\begin{align*}
- -\frac{1}{18}\sqrt{3}&amp;\leq f^{(3)}(x)\leq+\frac{1}{18}\sqrt{3},\\
--\frac18&amp;\leq f^{(4)}(x)\leq\frac{1}{24}
-\end{align*}\]</span>
-The derivatives of orders 2 to 5 are in Figure 1.
-<hr>
-<img src="_main_files/figure-html/logders-1.png" width="672" style="display: block; margin: auto;" />
-<center>
-Figure 1: Derivatives of the Log-logistic
-</center>
-<hr>
-And here is some <code>R</code> code for drawing the figure.
-<hr>
-<center>
-<a href="../code/logDers.R">Insert logDers.R Here</a>
-</center>
-<hr>
-<p>We now look more closely at the polynomials <span class="math inline">\(P_{r}\)</span>. From the proof of the we see that for <span class="math inline">\(r&gt;1\)</span> we have <span class="math inline">\(P_{r}(0)=P_{r}(1)=0\)</span>. Because <span class="math inline">\(P_{2}(s)=P_{2}(1-s)\)</span> we see that
-actually <span class="math inline">\(P_{r}(s)=P_{r}(1-s)\)</span> for all even <span class="math inline">\(r\)</span> and <span class="math inline">\(P_{r}(s)=-P_{r}(1-s)\)</span> for all odd <span class="math inline">\(r&gt;1\)</span>. This implies that <span class="math inline">\(P_{r}(\frac12)=0\)</span> for all odd <span class="math inline">\(r&gt;1\)</span>.</p>
-<p>We can go further than this and derive an explicit formula for the polynomials. The difference/differential equation we have to
-solve is <span class="math inline">\(P_{r+1}(x)=x(1-x)P_{r}&#39;(x),\)</span> where <span class="math inline">\(P_1(x)=1-x\)</span>. Its general solution is
-<span class="math display">\[
-P_r(x)=\sum_{j=1}^r(-1)^{j-1}(j-1)!S(j,r)x^j
-\]</span>
-where the <span class="math inline">\(S(j,r)\)</span> are the Stirling numbers of the second kind (the number of ways of partitioning <span class="math inline">\(r\)</span> elements into <span class="math inline">\(j\)</span> non-empty subsets).</p>
-The code in <code>logitPom.R</code> computes the polynomials <span class="math inline">\(P_r\)</span>. With <code>logitPomRecursive(n)</code> we compute all polynomials up to order n, their roots, and their maximum and minimum values. With <code>logitPomDirect(n)</code> we do the same, using the formula with Stirling numbers.
-<hr>
-<center>
-<a href="../code/logitPom.R">Insert logitPom.R Here</a>
-</center>
-<hr>
-<hr>
-<p>Maybe useful 03/02/15</p>
-<p><span class="math display">\[
--\log(1-\Psi(x))=-\log(1-\frac{1}{1+\exp(-x)})=x+\log(1+\exp(-x))
-\]</span></p>
-<p><span class="math display">\[
-x+\log(1+\exp(-x))=\sum_{s=1}^\infty\frac{(\Psi(x))^s}{s}
-\]</span></p>
-<p>###Probit</p>
 
 </div>
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-nesterov_polyak_06" class="csl-entry">
-Nesterov, Y., and B. T. Polyak. 2006. <span>“Cubic Regularization of Newton Method and Its Global Performance.”</span> <em>Mathematical Programming</em> A108: 177–205.
+<div id="ref-breiman_friedman_85" class="csl-entry">
+Breiman, L., and J. H. Friedman. 1985. <span>“<span class="nocase">Estimating Optimal Transformations for Multiple Regression and Correlation</span>.”</span> <em>Journal of the American Statistical Association</em> 80: 580–619.
+</div>
+<div id="ref-deleeuw_R_68d" class="csl-entry">
+De Leeuw, J. 1968. <span>“Nonmetric Discriminant Analysis.”</span> Research Note 06-68. Department of Data Theory, University of Leiden. <a href="http://deleeuwpdx.net/janspubs/1968/reports/deleeuw_R_68d.pdf">http://deleeuwpdx.net/janspubs/1968/reports/deleeuw_R_68d.pdf</a>.
+</div>
+<div id="ref-gifi_B_90" class="csl-entry">
+Gifi, A. 1990. <em>Nonlinear Multivariate Analysis</em>. New York, N.Y.: Wiley.
+</div>
+<div id="ref-harman_jones_66" class="csl-entry">
+Harman, H. H., and W. H. Jones. 1966. <span>“<span class="nocase">Factor Analysis by Minimizing Residuals </span>.”</span> <em>Psychometrika</em> 31: 351–68.
+</div>
+<div id="ref-hastie_tibshirani_90" class="csl-entry">
+Hastie, T., and R. Tibshirani. 1990. <em>Generalized Additive Models</em>. London: Chapman; Hall.
+</div>
+<div id="ref-kruskal_64a" class="csl-entry">
+Kruskal, J. B. 1964a. <span>“<span class="nocase">Multidimensional Scaling by Optimizing Goodness of Fit to a Nonmetric Hypothesis</span>.”</span> <em>Psychometrika</em> 29: 1–27.
+</div>
+<div id="ref-kruskal_64b" class="csl-entry">
+———. 1964b. <span>“<span class="nocase">Nonmetric Multidimensional Scaling: a Numerical Method</span>.”</span> <em>Psychometrika</em> 29: 115–29.
+</div>
+<div id="ref-kruskal_65" class="csl-entry">
+———. 1965. <span>“<span class="nocase">Analysis of Factorial Experiments by Estimating Monotone Transformations of the Data</span>.”</span> <em>Journal of the Royal Statistical Society</em> B27: 251–63.
+</div>
+<div id="ref-thomson_34" class="csl-entry">
+Thomson, G. H. 1934. <span>“<span class="nocase">Hotelling’s Method Modfiied to Give <span>S</span>pearman’s <em>g</em></span>.”</span> <em>Journal of Educational Psychology</em> 25: 366–74.
+</div>
+<div id="ref-vanderburg_deleeuw_A_83" class="csl-entry">
+Van der Burg, E., and J. De Leeuw. 1983. <span>“Non-Linear Canonical Correlation.”</span> <em>British Journal of Mathematical and Statistical Psychology</em> 36: 54–80. <a href="http://www.stat.ucla.edu/~deleeuw/janspubs/1983/articles/vanderburg_deleeuw_A_83.pdf">http://www.stat.ucla.edu/~deleeuw/janspubs/1983/articles/vanderburg_deleeuw_A_83.pdf</a>.
+</div>
+<div id="ref-yates_33" class="csl-entry">
+Yayes, F. 1933. <span>“<span class="nocase">The Analysis of Replicated Experiments when the Field Results are Incomplete</span>.”</span> <em>Empirical Journal of Experimental Agriculture</em> 1: 129–42.
+</div>
+<div id="ref-young_deleeuw_takane_C_80" class="csl-entry">
+Young, F. W., J. De Leeuw, and Y. Takane. 1980. <span>“Quantifying Qualitative Data.”</span> In <em>Similarity and Choice. Papers in Honor of Clyde Coombs</em>, edited by E. D. Lantermann and H. Feger. Bern: Hans Huber. <a href="http://www.stat.ucla.edu/~deleeuw/janspubs/1980/chapters/young_deleeuw_takane_C_80.pdf">http://www.stat.ucla.edu/~deleeuw/janspubs/1980/chapters/young_deleeuw_takane_C_80.pdf</a>.
 </div>
 </div>
             </section>
@@ -876,8 +728,8 @@ Nesterov, Y., and B. T. Polyak. 2006. <span>“Cubic Regularization of Newton Me
           </div>
         </div>
       </div>
-<a href="quadratic-majorization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sharp-majorization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coordinatedescent.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="augmentation-and-decomposition-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
