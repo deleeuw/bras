@@ -1,0 +1,582 @@
+# Augmentation and Decomposition Methods
+
+
+
+
+## Introduction
+
+We take up the historical developments. Alternating Least
+Squares was useful for many problems, but it some cases
+it was not powerful enough to do the job. Or, to put it
+differently, the subproblems were still too complicated
+to be efficiently solved a large number of times.
+In order to solve some
+additional least squares problems, we can use _augmentation_.
+We first illustrate this with some examples.
+
+The examples show that augmentation is somewhat of
+an art (like integration). The augmentation is in some cases not obvious, and there are no mechanical rules.
+The idea of adding variables
+that augment the problem to a simpler one is very general. It is
+also at the basis, for instance, of the Lagrange multiplier method.
+
+## Definition
+
+Formalizing augmentation is straightforward.
+Suppose $f$ is a real valued function, defined for
+all $x\in\mathcal{X}$, where $\mathcal{X}\subseteq\mathbb{R}^n.$
+Suppose there exists another real valued function $g,$ defined
+on $\mathcal{X}\otimes\mathcal{Y},$ where $\mathcal{Y}\subseteq\mathbb{R}^m,$ such that
+$$
+f(x)=\min_{y\in\mathcal{Y}}g(x,y).
+$$
+We also suppose that minimizing $f$ over $\mathcal{X}$
+is _hard_ while minimizing $g$ over $\mathcal{X}$ is _easy_ for
+all $y\in\mathcal{Y}$. And we suppose
+that minimizing $g$ over $y\in\mathcal{Y}$
+is also _easy_ for all $x\in\mathcal{X}.$
+This last assumption is not too far-fatched,
+because we already know what the value at the minimum is.
+
+I am not going to define _hard_ and _easy_.  What may
+be easy for you, may be hard for me.
+
+Anyway, by augmenting
+the function we are in the block-relaxation situation again,
+and we can apply our general results on global convergence
+and linear convergence. The results can be adapted to the
+augmentation situation.
+
+Note: augmentation duality.
+
+$$
+h(y)=\min_{x\in\mathcal{X}}g(x,y)
+$$
+then
+$$
+\min_{x\in\mathcal{X}}f(x)=\min_{x\in\mathcal{X}}\min_{y\in\mathcal{Y}}g(x,y)=\min_{y\in\mathcal{Y}}\min_{x\in\mathcal{X}}g(x,y)=\min_{y\in\mathcal{Y}}h(y).
+$$
+
+## Rate of Convergenc
+
+Because of the structure of $f$ we know that $\mathcal{D}f(x)=\mathcal{D}_1g(x,y(x))$,
+where $y(x)$ is defined implicitly by $f(x)=g(x,y(x))$, or more explicitly by
+$$
+y(x)=\mathop{\mathbf{argmin}}\limits_{y\in\mathcal{Y}} g(x,y),
+$$
+or, in the unconstrained and differentiable case,
+$$
+\mathcal{D}_2g(x,y(x))=0.
+$$
+Differentiating again gives
+$$
+\mathcal{D}^2f(x)=\mathcal{D}_{11}g(x,y(x))-\mathcal{D}_{12}g(x,y(x))
+[\mathcal{D}_{22}g(x,y(x))]^{-1}\mathcal{D}_{21}g(x,y(x)),
+$$
+
+It follows that
+$$
+\mathcal{M}(x)=\mathcal{I}-[\mathcal{D}_{11}g(x,y(x))]^{-1}\mathcal{D}^2f(x).
+$$
+This shows how the iteration matrix does not depend (directly)
+on the derivatives of $g$ with respect to $y$, and can
+be interpreted as one minus the curvature of the function at the minimum, relative to the curvature of the augmentation function.
+
+## Half-Quadratic Methods
+
+
+_Half-quadratic_ or _HQ_ methods are used heavily in image restoration and reconstructions problems. They were introduced in two different but related forms in [Geman and Reynolds [1992]]() and [Geman and Yang [1995]]().
+
+$$
+f(x)=\|Ax-z\|_2^2+\beta\sum_{i\in\mathcal{I}}\phi(u_i'x-v_i)
+$$
+potential funcion, regularization function. edge-preserving requires non-quadratic potential function typically $U$ is a discrete version of a differential operator, such as a first or second-order difference matrix
+$$
+g(x,y)=\|Ax-z\|_2^2+\beta\sum_{i=1}^r\frac{b_i}{2}\|\mathcal{D}_ix\|_2^2+k(b_i)
+$$
+$$
+k(b):=\sup_{t\in\mathcal{R}}\left\{-\frac12bt^2+h(t)\right\}.
+$$
+By convex conjugacy
+$$
+h(t)=\inf_{b\in\mathcal{R}}\left\{\frac12bt^2+k(b)\right\}
+$$
+and the infimum is attained at
+$$
+b=\begin{cases}h''(0^+)&\text{ if }t=0,\\
+\frac{h'(t)}{t}&\text{ if }t\not= 0.
+\end{cases}
+$$
+
+
+## Examples
+
+
+
+### Yates Augmentation
+
+
+A linear least squares problem is _balanced_ if the design matrix $A$ is orthogonal.
+In the balanced case the problem of minimizing
+$$
+f(x)=(b-Ax)'(b-Ax)\tag{1}
+$$
+is easily solved, with solution $x=A'b$. Computing $x$ does not involve any matrix inversion. In the case of a balanced factorial design it simply involves computing means of rows, columns, slices, and so on.
+
+If some elements of $b$ are missing then we can partition $A$ and $b$ into a missing and non-missing part as in
+$$
+A=\begin{bmatrix}A_1\\A_2\end{bmatrix}\qquad b=\begin{bmatrix}b_1\\b_2\end{bmatrix},
+$$
+with $A_1$ and $b_1$ the non-missing part, and minimize
+$$
+f(x)=(b_1-A_1x)'(b_1-A_1x).
+$$
+Now $A_1'A_1=I-A_2'A_2<I$, and the optimal $x$ can no longer be computed with a simple matrix multiplication.
+
+If one want to avoid matrix inversion, then we can use the basic approach suggested by @yates_33. We define the augmentation $g$ by
+$$
+g(x,z)=(b_1-A_1x)'(b_1-A_1x)+(z-A_2x)'(z-A_2x).
+$$
+Because $f(x)=\min_z g(x,z)$ this leads to an easy block relaxation algorithm.
+\begin{align*}
+z^{(k+1)}&=A_2x^{(k)},\\
+x^{(k+1)}&=A_1'b_1+A_2'z^{(k+1)}.
+\end{align*}
+This gives
+\begin{align*}
+z^{(k+1)}&=A_2A_1'b_1+A_2A_2'z^{(k)},\\
+x^{(k+1)}&=A_1'b_1+A_2'A_2x^{(k)}.
+\end{align*}
+As we have shown in section [blockrelaxation:twoblockleastsquares](../blockrelaxation/bls.html) this implies an iteration radius equal to the largest eigenvalue of $A_2'A_2$.
+
+Note that Yates augmentation can be used to transform any linear least squares problem to a balanced problem, even if there are no missing data. In minimizing $f(x)$ of $(1)$ we first check if $A'A\lesssim I.$ If this is the case, there is no need to normalize. If we do not have  $A'A\lesssim I$ we start by dividing $A$ by $\tau(A)=\sqrt{\mathbf{tr}\ A'A}$. This new normalized $A$, say $\tilde A$, now satisfies $\tilde A'\tilde A\lesssim I$. Then find any $G$ such that $\tilde A'\tilde A+G'G=I$, and iterate according to
+\begin{align*}
+z^{(k+1)}&=Gx^{(k)},\\
+x^{(k+1)}&=\tilde A'b+G'z^{(k+1)},
+\end{align*}
+which amounts to
+$$
+x^{(k+1)}=\tilde A'b+(I-\tilde A'\tilde A)x^{(k)}.
+$$
+The iteration radius is
+$$
+\kappa=1-\frac{\lambda_{\text{min}}(A'A)}{\mathbf{tr}\ A'A}.
+$$
+We can do better if we compute $\tilde A$  by dividing $A$ by its trace norm, i.e. its largest singular value. Then
+$$
+\kappa=1-\frac{\lambda_{\text{min}}(A'A)}{\lambda_{\text{max}}(A'A)}.
+$$
+There is `R` code for Yates augmentation in the file `yates.R`.
+<center>
+[Insert yates.R Here](../code/yates.R)
+</center>
+
+### Optimal Scaling with ORDINALS
+
+In LINEALS (section x.x.x) we try to find quantifications of the variables that linearize all bivariate regressions.
+@deleeuw_A_88a has suggested to find standardized quantifications in such a way that the loss function
+$$
+f(y)=\mathop{\sum\sum}\limits_{j\not=\ell}\left\{y_j'C_{jl}^{\ }D_\ell^{-1}C_{\ell j}^{\ }y_j^{\ }-y_j'C_{jl}^{\ }y_\ell^{\ }y_\ell'C_{\ell j}^{\ }y_j^{\ }\right\}\tag{1}
+$$
+is minimized.
+
+A more general loss function is
+$$
+g(y,z)=\mathop{\sum\sum}\limits_{j\not=\ell} (z_{jl}-D_j^{-1}C_{j\ell}y_\ell)'D_j(z_{jl}-D_j^{-1}C_{j\ell}y_\ell),\tag{2}
+$$
+which must be minimized over both $y$ and $z$. The $z_{jl}$ are $m(m-1)$ vectors, called _regression targets_, and target $z_{jl}$ has $k_j$ elements.
+
+To see that this loss function generalizes $\text{(1)}$ suppose we constrain $z$ by requiring that $z_{j\ell}$ is proportional to $y_j$, i.e. $z_{j\ell}=r_{jl}y_j.$
+Then, using $y_j'D_jy_j=1$,
+$$
+g(y,R)=\mathop{\sum\sum}\limits_{j\not=\ell} r_{jl}^2-2\mathop{\sum\sum}\limits_{j\not=\ell} r_{j\ell}y_j'C_{j\ell}y_\ell+\mathop{\sum\sum}\limits_{j\not=\ell} y_\ell'C_{\ell j}D_j^{-1}C_{j\ell}y_\ell.
+$$
+This is minimized over $R$ by $r_{j\ell}=y_j'C_{j\ell}y_\ell$, and the minimum is precisely the loss function $\text{(1)}$. Thus $f(y)=\min_R g(y,R),$ and $g$ is an augmentation of $f$.
+Block relaxation for $g$ alternates minimization over $R$ for fixed $y$, which we have shown to be easy, and minimization over $y$ for fixed $R$, which is a modified eigenvalue problem of the kind discussed in BRAS3, section x.x.x. This is not necessarily simpler than the direct minimum eigenvalue problem for minimizing $f$ in section x.x.x.
+
+The major advantage from augmenting $f$ is that it now becomes simple to incorporate quite general restrictions on the $z_{j\ell}.$ For example, they can be required to be monotone with the original data, or a spline transformation, or a monotone spline. Or a mixture of these options. Thus we can constrain each individual regression
+functions $D_j^{-1}C_{j\ell}y_\ell$ to have one of a pre-determined number of shapes.
+
+In `ordinals.R` we implement the three standard options of the Gifi system. A vector $y_j$ is treated as nominal, ordinal, or numerical.
+If it is nominal then it is unconstrained, except for the normalization.
+In that case the $z_{j\ell}$ are also unconstrained for all $\ell$.
+If $y_j$ is treated as ordinal is must be monotone with the data, and so must all $z_{j\ell}$. And a numerical $y_j$ must be linear with the data, together with its targets $z_{j\ell}$. Of course if all variables are numerical there is nothing to optimize, and we just compute correlations. If all variables are nominal there is nothing to optimize either, because we immediately get zero loss from any starting point.
+
+<hr>
+<center>
+[Insert ordinals.R Here](../code/ordinals.R)
+</center>
+<hr>
+
+### Least Squares Factor Analysis
+
+
+In LS factor analysis we want to minimize
+$$
+\sigma(A)=\sum_{i=1}^m\sum_{j=1}^m w_{ij}(r_{ij}-\sum_{s=1}^p a_{is}a_{js})^2,
+$$
+with
+$$
+w_{ij}=
+\begin{cases}
+0,& \text{if $i=j$,}\\
+1,& \text{if $i\not=j$.}
+\end{cases}
+$$
+We augment by adding the _communalities_, i.e. the diagonal elements
+of $R$ as variables, and by using ALS over $A$ and the communalities. For
+a complete $R,$ minimizing over $A$ just means computing the $p$ dominant
+eigenvalues-eigenvectors. This algorithm dates back to the thirties, when
+it was proposed by Thomson and others.
+
+Think of this as an algorithm for updating communalities. We have
+$$
+H^{(k+1)}=\mathbf{diag}(I-R_p^{(k)})
+$$
+where $R_p^{(k)}$ is the best rank p approximation
+to $R-H^{(k)}$.
+
+### Squared Distance Scaling
+
+Suppose we want to minimize
+$$
+\sigma(X)=\sum_{i=1}^m\sum_{j=1}^m(\delta_{ij}-d_{ij}^2(X))^2,
+$$
+with $d_{ij}^2(X)=(x_i-x_j)'(x_i-x_j)$ squared Euclidean distance.
+An augmentation algorithm for this problem, modestly called ELEGANT, was designed by @deleeuw_U_75b. That paper was never published and the
+manuscript is probably lost, but the algorithm was
+described, discussed, and applied by both @takane_77
+and @browne_87.
+
+We augment $\sigma$ to
+$$
+\sigma(X,\eta)=
+\sum_{i=1}^m\sum_{j=1}^m\sum_{k=1}^m\sum_{\ell=1}^m
+(\eta_{ijk\ell}-(x_i-x_j)'(x_k-x_\ell))^2,
+$$
+where we require $\eta_{ijij}=\delta_{ij}$ while the other $\eta_{ijk\ell}$ are
+free. Define $C\mathop{=}\limits^{\Delta}XX'$ and assume that $X$ is column-centered, i.e. $C$ is doubly-centered. The augmentation works because
+$$
+\sum_{i=1}^m\sum_{j=1}^m\sum_{k=1}^m\sum_{\ell=1}^m
+\left((x_i-x_j)'(x_k-x_\ell)\right)^2=4n^2\mathbf{tr}\ C^2.
+$$
+Also
+$$
+\sum_{i=1}^m\sum_{j=1}^m\sum_{k=1}^m\sum_{\ell=1}^m\eta_{ijk\ell}(x_i-x_j)'(x_k-x_\ell)=\mathbf{tr}\ UC,
+$$
+where
+$$
+u_{ij}\mathop{=}\limits^{\Delta}\sum_{k=1}^m\sum_{\ell=1}^m
+(\eta_{ikj\ell}-\eta_{i\ell kj}-\eta_{kij\ell}+\eta_{\ell i kj}).
+$$
+Thus we can minimize the augmented loss function over $X$ for fixed $\eta_{ijk\ell}$ by
+minimizing $\mathbf{tr}\ (\frac{1}{4n^2}U-XX')^2$.
+This means computing the $p$ largest eigenvalues and corresponding eigenvectors of $U$.
+
+Minimizing the augmented loss over
+the $\eta_{ijk\ell}$ for
+fixed $X$ is
+$$
+\eta_{ijk\ell}^{(k)}=
+\begin{cases}
+\delta_{ij}&\text{ if } (i,j)=(k,\ell),\\
+(x_i^{(k)}-x_j^{(k)})'(x_k^{(k)}-x_\ell^{(k)})&\text{ otherwise}.
+\end{cases}
+$$
+This is enough information to get the ALS algorithm going. The "elegance" so far is reducing a problem involving multivariate quartics to a sequence of eigenvalue problems. It is distinctly unelegant, however, that the computations need four-dimensional arrays. But it turns out these can easily be gotten rid of. We use
+$$
+\sum_{i=1}^m\sum_{j=1}^m\sum_{k=1}^m\sum_{\ell=1}^m\eta_{ijk\ell}^{(k)}(x_i-x_j)'(x_k-x_\ell)=
+2\mathbf{tr}\ C\left(2n^2C^{(k)}+
+B(X^{(k)})\right),
+$$
+where
+$$
+B(X^{(k)})\mathop{=}\limits^{\Delta}\sum_{i=1}^m\sum_{j=1}^m(\delta_{ij}-d_{ij}^2(X^{(k)}))A_{ij}
+$$
+and $A_{ij}\mathop{=}\limits^{\Delta}(e_i-e_j)(e_i-e_j)'$.
+Thus we find $X^{(k+1)}$ by computing eigenvalues and eigenvectors of $C^{(k)}+\frac{1}{2n^2}
+B(X^{(k)})$ and no intermediate computation or storage of the $\eta_{ijk\ell}$ is required.
+
+
+
+
+
+### Linear Mixed Model
+
+This example is taken from a paper of @deleeuw_liu_R_93, which describes the
+algorithm in detail. We simply give a list of results that show
+augmentation at work. We maximize a multinormal likelihood, not
+a least squares criterium.
+<hr>
+**Result:** If $A=B+TCT',$ with $B,C>0$,
+$y'A^{-1}y=\min_x (y-Tx)'B^{-1}(y-Tx)+x'C^{-1}x.$
+<hr>
+**Result:** If $A=B+TCT',$ with $B,C>0$,
+$$
+\log\det{A}=\log\det{B}+\log\det{C}+\log\det{C^{-1}+T'B^{-1}T}.
+$$
+<hr>
+**Result:** If $A=B+TCT'$ then
+\begin{multline*}
+\log\det{A}+y'A^{-1}y=\min_{x}\
+\log\det{B}+\log\det{C}+\\
++\log\det{C^{-1}+T'B^{-1}T}+\\
++(y-Tx)'B^{-1}(y-Tx)+x'C^{-1}x.
+\end{multline*}
+
+<hr>
+**Result:** If $T>0$ then
+$$
+\log\det{T}=\min_{S>0}\log\det{S}+\hbox{ tr }S^{-1}T-p,
+$$
+with the unique minimum attained at $S=T.$
+<hr>
+We can use these four results to augment the original maximum likelihood problem.
+
+\begin{multline*}
+\log\det{A}+y'A^{-1}y=\min_{x,S>0}\ \log\det{B}+\log\det{C}+\\
++\log\det{S}+\hbox{ tr }S^{-1}(C^{-1}+T'B^{-1}T)+\\
++(y-Tx)'B^{-1}(y-Tx)+x'C^{-1}x.
+\end{multline*}
+
+Minimize over $x,S,B,C$ using block-relaxation. The conditional minimizers
+are
+\begin{align*}
+S&=C^{-1}+T'B^{-1}T,\notag\\
+C&=S^{-1}+xx',\notag\\
+B&=TS^{-1}T'+(y-Tx)(y-Tx)',\notag\\
+x&=(T'B^{-1}T+C^{-1})^{-1}T'B^{-1}y.\notag
+\end{align*}
+
+## Decomposition Methods
+
+The following theorem is so simple it's almost embarassing. Nevertheless
+it seems to have some important applications to algorithm construction.
+
+**Theorem:**
+Suppose $G: X\otimes Y\Rightarrow Z$ and $f$ is an extended real-valued function.
+Then
+$$
+\inf_{z\in\overline{Z}} f(z)=\inf_{x\in X}\inf_{y\in Y} f(G(x,y)),
+$$
+where $\overline{Z}=G(X,Y)$. Moreover if the infimum on the right is attained in $(\hat x,\hat y)$,
+then the infimum on the left is attained in $\hat z=G(\hat x,\hat y)$.
+
+**Proof:** In the eating (see below).**QED**
+
+Here are some quick examples. First take $G(x,y)=x-y$. Then
+\begin{align*}
+\inf_{z}f(z)&=\inf_{x\geq 0}\inf_{y\geq 0}f(x-y)=\\
+&=\inf_{x}\inf_{y}f(x-y).
+\end{align*}
+
+Now take $G(x,\lambda)=\lambda x$, with $\lambda$ a scalar and $x$ a vector,
+\begin{align*}
+\inf_{z}f(z)&=\inf_{\lambda\geq 0}\inf_{x'x=1}f(\lambda x)=\\
+&=\inf_{\lambda}\inf_{x'x=1}f(\lambda x)=\\
+&=\inf_{\lambda}\inf_{x}f(\lambda x).
+\end{align*}
+If $G(x,\lambda)=\frac{x}{\lambda}$, with $\lambda\not= 0$ and $x'x=1$, then $\overline Z$ is the set of all vectors $z\not= 0$. Thus
+$$
+\inf_{z\not= 0}f(z)=\inf_{\lambda\not= 0}\inf_{x'x=1}f(\frac{x}{\lambda}).
+$$
+Somewhat less trivially, for a symmetric matrix argument $A$,
+$$
+\inf_{A}f(A)=\inf_{\mathbf{dg}(\Lambda)=\Lambda}\quad\inf_{K'K=I}\ f(K\Lambda K').
+$$
+Observe we can always interchange the two infimum operations,
+because $\inf_{x\in X}\inf_{y\in Y}=\inf_{y\in Y}\inf_{x\in X}$. Because $f$ is extended real valued, the infimum always
+exists, although it may be $-\infty$.
+
+### Quadratic Form on a Sphere
+
+We now discuss an actual example. Consider the problem of minimizing the function
+$$
+f(z)=\frac{(z-b)'A(z-b)+c}{z'z},
+$$
+over $z\not= 0$, where we make no assumptions on the matrix $A$, the vector $b$, and the
+scalar $c$. Instead of going the usual route of differentiating and solving the
+stationary equations, we use the decomposition approach.
+
+Define
+$$
+g(x,\lambda)=\frac{(\lambda x-b)'A(\lambda x-b)+c}{\lambda^{2}x'x},
+$$
+or, letting $\theta=\lambda^{-1}$,
+$$
+g(x,\theta)=\frac{\theta^{2}(b'Ab+c)-2\theta b'Ax+x'Ax}{x'x},
+$$
+Then
+$$
+\inf_{z\not= 0}  f(z)=\inf_{x'x=1}\inf_{\theta\geq 0} g(x,\theta),
+$$
+but also
+$$
+\inf_{z\not= 0}  f(z)=\inf_{x'x=1}\inf_{\theta} g(x,\theta).
+$$
+If $x'x=1$ then
+$$
+\inf_{\theta}g(x,\theta)=\inf_{\theta}\theta^{2}(b'Ab+c)-2\theta b'Ax+x'Ax.
+$$
+We distinguish three cases.
+
+* If $b'Ab+c>0$ the minimum is attained at
+$$
+\hat\theta=\frac{b'Ax}{b'Ab+c}
+$$
+and the minimum is equal to $x'\overline Ax$, where
+$$
+\overline A=A-\frac{Abb'A}{b'Ab+c}.
+$$
+It follows that in this case $\min_{z} f(z)$ is
+the smallest eigenvalue of $\overline A$, written as $\kappa(\overline A)$.
+If $\overline{x}$ is the corresponding unit-length eigenvector, then the minimizer of $f(z)$ is
+$$
+\hat z=\frac{b'Ab+c}{b'A'\overline x}\ \overline x.
+$$
+
+* If $b'Ab+c<0$ the minimum is not attained and $\inf_{\theta} g(x,\theta)=-\infty$ for
+each $x$. Thus $\inf_{z} f(z)=-\infty$ as well.
+
+* If $b'Ab+c=0$ then we must distinguish two sub-cases. If $b'Ax=0$ then $\min_{\theta }g(x,\theta)=x'Ax$. If $b'Ax\not=0$ then $\inf_{\theta} g(x,\theta)=-\infty$ again.
+Thus if $b'Ab+c=0$ we have $\inf_{z} f(z)=-\infty$, unless both $c=0$ and $Ab=0$,
+in which sub-case we have  $\min_{z} f(z)$ equal to $\kappa(A)$, the smallest eigenvalue of $A$
+and the minimizer equal to any corresponding eigenvector.
+
+Of course if $Ab=0$ we have $\overline A=A$. Thus
+$$
+\inf_{z} f(z)=\begin{cases}
+\kappa(\overline A)&\text{ if }(b'Ab+c>0)\text{ or }(Ab=0\text{ and }c=0),\\
+-\infty&\text{otherwise}.
+\end{cases}
+$$
+
+Now start with the alternative decomposition
+$$
+\min_{z\not= 0}f(z)=\min_{x'x=1}\min_{\theta\geq 0}\theta^{2}(b'Ab+c)-2\theta b'Ax+x'Ax.
+$$
+We want to show that although the intermediate calculations are different, the
+result is the same.
+
+* If $b'Ab+c>0$ and $b'Ax\geq 0$ then $\min_{\theta }g(x,\theta)=x'\overline Ax$,
+as before. But if  $b'Ab+c>0$ and $b'Ax<0$ the minimum is attained at $\hat\theta=0$,
+and  $\min_{\theta }g(x,\theta)=x'Ax$. Because $\kappa(\overline A)$
+is less than or equal to $\kappa(A)$, we still have  $\min_{z} f(z)$ equal to the smallest eigenvalue of $\overline A$.
+
+* If $b'Ab+c<0$ we still have $\inf_{z} f(z)=-\infty$.
+
+* If $b'Ab+c=0$ we distinguish three sub-cases. If $b'Ax=0$ then $\min_{\theta }g(x,\theta)=x'Ax$,
+as before. If $b'Ax\>0$ then $\inf_{\theta} g(x,\theta)=-\infty$. And if $b'Ax<0$
+the minimum is attained at $\hat\theta=0$ and equal to $x'Ax$.
+Again we have $\inf_{z} f(z)=-\infty$, unless both $c=0$ and $Ab=0$, when $\min_{z} f(z)$ is equal to $\kappa(A)$.
+
+We have solved the problem by using the decompositions~\eqref{E:g2} and~\eqref{E:g3}. But we can
+also interchange the order of the infimums and use
+$$
+\inf_{z\not= 0}  f(z)=\inf_{\theta\geq 0}\inf_{x'x=1}g(x,\theta),
+$$
+or
+$$
+\inf_{z\not= 0}  f(z)=\inf_{\theta}\inf_{x'x=1}g(x,\theta).
+$$
+
+Let's look at the problem $\min_{x'x=1}g(x,\theta)$. For a minimum we must have $x=\theta(A-\mu I)^{-1}Ab,$
+where the Lagrange multiplier $\mu$ is chosen such that $\theta^{2}b'A(A-\mu I)^{-2}Ab=1$. At the minimum
+
+\begin{multline*}
+\min_{x'x=1}g(x,\theta)=\\\theta^{2}[(b'Ab+c)-2b'A(A-\mu I)^{-1}Ab+b'A(A-\mu I)^{-1}A(A-\mu I)^{-1}Ab]
+\end{multline*}
+
+
+### Multidimensional Unfolding
+
+Now a data analysis example.
+In least-squares-squared metric unfolding (LSSMU) we must minimize
+$$
+\sigma(X,Y)=
+\sum_{i=1}^{n}\sum_{j=1}^{m}w_{ij}(\delta_{ij}^{2}-[x_{i}'x_{i}^{}+y_{j}'y_{j}^{}-2x_{i}'y_{j}^{}])^{2}.
+$$
+over the $n\times p$ and $m\times p$ configuration matrices $X$ and $Y$.
+This has been typically handled by block decomposition. The $(n+m)p$ unknowns are partitioned
+into a number of subsets. Block relaxation algorithms then cycle through the subsets, minimizing
+over the parameters in the subset while keeping all parameters fixed at their current values. One
+cycle through the subsets is one iteration of the algorithm.
+
+In ALSCAL (@takane_young_deleeuw_A_77)) coordinate descent is used, which means that the blocks consist of a single
+coordinate. There are $(n+m)p$ blocks. Solving for the optimal coordinate, with all other
+fixed, means minimizing a quartic, which in turn means finding the roots of a cubic. The
+algorithm converges to a stationary point which is a global minimum with respect to each
+coordinate separately. An alternative algorithm, proposed by @browne_87, uses the $n+m$ points as blocks. Each substep is again an easy unidimensional minimization.
+Their algorithm converges to a stationary point which is a global minimum
+with respect to each point. Generally it is considered to be desirable to have fewer blocks,
+both to increase the speed of convergence and to restrict the class of local minima we
+can converge to.
+
+Let us use our basic theorem to construct a four-block algorithm for LSSMU. Minimizing~\eqref{E:sstress} is the same as minimizing
+$$
+\sigma(X,Y,\alpha,\beta)=
+\sum_{i=1}^{n}\sum_{j=1}^{m}w_{ij}(\delta_{ij}^{2}-[\alpha_{i}^{2}+\beta_{j}^{2}-2\alpha_{i}\beta_{j}x_{i}'y_{j}^{}])^{2}
+$$
+over $\alpha,\beta, X,$ and $Y$, where the configuration matrices $X$ and $Y$ are constrained by $\mathbf{diag}(XX')=I$ and $\mathbf{diag}(YY')=I$.
+
+The algorithm starts with values $\Theta^{(0)}=(\alpha^{(0)},\beta^{(0)},X^{(0)},Y^{(0)})$ satisfying the
+constraints. Suppose we have arrived at $\Theta^{(k)}$. We then update
+\begin{eqnarray}
+\alpha^{(k+1)}&=\mathop{\mathbf{argmin}}\limits_{\alpha}&\sigma(X^{(k)},Y^{(k)},\alpha,\beta^{(k)}),\\
+\beta^{(k+1)}&=\mathop{\mathbf{argmin}}\limits_{\beta}&\sigma(X^{(k)},Y^{(k)},\alpha^{(k+1)},\beta),\\
+X^{(k+1)}&=\mathop{\mathbf{argmin}}\limits_{\mathbf{diag}(XX')=I}&\sigma(X,Y^{(k)},\alpha^{(k+1)},\beta^{(k+1)}),\\
+Y^{(k+1)}&=\mathop{\mathbf{argmin}}\limits_{\mathbf{diag}(YY')=I}&\sigma(X^{(k+1)},Y,\alpha^{(k+1)},\beta^{(k+1)}).
+\end{eqnarray}
+This gives $\Theta^{(k+1)}$. It is understood that in each of the four substeps of~\eqref{E:alg}
+we compute the global minimum, and if the global minimum happens to be nonunique we
+select any of them. We also remark that, as with any block relaxation method having more
+than two blocks, there are many variations on this basic scheme. We can travel through
+the substeps in a different order, we can change the order in each cycle, we can pass
+through the substeps in random order, we can cycle through the first two substeps a number
+of times before going to the third and fourth, and so on. Each of these strategies has its
+own overall convergence rate, and further research would be needed to determine what is best.
+
+Let us look at the subproblems a bit more in detail to see how they can be best solved.
+Expanding~\eqref{E:expand} and organizing terms by powers of $\alpha$ gives
+\begin{align*}
+\sigma(X,Y,\alpha,\beta)&=\sum_{i=1}^{n}\alpha_{i}^{4}\sum_{j=1}^{m}w_{ij}+\\
+&-\sum_{i=1}^{n}\alpha_{i}^{3}\sum_{j=1}^{m}w_{ij}\beta_{j}c_{ij}+\\
+&+\sum_{i=1}^{n}\alpha_{i}^{2}\sum_{j=1}^{m}w_{ij}(4\beta_{j}^{2}c_{ij}^{2}+2\beta_{j}^{2}-2\delta_{ij}^{2})+\\
+&-\sum_{i=1}^{n}\alpha_{i}^{2}\sum_{j=1}^{m}4w_{ij}\beta_{j}^{3}c_{ij}+\\
+&+\sum_{i=1}^{n}\sum_{j=1}^{m}w_{ij}(\delta_{ij}^{4}+\beta_{j}^{4}+4\delta_{ij}^{2}c_{ij}-2\delta_{ij}^{2}\beta_{j}^{2}),
+\end{align*}
+where $c_{ij}=x_{i}'y_{j}^{}$. This is a sum of $n$ univariate quartic polynomials, which
+can be minimized separately to give the global minimum over $\alpha$. Obviously the
+same applies to minimization over $\beta$.
+
+For minimization over $X$ and $Y$ we define
+\begin{align*}
+r_{ij}&=\frac{\delta_{ij}^{2}-[\alpha_{i}^{2}+\beta_{j}^{2}]}{2\alpha_{i}\beta_{j}},\\
+w_{ij}&=4\alpha_{i}^{2}\beta_{j}^{2}w_{ij}.
+\end{align*}
+Then
+$$
+\sigma(X,Y,\alpha,\beta)=\sum_{i=1}^{n}\sum_{j=1}^{m}w_{ij}[r_{ij}-x_{i}'y_{j}^{}]^{2}.
+$$
+Expanding and collecting terms gives
+$$
+\sigma(X,Y,\alpha,\beta)=\sum_{i=1}^{n}\psi_{i}(x_{i})
+$$
+with
+$$
+\psi_{i}(x_{i})=f_{i}^{}-2x_{i}'g_{i}^{}+x_{i}'H_{i}^{}x_{i}^{})
+$$
+and
+\begin{align*}
+f_{i}&=\sum_{j=1}^{m}w_{ij}^{}r_{ij}^{2},\\
+g_{i}&=\sum_{j=1}^{m}w_{ij}r_{ij}y_{j},\\
+H_{i}&=\sum_{j=1}^{m}w_{ij}^{}y_{j}^{}y_{j}'.
+\end{align*}
+Again this is the sum of $n$ separate functions $\psi_{i}$, quadratics in this case, which can
+be minimized separately for each $x_{i}$. By symmetry, we have the same strategy
+to minimize over $Y$.
+
+Minimizing over $x_{i}$, under the constraint $x_{i}'x_{i}^{}=1$, leads to the secular
+equation problem discussed in the Appendix. Since
+typically $p$ is two or at most three, the subproblems are very small indeed and can be
+solved efficiently.

@@ -1,0 +1,57 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Introduction{#introduction}
+
+## Some History{#introduction:somehistory}
+
+The methods discussed in this book are special cases of what we shall call
+_block-relaxation methods_, although other names such as _decomposition_ or _nonlinear Gauss-Seidel_ or _ping-pong_ or _seesaw_ methods have also been used. There are many areas of applied mathematics where methods of this type have been discussed. Mostly, of course, in optimization and mathematical programming, but also in control and numerical analysis, and in differential equations.
+
+In this section we shall give some informal definitions to establish our terminology. We will give some of the historical context, but the main historical and technical details will be discussed in subsequent chapters.
+
+In a _block relaxation method_ we minimize a real-valued function of several variables by partitioning the variables into blocks. We choose initial values for all blocks, and then minimize over one of the blocks, while keeping all other blocks fixed at their current values. We then replace the values of the active block by the minimizer, and proceed by choosing another block to become active. An iteration ofthe algorithm steps through all blocks in turn, each time keeping the non-active blocks fixed at current values, and each time replacing the active blocks by solving the minimization subproblems. If there are more than two blocks there are different ways to cycle through the blocks. If we use the same sequence of active blocks in each iteration then the block method is called _cyclic_.
+
+In the special case in which blocks consist of only one coordinate we speak of the 
+_ coordinate relaxation method_ or the
+_coordinate descent_ (or _CD_) method. If we are maximizing then it is _coordinate ascent_ (or _CA_). The cyclic versions are _CCD_ and
+_CCA_.
+
+_Alternating Least Squares_ (or _ALS_) methods are block relaxation methods in which each minimization subproblem is a linear or nonlinear least squares problem. As far as we know, the term "Alternating Least Squares" was first used in @deleeuw_R_68d.
+There certainly were ALS methods before 1968, but the systematic use of these techniques in psychometrics and multivariate analysis started around that time.
+The inspiration clearly was the pioneering work of @kruskal_64a, @kruskal_64b in nonmetric scaling.
+De Leeuw, Young, and Takane started the ALSOS system of techniques and programs around 1973
+(see @young_deleeuw_takane_C_80), and De Leeuw, with many others, at Leiden University started the Gifi system around 1975 (see @gifi_B_90).
+
+ALS works well for fitting the usual linear, bilinear, and multilinear forms to data. Thus it covers much of classical multivariate analysis and its extensions to higher dimensional arrays. But pretty early on problems arose in Euclidean multidimensional scaling, which required fitting quadratic forms or, even worse, square roots of quadratic forms to data. Straightforward ALS could not be used, because the standard matrix calculations of least squares and eigen decomposition did not apply. @takane_young_deleeuw_A_77 circumvented the problem by fitting squared distances using cyclic coordinate descent, which only involved unidimensional minimizations.
+
+Around 1975, however, De Leeuw greatly extended the scope of ALS by using _majorization_. This was first applied to Euclidean multidimensional scaling by @deleeuw_C_77, but it became clear early on that majorization was a general technique for algorithm construction that also covered, for example, the EM algorithm, which was discovered around the same time (@dempster_laird_rubin_77). In each iteration of a majorization algorithm we construct a _surrogate function_ (@lange_hunter_yang_00) or _majorization_ (@deleeuw_C_94c, @heiser_95) that lies above the function we are minimizing and touches it in the current iterate. We then minimize this surrogate function to find an update of the current iterate, then construct a new majorization function in that update, and so on. The majorization function, if suitably chosen, can often be minimized using ALS techniques.
+
+@deleeuw_C_94c argues there is another important class of algorithms extending ALS. It is intermediate, since it is a special case of block relaxation and it contains majorization as a special case. In _augmentation methods_ for the minimization of a real valued function we introduce an _augmentation_, which uses an additional vector of variables, with a surrogate function on the product of both sets, such that the original objective function is the minimum of the surrogate function over the augmenting block of variables. We then apply block relaxation to the augmented function.
+
+Ortega and Rheinboldt majorization, Kantorovich,
+Toland duality, decomposition, quasi-linearization, Marshall-Olkin-Arnold, NIPALS, Moreau coupling functions
+
+block relaxation is majorization
+
+it suffices to study two blocks (in a sense)
+
+## Optimization Methods{#introduction:optimizationmethods}
+
+Our block relaxation methods look for desirable points, which are usually fixed points of point-to-set maps. They minimize, in a vast majority of the applications, a _loss function_ or _badness-of-fit function_, which is often derived from some general data analysis principle such as _Least Squares_ or _Maximum Likelihood_. The desirable points are the local or global minimizers of this loss function.
+
+Under certain conditions, which are generally satisfied in statistical applications, our block relaxation methods have _global convergence_, which means that the iterative sequences they generate converge
+to desirable points, no matter where we start them. They are generally _stable_, which means in this context that each step in the iterative process decreases the loss function value. 
+
+Under stronger, but still quite realistic, conditions our block relaxation methods exhibit linear convergence, i.e. the distance of the iterates to the desirable points decreases at the rate of a geometric progression. In many high-dimensional cases the ratio of the progression is actually close to one, which makes convergence very slow, and in some cases the ratio is equal to one and convergence is _sublinear_. We will also discuss stable block relaxation algorithms with _superlinear_ convergence, but they are inherently more complicated. In addition we will discuss techniques to accelerate the convergence of block relaxation iterations.
+
+In the optimization and mathematical programming literature, at least until recently, methods with linear convergence rates were generally deprecated or ignored. It was thought they were too slow to be of any practical relevance. This situation has changed for various reasons, all of them having to do with the way in which we now program and compute. Here "we" specifically means statisticians and data analysts, but the same reasons probably apply in other fields as well.
+
+In the first place block relaxation methods often involve simple computations in each of their iterations. As a consequence they can tackle problems with a large number of variables, and they are often easily parallelized. In the second place, with the advent of personal computers it is not necessarily a problem any more to let an iterative process run for days in the background. Mainframe computer centers used to frown on such practices. Third, they are now many specific large problems characterized by a great deal of _sparseness_, which make block and coordinate methods natural alternatives because they can take this sparseness into account. And finally, simple computations in each of the steps make it easy to write ad hoc programs in interpreted special purpose languages such as `R`. Such programs can take the special structure of the problem they are trying to solve into account, and this makes them more efficient compared to general purpose optimization methods which may have faster convergence rates.
+
+
+Statistics optimization
+
+R optimization

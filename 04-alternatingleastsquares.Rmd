@@ -1,0 +1,233 @@
+# Alternating Least Squares{#alternatingleastsquares}
+
+## Introduction{#alternatingleastsquares:introduction}
+
+An _Alternating Least Squares_ or _ALS_ algorithm is defined as a block relaxation algorithm applied to a least squares loss function. Least squares loss functions are somewhat loosely defined. We will discuss what we have in mind, before giving some of the history of ALS methods.
+
+We start with have a functions $f$ of the form
+$$
+f(x)=\sum_{j=1}^m\sum_{\ell=1}^m w_{j\ell}g_j(x)g_\ell(x),
+$$
+where $W$ is an $m\times m$ fixed positive semi-definite matrix of _weights_, and we minimize $f$ over $x\in\mathcal{X}$.
+
+One obvious property of least squares loss functions is that they are bounded below by zero, which means that a decreasing sequence of loss function values $f^{(k)}=f(x^{(k)}),$ generated for example by an iterative algorithm, necessarily converges.
+
+Alternating least squares methods by definition use block relaxation, so we introduce a block structure. As usual the block structure is designed to make the minimization subproblems relatively easy to solve. A first step towards simplicity is to
+$$
+f(x_1,\cdots,x_p)=\sum_{j=1}^m\sum_{\ell=1}^mw_{j\ell}g_j(x_1,\cdots,x_p)g_\ell(x_1,\cdots,x_p),
+$$
+which must be minimized over $x_s\in\mathcal{X}_s$, where $\mathcal{X}=\mathcal{X}_1\otimes\cdots\otimes\mathcal{X}_p$. To make the problem interesting for block optimization we have separated the constraints on $x$ into separate constraints on the $n$ blocks $x_i$.
+
+In many ALS examples there is additional structure. A familar special case has the form
+$$
+f(x_1,x_2)=\sum_{j=1}^m\sum_{\ell=1}^mw_{j\ell}(g_j(x_1)-h_j(x_2))(g_\ell(x_1)-h_\ell(x_2))
+$$
+Of course $x_1$ and $x_2$ can be further partitioned into blocks if that is convenient. Even more structure is introduced into the ALS problem when the functions $g_j$ and $h_j$ are polynomials or multilinear functions.
+
+<hr>
+
+As explained in section \@ref(introduction:somehistory) the term *Alternating Least Squares* was first used in @deleeuw_R_68d. There certainly were ALS methods before 1968. Examples are the missing data methods in factorial analysis of variance pioneered by @yates_33, the iterative principal factor analysis method of @thomson_34, or the MINRES method for factor analysis by @harman_jones_66. The systematic use of ALS techniques in psychometrics and multivariate analysis started after
+the pioneering work of @kruskal_64a, @kruskal_64b, @kruskal_65 in nonmetric multidimensional scaling.
+De Leeuw, Young, and Takane started the ALSOS system of techniques and programs around 1973
+(see @young_deleeuw_takane_C_80),
+and De Leeuw, with many others, at Leiden University started the Gifi system around 1975 (see @gifi_B_90).
+
+
+## Close Relatives{#alternatingleastsquares:closerelatives}
+
+### ALSOS{#alternatingleastsquares:closerelatives:alsos}
+
+ALSOS algorithms are ALS algorithms in which one or more of the blocks defines transformations of variables.
+$$
+f(x,z)=\sum_{j=1}^m\sum_{\ell=1}^mw_{j\ell}g_j(x_1,\cdots,x_p,z)g_\ell(x_1,\cdots,x_p,z).
+$$
+
+Suppose we have $n$ observations on two sets of variables $x_i$
+and $y_i.$ We want to fit a model of the form
+$$
+F_\theta(\Phi(x_i))\approx G_\xi(\Psi(y_i))
+$$
+where the unknowns are the structural parameters $\theta$ and $\xi$
+and the transformations $\Phi$ and $\Psi.$
+In ALS we measure loss-of-fit by
+$$
+\sigma(\theta,\xi,\Phi,\Psi)=
+\sum_{i=1}^n[F_\theta(\Phi(x_i))-G_\xi(\Psi(y_i))]^2.
+$$
+This loss function is minimized by starting with initial estimates
+for the transformations, minimizing over the structural
+parameters, keeping the transformations fixed at their
+current values, and then minimizing over the transformations,
+with structural values kept fixed at their new values.
+These two minimizations are alternated, which produces a
+nonincreasing sequence of loss function values, bounded
+below by zero, and thus convergent. This is a version of
+the trivial convergence theorem.
+
+The first ALS example is due to @kruskal_65.
+We have a factorial ANOVA, with, say, two factors, and we
+minimize
+$$
+\sigma(\phi,\mu,\alpha,\beta)=
+\sum_{i=1}^n\sum_{j=1}^m[\phi(y_{ij})-(\mu+\alpha_i+\beta_j)]^2.
+$$
+Kruskal required $\phi$ to be monotonic. Minimizing loss for fixed $\phi$ is just doing an analysis of variance, minimizing
+loss over $\phi$ for fixed $\mu,\alpha,\beta$ is doing a
+_monotone regression_. Obviously also some normalization
+requirement is needed to exclude trivial zero solutions.
+
+This general idea was extended by
+De Leeuw, Young, and Takane around 1975 to
+$$
+\sigma(\phi;\psi_1,\cdots,\psi_m)=
+\sum_{i=1}^n[\phi(y_i)-\sum_{s=1}^p\psi_j(x_{ij})]^2.
+$$
+This ALSOS work, in the period 1975-1980, is summarized in @young_deleeuw_takane_C_80.
+Subsequent work, culminating in the book by @gifi_B_90
+generalized this to
+ALSOS versions of principal component analysis, path analysis, canonical
+analysis, discriminant analysis, MANOVA, and so on.
+The classes of transformations over which loss was minimized were
+usually step-functions, splines, monotone functions, or low-degree
+polynomials. To illustrate the use of more sets in ALS, consider
+$$
+\sigma(\psi_1,\cdots,\psi_m;\alpha,\beta)=
+\sum_{i=1}^n\sum_{j=1}^m (\psi_j(x_{ij})-
+\sum_{s=1}^p\alpha_{is}\beta_{js})^2.
+$$
+This is principal component analysis (or partial singular value
+decomposition) with optimal scaling. We can now cycle over three
+sets, the transformations, the component scores $\alpha_{is}$
+and the component loadings $\beta_{js}.$ In the case of
+monotone transformations this alternates
+monotone regression with two linear least squares problems.
+
+### ACE{#alternatingleastsquares:closerelatives:ace}
+
+The ACE methods, developed by @breiman_friedman_85,
+minimize over all _smooth_ functions.
+
+A problem with
+ACE is that smoothers, at least most smoothers, often do not
+minimize a loss function, or the same loss function as is used for the
+remaining parameters.
+
+In any case, ACE is less general than ALS, because not all
+least squares problems can be interpreted as computing
+conditional expectations.
+
+Another obviously
+related area in statistics is the Generalized Additive Models discussed
+extensively by @hastie_tibshirani_90.
+
+
+
+### NIPALS and PLS{#alternatingleastsquares:closerelatives:nipalsandpls}
+
+## Rate of Convergence{#alternatingleastsquares:rateofconvergence}
+
+The least squares loss function, in the most general form we consider here, is
+$$
+f(x)=\frac12\sum_{j=1}^m\sum_{\ell=1}^m w_{j\ell}g_j(x)g_\ell(x),
+$$
+with $W$ a fixed symmetric positive semi-definite matrix of weights.
+
+Thus
+$$
+\mathcal{D}f(x)=\sum_{j=1}^m\sum_{\ell=1}^m w_{j\ell}g_j(x)\mathcal{D}g_\ell(x),
+$$
+and
+$$
+\mathcal{D}^2f(x)=\sum_{j=1}^m\sum_{\ell=1}^m w_{j\ell}
+\left\{g_j(x)\mathcal{D}^2g_\ell(x)+\mathcal{D}g_j(x)(\mathcal{D}g_\ell{x})'\right\}.
+$$
+
+**Note:** Older piece follows (fix) 03/12/15
+
+It is easy to apply the general results from the previous
+sections to ALS. The results show that it is important that
+the solutions to the subproblems are unique. The least squares
+loss function has some special structure in its second
+derivatives which we can often exploit in a detailed
+analysis. If
+$$
+\sigma(\omega,\xi)=\sum_{i=1}^n (f_i(\omega)-g_i(\xi))^2,
+$$
+then
+$$
+\mathcal{D}^2\sigma=
+\begin{bmatrix}
+S_1&0\\
+0&S_2
+\end{bmatrix}
++
+\begin{bmatrix}
+G'G&-G'H\\
+-H'G&H'H
+\end{bmatrix},
+$$
+with $G$ and $H$ the Jacobians of $f$ and $g,$ and with $S_1$
+and $S_2$ weighted sums of the Hessians of the $f_i$ and $g_i,$
+with weights equal to the least squares residuals at the
+solution. If $S_1$ and $S_2$ are small, because the residuals
+are small, or because the $f_i$ and $g_i$ are linear or
+almost linear, we see that the rate of ALS will be the
+canonical correlation between $G$ and $H.$
+
+## Examples{#alternatingleastsquares:examples}
+
+### Homogeneity Analysis{#alternatingleastsquares:examples:homogeneityanalysis}
+
+### Fixed Rank Approximation{#alternatingleastsquares:examples:fixedrankapproximation}
+
+### Multilinear Fitting{#alternatingleastsquares:examples:multilinearfitting}
+
+### MCR-ALS{#alternatingleastsquares:examples:mcrals}
+
+### Scaling and Splitting{#alternatingleastsquares:examples:scalingandsplitting}
+
+Early on in the development of ALS algorithms some interesting
+complications where discovered. Let us consider canonical
+correlation analysis with optimal scaling. There we want
+to minimize
+$$
+\sigma(X,Y,A,B)=\hbox{tr }(XA-YB)'(XA-YB),
+$$
+where the $X$ and the $Y$ are optimally scaled or transformed
+variables. This problem is analyzed in detail in @vanderburg_deleeuw_A_83. This seems like a perfectly
+straightforward ALS problem. It can be formulated as a problem
+with the two blocks $(X,Y)$
+and $(A,B),$ or as a problem
+with the four blocks $X,Y,A,B.$ But no matter how one
+formulates it, a normalization must be chosen to prevent
+trivial solutions. In the spirit of canonical analysis
+it makes sense to
+require $A'X'XA=\mathcal{I}$
+or $B'Y'YB=\mathcal{I}.$
+Both sets of conditions
+basically lead to the same solution, but in the intermediate iterations
+the normalization condition creates a problem, because
+it involves elements from two different blocks. Also,
+although $A'X'XA=\mathcal{I}$ is a simple constraint on $A$ for
+given $X$, it is not such a simple constraint on $X$
+for given $A.
+
+The solution to this dilemma, basically due to Takane, is
+to constrain either $(X,A)$ or $(Y,B),$ always update
+the unconstrained block, and switch normalizations after
+each update. Global convergence (at least of loss function
+values) is guaranteed by the following analysis.
+
+**`r theorem_nums("a", display = "f")`**
+$$\min_A\min_{B'Y'YB=\mathcal{I}}\sigma(X,Y,A,B)=
+\min_{A'X'XA=\mathcal{I}}\min_B\sigma(X,Y,A,B)=\sum_{s=1}^p(1-\rho_s^2(X,Y)).
+$$
+
+**Proof:**
+$$
+\min_A\sigma(X,Y,A,B)=\text{ tr }B'Y'YB-B'Y'X(X'X)^{-1}X'YB,
+$$
+and minimizing the right-hand side over $B'Y'YB=\mathcal{I}$ clearly
+proves the first part of the Theorem. The second part goes
+the same.
+**QED**

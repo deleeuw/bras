@@ -1,0 +1,298 @@
+# Tangential Majorization
+
+## Using the Tangent
+
+### Majorizing and Minorizing the Logarithm
+
+The logarithm is concave. Consequently, for all positive $x$ and $y$, we have the linear majorizer
+$$
+\log x\leq\log y+\frac{1}{y}(x-y)=\log y+\frac{x}{y}-1.
+$$
+We can apply the same concavity to get a minorizer
+$$
+\log\frac{1}{x}\leq\log\frac{1}{y}+y(\frac{1}{x}-\frac{1}{y}),
+$$
+which is
+$$
+\log x\geq \log y-\frac{y}{x}+1.
+$$
+These majorizers and minorizers of the logarithm are illustrated in Figure 1 for $y=1$ and $y=5$.
+<hr>
+
+```{r mylog,fig.align="center",echo=FALSE,cache=TRUE}
+ x<-seq(.5,10,length=100)
+ lx<-log(x)
+ u1<-log(1)+(x/1)-1
+ u5<-log(5)+(x/5)-1
+ l1<-log(1)-(1/x)+1
+ l5<-log(5)-(5/x)+1
+ plot(x,lx,type="l",col="RED",lwd=3,ylab="log(x)")
+ lines(x,u1,col="BLUE",lwd=2)
+ lines(x,u5,col="BLUE",lwd=2)
+ lines(x,l1,col="GREEN",lwd=2)
+ lines(x,l5,col="GREEN",lwd=2)
+ abline(v=1,lwd=2)
+ abline(v=5,lwd=2)
+```
+<center>
+Figure 1: Majorization and Minorization of Logarithm
+</center>
+<hr>
+More generally, we have
+$$
+\log x\leq\log y+\frac{1}{p}\left\{\left(\frac{x}{y}\right)^p-1\right\}
+$$
+for all $p>0$ and
+$$
+\log x\geq\log y+\frac{1}{p}\left\{\left(\frac{x}{y}\right)^p-1\right\}
+$$
+for all $p<0$. See Figure 2, where $y=5$ and $p=\{-2,-1,1,2\}$.
+<hr>
+
+```{r morelog,fig.align="center",echo=FALSE,cache=TRUE}
+ x<-seq(.5,10,length=100)
+ lx<-log(x)
+ y <- 5
+ p <- -2
+ u1<-log(y)+(1/p)*((x/y)^p-1)
+ p<--1
+ u2<-log(y)+(1/p)*((x/y)^p-1)
+ p<-1
+ l1<-log(y)+(1/p)*((x/y)^p-1)
+ p<-2
+ l2<-log(y)+(1/p)*((x/y)^p-1)
+ plot(x,lx,type="l",col="RED",lwd=3,ylab="log(x)")
+ lines(x,u1,col="GREEN",lwd=2)
+ lines(x,u2,col="GREEN",lwd=2)
+ lines(x,l1,col="BLUE",lwd=2)
+ lines(x,l2,col="BLUE",lwd=2)
+ abline(v=y,lwd=2)
+```
+<center>
+Figure 2: Majorization and Minorization of Logarithm
+</center>
+<hr>
+
+### Aspects of Correlation Matrices
+
+Suppose $\underline{x}_j,\cdots,\underline{x}_m$ are random variables, and $\mathcal{K}_j$ are convex cones of Borel-measurable real-valued functions of $\underline{x}_j$ with finite variance. The elements of $\mathcal{K}_j$ are called _transformations_ of the variable $\underline{x}_j$.
+
+For instance, $\mathcal{K}_j$ can be the cone of monotone transformations, or the subspace of splines with given knots, or the subspace of quantifications of a categorical variable
+
+A transformation $\kappa\in\mathcal{K}$ is standardized if $\mathbf{E}(\kappa(\underline{x}))=0$ and $\mathbf{E}(\kappa^2(\underline{x}))=1$. Standardized transformations define a sphere $\mathcal{S}_j$.
+
+
+Now suppose $f$ is a
+concave and differentiable function defined on the space of all correlation matrices $R$ between $m$ random variables. Suppose we want to minimize
+$$
+g(\kappa_1,\cdots,\kappa_m)\mathop{=}\limits^{\Delta}f(R(\kappa_1(\underline{x}_1),\cdots,\kappa_m(\underline{x}_m)))
+$$
+over all transformations $\kappa_j\in\mathcal{K}_j\cap\mathcal{S}_j$.
+
+Because $f$ is concave
+$$f(R)\leq f(S)+\hbox{ tr }\nabla f(S)(R-S).$$
+Collect the partials in the matrix $G.$
+A majorization algorithm can minimize
+$$
+\sum_{i=1}^m\sum_{j=1}^m g_{ij}(S)\mathbf{E}(\kappa_i\kappa_j),
+$$
+over all standardized transformations, which we do with block relaxation using $m$ blocks. In each block we must maximize a linear function on a cone, under a quadratic constraint, which is usually not hard to do.
+
+This algorithm generalizes ACE, CA, and many other forms of MVA with OS. It was proposed first by [De Leeuw [1988a]](), with additional theretical results in [De Leeuw [1988b]](). The function $f$ can be based
+on multiple correlations, eigenvalues, determinants, and so on.
+
+### Partially Observed Linear Systems
+
+
+@deleeuw_C_04a discusses the problem of finding an approximate solution to the homogeneous linear system $AB=0$ when there are cone and orthonormality restrictions on the columns of $A$ and when some elements of $B$ are restricted to known values, most commonly to zero. Think of the columns of $A$ as variables or sets of variables, and think of $B$ as regression coefficients or weights.
+
+The loss function used by @deleeuw_C_04a is
+$$
+f(R)\mathop{=}\limits^{\Delta}\min_{B\in\mathcal{B}}\mathbf{tr} B'RB,\tag{1}
+$$
+with $R\mathop{=}\limits^{\Delta}A'A$ and with $\mathcal{B}$ coding the constraints on $B$. Note that the computation of the optimal $B$ in $\text{(1)}$ is a least squares problem, and even with linear inequality constraints on $B$ it is still a straightforward quadratic programming problem.
+
+The function $f$ in $\text{(1)}$ is the pointwise minimum of linear functions in $R$, and thus it is a concave function of $R$.
+This means we are in the "aspects of correlation matrices" framework discussed in the previous section.
+
+In particular we define
+$$
+B(R)\mathop{=}\limits^{\Delta}i\{\hat B\mid\mathbf{tr}\ \hat B'R\hat B=\min_{B\in\mathcal{B}}\mathbf{tr}\ B'RB\},
+$$
+then the subgradient of $f$ at $R$ is
+$$
+\partial f(R)=\mathbf{conv}(BB'\mid B\in B(R)).
+$$
+The subgradient inequality now says that for all correlation matrices $R$ and $S$ we have $f(R)\leq \mathbf{tr}\ \nabla R$
+for all $\nabla\in\partial f(S)$.
+
+The constraints on $A$ discussed in @deleeuw_C_04a make it possible to fit a wide variety of multivariate analysis techniques. Columns of $A$, or variables, are partitioned into blocks. Some blocks contain only a single variable, such variables are called _single_. Some blocks are constrained to be orthoblocks, which means that the variabes in the block are required to be orthonormal. Single variables may be cone-constrained, which means the corresponding column of $A$ is
+constrained to be in a cone in $\mathbb{R}^n$. And orthoblocks may be subspace-constrained, which means all columns must be in the same subspace.
+
+We mention some illustrative special cases here. Common factor analysis of a data matrix $Y$ means finding an approximate solution to the system
+$$
+\begin{bmatrix}
+Y&\mid&U&\mid&E
+\end{bmatrix}
+\begin{bmatrix}
+\ \ I\\
+-\Gamma\\
+-\Delta
+\end{bmatrix} = 0
+$$
+with $U'U=I$, $E'E=I$, $U'E=0$, and $\Delta$ diagonal. The _common factor scores_ are in $U$, the _unique factor scores_ in $E$, the _factor loadings_ in $\Gamma$ and the _uniquenesses_ in $\Delta$. This example can be generalized to cover structural equation models
+
+Homeogeneity analysis @gifi_B_90 is the linear system
+$$
+\begin{bmatrix}
+X&\mid&Q_1&\mid&\cdots&\mid&Q_m
+\end{bmatrix}
+\begin{bmatrix}
+I&I&I&\cdots&I\\
+-\Gamma_1&0&0&\cdots&0\\
+0&-\Gamma_2&0&\cdots&0\\
+0&0&-\Gamma_3&\cdots&0\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+0&0&0&\cdots&-\Gamma_m
+\end{bmatrix}=0
+$$
+where $X$ is and orthoblock of object scores, while the $Q_j$ are orthoblocks in the subspaces defined by the indicator matrices (or B-spline bases) of variable $j$. For single variables $Q_j$ only has a single column, which can be cone-constrained. For _multiple correspondence analysis_ $X$ and all $Q_j$ have the same number of columns. For _nonlinear principal component analysis_ all variables are single and the $\Gamma_j$ are $1\times p$.
+
+
+
+In both examples the majorization algorithm is actually an alternating least squares algorithm. In the factor analysis example the loss functon is
+$$
+\sigma(Y,U,\Gamma,E,\Delta)=\|Y-U\Gamma-E\Delta\|^2,
+$$
+and in homogeneity analysis it is
+$$
+\sigma(X,Q_1\cdots,Q_m,\Gamma_1,\cdots,\Gamma_j)=\sum_{j=1}^m\|X-Q_j\Gamma_j\|^2.
+$$
+
+### Gpower
+
+** Rewrite for minimizing a concave function 02/21/15 **
+
+Consider the problem of maximizing a convex function $f$ on a compact set $\mathbf{X}$. The function is not necessarily differentiable, the constraint set is not necessarily convex. Define
+$$
+f^\star\mathop{=}\limits^{\Delta}\max_{x\in\mathcal{X}} f(x).
+$$
+For all $x,y$ and $z\in\partial f(y)$ we have  the subgradient inequality
+$$
+f(x)\geq f(y)+z'(x-y).
+$$
+Thus the majorization algorithm is
+$$
+x^{(k+1)}\in\mathbf{Arg}\mathop{\mathbf{max}}\limits_{x\in\mathcal{X}} z'x,
+$$
+where $z$ is any element of $\partial f(x^{(k)})$.
+
+Define
+$$
+\delta(y)\mathop{=}\limits^{\Delta}\max_{x\in\mathcal{X}} z'(x-y)
+$$
+where $z\in\partial f(y)$. Then $\delta(y)\geq 0$ and $\delta(y)$
+vanishes only when $z$ is in the normal cone to $\mathbf{conv}(\mathcal{X})$ at $y$.
+$$
+f(x^{(k+1)})\geq f(x^{(k)})+\delta(x^{(k)}).
+$$
+It follows that
+$$
+f(x^{(k+1)})-f(x^{(0)})=\sum_{i=0}^k(f(x^{(i+1)})-f(x^{(i)}))\geq\sum_{i=0}^k\delta(x^{(i)}),
+$$
+and
+$$
+S_k\mathop{=}\limits^{\Delta}\sum_{i=0}^k\delta(x^{(i)})\leq f^\star-f(x^{(0)}).\tag{1}
+$$
+Thus the partial sums $S_k$ define an increasing sequence, which is bounded above and consequently converges. This implies its terms converge to zero. i.e.
+$$
+\lim_{k\rightarrow\infty}\delta(x^{(k)})=0.
+$$
+If
+$$
+\delta_k\mathop{=}\limits^{\Delta}\min_{0\leq i\leq k}\delta(x^{(i)}),
+$$
+then, from $\text{(1)}$,
+$$
+\delta_k\leq\frac{f^*-f(x^{(0)})}{k+1}.
+$$
+
+## Broadening the Scope
+
+### Differences of Convex Functions
+
+For d.c. functions (differences of convex functions) such as $\phi=\alpha-\beta$ we can write
+$\phi(\omega)\leq\alpha(\omega)-\beta(\xi)-\eta'(\omega-\xi),$
+with $\eta\in\partial\beta(\xi).$
+This gives a convex majorizer. Interesting, because basically all twice differentiable functions are d.c.
+
+
+** Add: convexification 02/21/15 **
+
+Suppose $f(x)=\frac14 x^4-\frac12 x^2$. If we look for a majorization then our first thought is to majorize the first term, because the second is already nicely quadratic. But in this case we proceed the other way around.
+
+In fact, let's consider the more general case $f(x)=\frac14 x^4-h(x)$, where $h$ is convex and
+differentiable. Note $f$ is indeed the difference of
+two convex functions. We see
+that $f'(x)=x^3-h'(x)$ and $f''(x)=3x^2-h''(x)$.
+
+Using tangential majorization for $h$ gives
+$$
+g(x,y)=\frac14 x^4-h(y)-h'(y)(x-y).
+$$
+Clearly $g$ is convex in $x$ for every $y$, and since $\mathcal{D}_1g(x,y)=x^3-h'(y)$ we have
+$$
+x^{(k+1)}=\sqrt[3]{h'(x^{(k)})}.
+$$
+The iteration radius at a fixed point turns out to be
+$$
+\kappa(x)=\frac{h''(x)}{f''(x)+h''(x)}=\frac13\frac{h''(x)}{x^2}.
+$$
+
+For $h(x)=\frac12 x^2$ we have $h'(x)=x$. Convergence is to $\pm 1$, and thus, using l'Hôpital's rule,
+$$
+\kappa(1)=\lim_{x\rightarrow 1}\frac{\sqrt[3]{x}-1}{x-1}=\frac13.
+$$
+For $h(x)=|x|$ we have $h'(x)=\pm 1$ if $x\not= 0$, and thus $x^{(k+1)}=\pm 1.$ The algorithm finishes in a single step, with the correct solution.
+
+### More DC
+
+#### Peaky
+
+$f(x,y)=\frac12x^2y^2$
+
+$$\nabla f(x,y)=\begin{bmatrix}xy^2\\yx^2\end{bmatrix}$$
+$$
+\nabla^2f(x,y)=\begin{bmatrix}y^2&2xy\\2xy&x^2\end{bmatrix}
+$$
+Eigenvalues 
+$$
+\lambda^2-\lambda(x^2+y^2)-3x^2y^2=0
+$$
+$$
+\lambda_{1,2}=\frac12{(x^2+y^2)\pm\frac12\sqrt{(x^2+y^2)^2+12x^2y^2}}
+$$
+#### Monkey Saddle
+
+$f(x,y)=\frac16x^3 - \frac12 xy^2$
+
+$$
+\nabla f(x,y)=\frac12\begin{bmatrix}x^2-y^2\\-2xy\end{bmatrix}$$
+$$
+\nabla^2f(x,y)=\begin{bmatrix}x&-y\\-y&-x\end{bmatrix}
+$$
+$\lambda_1+\lambda_2=0$ $\lambda_1\lambda_2=-(x^2+y^2)$
+$\lambda_1=\sqrt{x^2+y^2}$
+$\lambda_2=-\sqrt{x^2+y^2}$
+eigenvalues $\begin{bmatrix}y&\mid&x-\lambda\end{bmatrix}$
+ssq $y^2+(x-\lambda)^2=2\lambda(\lambda-x)$
+thus
+$$
+[\nabla^2f(x,y)]_+=\frac12
+\begin{bmatrix}\frac{y^2}{\lambda-x}&-y\\-y&(\lambda-x)\end{bmatrix}
+$$
+
+
+### Convexifiable Functions
+
+### Piecewise Linear Majorization

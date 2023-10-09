@@ -1,0 +1,129 @@
+# Using Convexity
+
+## Using Convexity
+
+There are two major ways in which we use convexity in majorization.
+
+First, we can use the definition of convex functions directly. Thus we rely on the inequality
+$$
+f(\sum_{i=1}^n w_ix_i)\geq\sum_{i=1}^n w_if(x_i),
+$$
+where the $w_i$ are non-negative weights adding up to one. This inequality separates the variables, in the sense that it allows us to substitute a sum of univariate functions for a multivariate one.
+
+Second, we can use the results on the derivatives of convex functions. If $f$ is convex, then
+$$
+f(x)\geq f(y)+z'(x-y),
+$$
+with $z\in\partial f(y),$ the subgradient of $f$ at $y.$ Thus convex functions
+have a linear minorizer. In the same way concave functions have a linear majorizer.
+
+##Jensen's Inequality
+
+Jensen's inequality is often formulated in probabilistic terms,
+using expected values. It is a direct reformulation of the
+definition of a concave function.
+
+**Theorem:**
+Suppose $g$ is a concave function on $\mathcal{S}\subset\mathbb{R}^n,$
+and suppose $\pi$ is a weight function such that $\int_\mathcal{S}\pi(x)dx=1,$
+and $\mu\mathop{=}\limits^{\Delta}\int_\mathcal{S} x\pi(x)dx$ is finite. Then
+$\int_\mathcal{S}\pi(x)g(x)dx\leq g(\mu),$
+with equality if and only if $$g$$ is linear a.e.
+
+**Proof:** If $g$ is concave, then
+$g(x)\leq g(\mu)+(x-\mu)'\eta(\mu),$
+where $\eta(\mu)$ is an arbitrary element of the
+subgradient of $g$ at $\mu.$ Multiplying both
+sides by $\pi(x),$ and integrating gives the
+required result.
+**QED**
+
+### Tomography
+
+Suppose the function $f$ we must minimize is defined by
+$$
+f(x)=h(\sum_{i=1}^n w_ix_i),
+$$
+where $h$ is a convex function of a single variable, and $w$ is a vector of positive numbers.
+
+
+If $y$ is another vector of $n$ positive numbers we can write
+$$
+f(x)=h\left(\sum_{i=1}^n \left(\frac{w_iy_i}{w'y}\right)\left(\frac{w'y}{y_i}x_i\right)\right),
+$$
+and if $g$ is defined as
+$$
+g(x,y)=\sum_{i=1}^n\left(\frac{w_iy_i}{w'y}\right)h\left(\frac{w'y}{y_i}x_i\right)
+$$
+then, by the definition of convexity, $f(x)\leq g(x,y)$. Also, clearly, $f(x)=g(x,x)$ and thus we have a majorization
+on $(\mathbb{R}^+)^n$.
+
+Alternatively, for any positive vector $\pi$ with elements adding up to one,
+$$
+f(x)=h\left(\sum_{i=1}^n\pi_i\left(\frac{w_i}{\pi_i}(x_i-y_i)-w'y\right)\right),
+$$
+and the majorization is $g$ defined by
+$$
+g(x,y)=\sum_{i=1}^n\pi_ih\left(\frac{w_i}{\pi_i}(x_i-y_i)-w'y\right).
+$$
+
+###Logs of Sums and Integrals
+
+Suppose we want to minimize
+$$
+f(x)=-\log\int_{\mathcal{Z}} p(x,z)dz
+$$
+where $p:\mathcal{X}\otimes\mathcal{Z}\rightarrow\mathbb{R}^+$.
+
+It is convenient to define
+\begin{align*}
+p(z\mid x)&\mathop{=}\limits^{\Delta}\frac{p(x,z)}{\int_\mathcal{Z}p(x,z)dz},\\
+q(x,y)&\mathop{=}\limits^{\Delta}\int_\mathcal{Z}p(z\mid y)\log p(x,z)dz,
+\end{align*}
+and
+$$
+g(x,y)=f(y)+q(y,y)-q(x,y).
+$$
+
+**Theorem:**
+For all $x,y\in\mathcal{X}$ we have $f(x)\leq g(x,y)$
+with equality if and only if $p(x,z)=p(y,z)$ a.e.
+Consequently $g$ majorizes $f$ on $\mathcal{X}$.
+
+**Proof:**
+By Jensen's inequality
+
+\begin{multline*}
+\log\frac{\int_\mathcal{Z} p(x,z)dz}{\int_\mathcal{Z} p(y,z)dz}=
+\log\int_\mathcal{Z} p(z\mid y)\frac{p(x,z)}{p(y,z)}dz
+\geq
+\\
+\geq\int_\mathcal{Z} p(z\mid y)\log\frac{p(x,z)}{p(y,z)}dz
+=\\
+=\int_\mathcal{Z}p(z\mid y)\log{p(x,z)}dz
+-\int_\mathcal{Z}p(z\mid y)\log{p(y,z)}dz.
+\end{multline*}
+
+Thus
+$$
+-f(x)+f(y)\geq q(x,y)-q(y,y)
+$$
+But this exactly the statement of the theorem.
+**QED**
+
+Maximizing the right-hand-side
+by block relaxation is the EM algorithm (@dempster_laird_rubin_77). Usually,
+of course, the EM algorithm is presented in probabilistic terms
+using the concept of likelihood and expectation. This has
+considerable heuristic value, but it detracts somewhat from
+seeing the essential engine of the algorithm, which is the
+majorization.
+
+## The EM Algorithm
+
+The E-step of the EM algorithm,
+in our terminology, is the construction of a new majorization
+function. We prefer a nonstochastic description of EM, because
+maximizing integrals is obviously a more general problem.
+
+
